@@ -1,5 +1,5 @@
 ---
-import Circumpunct from "@components/Circumpunct.astro";
+import MalteseCross from "@components/MalteseCross.astro";
 import type { LibraryDocument } from "../data/library";
 
 interface Props {
@@ -16,7 +16,7 @@ const { document, compact = false } = Astro.props;
 >
   <div class="cover-rule"></div>
   <p class="cover-kicker">Archivo Heredom</p>
-  <Circumpunct class="cover-symbol" size={112} />
+  <MalteseCross class="cover-symbol" size={112} />
   <p class="cover-title">{document.shortTitle ?? document.title}</p>
   <p class="cover-foot">H∴R∴D∴M · K∴L∴W∴N∴N∴N∴G</p>
 </div>
