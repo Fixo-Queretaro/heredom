@@ -51,16 +51,18 @@
 
     <div class="hero-art">
       <figure class="hero-portrait">
-        <img
-          src="/images/san-juan-evangelista-el-greco.webp"
-          srcset="/images/san-juan-evangelista-el-greco-640.webp 640w, /images/san-juan-evangelista-el-greco.webp 1000w"
-          sizes="(max-width: 899px) min(84vw, 320px), (max-width: 1199px) 330px, 368px"
-          alt="San Juan Evangelista sosteniendo el cáliz, obra de El Greco"
-          width="1000"
-          height="1334"
-          decoding="async"
-          fetchpriority="high"
-        />
+        <div class="hero-portrait-frame">
+          <img
+            src="/images/san-juan-evangelista-el-greco.webp"
+            srcset="/images/san-juan-evangelista-el-greco-640.webp 640w, /images/san-juan-evangelista-el-greco.webp 1000w"
+            sizes="(max-width: 899px) min(84vw, 320px), (max-width: 1199px) 330px, 368px"
+            alt="San Juan Evangelista sosteniendo el cáliz, obra de El Greco"
+            width="1000"
+            height="1334"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </div>
         <figcaption>
           <span class="hero-lodge-name">San Juan Evangelista N.º 1</span>
           <span class="hero-lodge-rank">Augusta y Respetable Logia Madre y Metropolitana</span>
@@ -120,6 +122,25 @@
     height: auto;
     margin-block-start: 0.35rem; /* alineación óptica con el H1 */
     filter: drop-shadow(0 3px 10px rgba(89, 21, 29, 0.11));
+    transform-origin: 50% 48%;
+  }
+
+  /* Respiración heráldica: apenas 1.4 % de escala en un ciclo lento. */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-seal {
+      animation: seal-breath 7.5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes seal-breath {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.014);
+    }
   }
 
   .hero-heading {
@@ -186,16 +207,43 @@
   }
 
   .hero-portrait {
+    position: relative;
+    isolation: isolate;
     margin: 0;
     box-shadow: var(--shadow-card);
   }
 
-  .hero-portrait > img {
+  /* Margen cálido y halo difuso. La obra permanece nítida: solo se
+     suaviza el contorno exterior del marco. */
+  .hero-portrait-frame {
+    position: relative;
+    isolation: isolate;
+    padding: clamp(0.35rem, 0.7vw, 0.5rem);
+    border: 1px solid var(--accent-bronze);
+    border-bottom: 0;
+    background: rgba(255, 253, 245, 0.78);
+    background: color-mix(in srgb, var(--surface-page) 78%, transparent);
+  }
+
+  .hero-portrait-frame::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -0.55rem;
+    background: linear-gradient(
+      135deg,
+      rgba(155, 117, 66, 0.2),
+      rgba(89, 21, 29, 0.1)
+    );
+    filter: blur(0.7rem);
+    opacity: 0.58;
+    pointer-events: none;
+  }
+
+  .hero-portrait-frame > img {
     display: block;
     width: 100%;
     height: auto;
-    border: 1px solid var(--accent-bronze);
-    border-bottom: 0;
   }
 
   .hero-portrait figcaption {
