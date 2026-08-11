@@ -9,7 +9,6 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import SiteHeader from "@components/SiteHeader.astro";
 import HomeHero from "@components/HomeHero.astro";
 import FoundationalTradition from "@components/FoundationalTradition.astro";
-import CircumpunctBand from "@components/CircumpunctBand.astro";
 import OldCharges from "@components/OldCharges.astro";
 import OrnamentDivider from "@components/OrnamentDivider.astro";
 import ArticleCard from "@components/ArticleCard.astro";
@@ -32,13 +31,16 @@ import SiteFooter from "@components/SiteFooter.astro";
     <!-- 3. FUNDAMENTOS — síntesis doctrinal pública -->
     <FoundationalTradition />
 
-    <!-- Transición entre capítulos doctrinales mayores -->
-    <CircumpunctBand />
-
     <!-- 4. ANTIGUOS DEBERES — Constitución de 1607 -->
     <OldCharges />
 
-    <!-- 5. INTRODUCCIÓN — la herencia -->
+    <!-- 5. FILIACIÓN INICIÁTICA — cuatro piedras angulares -->
+    <FourCornerstones />
+
+    <!-- 6. TRADICIÓN E HISTORIA — síntesis de la cronología institucional -->
+    <HistoricalChronicle />
+
+    <!-- 7. EL UMBRAL — transición hacia las puertas de entrada -->
     <section class="intro" aria-labelledby="intro-title">
       <div class="intro-wrap">
         <header class="intro-head">
@@ -132,9 +134,7 @@ import SiteFooter from "@components/SiteFooter.astro";
       </div>
     </section>
 
-    <OrnamentDivider />
-
-    <!-- 4. TRES PUERTAS DE ENTRADA -->
+    <!-- 8. TRES PUERTAS DE ENTRADA -->
     <section class="doors container" aria-labelledby="doors-title">
       <h2 id="doors-title" class="sr-only">Tres puertas de entrada</h2>
       <div class="doors-grid">
@@ -170,10 +170,7 @@ import SiteFooter from "@components/SiteFooter.astro";
       </div>
     </section>
 
-    <!-- 5. LAS CUATRO PIEDRAS ANGULARES (contenido institucional oficial) -->
-    <FourCornerstones />
-
-    <!-- 6. QUÉ ES Y QUÉ NO ES HEREDOM -->
+    <!-- 9. QUÉ ES Y QUÉ NO ES HEREDOM -->
     <section class="isnt container" aria-labelledby="isnt-title">
       <h2 id="isnt-title" class="isnt-heading">Qué es Heredom — y qué no es</h2>
       <div class="isnt-grid">
@@ -216,12 +213,7 @@ import SiteFooter from "@components/SiteFooter.astro";
 
     <OrnamentDivider />
 
-    <!-- 7. TRADICIÓN E HISTORIA — síntesis de la cronología institucional -->
-    <HistoricalChronicle />
-
-    <OrnamentDivider />
-
-    <!-- 8. BIBLIOTECA DESTACADA -->
+    <!-- 10. BIBLIOTECA DESTACADA -->
     <section class="library container" aria-labelledby="library-title">
       <div class="section-head">
         <p class="overline">Biblioteca</p>
@@ -267,7 +259,7 @@ import SiteFooter from "@components/SiteFooter.astro";
       </p>
     </section>
 
-    <!-- 9. FORMACIÓN -->
+    <!-- 11. FORMACIÓN -->
     <section class="training" aria-labelledby="training-title">
       <div class="container training-inner">
         <div class="training-copy">
@@ -303,7 +295,7 @@ import SiteFooter from "@components/SiteFooter.astro";
       </div>
     </section>
 
-    <!-- 10. CIERRE -->
+    <!-- 12. CIERRE -->
     <section class="closing" aria-labelledby="closing-title">
       <div class="prose-width closing-inner">
         <h2 id="closing-title" class="closing-title">
@@ -317,7 +309,7 @@ import SiteFooter from "@components/SiteFooter.astro";
     </section>
   </main>
 
-  <!-- 12. FOOTER -->
+  <!-- 13. FOOTER -->
   <SiteFooter />
 </BaseLayout>
 
@@ -344,6 +336,7 @@ import SiteFooter from "@components/SiteFooter.astro";
   /* ---------- 3. Introducción ---------- */
   .intro {
     padding-block: var(--space-2xl) var(--space-xl);
+    background: var(--surface-panel-soft);
   }
 
   .intro-wrap {
