@@ -14,7 +14,7 @@ import OldCharges from "@components/OldCharges.astro";
 import OrnamentDivider from "@components/OrnamentDivider.astro";
 import ArticleCard from "@components/ArticleCard.astro";
 import DocumentCard from "@components/DocumentCard.astro";
-import TimelineItem from "@components/TimelineItem.astro";
+import HistoricalChronicle from "@components/HistoricalChronicle.astro";
 import FourCornerstones from "@components/FourCornerstones.astro";
 import SiteFooter from "@components/SiteFooter.astro";
 ---
@@ -216,61 +216,8 @@ import SiteFooter from "@components/SiteFooter.astro";
 
     <OrnamentDivider />
 
-    <!-- 7. TRADICIÓN E HISTORIA -->
-    <section class="history container" aria-labelledby="history-title">
-      <div class="section-head">
-        <p class="overline">Tradición e historia</p>
-        <h2 id="history-title">Dos registros, un mismo respeto</h2>
-        <p class="section-lede">
-          La cronología distingue lo que la tradición transmite, lo que los archivos
-          documentan y lo que la doctrina interpreta. Hitos provisionales de
-          demostración:
-        </p>
-      </div>
-
-      <ul class="timeline" role="list">
-        <TimelineItem
-          year="s. XIV"
-          title="[DEMO] Relato fundacional según la tradición"
-          naturaleza="tradicion"
-          headingLevel="h3"
-        >
-          [DEMO] Relato transmitido por la tradición de la Orden, presentado como
-          herencia recibida y no como registro archivístico.
-        </TimelineItem>
-        <TimelineItem
-          year="1723"
-          title="[DEMO] Hito con respaldo documental"
-          naturaleza="historia-documentada"
-          headingLevel="h3"
-        >
-          [DEMO] Hecho de ejemplo sustentado en fuentes y archivos verificables, con
-          referencia de procedencia.
-        </TimelineItem>
-        <TimelineItem
-          year="s. XVIII"
-          title="[DEMO] Lectura doctrinal de un símbolo"
-          naturaleza="doctrina"
-          headingLevel="h3"
-        >
-          [DEMO] Interpretación doctrinal de demostración: cómo la Orden lee un símbolo
-          dentro de su propio marco de enseñanza.
-        </TimelineItem>
-        <TimelineItem
-          year="s. XX"
-          title="[DEMO] Continuidad en México y el Caribe"
-          naturaleza="historia-documentada"
-          headingLevel="h3"
-        >
-          [DEMO] Hito provisional sobre la presencia del Capítulo Soberano en la
-          región, pendiente de referencias definitivas.
-        </TimelineItem>
-      </ul>
-
-      <p class="section-cta">
-        <a class="link-text" href="/tradicion-e-historia/">Explorar tradición e historia</a>
-      </p>
-    </section>
+    <!-- 7. TRADICIÓN E HISTORIA — síntesis de la cronología institucional -->
+    <HistoricalChronicle />
 
     <OrnamentDivider />
 
@@ -674,18 +621,6 @@ import SiteFooter from "@components/SiteFooter.astro";
 
   .isnt-col-no .isnt-list li {
     color: var(--text-muted);
-  }
-
-  /* ---------- 7. Cronología ---------- */
-  .history {
-    padding-block: var(--space-l);
-  }
-
-  .timeline {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    max-width: 42rem;
   }
 
   /* ---------- 8. Biblioteca ---------- */
