@@ -11,8 +11,7 @@ import HomeHero from "@components/HomeHero.astro";
 import FoundationalTradition from "@components/FoundationalTradition.astro";
 import OldCharges from "@components/OldCharges.astro";
 import OrnamentDivider from "@components/OrnamentDivider.astro";
-import ArticleCard from "@components/ArticleCard.astro";
-import DocumentCard from "@components/DocumentCard.astro";
+import LibraryShowcase from "@components/LibraryShowcase.astro";
 import HistoricalChronicle from "@components/HistoricalChronicle.astro";
 import FourCornerstones from "@components/FourCornerstones.astro";
 import SiteFooter from "@components/SiteFooter.astro";
@@ -213,51 +212,8 @@ import SiteFooter from "@components/SiteFooter.astro";
 
     <OrnamentDivider />
 
-    <!-- 10. BIBLIOTECA DESTACADA -->
-    <section class="library container" aria-labelledby="library-title">
-      <div class="section-head">
-        <p class="overline">Biblioteca</p>
-        <h2 id="library-title">Lecturas para empezar</h2>
-      </div>
-
-      <div class="library-grid">
-        <div class="library-articles">
-          <ArticleCard
-            title="[DEMO] El simbolismo del eje en la construcción"
-            summary="[DEMO] Artículo de demostración: resumen provisional que anticipa el argumento sin agotarlo."
-            naturaleza="estudio"
-            authorName="Autor de Demostración"
-            date="Agosto 2026"
-            readingMinutes={12}
-            href="/biblioteca/articulos/"
-          />
-          <ArticleCard
-            title="[DEMO] La escuadra y el nivel: una lectura simbólica"
-            summary="[DEMO] Pieza de estudio simbólico de demostración, presentada desde la tradición de la Orden."
-            naturaleza="tradicion"
-            authorName="Autor de Demostración"
-            date="Julio 2026"
-            readingMinutes={9}
-            href="/biblioteca/articulos/"
-          />
-        </div>
-        <div class="library-doc">
-          <DocumentCard
-            title="[DEMO] Manuscrito de demostración"
-            summary="[DEMO] Documento de ejemplo con nota de procedencia; no atribuido a la Orden ni a autor real."
-            naturaleza="historia-documentada"
-            docType="Manuscrito"
-            period="c. 1740"
-            sourceNote="[DEMO] Procedencia de ejemplo"
-            href="/biblioteca/documentos/"
-          />
-        </div>
-      </div>
-
-      <p class="section-cta">
-        <a class="btn btn-secondary" href="/biblioteca/">Entrar a la Biblioteca</a>
-      </p>
-    </section>
+    <!-- 10. BIBLIOTECA DESTACADA — selección del archivo público -->
+    <LibraryShowcase />
 
     <!-- 11. FORMACIÓN -->
     <section class="training" aria-labelledby="training-title">
@@ -314,25 +270,6 @@ import SiteFooter from "@components/SiteFooter.astro";
 </BaseLayout>
 
 <style>
-  /* ---------- Secciones comunes ---------- */
-  .section-head {
-    max-width: 46rem;
-    margin-block-end: var(--space-l);
-  }
-
-  .section-head h2 {
-    font-size: var(--step-3);
-    margin-block: var(--space-xs) var(--space-s);
-  }
-
-  .section-lede {
-    color: var(--text-muted);
-  }
-
-  .section-cta {
-    margin-block-start: var(--space-l);
-  }
-
   /* ---------- 3. Introducción ---------- */
   .intro {
     padding-block: var(--space-2xl) var(--space-xl);
@@ -614,29 +551,6 @@ import SiteFooter from "@components/SiteFooter.astro";
 
   .isnt-col-no .isnt-list li {
     color: var(--text-muted);
-  }
-
-  /* ---------- 8. Biblioteca ---------- */
-  .library {
-    padding-block: var(--space-l) var(--space-xl);
-  }
-
-  .library-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    gap: var(--space-2xl);
-    align-items: start;
-  }
-
-  @media (max-width: 899px) {
-    .library-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-l);
-    }
-  }
-
-  .library-articles {
-    border-bottom: 1px solid var(--line-soft);
   }
 
   /* ---------- 9. Formación ---------- */

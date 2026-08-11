@@ -1,0 +1,228 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SiteHeader from "@components/SiteHeader.astro";
+import SiteFooter from "@components/SiteFooter.astro";
+import Circumpunct from "@components/Circumpunct.astro";
+import LibraryCard from "@components/LibraryCard.astro";
+import { libraryDocuments, libraryShelves } from "../../data/library";
+
+const totalPages = libraryDocuments.reduce((total, document) => total + document.pages, 0);
+---
+
+<BaseLayout
+  title="Biblioteca"
+  description="Biblioteca pública de Heredom: documentos de tradición, historia, doctrina, ritual y controversia masónica para lectura y descarga."
+>
+  <SiteHeader current="/biblioteca/" />
+
+  <main id="contenido">
+    <header class="library-hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="overline hero-eyebrow">Archivo público · Heredom</p>
+          <h1>Biblioteca</h1>
+          <p class="hero-lede">
+            Textos para estudiar la Masonería Operativa, la filiación de Heredom y
+            las controversias que acompañan la ruptura especulativa moderna.
+          </p>
+        </div>
+        <div class="hero-register" aria-label="Alcance de la colección">
+          <Circumpunct size={56} />
+          <dl>
+            <div><dt>Documentos</dt><dd>{libraryDocuments.length}</dd></div>
+            <div><dt>Páginas</dt><dd>{totalPages}</dd></div>
+            <div><dt>Acceso</dt><dd>Público</dd></div>
+          </dl>
+        </div>
+      </div>
+    </header>
+
+    <aside class="editorial-note" aria-labelledby="editorial-note-title">
+      <div class="prose-width note-inner">
+        <p class="overline">Criterio editorial</p>
+        <h2 id="editorial-note-title">Leer cada documento según su naturaleza</h2>
+        <p>
+          Las fichas distinguen estudios, tradición institucional y controversia
+          doctrinal. Los textos polémicos se publican como posiciones argumentadas
+          para su lectura y contraste, no como consenso historiográfico.
+        </p>
+      </div>
+    </aside>
+
+    <div class="shelves container">
+      {libraryShelves.map((shelf) => {
+        const documents = libraryDocuments.filter((document) => document.shelf === shelf.id);
+
+        return (
+          <section id={shelf.id} class="shelf" aria-labelledby={`shelf-${shelf.id}`}>
+            <header class="shelf-head">
+              <p class="shelf-number" aria-hidden="true">{shelf.number}</p>
+              <div>
+                <h2 id={`shelf-${shelf.id}`}>{shelf.title}</h2>
+                <p>{shelf.description}</p>
+              </div>
+            </header>
+            <div class="document-grid">
+              {documents.map((document) => (
+                <LibraryCard document={document} compact />
+              ))}
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .library-hero {
+    padding-block: clamp(var(--space-xl), 8vw, var(--space-3xl));
+    background: var(--surface-inverse);
+    color: var(--text-on-inverse);
+    border-bottom: 1px solid var(--line-bronze);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(18rem, 4fr);
+    gap: var(--space-2xl);
+    align-items: end;
+  }
+
+  .hero-eyebrow {
+    color: rgba(244, 239, 226, 0.68);
+  }
+
+  .hero-copy h1 {
+    color: var(--text-on-inverse);
+    margin-block-start: var(--space-s);
+  }
+
+  .hero-lede {
+    margin-block-start: var(--space-m);
+    color: rgba(244, 239, 226, 0.78);
+    font-size: var(--step-1);
+    max-width: 41rem;
+  }
+
+  .hero-register {
+    color: var(--accent-bronze);
+    padding: var(--space-l);
+    border: 1px solid rgba(155, 117, 66, 0.48);
+  }
+
+  .hero-register dl {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-s);
+    margin-block-start: var(--space-m);
+  }
+
+  .hero-register dt {
+    font-family: var(--font-ui);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(244, 239, 226, 0.48);
+  }
+
+  .hero-register dd {
+    margin: var(--space-2xs) 0 0;
+    color: var(--text-on-inverse);
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+  }
+
+  .editorial-note {
+    background: var(--surface-panel);
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .note-inner {
+    padding-block: var(--space-xl);
+  }
+
+  .note-inner .overline {
+    color: var(--text-accent-strong);
+  }
+
+  .note-inner h2 {
+    font-size: var(--step-2);
+    margin-block: var(--space-xs) var(--space-s);
+  }
+
+  .note-inner > p:last-child {
+    color: var(--text-muted);
+  }
+
+  .shelves {
+    padding-block: var(--space-2xl);
+  }
+
+  .shelf + .shelf {
+    margin-block-start: var(--space-3xl);
+    padding-block-start: var(--space-xl);
+    border-top: 1px solid var(--line-bronze);
+  }
+
+  .shelf-head {
+    display: grid;
+    grid-template-columns: 4rem minmax(0, 40rem);
+    gap: var(--space-m);
+    align-items: start;
+    margin-block-end: var(--space-xl);
+  }
+
+  .shelf-number {
+    font-family: var(--font-display);
+    font-size: var(--step-4);
+    line-height: 1;
+    color: var(--text-accent-strong);
+  }
+
+  .shelf-head h2 {
+    font-size: var(--step-3);
+  }
+
+  .shelf-head div > p {
+    margin-block-start: var(--space-xs);
+    color: var(--text-muted);
+  }
+
+  .document-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-xl) var(--space-l);
+  }
+
+  @media (max-width: 1023px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-register {
+      max-width: 32rem;
+    }
+
+    .document-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 599px) {
+    .hero-register dl {
+      grid-template-columns: 1fr;
+    }
+
+    .shelf-head {
+      grid-template-columns: 1fr;
+    }
+
+    .document-grid {
+      grid-template-columns: 1fr;
+      max-width: 24rem;
+    }
+  }
+</style>

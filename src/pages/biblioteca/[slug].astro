@@ -1,0 +1,305 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SiteHeader from "@components/SiteHeader.astro";
+import SiteFooter from "@components/SiteFooter.astro";
+import LibraryCover from "@components/LibraryCover.astro";
+import LibraryCard from "@components/LibraryCard.astro";
+import {
+  formatLibraryFileSize,
+  getLibraryDocument,
+  libraryDocuments,
+  libraryShelves,
+  type LibraryDocument,
+} from "../../data/library";
+
+export function getStaticPaths() {
+  return libraryDocuments.map((document) => ({
+    params: { slug: document.slug },
+    props: { document },
+  }));
+}
+
+interface Props {
+  document: LibraryDocument;
+}
+
+const { document } = Astro.props;
+const shelf = libraryShelves.find((item) => item.id === document.shelf);
+const related = document.relatedSlugs
+  .map((slug) => getLibraryDocument(slug))
+  .filter((item): item is LibraryDocument => Boolean(item));
+---
+
+<BaseLayout title={document.title} description={document.summary}>
+  <SiteHeader current="/biblioteca/" />
+
+  <main id="contenido">
+    <div class="container breadcrumb" aria-label="Migas de pan">
+      <a href="/">Inicio</a><span aria-hidden="true">/</span>
+      <a href="/biblioteca/">Biblioteca</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Ficha</span>
+    </div>
+
+    <article>
+      <header class="document-hero">
+        <div class="container document-grid">
+          <div class="document-cover">
+            <LibraryCover document={document} />
+          </div>
+          <div class="document-copy">
+            <p class="overline document-nature">{document.nature}</p>
+            <h1>{document.title}</h1>
+            <p class="document-summary">{document.summary}</p>
+
+            <dl class="document-facts">
+              <div><dt>Responsable</dt><dd>{document.responsible}</dd></div>
+              <div><dt>Colección</dt><dd>{shelf?.title}</dd></div>
+              <div><dt>Extensión</dt><dd>{document.pages} páginas · {formatLibraryFileSize(document.bytes)}</dd></div>
+              <div><dt>Formato</dt><dd>PDF · acceso público</dd></div>
+            </dl>
+
+            <div class="document-actions">
+              <a class="btn btn-primary" href={document.pdfPath} target="_blank" rel="noopener">
+                Abrir PDF <span class="sr-only">en una pestaña nueva</span>
+              </a>
+              <a class="btn btn-secondary" href={document.pdfPath} download>Descargar</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="container reading-grid">
+        <div class="document-body prose">
+          <section aria-labelledby="synopsis-title">
+            <p class="overline">Guía de lectura</p>
+            <h2 id="synopsis-title">Sinopsis</h2>
+            <p>{document.summary}</p>
+          </section>
+
+          <section aria-labelledby="note-title">
+            <h2 id="note-title">Nota editorial</h2>
+            <p>{document.editorialNote}</p>
+            <p>
+              El archivo se ofrece íntegro y sin modificaciones. La ficha facilita su
+              identificación y sitúa su naturaleza editorial antes de abrir el documento.
+            </p>
+          </section>
+        </div>
+
+        <aside class="topics" aria-labelledby="topics-title">
+          <h2 id="topics-title">Temas</h2>
+          <ul role="list">
+            {document.topics.map((topic) => <li>{topic}</li>)}
+          </ul>
+          <p class="topics-note">
+            Los documentos polémicos expresan la posición de sus autores o de la
+            institución responsable y se publican para estudio y contraste.
+          </p>
+        </aside>
+      </div>
+
+      {related.length > 0 && (
+        <section class="related" aria-labelledby="related-title">
+          <div class="container">
+            <header class="related-head">
+              <p class="overline">Continuar el expediente</p>
+              <h2 id="related-title">Lecturas relacionadas</h2>
+            </header>
+            <div class="related-grid">
+              {related.map((item) => (
+                <LibraryCard document={item} compact />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    padding-block: var(--space-m);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .breadcrumb a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  .document-hero {
+    padding-block: var(--space-xl) var(--space-2xl);
+    background: var(--surface-panel-soft);
+    border-block: 1px solid var(--line-soft);
+  }
+
+  .document-grid {
+    display: grid;
+    grid-template-columns: minmax(15rem, 4fr) minmax(0, 8fr);
+    gap: clamp(var(--space-xl), 7vw, var(--space-3xl));
+    align-items: center;
+  }
+
+  .document-cover {
+    width: min(100%, 25rem);
+  }
+
+  .document-nature {
+    color: var(--text-accent-strong);
+  }
+
+  .document-copy h1 {
+    font-size: clamp(2.35rem, 1.75rem + 2.3vw, 4.2rem);
+    margin-block-start: var(--space-s);
+    max-width: 18ch;
+  }
+
+  .document-summary {
+    margin-block-start: var(--space-m);
+    font-size: var(--step-1);
+    color: var(--text-muted);
+    max-width: 42rem;
+  }
+
+  .document-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-m) var(--space-l);
+    margin-block: var(--space-l);
+    padding-block: var(--space-m);
+    border-block: 1px solid var(--line-bronze);
+    max-width: 46rem;
+  }
+
+  .document-facts dt {
+    font-family: var(--font-ui);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .document-facts dd {
+    margin: var(--space-2xs) 0 0;
+    font-size: var(--step--1);
+  }
+
+  .document-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+  }
+
+  .reading-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 8fr) minmax(16rem, 4fr);
+    gap: var(--space-2xl);
+    align-items: start;
+    padding-block: var(--space-2xl);
+  }
+
+  .document-body h2 {
+    font-size: var(--step-3);
+  }
+
+  .document-body .overline + h2 {
+    margin-block-start: var(--space-xs);
+  }
+
+  .topics {
+    padding: var(--space-l);
+    background: var(--surface-panel);
+    border-top: 1px solid var(--line-bronze);
+  }
+
+  .topics h2 {
+    font-size: var(--step-1);
+  }
+
+  .topics ul {
+    list-style: none;
+    margin: var(--space-m) 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .topics li {
+    padding: 0.35em 0.7em;
+    border: 1px solid var(--line-strong);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .topics-note {
+    margin-block-start: var(--space-l);
+    padding-block-start: var(--space-m);
+    border-top: 1px solid var(--line-soft);
+    font-size: var(--step--1);
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .related {
+    padding-block: var(--space-2xl);
+    background: var(--surface-panel-soft);
+    border-block: 1px solid var(--line-soft);
+  }
+
+  .related-head {
+    margin-block-end: var(--space-xl);
+  }
+
+  .related-head .overline {
+    color: var(--text-accent-strong);
+  }
+
+  .related-head h2 {
+    font-size: var(--step-3);
+    margin-block-start: var(--space-xs);
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl);
+  }
+
+  @media (max-width: 899px) {
+    .document-grid,
+    .reading-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .document-cover {
+      width: min(75vw, 22rem);
+    }
+
+    .related-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 599px) {
+    .document-facts,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .related-grid {
+      max-width: 24rem;
+    }
+  }
+</style>
