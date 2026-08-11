@@ -1,0 +1,396 @@
+---
+import Circumpunct from "./Circumpunct.astro";
+import NatureTag from "./NatureTag.astro";
+
+const eras = [
+  {
+    numeral: "I",
+    period: "c. 1118–1129",
+    years: ["1118", "1129"],
+    title: "El Temple y su ingreso en Escocia",
+    natures: ["historia-documentada", "tradicion"] as const,
+    text:
+      "En Jerusalén surge la Orden del Temple, encabezada por Hugues de Payens, con la misión de proteger las rutas de peregrinación. Su reconocimiento toma forma en el Concilio de Troyes de 1129, bajo la decisiva influencia espiritual de san Bernardo de Claraval. La tradición sitúa en estos años el ingreso del Temple en Escocia y el establecimiento de su casa principal en Balantrodoch, bajo la protección del rey David I.",
+  },
+  {
+    numeral: "II",
+    period: "1307–1320",
+    years: ["1307", "1314"],
+    title: "Persecución, refugio y Bannockburn",
+    natures: ["historia-documentada", "tradicion"] as const,
+    text:
+      "El arresto de los templarios franceses en 1307 y la supresión pontificia de la Orden en 1312 abren una época de persecución y dispersión. Escocia, gobernada por Robert the Bruce y apartada entonces de la obediencia romana, se convierte en territorio de refugio. Según la tradición de Heredom, caballeros del Temple combatieron junto a Bruce en Bannockburn el 24 de junio de 1314. En 1320, la Declaración de Arbroath afirmó solemnemente la independencia del reino escocés.",
+  },
+  {
+    numeral: "III",
+    period: "1331–1688",
+    years: ["1446", "1688"],
+    title: "La herencia custodiada en piedra",
+    natures: ["historia-documentada", "tradicion"] as const,
+    text:
+      "La memoria templaria quedó vinculada a los linajes escoceses, particularmente a la Casa Sinclair de Rosslyn. En 1446 comenzó la construcción de la Capilla de Rosslyn: una obra excepcional que la tradición contempla como un verdadero libro de piedra, donde arquitectura, geometría y símbolo preservan una antigua herencia iniciática. Durante los siglos siguientes, esta memoria permaneció unida a la causa de los Estuardo hasta alcanzar las logias jacobitas establecidas en Francia después de 1688.",
+  },
+  {
+    numeral: "IV",
+    period: "1738–1747",
+    years: ["1738", "1746"],
+    title: "Culloden y la diáspora jacobita",
+    natures: ["historia-documentada", "tradicion"] as const,
+    text:
+      "En 1738, el discurso del caballero escocés Andrew Michael Ramsay vinculó públicamente la tradición masónica con el espíritu de las órdenes de caballería. La derrota jacobita de Culloden, en 1746, provocó ejecuciones, persecuciones y exilio. La tradición de la Orden señala que, un año después, Charles Edward Stuart instituyó en Arras un Capítulo de la Rosa+Cruz de Heredom. Desde entonces, la herencia dejó de pertenecer exclusivamente a Escocia y comenzó su expansión continental.",
+  },
+  {
+    numeral: "V",
+    period: "1786–1810",
+    years: ["1786", "1806"],
+    title: "Patentes y expansión atlántica",
+    natures: ["historia-documentada", "tradicion"] as const,
+    text:
+      "La transmisión de Heredom adoptó nuevas formas mediante capítulos, cartas patentes y cuerpos rituales. En 1786 se concedió una patente para Francia; en 1790 la Orden llegó a Santo Domingo, en el Caribe, y posteriormente a los Estados Unidos. Jean-Jacques Régis de Cambacérès asumió su conducción en Francia en 1806, mientras Alexander Deuchar reorganizaba en Edimburgo una línea de continuidad templario-jacobita. Así comenzó una expansión cuyo rastro atraviesa diversos ritos y obediencias.",
+  },
+  {
+    numeral: "VI",
+    period: "1985–2006",
+    years: ["1992", "2006"],
+    title: "De Sudamérica al Oriente de México",
+    natures: ["historia-documentada"] as const,
+    text:
+      "Entre 1985 y 1990 comenzaron en Buenos Aires los trabajos preparatorios para restablecer las columnas de la Orden. En 1992 fue constituido el Gran Capítulo para Sudamérica, seguido por nuevas fundaciones en Santiago de Chile. En 2005 se levantaron columnas en la Ciudad de México y, en 2006, quedó constituido el Gran Capítulo-Madre Soberano de la Rosa+Cruz de Heredom de Kilwinning, con jurisdicción para México y el Caribe.",
+  },
+] as const;
+---
+
+<section class="chronicle container" aria-labelledby="chronicle-title">
+  <header class="chronicle-intro">
+    <p class="overline">Tradición e historia</p>
+    <h2 id="chronicle-title">De Jerusalén al Oriente de México</h2>
+    <p class="chronicle-lede">
+      Nueve siglos de memoria templaria, herencia escocesa y continuidad institucional.
+      Esta cronología distingue los acontecimientos históricamente documentados de
+      aquellos conservados por la tradición de la Orden.
+    </p>
+    <div class="chronicle-key" aria-label="Registros editoriales de la cronología">
+      <NatureTag naturaleza="historia-documentada" />
+      <NatureTag naturaleza="tradicion" />
+    </div>
+  </header>
+
+  <ol class="chronicle-list" role="list">
+    {
+      eras.map((era) => (
+        <li class="chronicle-era">
+          <div class="chronicle-date">
+            <span class="chronicle-numeral" aria-hidden="true">{era.numeral}</span>
+            <span class="chronicle-period">{era.period}</span>
+            <span class="chronicle-years" aria-label={`Fechas representativas: ${era.years.join(" y ")}`}>
+              {era.years.map((year) => <span>{year}</span>)}
+            </span>
+          </div>
+
+          <div class="chronicle-axis" aria-hidden="true">
+            <Circumpunct size={30} class="chronicle-node" />
+          </div>
+
+          <article class="chronicle-copy">
+            <div class="chronicle-natures">
+              {era.natures.map((nature) => <NatureTag naturaleza={nature} />)}
+            </div>
+            <h3>{era.title}</h3>
+            <p>{era.text}</p>
+          </article>
+        </li>
+      ))
+    }
+  </ol>
+
+  <footer class="chronicle-closing">
+    <Circumpunct size={34} class="chronicle-closing-mark" />
+    <p class="chronicle-motto">Memoria <span>·</span> Filiación <span>·</span> Continuidad</p>
+    <p>
+      Heredom no se presenta como una sucesión simple de fechas, sino como una herencia
+      transmitida entre persecuciones, exilios, restauraciones y trabajos rituales.
+    </p>
+    <a class="link-text" href="/tradicion-e-historia/">Consultar la cronología completa</a>
+  </footer>
+</section>
+
+<style>
+  .chronicle {
+    padding-block: clamp(var(--space-xl), 7vw, var(--space-3xl));
+  }
+
+  .chronicle-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(16rem, 4fr);
+    column-gap: clamp(var(--space-l), 6vw, var(--space-3xl));
+    align-items: end;
+    padding-block-end: var(--space-xl);
+    border-bottom: 1px solid var(--line-bronze);
+  }
+
+  .chronicle-intro .overline,
+  .chronicle-intro h2 {
+    grid-column: 1;
+  }
+
+  .chronicle-intro h2 {
+    max-width: 15ch;
+    margin-block-start: var(--space-s);
+    font-size: var(--step-4);
+    color: var(--text-accent-strong);
+  }
+
+  .chronicle-lede {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    max-width: 34rem;
+    color: var(--text-muted);
+    font-size: var(--step-1);
+    line-height: 1.55;
+  }
+
+  .chronicle-key {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-block-start: var(--space-m);
+  }
+
+  .chronicle-list {
+    list-style: none;
+    margin: var(--space-xl) auto 0;
+    padding: 0;
+    max-width: 64rem;
+  }
+
+  .chronicle-era {
+    display: grid;
+    grid-template-columns: minmax(8rem, 10rem) 3rem minmax(0, 1fr);
+    column-gap: clamp(var(--space-m), 3vw, var(--space-l));
+    min-height: 16rem;
+  }
+
+  .chronicle-date {
+    padding-block: 0.15rem var(--space-xl);
+    text-align: end;
+  }
+
+  .chronicle-numeral {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    line-height: 1;
+    color: var(--accent-bronze);
+  }
+
+  .chronicle-period {
+    display: block;
+    margin-block-start: var(--space-xs);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .chronicle-years {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-block-start: var(--space-s);
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.3vw, 2.7rem);
+    font-weight: 600;
+    line-height: 0.88;
+    color: var(--text-accent-strong);
+  }
+
+  .chronicle-years span + span {
+    margin-block-start: 0.35rem;
+    color: var(--text-accent);
+  }
+
+  .chronicle-axis {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .chronicle-axis::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    width: 1px;
+    background: var(--line-bronze);
+    opacity: 0.62;
+  }
+
+  :global(.chronicle-node) {
+    position: relative;
+    z-index: 1;
+    color: var(--accent-bronze);
+    background: var(--surface-page);
+  }
+
+  .chronicle-copy {
+    padding-block: 0 var(--space-xl);
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .chronicle-era + .chronicle-era .chronicle-copy,
+  .chronicle-era + .chronicle-era .chronicle-date {
+    padding-block-start: var(--space-xl);
+  }
+
+  .chronicle-era + .chronicle-era :global(.chronicle-node) {
+    margin-block-start: var(--space-xl);
+  }
+
+  .chronicle-natures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-block-end: var(--space-s);
+  }
+
+  .chronicle-copy h3 {
+    max-width: 26ch;
+    font-size: var(--step-2);
+    color: var(--text-primary);
+  }
+
+  .chronicle-copy p {
+    margin-block-start: var(--space-s);
+    max-width: 44rem;
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    line-height: 1.72;
+    hyphens: auto;
+  }
+
+  .chronicle-closing {
+    width: min(100%, 48rem);
+    margin: var(--space-2xl) auto 0;
+    padding-block-start: var(--space-l);
+    border-top: 1px solid var(--line-bronze);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  :global(.chronicle-closing-mark) {
+    color: var(--accent-bronze);
+    margin-block-end: var(--space-s);
+  }
+
+  .chronicle-closing .chronicle-motto {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    color: var(--text-accent-strong);
+  }
+
+  .chronicle-motto span {
+    color: var(--accent-bronze);
+    padding-inline: 0.25em;
+  }
+
+  .chronicle-closing > p:not(.chronicle-motto) {
+    margin-block-start: var(--space-s);
+    color: var(--text-muted);
+  }
+
+  .chronicle-closing .link-text {
+    margin-block-start: var(--space-l);
+  }
+
+  @media (max-width: 767px) {
+    .chronicle-intro {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .chronicle-intro .overline,
+    .chronicle-intro h2,
+    .chronicle-lede,
+    .chronicle-key {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .chronicle-lede {
+      margin-block-start: var(--space-m);
+      font-size: var(--step-0);
+    }
+
+    .chronicle-era {
+      grid-template-columns: 2rem minmax(0, 1fr);
+      column-gap: var(--space-m);
+      min-height: 0;
+    }
+
+    .chronicle-date {
+      grid-column: 2;
+      grid-row: 1;
+      padding-block-end: var(--space-s);
+      text-align: start;
+    }
+
+    .chronicle-numeral,
+    .chronicle-period {
+      display: inline;
+    }
+
+    .chronicle-period {
+      margin-inline-start: var(--space-xs);
+    }
+
+    .chronicle-years {
+      flex-direction: row;
+      align-items: baseline;
+      gap: var(--space-s);
+      margin-block-start: var(--space-xs);
+      font-size: var(--step-3);
+      line-height: 1;
+    }
+
+    .chronicle-years span + span {
+      margin-block-start: 0;
+    }
+
+    .chronicle-axis {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+    }
+
+    :global(.chronicle-node) {
+      width: 26px;
+      height: 26px;
+    }
+
+    .chronicle-copy {
+      grid-column: 2;
+      grid-row: 2;
+      padding-block-end: var(--space-xl);
+    }
+
+    .chronicle-era + .chronicle-era .chronicle-copy,
+    .chronicle-era + .chronicle-era .chronicle-date {
+      padding-block-start: var(--space-l);
+    }
+
+    .chronicle-era + .chronicle-era :global(.chronicle-node) {
+      margin-block-start: var(--space-l);
+    }
+
+    .chronicle-copy h3 {
+      font-size: var(--step-2);
+    }
+
+    .chronicle-motto span {
+      padding-inline: 0.1em;
+    }
+  }
+</style>
