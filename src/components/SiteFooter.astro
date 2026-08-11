@@ -1,178 +1,364 @@
 ---
-/**
- * Pie institucional. Superficie pergamino (la home ya usa sus dos fondos
- * oscuros en Formación y en la banda institucional).
- * Sin datos de contacto inventados: los huecos quedan documentados.
- */
 const nav = [
   { href: "/", label: "Inicio" },
-  { href: "/la-orden/", label: "La Orden" },
-  { href: "/tradicion-e-historia/", label: "Tradición e Historia" },
-  { href: "/contacto/", label: "Contacto" },
-];
-
-const biblioteca = [
   { href: "/biblioteca/", label: "Biblioteca" },
-  { href: "/biblioteca/#fundamentos", label: "Fundamentos y filiación" },
-  { href: "/biblioteca/#ruptura-1717", label: "La ruptura de 1717" },
-  { href: "/biblioteca/#ritual-y-ciclo", label: "Ritual, símbolos y ciclo" },
+  { href: "/#actividades", label: "Actividades y formación" },
+  { href: "/#memoria-mexico", label: "Memoria institucional" },
 ];
 
-const formacion = [
-  { href: "/#actividades", label: "Actividades y formación" },
+const social = [
+  {
+    href: "https://www.tiktok.com/@hrdm.klwnnng.mx",
+    label: "TikTok",
+    icon: "tiktok",
+  },
+  {
+    href: "https://www.facebook.com/profile.php?id=100095300929470",
+    label: "Facebook",
+    icon: "facebook",
+  },
 ];
 ---
 
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" fill="none">
-        <circle cx="20" cy="20" r="15" stroke="var(--line-accent)" stroke-width="1.4" />
-        <circle cx="20" cy="20" r="9.5" stroke="var(--line-bronze)" stroke-width="0.9" />
-        <line x1="20" y1="3" x2="20" y2="37" stroke="var(--text-primary)" stroke-width="0.9" />
-        <line x1="3" y1="20" x2="37" y2="20" stroke="var(--text-primary)" stroke-width="0.9" />
-        <circle cx="20" cy="20" r="2" fill="var(--text-primary)" />
-      </svg>
-      <p class="footer-name">Orden Real de Heredom de Kilwinning</p>
-      <p class="footer-lines">
-        Augusta y Respetable Logia Madre y Metropolitana<br />
-        San Juan Evangelista N.º 1<br />
-        Capítulo Soberano para México y el Caribe<br />
-        Oriente de la Ciudad de México
-      </p>
+      <img
+        class="footer-shield"
+        src="/images/escudo.png"
+        alt=""
+        width="593"
+        height="909"
+        loading="lazy"
+      />
+      <div>
+        <p class="footer-name">Orden Real de Heredom de Kilwinning</p>
+        <p class="footer-lines">
+          San Juan Evangelista N.º 1<br />
+          Capítulo Soberano para México y el Caribe<br />
+          Oriente de la Ciudad de México
+        </p>
+      </div>
     </div>
 
-    <nav class="footer-col" aria-label="Navegación del sitio">
-      <p class="overline footer-head">Sitio</p>
+    <nav class="footer-nav" aria-label="Navegación del pie de página">
+      <p class="footer-heading">Recorrer el portal</p>
       <ul role="list">
-        {nav.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
       </ul>
     </nav>
 
-    <nav class="footer-col" aria-label="Biblioteca">
-      <p class="overline footer-head">Biblioteca</p>
+    <div class="footer-social">
+      <p class="footer-heading">Presencia pública</p>
       <ul role="list">
-        {biblioteca.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        {
+          social.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={item.label + " de la Orden Real de Heredom de Kilwinning (abre en una pestaña nueva)"}
+              >
+                {item.icon === "tiktok" ? (
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M14.4 3.4c.4 2.2 1.7 3.6 3.8 4v3.1a8.2 8.2 0 0 1-3.8-1.1v6.1a5.6 5.6 0 1 1-4.8-5.6v3.2a2.5 2.5 0 1 0 1.7 2.4V3.4h3.1Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M13.7 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V4a22 22 0 0 0-2.5-.1c-2.5 0-4.2 1.5-4.2 4.3V10H7.5v3h2.8v8h3.4Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                )}
+                <span>{item.label}</span>
+              </a>
+            </li>
+          ))
+        }
       </ul>
-    </nav>
+    </div>
 
-    <nav class="footer-col" aria-label="Formación">
-      <p class="overline footer-head">Formación</p>
-      <ul role="list">
-        {formacion.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
-      </ul>
-    </nav>
+    <figure class="footer-greco">
+      <div class="footer-greco-frame">
+        <img
+          src="/images/san-juan-evangelista-el-greco-640.webp"
+          alt="Detalle de San Juan Evangelista, obra de El Greco"
+          width="640"
+          height="854"
+          loading="lazy"
+        />
+      </div>
+      <figcaption>El Greco · ca. 1605</figcaption>
+    </figure>
   </div>
 
-  <div class="footer-note">
-    <div class="footer-note-inner">
-      <p>
-        Los contenidos de este portal distinguen su naturaleza editorial: tradición,
-        doctrina, historia documentada, estudio y editorial. La tradición iniciática y la
-        historia académicamente documentada se presentan siempre como registros
-        distintos.
+  <div class="footer-lower">
+    <div class="footer-lower-inner">
+      <p class="footer-editorial">
+        Este portal distingue entre tradición institucional, doctrina, estudio e
+        historia documentada.
       </p>
-      <p class="footer-legal">
-        <!-- Pendiente: aviso legal y política de privacidad aprobados -->
-        Aviso legal y política de privacidad: en preparación · México y el Caribe
-      </p>
+
+      <aside class="approach-channel" aria-labelledby="approach-title">
+        <!-- Pendiente: convertir el título en enlace cuando exista el Google Forms oficial. -->
+        <p id="approach-title" class="approach-title">Canal de acercamiento</p>
+        <p>
+          Espacio reservado para solicitar información sobre una posible incorporación.
+        </p>
+        <p class="approach-status">Formulario institucional en preparación.</p>
+      </aside>
     </div>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    background: var(--surface-panel);
-    border-top: 1px solid var(--line-soft);
-    margin-block-start: var(--space-2xl);
+    background: var(--surface-accent);
+    border-top: 1px solid var(--line-bronze);
+    color: var(--text-on-accent);
+    margin-block-start: 0;
+  }
+
+  .footer-inner,
+  .footer-lower-inner {
+    width: min(100% - 2 * var(--gutter), var(--width-content));
+    margin-inline: auto;
   }
 
   .footer-inner {
-    width: min(100% - 2 * var(--gutter), var(--width-content));
-    margin-inline: auto;
     display: grid;
-    grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
-    gap: var(--space-xl) var(--space-l);
+    grid-template-columns:
+      minmax(19rem, 2.2fr)
+      minmax(10rem, 1fr)
+      minmax(9rem, 0.8fr)
+      minmax(5.25rem, 0.45fr);
+    align-items: start;
+    gap: var(--space-xl);
     padding-block: var(--space-xl);
   }
 
-  @media (max-width: 899px) {
-    .footer-inner {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .footer-brand {
-      grid-column: 1 / -1;
-    }
+  .footer-brand {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-m);
   }
 
-  @media (max-width: 519px) {
-    .footer-inner {
-      grid-template-columns: 1fr;
-    }
+  .footer-shield {
+    width: 3.5rem;
+    height: auto;
+    filter: sepia(0.08) brightness(1.08);
   }
 
   .footer-name {
     font-family: var(--font-display);
-    font-size: var(--step-1);
+    font-size: var(--step-2);
     font-weight: 600;
-    margin-block: var(--space-s) var(--space-xs);
-    max-width: 20rem;
+    line-height: var(--leading-heading);
+    max-width: 19rem;
   }
 
   .footer-lines {
+    color: color-mix(in srgb, var(--text-on-accent) 76%, transparent);
     font-size: var(--step--1);
     font-style: italic;
-    color: var(--text-muted);
-    line-height: 1.6;
+    line-height: 1.55;
+    margin-block-start: var(--space-xs);
   }
 
-  .footer-head {
-    margin-block-end: var(--space-s);
+  .footer-heading {
+    color: var(--text-on-accent);
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-caps);
+    line-height: 1.4;
+    margin-block-end: var(--space-m);
+    text-transform: uppercase;
   }
 
-  .footer-col ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  .footer-nav ul,
+  .footer-social ul {
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
-  .footer-col a {
+  .footer-nav a,
+  .footer-social a {
+    color: color-mix(in srgb, var(--text-on-accent) 78%, transparent);
     font-family: var(--font-ui);
     font-size: var(--step--1);
-    color: var(--text-muted);
     text-decoration: none;
   }
 
-  .footer-col a:hover {
-    color: var(--text-accent-strong);
+  .footer-nav a:hover,
+  .footer-social a:hover {
+    color: var(--text-on-accent);
     text-decoration: underline;
-    text-underline-offset: 0.2em;
+    text-decoration-color: var(--line-bronze);
+    text-underline-offset: 0.25em;
   }
 
-  .footer-note {
-    border-top: 1px solid var(--line-soft);
+  .footer-nav a:focus-visible,
+  .footer-social a:focus-visible {
+    outline-color: var(--line-bronze);
   }
 
-  .footer-note-inner {
-    width: min(100% - 2 * var(--gutter), var(--width-content));
-    margin-inline: auto;
+  .footer-social a {
+    align-items: center;
+    display: inline-flex;
+    gap: var(--space-xs);
+  }
+
+  .footer-social svg {
+    flex: 0 0 auto;
+    height: 1rem;
+    width: 1rem;
+  }
+
+  .footer-greco {
+    justify-self: end;
+    width: 5.25rem;
+  }
+
+  .footer-greco-frame {
+    border: 1px solid var(--line-bronze);
+    overflow: hidden;
+    padding: 0.2rem;
+    position: relative;
+  }
+
+  .footer-greco-frame::after {
+    box-shadow: inset 0 0 0.65rem 0.3rem var(--surface-accent);
+    content: "";
+    inset: 0.2rem;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  .footer-greco img {
+    aspect-ratio: 3 / 4;
+    filter: sepia(0.12) saturate(0.82) contrast(0.94);
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .footer-greco figcaption {
+    color: color-mix(in srgb, var(--text-on-accent) 72%, transparent);
+    font-family: var(--font-ui);
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+    margin-block-start: var(--space-xs);
+    text-align: center;
+  }
+
+  .footer-lower {
+    border-top: 1px solid color-mix(in srgb, var(--line-bronze) 70%, transparent);
+  }
+
+  .footer-lower-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(17rem, 0.65fr);
+    gap: var(--space-xl);
+    align-items: center;
     padding-block: var(--space-l);
   }
 
-  .footer-note p {
+  .footer-editorial {
+    color: color-mix(in srgb, var(--text-on-accent) 72%, transparent);
     font-family: var(--font-ui);
-    font-size: 0.78rem;
-    color: var(--text-faint);
-    max-width: 46rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.025em;
     line-height: 1.6;
   }
 
-  .footer-legal {
-    margin-block-start: var(--space-s);
-    letter-spacing: 0.04em;
+  .approach-channel {
+    border-left: 1px solid var(--line-bronze);
+    padding-inline-start: var(--space-m);
+  }
+
+  .approach-channel p {
+    color: color-mix(in srgb, var(--text-on-accent) 74%, transparent);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+
+  .approach-channel .approach-title {
+    color: var(--text-on-accent);
+    font-family: var(--font-display);
+    font-size: var(--step-0);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-block-end: var(--space-2xs);
+  }
+
+  .approach-channel .approach-status {
+    color: color-mix(in srgb, var(--text-on-accent) 72%, transparent);
+    font-size: 0.66rem;
+    font-style: italic;
+    margin-block-start: var(--space-2xs);
+  }
+
+  @media (max-width: 899px) {
+    .footer-inner {
+      grid-template-columns: minmax(0, 1.6fr) minmax(9rem, 0.8fr);
+    }
+
+    .footer-social {
+      grid-column: 1;
+    }
+
+    .footer-greco {
+      grid-column: 2;
+      grid-row: 2;
+      justify-self: start;
+    }
+
+    .footer-lower-inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+    }
+  }
+
+  @media (max-width: 559px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+      padding-block: var(--space-l);
+    }
+
+    .footer-brand {
+      grid-template-columns: 3rem minmax(0, 1fr);
+    }
+
+    .footer-shield {
+      width: 3rem;
+    }
+
+    .footer-social,
+    .footer-greco {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .footer-greco {
+      justify-self: start;
+      width: 4.75rem;
+    }
+
+    .footer-lower-inner {
+      padding-block: var(--space-m) var(--space-l);
+    }
   }
 </style>
