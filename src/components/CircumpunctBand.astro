@@ -9,7 +9,7 @@ import Circumpunct from "./Circumpunct.astro";
 <div class="circumpunct-band" aria-hidden="true">
   <div class="circumpunct-band__inner">
     <span class="circumpunct-band__line"></span>
-    <Circumpunct size={38} class="circumpunct-band__mark" />
+    <Circumpunct size={34} class="circumpunct-band__mark" />
     <span class="circumpunct-band__line"></span>
   </div>
 </div>
@@ -17,11 +17,10 @@ import Circumpunct from "./Circumpunct.astro";
 <style>
   .circumpunct-band {
     display: grid;
-    min-height: 5rem;
     place-items: center;
-    border-block: 1px solid var(--line-bronze);
-    background: var(--surface-heraldic);
-    color: var(--text-on-inverse);
+    padding-block: clamp(1.5rem, 3vw, 2.25rem);
+    background: transparent;
+    color: var(--accent-bronze);
   }
 
   .circumpunct-band__inner {
@@ -33,10 +32,11 @@ import Circumpunct from "./Circumpunct.astro";
   }
 
   .circumpunct-band__line {
-    width: min(28vw, 14rem);
+    flex: 1 1 0;
+    max-width: 12rem;
     height: 1px;
-    background: var(--accent-bronze);
-    opacity: 0.85;
+    background: currentColor;
+    opacity: 0.62;
   }
 
   :global(.circumpunct-band__mark) {
