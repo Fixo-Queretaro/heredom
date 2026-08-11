@@ -1,0 +1,45 @@
+---
+/**
+ * Pausa heráldica entre capítulos doctrinales mayores.
+ * El símbolo central reutiliza el circumpunto canónico del sistema.
+ */
+import Circumpunct from "./Circumpunct.astro";
+---
+
+<div class="circumpunct-band" aria-hidden="true">
+  <div class="circumpunct-band__inner">
+    <span class="circumpunct-band__line"></span>
+    <Circumpunct size={38} class="circumpunct-band__mark" />
+    <span class="circumpunct-band__line"></span>
+  </div>
+</div>
+
+<style>
+  .circumpunct-band {
+    display: grid;
+    min-height: 5rem;
+    place-items: center;
+    border-block: 1px solid var(--line-bronze);
+    background: var(--surface-heraldic);
+    color: var(--text-on-inverse);
+  }
+
+  .circumpunct-band__inner {
+    display: flex;
+    width: min(100% - (2 * var(--gutter)), var(--width-content));
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 2rem);
+  }
+
+  .circumpunct-band__line {
+    width: min(28vw, 14rem);
+    height: 1px;
+    background: var(--accent-bronze);
+    opacity: 0.85;
+  }
+
+  :global(.circumpunct-band__mark) {
+    flex: none;
+  }
+</style>

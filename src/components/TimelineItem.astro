@@ -1,0 +1,95 @@
+---
+import NatureTag from "./NatureTag.astro";
+import type { NATURALEZAS } from "../content.config";
+
+interface Props {
+  year: string;
+  title: string;
+  naturaleza: (typeof NATURALEZAS)[number];
+  /** Nivel de encabezado según la jerarquía de la página anfitriona */
+  headingLevel?: "h3" | "h4";
+}
+
+const { year, title, naturaleza, headingLevel = "h4" } = Astro.props;
+const Heading = headingLevel;
+---
+
+<li class="timeline-item">
+  <div class="timeline-axis" aria-hidden="true">
+    <span class="timeline-node"></span>
+  </div>
+  <div class="timeline-content">
+    <div class="timeline-head">
+      <span class="timeline-year">{year}</span>
+      <NatureTag naturaleza={naturaleza} />
+    </div>
+    <Heading class="timeline-title">{title}</Heading>
+    <p class="timeline-body"><slot /></p>
+  </div>
+</li>
+
+<style>
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 1.5rem 1fr;
+    gap: var(--space-m);
+    list-style: none;
+  }
+
+  .timeline-axis {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .timeline-axis::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    width: 1px;
+    background: var(--line-soft);
+  }
+
+  .timeline-node {
+    position: relative;
+    z-index: 1;
+    margin-block-start: 0.45rem;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--surface-page);
+    border: 2px solid var(--accent-bronze);
+  }
+
+  .timeline-content {
+    padding-block-end: var(--space-xl);
+    min-width: 0;
+  }
+
+  .timeline-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    flex-wrap: wrap;
+  }
+
+  .timeline-year {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    color: var(--text-accent-strong);
+    line-height: 1;
+  }
+
+  .timeline-title {
+    margin-block-start: var(--space-xs);
+    font-size: var(--step-1);
+  }
+
+  .timeline-body {
+    margin-block-start: var(--space-xs);
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    line-height: 1.6;
+  }
+</style>

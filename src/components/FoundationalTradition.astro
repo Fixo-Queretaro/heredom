@@ -1,0 +1,171 @@
+---
+/**
+ * FUNDAMENTOS DE LA ORDEN — lámina doctrinal posterior al hero.
+ * Texto a la izquierda (alterna con el hero), grabado histórico de la
+ * Abadía de Kilwinning a la derecha. Fondo marfil de página, un único
+ * filete verde fino como acento, sin tarjetas ni ornamentos.
+ *
+ * Imagen: derivado web de recursos-originales/Kilwinningabbey1901.jpg
+ * (Robert W. Billings, "The Baronial and Ecclesiastical Antiquities of
+ * Scotland", vol. III, lám. 41, 1901 — dominio público).
+ * Fuente: https://en.wikipedia.org/wiki/File:Kilwinningabbey1901.jpg
+ * La niebla del cuarto inferior es un overlay CSS (::after), nunca parte
+ * del archivo; desaparece antes de la mitad del grabado.
+ */
+---
+
+<section class="foundation" aria-labelledby="foundation-title">
+  <div class="foundation-grid">
+    <div class="foundation-copy">
+      <p class="overline foundation-eyebrow">Vetera Instituta et Fundamenta Ordinis</p>
+      <h2 id="foundation-title" class="foundation-title">
+        Una tradición anterior a&nbsp;1717
+      </h2>
+      <div class="foundation-prose">
+        <p>
+          La Orden Real de Heredom de Kilwinning se reconoce heredera de la antigua
+          Masonería Operativa: la tradición de constructores, maestros de obra y
+          caballeros vinculada a Kilwinning y al Templarismo escocés. Su nombre reúne
+          tres sentidos complementarios —herencia, casa sagrada y los Harodim,
+          oficiales de los trabajos del Templo— y expresa una filiación que une
+          oficio, doctrina y realización espiritual.
+        </p>
+        <p>
+          Guiada por los Antiguos Deberes y por el lenguaje silencioso de los
+          símbolos, conserva una vía cristiano-templaria sostenida por cuatro
+          corrientes: salomónica, pitagórica, hermética y templaria. No se presenta
+          como ideología, asociación política ni sustituto religioso, sino como una
+          Orden iniciática de estudio, disciplina y construcción interior.
+        </p>
+      </div>
+      <p class="foundation-inscription">Filiación · Doctrina · Método</p>
+    </div>
+
+    <figure class="foundation-figure">
+      <div class="foundation-image">
+        <img
+          src="/images/kilwinning-abbey-1901.webp"
+          alt="Grabado histórico de las ruinas de la Abadía de Kilwinning"
+          width="1500"
+          height="2196"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <figcaption>
+        Abadía de Kilwinning. Grabado de Robert W. Billings, 1901. Dominio público.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .foundation {
+    /* fondo marfil de página; la sección respira sobre él */
+    padding-block: clamp(var(--space-2xl), 9vw, var(--space-3xl));
+  }
+
+  .foundation-grid {
+    width: min(100% - 2 * var(--gutter), var(--width-content));
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 56fr) minmax(0, 44fr);
+    gap: clamp(var(--space-xl), 6vw, var(--space-3xl));
+    align-items: center;
+  }
+
+  .foundation-copy {
+    max-width: 42rem; /* ~66ch en Literata */
+  }
+
+  .foundation-eyebrow {
+    color: var(--text-heraldic);
+  }
+
+  .foundation-title {
+    font-size: var(--step-4);
+    line-height: 1.15;
+    margin-block: var(--space-s) var(--space-l);
+    max-width: 20ch;
+    text-wrap: balance;
+  }
+
+  .foundation-prose p {
+    line-height: var(--leading-body);
+    hyphens: auto;
+  }
+
+  .foundation-prose p + p {
+    margin-block-start: var(--space-m);
+  }
+
+  /* Remate doctrinal: inscripción, no botón. Filete verde fino. */
+  .foundation-inscription {
+    margin-block-start: var(--space-l);
+    padding-block-start: var(--space-m);
+    border-top: 1px solid var(--line-heraldic);
+    max-width: 20rem;
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    font-weight: 500;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--text-heraldic);
+  }
+
+  /* ---- Grabado ---- */
+  .foundation-figure {
+    margin: 0;
+    justify-self: end;
+    width: min(100%, 26rem);
+  }
+
+  .foundation-image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .foundation-image > img {
+    display: block;
+    width: 100%;
+    height: auto; /* proporción original del grabado */
+    /* Armonización ligera: matiz pergamino cálido, sombras hacia gris
+       verdoso, contraste conservado. Reversible. */
+    filter: sepia(0.12) hue-rotate(28deg) saturate(0.55) contrast(1.04);
+  }
+
+  /* Niebla sutil del cuarto inferior (overlay, máx. ~16%) */
+  .foundation-image::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 44%;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 45% at 28% 100%, rgba(255, 253, 245, 0.14), transparent 70%),
+      radial-gradient(55% 40% at 72% 100%, rgba(243, 231, 204, 0.12), transparent 72%),
+      linear-gradient(to top, rgba(255, 253, 245, 0.16), rgba(255, 253, 245, 0.05) 45%, transparent 62%);
+  }
+
+  .foundation-figure figcaption {
+    margin-block-start: var(--space-s);
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1023px) {
+    .foundation-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .foundation-figure {
+      justify-self: center;
+      width: min(100%, 21rem);
+    }
+  }
+</style>

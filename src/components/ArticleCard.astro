@@ -1,0 +1,90 @@
+---
+import NatureTag from "./NatureTag.astro";
+import type { NATURALEZAS } from "../content.config";
+
+interface Props {
+  title: string;
+  summary: string;
+  naturaleza: (typeof NATURALEZAS)[number];
+  authorName?: string;
+  date?: string;
+  readingMinutes?: number;
+  href?: string;
+}
+
+const { title, summary, naturaleza, authorName, date, readingMinutes, href = "#" } = Astro.props;
+---
+
+<article class="article-card">
+  <div class="card-meta">
+    <NatureTag naturaleza={naturaleza} />
+    {readingMinutes && <span class="reading-time">{readingMinutes} min de lectura</span>}
+  </div>
+  <h3 class="card-title"><a href={href}>{title}</a></h3>
+  <p class="card-summary">{summary}</p>
+  <footer class="card-footer">
+    {authorName && <span class="card-author">{authorName}</span>}
+    {date && <time class="card-date">{date}</time>}
+  </footer>
+</article>
+
+<style>
+  .article-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    padding: var(--space-l) 0;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    flex-wrap: wrap;
+  }
+
+  .reading-time {
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    color: var(--text-faint);
+  }
+
+  .card-title {
+    font-size: var(--step-2);
+  }
+
+  .card-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .card-title a:hover {
+    color: var(--text-accent-strong);
+  }
+
+  .card-summary {
+    color: var(--text-muted);
+  }
+
+  .card-footer {
+    display: flex;
+    gap: var(--space-s);
+    align-items: baseline;
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    color: var(--text-faint);
+    flex-wrap: wrap;
+  }
+
+  .card-author {
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .card-author::after {
+    content: "·";
+    margin-inline-start: var(--space-s);
+    color: var(--text-faint);
+  }
+</style>

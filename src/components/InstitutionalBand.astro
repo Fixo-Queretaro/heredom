@@ -1,0 +1,229 @@
+---
+/**
+ * Banda institucional — díptico horizontal (ronda 6).
+ * Pintura a la izquierda, contenido institucional a la derecha, ambos como
+ * columnas hermanas de una sola cuadrícula, centrados verticalmente.
+ * La altura surge del contenido (solo padding-block); sin alturas de viewport.
+ *
+ * Causa del fallo anterior (documentada para QA): la columna derecha se
+ * repartía con `justify-content: space-between` entre texto y CTA, creando
+ * una zona borgoña vacía que leía como tercera columna; el título usaba
+ * --step-3 (demasiado pequeño frente a una obra de 380px); y el enlace
+ * opcional del caption envolvía dejando un «·» huérfano.
+ */
+interface Props {
+  overline?: string;
+  title: string;
+  /** Líneas institucionales en orden: denominación, jurisdicción, oriente */
+  lines?: string[];
+  headingLevel?: "h2" | "h3";
+}
+
+const { overline, title, lines = [], headingLevel = "h3" } = Astro.props;
+const Heading = headingLevel;
+---
+
+<section class="inst-band">
+  <div class="inst-filete" aria-hidden="true"></div>
+  <div class="inst-inner">
+    <figure class="inst-art">
+      <img
+        src="/images/san-juan-evangelista-el-greco.webp"
+        srcset="/images/san-juan-evangelista-el-greco-640.webp 640w, /images/san-juan-evangelista-el-greco.webp 1000w"
+        sizes="(max-width: 767px) 280px, (max-width: 1023px) 340px, 410px"
+        alt="San Juan Evangelista sosteniendo el cáliz, obra de El Greco"
+        width="1000"
+        height="1334"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>San Juan Evangelista — El Greco, ca. 1605</figcaption>
+    </figure>
+
+    <div class="inst-content">
+      {overline && <p class="inst-overline">{overline}</p>}
+      <Heading class="inst-title">{title}</Heading>
+      {lines.length > 0 && (
+        <ul class="inst-lines" role="list">
+          {lines.map((l) => <li>{l}</li>)}
+        </ul>
+      )}
+      <div class="inst-action"><slot /></div>
+    </div>
+  </div>
+  <div class="inst-filete" aria-hidden="true"></div>
+</section>
+
+<style>
+  .inst-band {
+    background: var(--surface-accent);
+    color: var(--text-on-accent);
+  }
+
+  .inst-filete {
+    height: 5px;
+    border-block: 1px solid var(--accent-bronze);
+    background: var(--accent-heraldic-strong);
+  }
+
+  /* ---- Díptico ---- */
+  .inst-inner {
+    width: min(calc(100% - 3rem), 1200px);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+    align-items: center;
+    gap: clamp(3.5rem, 6vw, 7rem);
+    padding-block: clamp(4rem, 7vw, 7rem);
+  }
+
+  /* ---- La obra ---- */
+  .inst-art {
+    margin: 0;
+    justify-self: start;
+    width: 100%;
+    max-width: 410px;
+  }
+
+  .inst-art img {
+    display: block;
+    width: 100%;
+    height: auto; /* proporción original, sin recortes */
+    border: 1px solid var(--accent-bronze);
+    box-shadow: 0 3px 14px rgba(20, 8, 10, 0.28); /* cálida, muy tenue */
+  }
+
+  .inst-art figcaption {
+    margin-block-start: 0.65rem;
+    font-family: var(--font-ui);
+    font-size: 0.76rem;
+    letter-spacing: 0.04em;
+    line-height: normal;
+    color: rgba(253, 246, 236, 0.78);
+  }
+
+  /* ---- Contenido institucional ---- */
+  /* Conector único entre columnas: filete vertical verde fino */
+  .inst-content {
+    border-inline-start: 1px solid var(--accent-heraldic);
+    padding-inline-start: clamp(1.5rem, 3vw, 2.5rem);
+    min-width: 0;
+  }
+
+  .inst-overline {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--heredom-green-soft);
+    margin-block-end: var(--space-s);
+  }
+
+  .inst-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 4vw, 4rem);
+    line-height: 0.98;
+    font-weight: 500;
+    color: var(--text-on-accent);
+    text-wrap: balance;
+  }
+
+  .inst-lines {
+    list-style: none;
+    margin: var(--space-m) 0 0;
+    padding: 0;
+    line-height: 1.65;
+  }
+
+  /* Jerarquía: denominación > jurisdicción > oriente */
+  .inst-lines li:nth-child(1) {
+    font-family: var(--font-body);
+    font-size: 1.08rem;
+    font-style: italic;
+    color: rgba(253, 246, 236, 0.92);
+  }
+
+  .inst-lines li:nth-child(2) {
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: rgba(253, 246, 236, 0.88);
+    margin-block-start: 0.35rem;
+  }
+
+  .inst-lines li:nth-child(3) {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(253, 246, 236, 0.74);
+  }
+
+  .inst-action {
+    margin-block-start: var(--space-l);
+  }
+
+  .inst-action :global(.btn-inverse) {
+    font-size: 0.9rem;
+    padding: 0.95em 1.9em;
+    border: 1px solid rgba(253, 246, 236, 0.6);
+    color: var(--text-on-accent);
+    background: transparent;
+  }
+
+  .inst-action :global(.btn-inverse:hover) {
+    background: rgba(253, 246, 236, 0.12);
+    border-color: var(--text-on-accent);
+  }
+
+  .inst-action :global(.btn-inverse:focus-visible) {
+    outline: 2px solid var(--heredom-green-soft);
+    outline-offset: 3px;
+  }
+
+  /* ---- Tablet (768–1023): 42/58, obra más contenida ---- */
+  @media (max-width: 1023px) and (min-width: 768px) {
+    .inst-inner {
+      grid-template-columns: minmax(280px, 42fr) minmax(0, 58fr);
+      gap: clamp(2rem, 4vw, 3rem);
+    }
+
+    .inst-art {
+      max-width: 340px;
+    }
+  }
+
+  /* ---- Móvil: pintura → pie → contenido ---- */
+  @media (max-width: 767px) {
+    .inst-inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+      padding-block: var(--space-2xl);
+    }
+
+    .inst-art {
+      justify-self: center;
+      max-width: 280px;
+    }
+
+    .inst-art figcaption {
+      text-align: center;
+    }
+
+    .inst-content {
+      border-inline-start: none;
+      padding-inline-start: 0;
+      text-align: center;
+    }
+
+    .inst-title {
+      font-size: clamp(2.2rem, 9vw, 2.8rem);
+    }
+
+    .inst-lines {
+      margin-inline: auto;
+      max-width: 30rem;
+    }
+  }
+</style>

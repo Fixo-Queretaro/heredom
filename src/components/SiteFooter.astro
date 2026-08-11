@@ -1,0 +1,179 @@
+---
+/**
+ * Pie institucional. Superficie pergamino (la home ya usa sus dos fondos
+ * oscuros en Formación y en la banda institucional).
+ * Sin datos de contacto inventados: los huecos quedan documentados.
+ */
+const nav = [
+  { href: "/", label: "Inicio" },
+  { href: "/la-orden/", label: "La Orden" },
+  { href: "/tradicion-e-historia/", label: "Tradición e Historia" },
+  { href: "/contacto/", label: "Contacto" },
+];
+
+const biblioteca = [
+  { href: "/biblioteca/", label: "Biblioteca" },
+  { href: "/biblioteca/articulos/", label: "Artículos" },
+  { href: "/biblioteca/documentos/", label: "Documentos" },
+  { href: "/biblioteca/autores/", label: "Autores" },
+];
+
+const formacion = [
+  { href: "/formacion/", label: "Formación" },
+  { href: "/formacion/cursos/", label: "Cursos abiertos" },
+];
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" fill="none">
+        <circle cx="20" cy="20" r="15" stroke="var(--line-accent)" stroke-width="1.4" />
+        <circle cx="20" cy="20" r="9.5" stroke="var(--line-bronze)" stroke-width="0.9" />
+        <line x1="20" y1="3" x2="20" y2="37" stroke="var(--text-primary)" stroke-width="0.9" />
+        <line x1="3" y1="20" x2="37" y2="20" stroke="var(--text-primary)" stroke-width="0.9" />
+        <circle cx="20" cy="20" r="2" fill="var(--text-primary)" />
+      </svg>
+      <p class="footer-name">Orden Real de Heredom de Kilwinning</p>
+      <p class="footer-lines">
+        Augusta y Respetable Logia Madre y Metropolitana<br />
+        San Juan Evangelista N.º 1<br />
+        Capítulo Soberano para México y el Caribe<br />
+        Oriente de la Ciudad de México
+      </p>
+    </div>
+
+    <nav class="footer-col" aria-label="Navegación del sitio">
+      <p class="overline footer-head">Sitio</p>
+      <ul role="list">
+        {nav.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Biblioteca">
+      <p class="overline footer-head">Biblioteca</p>
+      <ul role="list">
+        {biblioteca.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Formación">
+      <p class="overline footer-head">Formación</p>
+      <ul role="list">
+        {formacion.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+  </div>
+
+  <div class="footer-note">
+    <div class="footer-note-inner">
+      <p>
+        Los contenidos de este portal distinguen su naturaleza editorial: tradición,
+        doctrina, historia documentada, estudio y editorial. La tradición iniciática y la
+        historia académicamente documentada se presentan siempre como registros
+        distintos.
+      </p>
+      <p class="footer-legal">
+        <!-- Pendiente: aviso legal y política de privacidad aprobados -->
+        Aviso legal y política de privacidad: en preparación · México y el Caribe
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--surface-panel);
+    border-top: 1px solid var(--line-soft);
+    margin-block-start: var(--space-2xl);
+  }
+
+  .footer-inner {
+    width: min(100% - 2 * var(--gutter), var(--width-content));
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl) var(--space-l);
+    padding-block: var(--space-xl);
+  }
+
+  @media (max-width: 899px) {
+    .footer-inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 519px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .footer-name {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    margin-block: var(--space-s) var(--space-xs);
+    max-width: 20rem;
+  }
+
+  .footer-lines {
+    font-size: var(--step--1);
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .footer-head {
+    margin-block-end: var(--space-s);
+  }
+
+  .footer-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .footer-col a {
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  .footer-col a:hover {
+    color: var(--text-accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .footer-note {
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .footer-note-inner {
+    width: min(100% - 2 * var(--gutter), var(--width-content));
+    margin-inline: auto;
+    padding-block: var(--space-l);
+  }
+
+  .footer-note p {
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    max-width: 46rem;
+    line-height: 1.6;
+  }
+
+  .footer-legal {
+    margin-block-start: var(--space-s);
+    letter-spacing: 0.04em;
+  }
+</style>

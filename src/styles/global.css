@@ -1,0 +1,330 @@
+/* ============================================================
+   HEREDOM — Estilos globales
+   ============================================================ */
+
+@import "./tokens.css";
+
+/* ---------- Reset sobrio ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--surface-page);
+  /* Textura de papel muy discreta: ruido SVG a bajísima opacidad */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.098 0 0 0 0 0.086 0 0 0 0 0.07 0 0 0 0.025 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: var(--leading-body);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+  overflow-x: clip;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Tipografía ---------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: var(--leading-heading);
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--step-5); line-height: var(--leading-tight); }
+h2 { font-size: var(--step-4); }
+h3 { font-size: var(--step-3); }
+h4 { font-size: var(--step-2); }
+
+.alt-display h1,
+.alt-display h2,
+.alt-display h3,
+.alt-display h4,
+.font-display-alt {
+  font-family: var(--font-display-alt);
+  font-weight: 400;
+}
+
+p {
+  max-width: var(--width-prose);
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-decoration-color: var(--link-underline);
+  text-underline-offset: 0.2em;
+  transition: color var(--transition-quiet), text-decoration-color var(--transition-quiet);
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration-color: currentColor;
+}
+
+/* Rótulos en versalitas (etiquetas, sobre-títulos) */
+.overline {
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ---------- Foco visible ---------- */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+  border-radius: var(--radius-s);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-m);
+  top: -100%;
+  z-index: 100;
+  background: var(--surface-accent);
+  color: var(--text-on-accent);
+  font-family: var(--font-ui);
+  padding: var(--space-xs) var(--space-m);
+}
+
+.skip-link:focus-visible {
+  top: var(--space-xs);
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: min(100% - 2 * var(--gutter), var(--width-content));
+  margin-inline: auto;
+}
+
+.prose-width {
+  width: min(100% - 2 * var(--gutter), var(--width-prose));
+  margin-inline: auto;
+}
+
+/* ---------- Prosa editorial ---------- */
+.prose > * + * {
+  margin-block-start: var(--space-m);
+}
+
+.prose h2,
+.prose h3 {
+  margin-block-start: var(--space-xl);
+}
+
+.prose h2 + *,
+.prose h3 + * {
+  margin-block-start: var(--space-s);
+}
+
+.prose p {
+  hyphens: auto;
+  hyphenate-limit-chars: 8 4 4;
+}
+
+.prose p.lead {
+  font-size: var(--step-1);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.prose blockquote {
+  margin-block: var(--space-l);
+  padding-inline-start: var(--space-l);
+  border-inline-start: 2px solid var(--line-accent);
+  font-style: italic;
+  color: var(--text-muted);
+  max-width: var(--width-prose);
+}
+
+.prose blockquote cite {
+  display: block;
+  margin-block-start: var(--space-xs);
+  font-style: normal;
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+  letter-spacing: 0.05em;
+  color: var(--text-faint);
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--line-soft);
+  margin-block: var(--space-xl);
+}
+
+.prose ul,
+.prose ol {
+  padding-inline-start: 1.4em;
+  max-width: var(--width-prose);
+}
+
+.prose li + li {
+  margin-block-start: var(--space-2xs);
+}
+
+/* Capitular opcional para aperturas de artículo */
+.prose .drop-cap::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.4em;
+  font-weight: 600;
+  float: inline-start;
+  line-height: 0.82;
+  padding-inline-end: 0.12em;
+  color: var(--text-accent-strong);
+}
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.8em 1.6em;
+  border-radius: var(--radius-s);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color var(--transition-quiet), color var(--transition-quiet),
+    border-color var(--transition-quiet);
+}
+
+.btn-primary {
+  background: var(--surface-accent);
+  color: var(--text-on-accent);
+}
+
+.btn-primary:hover {
+  background: var(--text-accent-strong);
+  color: var(--text-on-accent);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--line-strong);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  background: rgba(25, 22, 18, 0.04);
+}
+
+.link-text {
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--link-underline);
+  padding-block-end: 0.15em;
+  transition: color var(--transition-quiet), border-color var(--transition-quiet);
+}
+
+.link-text:hover {
+  color: var(--link-hover);
+  border-color: currentColor;
+}
+
+.link-text::after {
+  content: " →";
+}
+
+/* Enlace secundario (verde heráldico) — para acciones de segundo orden */
+.link-secondary {
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--link-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--link-secondary-underline);
+  padding-block-end: 0.15em;
+  transition: color var(--transition-quiet), border-color var(--transition-quiet);
+}
+
+.link-secondary:hover {
+  color: var(--link-secondary-hover);
+  border-color: currentColor;
+}
+
+.link-secondary:active {
+  color: var(--accent-heraldic-strong);
+}
+
+/* Etiqueta institucional (verde Heredom sobre fondo suave) */
+.tag-institutional {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  padding: 0.35em 0.9em;
+  border: 1px solid var(--tag-institutional-line);
+  border-radius: 999px;
+  color: var(--tag-institutional-fg);
+  background: var(--tag-institutional-bg);
+  white-space: nowrap;
+}
+
+/* ---------- Movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

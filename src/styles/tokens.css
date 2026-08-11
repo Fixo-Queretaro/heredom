@@ -1,0 +1,133 @@
+/* ============================================================
+   HEREDOM — Tokens de diseño
+   Paleta base (referencia cruda) + tokens semánticos.
+   Los componentes SOLO deben consumir tokens semánticos.
+   ============================================================ */
+
+:root {
+  /* ---- Paleta cruda (no usar directamente en componentes) ---- */
+  --raw-pergamino: #f3e7cc;
+  --raw-marfil: #fffdf5;
+  --raw-tinta: #191612;
+  --raw-borgona: #861f2c;
+  --raw-borgona-oscuro: #59151d;
+  --raw-azul-tinta: #17233d;
+  --raw-bronce: #9b7542;
+  --raw-salvia: #a7b29a;
+  --raw-linea: rgba(25, 22, 18, 0.18);
+
+  /* Verde Heredom — identificado en el cintillo histórico de los trabajos */
+  --heredom-green: #008000;
+  --heredom-green-dark: #005f00;
+  --heredom-green-soft: #e8f2e8;
+
+  /* ---- Superficies ---- */
+  --surface-page: var(--raw-marfil);          /* fondo general de página */
+  --surface-panel: var(--raw-pergamino);      /* paneles, bandas, asides */
+  --surface-panel-soft: #f9f1de;              /* intermedio pergamino/marfil */
+  --surface-inverse: var(--raw-azul-tinta);   /* bandas solemnes invertidas */
+  --surface-accent: var(--raw-borgona);       /* llamadas institucionales */
+  --surface-heraldic: var(--heredom-green-dark); /* transiciones doctrinales */
+
+  /* ---- Texto ---- */
+  --text-primary: var(--raw-tinta);
+  --text-muted: rgba(25, 22, 18, 0.66);
+  --text-faint: rgba(25, 22, 18, 0.48);
+  --text-on-inverse: #f4efe2;
+  --text-on-accent: #fdf6ec;
+  --text-accent: var(--raw-borgona);
+  --text-accent-strong: var(--raw-borgona-oscuro);
+
+  /* ---- Enlaces ---- */
+  --link-color: var(--raw-borgona);
+  --link-hover: var(--raw-borgona-oscuro);
+  --link-underline: rgba(134, 31, 44, 0.4);
+
+  /* ---- Bordes y líneas ---- */
+  --line-soft: var(--raw-linea);
+  --line-strong: rgba(25, 22, 18, 0.34);
+  --line-accent: var(--raw-borgona);
+  --line-bronze: var(--raw-bronce);
+
+  /* ---- Acentos simbólicos ---- */
+  --accent-bronze: var(--raw-bronce);
+  --accent-sage: var(--raw-salvia);          /* ambiental, superficies suaves */
+  --accent-night: var(--raw-azul-tinta);
+
+  /* ---- Acento heráldico (verde Heredom) ----
+     Identitario y preciso: contrapunto del borgoña, nunca su igual.
+     Usos: navegación activa, filetes finos, etiquetas institucionales,
+     metadatos seleccionados, enlaces secundarios, contenidos formativos.
+     Contraste medido: verde AA texto normal solo sobre marfil (5.04:1);
+     sobre pergamino usar verde oscuro (6.49:1) o reservar a texto grande. */
+  --accent-heraldic: var(--heredom-green);
+  --accent-heraldic-strong: var(--heredom-green-dark);
+  --surface-heraldic-soft: var(--heredom-green-soft);
+  --text-heraldic: var(--heredom-green-dark);      /* texto normal accesible */
+  --line-heraldic: rgba(0, 95, 0, 0.5);            /* filetes y separadores */
+  --nav-active: var(--heredom-green-dark);         /* indicador de sección activa */
+  --edu-accent: var(--heredom-green-dark);         /* identidad de lo formativo */
+  --link-secondary: var(--heredom-green-dark);
+  --link-secondary-hover: var(--heredom-green);
+  --link-secondary-underline: rgba(0, 95, 0, 0.4);
+  --tag-institutional-fg: var(--heredom-green-dark);
+  --tag-institutional-bg: var(--heredom-green-soft);
+  --tag-institutional-line: rgba(0, 95, 0, 0.45);
+
+  /* ---- Etiquetas de naturaleza editorial ---- */
+  --nature-tradicion-fg: var(--raw-borgona-oscuro);
+  --nature-tradicion-line: rgba(134, 31, 44, 0.45);
+  --nature-doctrina-fg: var(--raw-azul-tinta);
+  --nature-doctrina-line: rgba(23, 35, 61, 0.45);
+  --nature-historia-fg: #6b5427;
+  --nature-historia-line: rgba(155, 117, 66, 0.55);
+  --nature-estudio-fg: #55614a;
+  --nature-estudio-line: rgba(122, 136, 108, 0.6);
+  --nature-editorial-fg: rgba(25, 22, 18, 0.72);
+  --nature-editorial-line: var(--line-strong);
+
+  /* ---- Tipografía ---- */
+  /* Propuesta A (por defecto): Cormorant Garamond */
+  --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  /* Propuesta B: Marcellus (capitular romana) */
+  --font-display-alt: "Marcellus", "Iowan Old Style", Georgia, serif;
+  --font-body: "Literata Variable", "Literata", Charter, Georgia, serif;
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Escala tipográfica fluida (minor third → major third) */
+  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.94rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.13rem + 0.35vw, 1.4rem);
+  --step-2: clamp(1.44rem, 1.32rem + 0.6vw, 1.8rem);
+  --step-3: clamp(1.73rem, 1.53rem + 1vw, 2.3rem);
+  --step-4: clamp(2.07rem, 1.76rem + 1.55vw, 3rem);
+  --step-5: clamp(2.49rem, 2rem + 2.45vw, 3.9rem);
+
+  --leading-tight: 1.15;
+  --leading-heading: 1.25;
+  --leading-body: 1.65;
+  --tracking-caps: 0.14em;
+
+  /* ---- Espaciado ---- */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-s: 0.75rem;
+  --space-m: 1.25rem;
+  --space-l: 2rem;
+  --space-xl: 3.25rem;
+  --space-2xl: 5rem;
+  --space-3xl: 8rem;
+
+  /* ---- Layout ---- */
+  --width-prose: 42rem;   /* ~68ch en Literata */
+  --width-content: 72rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+
+  /* ---- Misceláneos ---- */
+  --radius-s: 2px;
+  --radius-m: 4px;
+  --shadow-card: 0 1px 2px rgba(25, 22, 18, 0.06), 0 6px 24px -12px rgba(25, 22, 18, 0.18);
+  --focus-ring: 2px solid var(--raw-borgona);
+  --focus-offset: 3px;
+  --transition-quiet: 180ms ease;
+}

@@ -1,0 +1,58 @@
+---
+import type { NATURALEZAS } from "../content.config";
+
+type Naturaleza = (typeof NATURALEZAS)[number];
+
+interface Props {
+  naturaleza: Naturaleza;
+}
+
+const { naturaleza } = Astro.props;
+
+const LABELS: Record<Naturaleza, string> = {
+  tradicion: "Tradición",
+  doctrina: "Doctrina",
+  "historia-documentada": "Historia documentada",
+  estudio: "Estudio",
+  editorial: "Editorial",
+};
+---
+
+<span class={`nature-tag nature-${naturaleza}`}>{LABELS[naturaleza]}</span>
+
+<style>
+  .nature-tag {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    padding: 0.35em 0.9em;
+    border: 1px solid;
+    border-radius: 999px;
+    background: transparent;
+    white-space: nowrap;
+  }
+
+  .nature-tradicion {
+    color: var(--nature-tradicion-fg);
+    border-color: var(--nature-tradicion-line);
+  }
+  .nature-doctrina {
+    color: var(--nature-doctrina-fg);
+    border-color: var(--nature-doctrina-line);
+  }
+  .nature-historia-documentada {
+    color: var(--nature-historia-fg);
+    border-color: var(--nature-historia-line);
+  }
+  .nature-estudio {
+    color: var(--nature-estudio-fg);
+    border-color: var(--nature-estudio-line);
+  }
+  .nature-editorial {
+    color: var(--nature-editorial-fg);
+    border-color: var(--nature-editorial-line);
+  }
+</style>

@@ -1,0 +1,274 @@
+---
+/**
+ * LAS CUATRO PIEDRAS ANGULARES — contenido institucional oficial.
+ * Cinco momentos: eyebrow doctrinal → H2 oficial → marco histórico →
+ * declaración doctrinal (transición) → cuatro piezas → cierre doctrinal.
+ * Texto oficial transcrito íntegro; solo normalización ortotipográfica.
+ */
+import Circumpunct from "./Circumpunct.astro";
+
+const cornerstones = [
+  {
+    numeral: "I",
+    name: "La Salomónica",
+    text: "Transmisora de la leyenda de la construcción del Templo de Salomón.",
+  },
+  {
+    numeral: "II",
+    name: "La Pitagórica",
+    text: "Transmisora del conocimiento de la Geometría Sagrada.",
+  },
+  {
+    numeral: "III",
+    name: "La Hermética",
+    text: "Transmisora del Arte Real, alquímico y constructivo.",
+  },
+  {
+    numeral: "IV",
+    name: "La Templaria",
+    text: "Transmisora de la Vía Caballeresca por medio de los Altos Grados escoceses pertenecientes a la Casa de Estuardo y a las Logias «Jacobitas».",
+  },
+] as const;
+---
+
+<section class="stones" aria-labelledby="stones-title">
+  <div class="container">
+    <header class="stones-head">
+      <p class="overline stones-eyebrow">Filiación iniciática</p>
+      <h2 id="stones-title" class="stones-title">
+        Sobre las cuatro Piedras Angulares de la antigua Masonería de Heredom.
+      </h2>
+    </header>
+
+    <!-- Marco histórico (columna principal) + declaración doctrinal (lateral) -->
+    <div class="stones-frame">
+      <div class="stones-history">
+        <p>
+          La Orden Real de Heredom de Kilwinning es heredera de las antiguas cofradías
+          medievales reunidas en torno a la abadía de Kilwinning (1140 d. C. —
+          Escocia). Esta abadía albergaba a los Oficiales, Maestros de Obra y
+          Arquitectos que trabajaban para los monjes tyronneses de San Winning,
+          quienes eran depositarios de la espiritualidad cristiano-céltica de la
+          Iglesia Culdea.
+        </p>
+        <p>
+          Posteriormente, la Logia operativa de dicha abadía fue unida a la Orden de
+          los Caballeros de San Andrés del Cardo, continuadora del Templarismo en
+          Escocia desde el siglo XIV, que fuera fundada por el rey Robert the Bruce,
+          luego de la batalla de Bannock-Burn (24 de junio de 1314), para proteger a
+          los Templarios que se habían refugiado de las persecuciones en el Mull de
+          Kintyre y lo habían ayudado decisivamente en dicha batalla.
+        </p>
+      </div>
+
+      <aside class="stones-declaration">
+        <Circumpunct size={34} class="declaration-mark" />
+        <p>
+          La filiación iniciática de la Orden Real de Heredom de Kilwinning reúne
+          cuatro corrientes del esoterismo tradicional de Occidente que constituyen
+          las cuatro Piedras Angulares que sostienen el edificio de la misma.
+          Ellas&nbsp;son:
+        </p>
+      </aside>
+    </div>
+
+    <!-- Las cuatro piezas -->
+    <ul class="stones-row" role="list">
+      {cornerstones.map((s) => (
+        <li class="stone">
+          <svg class="stone-glyph" viewBox="0 0 40 72" width="34" height="61" aria-hidden="true" fill="none" stroke="var(--raw-tinta)" stroke-width="1.1">
+            <rect x="7" y="4" width="26" height="7" />
+            <line x1="14" y1="11" x2="14" y2="58" />
+            <line x1="20" y1="11" x2="20" y2="58" />
+            <line x1="26" y1="11" x2="26" y2="58" />
+            <rect x="4" y="58" width="32" height="8" stroke="var(--accent-bronze)" />
+          </svg>
+          <p class="stone-numeral" aria-hidden="true">{s.numeral}</p>
+          <h3 class="stone-title">{s.name}</h3>
+          <p class="stone-text">{s.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- Cierre doctrinal (piedra de cierre, ancho completo) -->
+  <div class="stones-close">
+    <p class="stones-close-text">
+      La Orden Real practica lo que, en el siglo XVIII, se denominaba
+      <i lang="en">Early Grand Scottish Rite</i> (Gran Rito Escocés Primitivo) en sus
+      Logias y Capítulos, herederos directos de las cuatro corrientes antedichas.
+    </p>
+  </div>
+</section>
+
+<style>
+  .stones {
+    background: var(--surface-panel);
+    border-block: 1px solid var(--line-soft);
+    padding-block-start: var(--space-2xl);
+    margin-block-start: var(--space-xl);
+  }
+
+  /* ---- Encabezado ---- */
+  .stones-head {
+    max-width: 36rem;
+  }
+
+  .stones-eyebrow {
+    color: var(--text-accent-strong);
+  }
+
+  .stones-title {
+    font-size: var(--step-3);
+    line-height: 1.28;
+    margin-block: var(--space-s) 0;
+    text-wrap: balance;
+  }
+
+  /* ---- Marco histórico + declaración ---- */
+  .stones-frame {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: clamp(var(--space-l), 5vw, var(--space-2xl));
+    align-items: start;
+    padding-block: var(--space-xl);
+  }
+
+  @media (max-width: 899px) {
+    .stones-frame {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .stones-history {
+    max-width: 42rem;
+    border-inline-start: 1px solid var(--line-bronze);
+    padding-inline-start: clamp(var(--space-m), 3vw, var(--space-l));
+  }
+
+  .stones-history p {
+    line-height: var(--leading-body);
+    hyphens: auto;
+  }
+
+  .stones-history p + p {
+    margin-block-start: var(--space-l);
+  }
+
+  /* Declaración doctrinal: pausa editorial, no cita */
+  .stones-declaration {
+    background: var(--surface-panel-soft);
+    border-top: 1px solid var(--line-heraldic);
+    border-bottom: 1px solid var(--line-heraldic);
+    padding: var(--space-l) var(--space-m);
+    max-width: 24rem;
+    text-align: center;
+    color: var(--text-primary);
+  }
+
+  .stones-declaration :global(.declaration-mark) {
+    color: var(--accent-bronze);
+    margin-block-end: var(--space-s);
+  }
+
+  .stones-declaration p {
+    font-size: var(--step-1);
+    line-height: 1.5;
+    font-family: var(--font-display);
+    font-weight: 500;
+    max-width: none;
+  }
+
+  @media (max-width: 899px) {
+    .stones-declaration {
+      margin-inline: auto;
+    }
+  }
+
+  /* ---- Cuatro piezas ---- */
+  .stones-row {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 var(--space-2xl);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-l);
+    align-items: start;
+  }
+
+  @media (max-width: 1023px) {
+    .stones-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 519px) {
+    .stones-row {
+      grid-template-columns: 1fr;
+      max-width: 22rem;
+      margin-inline: auto;
+      row-gap: var(--space-xl);
+    }
+  }
+
+  .stone {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    padding-inline: var(--space-s);
+  }
+
+  .stone + .stone {
+    border-inline-start: 1px solid var(--line-soft);
+  }
+
+  @media (max-width: 1023px) {
+    .stone + .stone {
+      border-inline-start: none;
+    }
+  }
+
+  .stone-glyph {
+    margin-block-end: var(--space-2xs);
+  }
+
+  .stone-numeral {
+    font-family: var(--font-display);
+    font-size: var(--step-0);
+    color: var(--accent-bronze);
+    line-height: 1;
+  }
+
+  .stone-title {
+    font-size: var(--step-1);
+  }
+
+  .stone-text {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 30ch;
+  }
+
+  /* ---- Cierre doctrinal ---- */
+  .stones-close {
+    background: var(--surface-inverse);
+    border-top: 2px solid var(--accent-heraldic-strong);
+    box-shadow: inset 0 1px 0 var(--accent-bronze);
+  }
+
+  .stones-close-text {
+    width: min(100% - 2 * var(--gutter), 46rem);
+    margin-inline: auto;
+    padding-block: var(--space-xl);
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    line-height: 1.55;
+    color: var(--text-on-inverse);
+    max-width: 46rem;
+  }
+</style>

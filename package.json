@@ -1,0 +1,24 @@
+{
+  "name": "heredom",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Portal masónico institucional, editorial y formativo — Heredom",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.0",
+    "@fontsource-variable/literata": "^5.2.5",
+    "@fontsource/cormorant-garamond": "^5.2.5",
+    "@fontsource/marcellus": "^5.2.5",
+    "astro": "^5.12.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.8.0"
+  }
+}

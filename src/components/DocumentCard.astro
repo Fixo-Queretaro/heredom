@@ -1,0 +1,115 @@
+---
+import NatureTag from "./NatureTag.astro";
+import type { NATURALEZAS } from "../content.config";
+
+interface Props {
+  title: string;
+  summary: string;
+  naturaleza: (typeof NATURALEZAS)[number];
+  docType: string;
+  period?: string;
+  sourceNote?: string;
+  href?: string;
+}
+
+const { title, summary, naturaleza, docType, period, sourceNote, href = "#" } = Astro.props;
+---
+
+<article class="document-card">
+  <div class="doc-spine" aria-hidden="true"></div>
+  <div class="doc-body">
+    <div class="doc-meta">
+      <span class="doc-type">{docType}</span>
+      {period && <span class="doc-period">{period}</span>}
+    </div>
+    <h3 class="doc-title"><a href={href}>{title}</a></h3>
+    <p class="doc-summary">{summary}</p>
+    <footer class="doc-footer">
+      <NatureTag naturaleza={naturaleza} />
+      {sourceNote && <span class="doc-source">{sourceNote}</span>}
+    </footer>
+  </div>
+</article>
+
+<style>
+  .document-card {
+    display: flex;
+    gap: var(--space-m);
+    background: var(--surface-panel-soft);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-m);
+    padding: var(--space-m) var(--space-l) var(--space-m) 0;
+    overflow: hidden;
+  }
+
+  .doc-spine {
+    flex: 0 0 4px;
+    background: linear-gradient(
+      to bottom,
+      var(--accent-bronze),
+      var(--text-accent-strong)
+    );
+  }
+
+  .doc-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-block: var(--space-xs);
+    min-width: 0;
+  }
+
+  .doc-meta {
+    display: flex;
+    gap: var(--space-s);
+    align-items: baseline;
+    flex-wrap: wrap;
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+  }
+
+  .doc-type {
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--accent-bronze);
+  }
+
+  .doc-period {
+    color: var(--text-faint);
+    font-style: italic;
+  }
+
+  .doc-title {
+    font-size: var(--step-1);
+  }
+
+  .doc-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .doc-title a:hover {
+    color: var(--text-accent-strong);
+  }
+
+  .doc-summary {
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    line-height: 1.6;
+  }
+
+  .doc-footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    flex-wrap: wrap;
+    margin-block-start: var(--space-xs);
+  }
+
+  .doc-source {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    color: var(--text-faint);
+  }
+</style>

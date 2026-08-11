@@ -1,0 +1,291 @@
+---
+/**
+ * Cabecera del sitio. Usa container queries (inline-size) para que la
+ * variante móvil/escritorio dependa del ancho del contenedor, lo que
+ * permite previsualizar ambas en el laboratorio visual.
+ */
+interface Props {
+  /** id único cuando se instancian varias cabeceras en una misma página */
+  uid?: string;
+  /** ruta activa; marca el enlace con aria-current="page" */
+  current?: string;
+}
+const { uid = "main", current } = Astro.props;
+const navId = `nav-${uid}`;
+
+const links = [
+  { href: "/", label: "Inicio" },
+  { href: "/la-orden/", label: "La Orden" },
+  { href: "/tradicion-e-historia/", label: "Tradición e Historia" },
+  { href: "/biblioteca/", label: "Biblioteca" },
+  { href: "/formacion/", label: "Formación" },
+  { href: "/contacto/", label: "Contacto" },
+];
+---
+
+<div class="header-container">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <!-- Logotipo: sello del castillo (raster original optimizado; la
+             vectorización automática deterioraba la ilustración a mano). -->
+        <img
+          class="brand-mark"
+          src="/images/castillo-176.png"
+          alt=""
+          width="176"
+          height="178"
+          decoding="async"
+        />
+        <span class="brand-text">
+          <span class="brand-name">H∴R∴D∴M - K∴L∴W∴N∴N∴N∴G</span>
+          <span class="brand-tag">Masonería Operativa</span>
+        </span>
+      </a>
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls={navId}
+      >
+        <span class="nav-toggle-label">Menú</span>
+        <span class="nav-toggle-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+
+      <nav id={navId} class="site-nav" aria-label="Navegación principal">
+        <ul>
+          {links.map((l) => (
+            <li>
+              <a href={l.href} aria-current={l.href === current ? "page" : undefined}>
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<style>
+  .header-container {
+    container-type: inline-size;
+  }
+
+  .site-header {
+    background: var(--surface-page);
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .header-inner {
+    width: min(100% - 2 * var(--gutter), var(--width-content));
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m);
+    padding-block: var(--space-s);
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    text-decoration: none;
+    color: var(--text-primary);
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .brand-mark {
+    width: 2.75rem;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    /* Nombre largo: escala controlada; puede repartirse en dos líneas
+       en pantallas angostas (rompe en los espacios del guion). */
+    font-size: clamp(0.98rem, 0.82rem + 0.8vw, 1.35rem);
+    line-height: 1.15;
+    letter-spacing: 0.03em;
+    overflow-wrap: break-word;
+  }
+
+  .brand-tag {
+    font-family: var(--font-ui);
+    font-size: 0.66rem;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-block-start: 0.15em;
+  }
+
+  /* ---- Navegación ---- */
+  .site-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--space-l);
+  }
+
+  .site-nav a {
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-muted);
+    padding-block: 0.4em;
+    border-bottom: 1px solid transparent;
+  }
+
+  .site-nav a:hover {
+    color: var(--text-accent-strong);
+    border-color: var(--line-accent);
+  }
+
+  /* Sección activa: indicador verde heráldico */
+  .site-nav a[aria-current="page"] {
+    color: var(--nav-active);
+    border-color: var(--nav-active);
+    font-weight: 600;
+  }
+
+  /* ---- Botón hamburguesa ---- */
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    gap: var(--space-xs);
+    background: none;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-s);
+    padding: 0.5em 0.9em;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+  }
+
+  .nav-toggle-icon {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .nav-toggle-icon span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform var(--transition-quiet), opacity var(--transition-quiet);
+  }
+
+  .nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(1) {
+    transform: translateY(4.5px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(3) {
+    transform: translateY(-4.5px) rotate(-45deg);
+  }
+
+  /* Fallback por viewport para navegadores sin container queries. El bloque
+     @container inferior sigue resolviendo correctamente las previsualizaciones
+     angostas del laboratorio visual. */
+  @media (max-width: 719px) {
+    .nav-toggle {
+      display: inline-flex;
+    }
+
+    .site-nav {
+      flex-basis: 100%;
+      display: none;
+      border-top: 1px solid var(--line-soft);
+      padding-block: var(--space-s);
+    }
+
+    .site-nav.is-open {
+      display: block;
+    }
+
+    .site-nav ul {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .site-nav a {
+      display: block;
+      padding: var(--space-s) var(--space-2xs);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .site-nav li:last-child a {
+      border-bottom: none;
+    }
+  }
+
+  /* ---- Variante móvil (ancho de contenedor < 720px) ---- */
+  @container (max-width: 719px) {
+    .nav-toggle {
+      display: inline-flex;
+    }
+
+    .site-nav {
+      flex-basis: 100%;
+      display: none;
+      border-top: 1px solid var(--line-soft);
+      padding-block: var(--space-s);
+    }
+
+    .site-nav.is-open {
+      display: block;
+    }
+
+    .site-nav ul {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .site-nav a {
+      display: block;
+      padding: var(--space-s) var(--space-2xs);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .site-nav li:last-child a {
+      border-bottom: none;
+    }
+  }
+</style>
+
+<script>
+  // Alternar navegación móvil (progresivamente mejorable; sin JS la nav
+  // queda visible únicamente en escritorio, donde no depende del toggle).
+  document.querySelectorAll<HTMLButtonElement>(".nav-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const nav = document.getElementById(btn.getAttribute("aria-controls") ?? "");
+      if (!nav) return;
+      const open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!open));
+      nav.classList.toggle("is-open", !open);
+    });
+  });
+</script>

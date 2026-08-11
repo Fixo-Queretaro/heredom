@@ -1,0 +1,988 @@
+---
+/**
+ * LABORATORIO VISUAL — /style-guide/
+ * Página temporal para validar la dirección de arte con Hex.
+ * Todos los textos son provisionales y están marcados como demostración.
+ */
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SiteHeader from "@components/SiteHeader.astro";
+import Hero from "@components/Hero.astro";
+import OrnamentDivider from "@components/OrnamentDivider.astro";
+import ArticleCard from "@components/ArticleCard.astro";
+import DocumentCard from "@components/DocumentCard.astro";
+import CourseCard from "@components/CourseCard.astro";
+import TimelineItem from "@components/TimelineItem.astro";
+import NatureTag from "@components/NatureTag.astro";
+import InstitutionalBand from "@components/InstitutionalBand.astro";
+
+const swatches = [
+  { token: "--surface-page", raw: "Marfil · #FFFDF5", uso: "Fondo general de página" },
+  { token: "--surface-panel", raw: "Pergamino · #F3E7CC", uso: "Paneles, bandas, hero" },
+  { token: "--text-primary", raw: "Tinta · #191612", uso: "Texto principal" },
+  { token: "--surface-accent", raw: "Borgoña · #861F2C", uso: "Acento institucional, botones" },
+  { token: "--text-accent-strong", raw: "Borgoña oscuro · #59151D", uso: "Hover, énfasis" },
+  { token: "--surface-inverse", raw: "Azul tinta · #17233D", uso: "Bandas solemnes, cursos" },
+  { token: "--accent-bronze", raw: "Bronce apagado · #9B7542", uso: "Detalle simbólico, ornamentos" },
+  { token: "--accent-heraldic", raw: "Verde Heredom · #008000", uso: "Acento heráldico secundario" },
+  { token: "--accent-heraldic-strong", raw: "Verde Heredom oscuro · #005F00", uso: "Texto verde accesible, hover" },
+  { token: "--surface-heraldic-soft", raw: "Verde Heredom suave · #E8F2E8", uso: "Etiquetas y fondos pequeños" },
+  { token: "--accent-sage", raw: "Salvia · #A7B29A", uso: "Ambiental: superficies suaves" },
+  { token: "--line-soft", raw: "Línea suave · rgba(25,22,18,.18)", uso: "Bordes y separadores" },
+];
+
+const typeScale = [
+  { name: "step-5", varName: "--step-5", uso: "H1 / hero" },
+  { name: "step-4", varName: "--step-4", uso: "H2" },
+  { name: "step-3", varName: "--step-3", uso: "H3" },
+  { name: "step-2", varName: "--step-2", uso: "H4 / títulos de tarjeta" },
+  { name: "step-1", varName: "--step-1", uso: "Lede / destacados" },
+  { name: "step-0", varName: "--step-0", uso: "Cuerpo de texto" },
+  { name: "step--1", varName: "--step--1", uso: "Metadatos / UI" },
+];
+---
+
+<BaseLayout title="Laboratorio visual" description="Style guide temporal de Heredom.">
+  <main id="contenido">
+    <!-- Aviso de fase -->
+    <div class="phase-notice" role="note">
+      <div class="container">
+        <strong>Laboratorio visual</strong> — página temporal para validación de dirección
+        de arte. Todos los textos son provisionales de demostración.
+      </div>
+    </div>
+
+    <div class="container">
+      <header class="sg-intro">
+        <p class="overline">Heredom · Sistema visual v0.1</p>
+        <h1>Laboratorio visual</h1>
+        <p class="sg-lede">
+          Archivo vivo, biblioteca tradicional y escuela de conocimiento. Este documento
+          reúne los fundamentos del sistema: color, tipografía, componentes y patrones
+          editoriales, para su revisión y aprobación.
+        </p>
+      </header>
+
+      <!-- 1. Paleta -->
+      <section class="sg-section" aria-labelledby="sg-color">
+        <h2 id="sg-color"><span class="sg-num">01</span> Paleta y tokens</h2>
+        <p class="sg-note">
+          Los componentes consumen únicamente tokens semánticos; la paleta cruda queda
+          encapsulada en <code>tokens.css</code>.
+        </p>
+        <ul class="swatch-grid" role="list">
+          {swatches.map((s) => (
+            <li class="swatch">
+              <span class="swatch-color" style={`background: var(${s.token})`}></span>
+              <code class="swatch-token">{s.token}</code>
+              <span class="swatch-raw">{s.raw}</span>
+              <span class="swatch-use">{s.uso}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <OrnamentDivider />
+
+      <!-- Verde Heredom -->
+      <section class="sg-section" aria-labelledby="sg-green">
+        <h2 id="sg-green"><span class="sg-num">02</span> Verde Heredom</h2>
+        <p class="sg-note">
+          Verde identificado en el cintillo histórico de los trabajos. Acento
+          institucional secundario y heráldico: contrapunto del borgoña, nunca su igual
+          en superficie. No sustituye a la salvia.
+        </p>
+
+        <h3 class="sg-sub">Verde Heredom vs. salvia</h3>
+        <div class="green-vs-sage">
+          <div class="vs-col">
+            <span class="vs-chip" style="background: var(--accent-heraldic);"></span>
+            <span class="vs-chip" style="background: var(--accent-heraldic-strong);"></span>
+            <span class="vs-chip vs-chip-line" style="background: var(--surface-heraldic-soft);"></span>
+            <p class="sg-note">
+              <strong>Verde Heredom:</strong> identitario, preciso, de contraste alto.
+              Para señales: navegación activa, filetes, etiquetas institucionales,
+              enlaces secundarios, identidad de lo formativo.
+            </p>
+          </div>
+          <div class="vs-col">
+            <span class="vs-chip" style="background: var(--accent-sage);"></span>
+            <span class="vs-chip vs-chip-line" style="background: #e6eae1;"></span>
+            <p class="sg-note">
+              <strong>Salvia:</strong> ambiental, suave, editorial. Para superficies
+              secundarias y fondos calmados. Nunca para texto ni señales (2.18:1 sobre
+              marfil: solo decorativa).
+            </p>
+          </div>
+        </div>
+
+        <h3 class="sg-sub">Combinación: correcto e incorrecto</h3>
+        <div class="combo-grid">
+          <figure class="combo combo-ok">
+            <div class="combo-sample combo-sample-ok">
+              <p class="combo-overline">Convocatoria</p>
+              <p class="combo-title">[DEMO] Borgoña dominante</p>
+              <span class="combo-filete" aria-hidden="true"></span>
+              <p class="combo-body">Verde solo como filete fino y metadato puntual.</p>
+            </div>
+            <figcaption class="combo-caption combo-caption-ok">
+              ✓ Correcto — el borgoña conserva el protagonismo; el verde es contrapunto.
+            </figcaption>
+          </figure>
+          <figure class="combo combo-bad">
+            <div class="combo-sample combo-sample-bad" aria-hidden="true">
+              <div class="combo-half combo-half-red"><span>Rojo saturado</span></div>
+              <div class="combo-half combo-half-green"><span>Verde puro</span></div>
+            </div>
+            <figcaption class="combo-caption combo-caption-bad">
+              ✗ Evitar — verde puro y rojo saturado en proporciones equivalentes:
+              efecto navideño.
+            </figcaption>
+          </figure>
+        </div>
+
+        <h3 class="sg-sub">Contraste medido (WCAG 2.1)</h3>
+        <ul class="contrast-list" role="list">
+          <li class="contrast-row" style="background: var(--surface-page);">
+            <span style="color: var(--accent-heraldic);">Verde sobre marfil</span>
+            <code>5.04:1 · AA texto normal</code>
+          </li>
+          <li class="contrast-row" style="background: var(--surface-page);">
+            <span style="color: var(--accent-heraldic-strong);">Verde oscuro sobre marfil</span>
+            <code>7.82:1 · AAA</code>
+          </li>
+          <li class="contrast-row" style="background: var(--surface-panel);">
+            <span style="color: var(--accent-heraldic); font-size: var(--step-1); font-weight: 600;">Verde sobre pergamino</span>
+            <code>4.19:1 · solo texto grande</code>
+          </li>
+          <li class="contrast-row" style="background: var(--surface-panel);">
+            <span style="color: var(--accent-heraldic-strong);">Verde oscuro sobre pergamino</span>
+            <code>6.49:1 · AA texto normal</code>
+          </li>
+          <li class="contrast-row" style="background: var(--surface-heraldic-soft);">
+            <span style="color: var(--text-primary);">Tinta sobre verde suave</span>
+            <code>15.71:1 · AAA</code>
+          </li>
+          <li class="contrast-row" style="background: var(--surface-heraldic-soft);">
+            <span style="color: var(--accent-heraldic-strong);">Verde oscuro sobre verde suave</span>
+            <code>6.94:1 · AA texto normal</code>
+          </li>
+          <li class="contrast-row" style="background: var(--accent-heraldic-strong);">
+            <span style="color: #fffdf5;">Marfil sobre verde oscuro</span>
+            <code style="color: rgba(255,253,245,0.85);">7.82:1 · AAA</code>
+          </li>
+          <li class="contrast-row" style="background: var(--surface-inverse);">
+            <span style="color: var(--accent-heraldic); font-size: var(--step-1); font-weight: 600;">Verde sobre azul tinta</span>
+            <code style="color: rgba(244,239,226,0.8);">3.04:1 · solo grande/decorativo</code>
+          </li>
+        </ul>
+        <p class="sg-note">
+          Regla derivada: para texto normal en verde usar siempre
+          <code>--text-heraldic</code> (verde oscuro); el verde puro se reserva a texto
+          grande, filetes y ornamentos.
+        </p>
+
+        <h3 class="sg-sub">Usos aplicados</h3>
+        <p class="sg-note">
+          Navegación activa (ver cabecera, sección 04: «Biblioteca»), identidad de lo
+          formativo (tarjeta de curso, sección 06), etiqueta institucional y enlace
+          secundario:
+        </p>
+        <div class="tag-row">
+          <span class="tag-institutional">Comunicado oficial</span>
+          <a class="link-secondary" href="#sg-green">Ver el calendario de trabajos</a>
+        </div>
+
+        <h3 class="sg-sub">Estados: normal · hover · focus · active</h3>
+        <div class="states-table" role="list">
+          <div class="states-row" role="listitem">
+            <span class="states-label">Enlace secundario</span>
+            <a class="link-secondary" href="#sg-green">Normal</a>
+            <a class="link-secondary demo-hover" href="#sg-green">Hover</a>
+            <a class="link-secondary demo-focus" href="#sg-green">Focus</a>
+            <a class="link-secondary demo-active" href="#sg-green">Active</a>
+          </div>
+          <div class="states-row" role="listitem">
+            <span class="states-label">Nav. de sección</span>
+            <a class="demo-navlink" href="#sg-green">Normal</a>
+            <a class="demo-navlink demo-nav-hover" href="#sg-green">Hover</a>
+            <a class="demo-navlink demo-nav-focus" href="#sg-green">Focus</a>
+            <a class="demo-navlink demo-nav-active" href="#sg-green" aria-current="page">Activa</a>
+          </div>
+        </div>
+        <p class="sg-note">
+          Los estados hover/focus/active aquí están forzados con clases de demostración;
+          los reales responden a interacción (probar con ratón y tabulador).
+        </p>
+
+        <h3 class="sg-sub">Componente institucional (borgoña + verde + bronce)</h3>
+        <div class="demo-frame demo-frame-flush">
+          <InstitutionalBand
+            overline="Texto provisional de demostración"
+            title="[DEMO] Convocatoria institucional de la Orden"
+          >
+            <a class="btn btn-inverse" href="#sg-green">Leer el comunicado</a>
+          </InstitutionalBand>
+        </div>
+        <p class="sg-note">
+          Jerarquía: borgoña dominante como fondo, verde reducido a filetes finos y
+          rótulo suave, bronce en el sello. Superficies deliberadamente desiguales.
+        </p>
+      </section>
+
+      <OrnamentDivider />
+
+      <!-- Tipografía -->
+      <section class="sg-section" aria-labelledby="sg-type">
+        <h2 id="sg-type"><span class="sg-num">03</span> Tipografía</h2>
+
+        <h3 class="sg-sub">Dos propuestas para títulos</h3>
+        <div class="type-proposals">
+          <div class="proposal">
+            <p class="overline">Propuesta A — Cormorant Garamond</p>
+            <p class="proposal-sample" style="font-family: var(--font-display);">
+              La memoria del oficio
+            </p>
+            <p class="sg-note">
+              Garalda contemporánea, contraste alto, aire caligráfico. Evoca imprenta
+              antigua y manuscrito. Muy expresiva en cuerpos grandes.
+            </p>
+          </div>
+          <div class="proposal">
+            <p class="overline">Propuesta B — Marcellus</p>
+            <p class="proposal-sample" style="font-family: var(--font-display-alt);">
+              La memoria del oficio
+            </p>
+            <p class="sg-note">
+              Romana lapidaria de un solo peso. Solemne, inscripcional, más sobria y
+              institucional. Menos ornamental que la propuesta A.
+            </p>
+          </div>
+        </div>
+
+        <h3 class="sg-sub">Escala tipográfica fluida</h3>
+        <ul class="type-scale" role="list">
+          {typeScale.map((t) => (
+            <li class="type-row">
+              <code class="type-token">{t.name}</code>
+              <span class="type-sample" style={`font-size: var(${t.varName})`}>
+                Heredom
+              </span>
+              <span class="type-use">{t.uso}</span>
+            </li>
+          ))}
+        </ul>
+
+        <h3 class="sg-sub">Cuerpo, citas y texto largo</h3>
+        <div class="prose">
+          <p class="lead">
+            [DEMO] El cuerpo de texto usa Literata, diseñada para lectura prolongada en
+            pantalla. Este párrafo de entrada («lede») marca la apertura editorial.
+          </p>
+          <p class="drop-cap">
+            [DEMO] Texto provisional de demostración para evaluar mancha tipográfica,
+            interlineado y medida. La anchura de línea se limita a unos sesenta y ocho
+            caracteres para sostener una lectura serena. La capitular es opcional y se
+            reserva para aperturas de artículo de la biblioteca.
+          </p>
+          <p>
+            [DEMO] Segundo párrafo de comprobación: los enlaces dentro del texto
+            <a href="#sg-type">se subrayan con un trazo suave</a> que se intensifica al
+            pasar el cursor, sin cambiar el ritmo de la línea.
+          </p>
+          <blockquote>
+            [DEMO] «Cita de demostración para validar el estilo de citas largas: filete
+            borgoña al margen, cursiva serena y atribución en tipografía de interfaz.»
+            <cite>Fuente de demostración, s. XVIII</cite>
+          </blockquote>
+        </div>
+      </section>
+
+      <OrnamentDivider />
+
+      <!-- 5 y 6. Headers -->
+      <section class="sg-section" aria-labelledby="sg-header">
+        <h2 id="sg-header"><span class="sg-num">04</span> Cabecera</h2>
+        <p class="sg-note">
+          Una sola cabecera responsiva basada en container queries. Abajo, la misma
+          instancia renderizada a ancho completo y dentro de un marco de 360&nbsp;px.
+        </p>
+
+        <h3 class="sg-sub">Escritorio</h3>
+        <div class="demo-frame">
+          <SiteHeader uid="desktop" current="/biblioteca/" />
+        </div>
+
+        <h3 class="sg-sub">Móvil (360 px)</h3>
+        <div class="demo-frame demo-frame-mobile">
+          <SiteHeader uid="mobile" />
+        </div>
+      </section>
+
+      <OrnamentDivider />
+    </div>
+
+    <!-- 7. Hero (a sangre completa) -->
+    <section class="sg-section-full" aria-labelledby="sg-hero">
+      <div class="container">
+        <h2 id="sg-hero" class="sg-h2"><span class="sg-num">05</span> Hero institucional</h2>
+        <p class="sg-note">Composición solemne con geometría simbólica de fondo.</p>
+      </div>
+      <div class="demo-frame demo-frame-flush">
+        <Hero
+          overline="Texto provisional de demostración"
+          title="Un archivo vivo de la tradición"
+          lede="[DEMO] Lede provisional: biblioteca, documentos y formación abierta, reunidos en un mismo lugar de estudio."
+        >
+          <Fragment slot="actions">
+            <a class="btn btn-primary" href="#sg-hero">Explorar la biblioteca</a>
+            <a class="btn btn-secondary" href="#sg-hero">Conocer la Orden</a>
+          </Fragment>
+        </Hero>
+      </div>
+    </section>
+
+    <div class="container">
+      <OrnamentDivider />
+
+      <!-- 9-11. Tarjetas -->
+      <section class="sg-section" aria-labelledby="sg-cards">
+        <h2 id="sg-cards"><span class="sg-num">06</span> Tarjetas</h2>
+
+        <h3 class="sg-sub">Artículo (listado de biblioteca)</h3>
+        <div class="cards-articles">
+          <ArticleCard
+            title="[DEMO] El simbolismo del eje en la construcción"
+            summary="[DEMO] Resumen provisional de demostración: dos o tres líneas que anticipan el argumento del artículo sin agotarlo."
+            naturaleza="estudio"
+            authorName="Autor de Demostración"
+            date="Agosto 2026"
+            readingMinutes={12}
+          />
+          <ArticleCard
+            title="[DEMO] Notas sobre la transmisión oral"
+            summary="[DEMO] Segundo resumen provisional para evaluar el ritmo del listado y la separación entre entradas."
+            naturaleza="tradicion"
+            authorName="Autor de Demostración"
+            date="Julio 2026"
+            readingMinutes={8}
+          />
+        </div>
+
+        <h3 class="sg-sub">Documento (archivo)</h3>
+        <div class="cards-grid-2">
+          <DocumentCard
+            title="[DEMO] Manuscrito de demostración"
+            summary="[DEMO] Descripción provisional del documento, su contexto y su interés para el lector."
+            naturaleza="historia-documentada"
+            docType="Manuscrito"
+            period="c. 1740"
+            sourceNote="[DEMO] Procedencia de ejemplo"
+          />
+          <DocumentCard
+            title="[DEMO] Constitución de demostración"
+            summary="[DEMO] Segunda descripción provisional para validar la tarjeta con distinta naturaleza."
+            naturaleza="doctrina"
+            docType="Constitución"
+            period="1723"
+          />
+        </div>
+
+        <h3 class="sg-sub">Curso (formación abierta)</h3>
+        <div class="cards-grid-2">
+          <CourseCard
+            title="[DEMO] Introducción a la lectura simbólica"
+            summary="[DEMO] Resumen provisional del curso: qué aprenderá el lector y desde qué enfoque."
+            naturaleza="doctrina"
+            level="introductorio"
+            lessonCount={7}
+          />
+          <CourseCard
+            title="[DEMO] Historia documentada de las logias"
+            summary="[DEMO] Segundo resumen provisional para validar la variante de nivel intermedio."
+            naturaleza="historia-documentada"
+            level="intermedio"
+            lessonCount={11}
+          />
+        </div>
+      </section>
+
+      <OrnamentDivider />
+
+      <!-- 12. Cronología -->
+      <section class="sg-section" aria-labelledby="sg-timeline">
+        <h2 id="sg-timeline"><span class="sg-num">07</span> Cronología</h2>
+        <p class="sg-note">
+          La etiqueta de naturaleza distingue tradición recibida de historia
+          académicamente documentada dentro de una misma línea temporal.
+        </p>
+        <ul class="timeline" role="list">
+          <TimelineItem year="1723" title="[DEMO] Hito documentado de ejemplo" naturaleza="historia-documentada">
+            [DEMO] Descripción provisional de un hecho con respaldo documental y
+            referencia archivística.
+          </TimelineItem>
+          <TimelineItem year="s. XIV" title="[DEMO] Relato tradicional de ejemplo" naturaleza="tradicion">
+            [DEMO] Descripción provisional de un relato transmitido por la tradición,
+            presentado como tal y sin equipararlo al registro histórico.
+          </TimelineItem>
+        </ul>
+      </section>
+
+      <OrnamentDivider />
+
+      <!-- 13. Botones -->
+      <section class="sg-section" aria-labelledby="sg-buttons">
+        <h2 id="sg-buttons"><span class="sg-num">08</span> Botones y enlaces</h2>
+        <div class="button-row">
+          <a class="btn btn-primary" href="#sg-buttons">Botón primario</a>
+          <a class="btn btn-secondary" href="#sg-buttons">Botón secundario</a>
+          <a class="link-text" href="#sg-buttons">Enlace textual</a>
+        </div>
+        <p class="sg-note">
+          Estados de foco visibles con anillo borgoña (probar con tabulador).
+        </p>
+      </section>
+
+      <OrnamentDivider />
+
+      <!-- 14. Etiquetas -->
+      <section class="sg-section" aria-labelledby="sg-tags">
+        <h2 id="sg-tags"><span class="sg-num">09</span> Naturaleza editorial</h2>
+        <p class="sg-note">
+          Campo controlado que acompaña a todo contenido. La tradición iniciática y la
+          historia documentada nunca se presentan como equivalentes.
+        </p>
+        <div class="tag-row">
+          <NatureTag naturaleza="tradicion" />
+          <NatureTag naturaleza="doctrina" />
+          <NatureTag naturaleza="historia-documentada" />
+          <NatureTag naturaleza="estudio" />
+          <NatureTag naturaleza="editorial" />
+        </div>
+      </section>
+
+      <OrnamentDivider />
+
+      <!-- 15. Página editorial -->
+      <section class="sg-section" aria-labelledby="sg-editorial">
+        <h2 id="sg-editorial"><span class="sg-num">10</span> Página editorial de muestra</h2>
+        <p class="sg-note">Simulación de un artículo de la biblioteca, a medida de prosa.</p>
+
+        <div class="demo-frame">
+          <article class="editorial-demo">
+            <header class="editorial-head">
+              <div class="editorial-meta">
+                <NatureTag naturaleza="estudio" />
+                <span class="editorial-reading">12 min de lectura</span>
+              </div>
+              <h1 class="editorial-title">[DEMO] El compás y la medida del tiempo</h1>
+              <p class="editorial-byline">
+                Por <a href="#sg-editorial">Autor de Demostración</a> · Agosto 2026
+              </p>
+            </header>
+
+            <div class="prose">
+              <p class="lead">
+                [DEMO] Entrada provisional del artículo: una o dos frases que sitúan al
+                lector antes del desarrollo.
+              </p>
+              <p class="drop-cap">
+                [DEMO] Cuerpo provisional de demostración. La medida de línea, el
+                interlineado y los márgenes verticales están calibrados para lectura
+                larga; los subtítulos respiran con espacio superior amplio y las citas
+                se marcan con filete borgoña.
+              </p>
+              <h2>[DEMO] Primer apartado</h2>
+              <p>
+                [DEMO] Párrafo de continuación para verificar el ritmo vertical entre
+                encabezados y texto, la partición de palabras y el color tipográfico
+                general de la página.
+              </p>
+              <blockquote>
+                [DEMO] «Cita intercalada de demostración, breve y serena.»
+                <cite>Referencia de demostración</cite>
+              </blockquote>
+              <p>
+                [DEMO] Cierre provisional del fragmento. Un separador ornamental marca el
+                final del artículo.
+              </p>
+            </div>
+
+            <OrnamentDivider />
+
+            <footer class="editorial-foot">
+              <a class="link-text" href="#sg-editorial">Volver a la biblioteca</a>
+            </footer>
+          </article>
+        </div>
+      </section>
+
+      <footer class="sg-footer">
+        <p class="overline">Heredom · Laboratorio visual v0.1 · Textos provisionales</p>
+      </footer>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* ---------- Estructura del style guide ---------- */
+  .phase-notice {
+    background: var(--surface-inverse);
+    color: var(--text-on-inverse);
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    padding-block: var(--space-s);
+  }
+
+  .sg-intro {
+    padding-block: var(--space-2xl) var(--space-xl);
+    max-width: 46rem;
+  }
+
+  .sg-intro h1 {
+    margin-block: var(--space-s);
+  }
+
+  .sg-lede {
+    font-size: var(--step-1);
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  .sg-section,
+  .sg-section-full {
+    padding-block: var(--space-l);
+  }
+
+  .sg-section h2,
+  .sg-h2 {
+    font-size: var(--step-3);
+    margin-block-end: var(--space-s);
+  }
+
+  .sg-num {
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    font-weight: 500;
+    letter-spacing: var(--tracking-caps);
+    color: var(--accent-bronze);
+    vertical-align: super;
+    margin-inline-end: var(--space-xs);
+  }
+
+  .sg-sub {
+    font-size: var(--step-1);
+    margin-block: var(--space-l) var(--space-s);
+    color: var(--text-accent-strong);
+  }
+
+  .sg-note {
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    font-family: var(--font-ui);
+    max-width: 46rem;
+    margin-block-end: var(--space-m);
+  }
+
+  .sg-note code,
+  .swatch-token,
+  .type-token {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.78rem;
+    color: var(--text-accent-strong);
+  }
+
+  /* ---------- Paleta ---------- */
+  .swatch-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: var(--space-m);
+  }
+
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+  }
+
+  .swatch-color {
+    height: 4.5rem;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-s);
+  }
+
+  .swatch-raw {
+    color: var(--text-muted);
+  }
+
+  .swatch-use {
+    color: var(--text-faint);
+    font-size: 0.78rem;
+  }
+
+  /* ---------- Verde Heredom ---------- */
+  .green-vs-sage {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: var(--space-l);
+  }
+
+  .vs-col {
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-m);
+    padding: var(--space-m);
+    background: var(--surface-page);
+  }
+
+  .vs-chip {
+    display: inline-block;
+    width: 3.5rem;
+    height: 2.2rem;
+    border-radius: var(--radius-s);
+    margin-inline-end: var(--space-xs);
+    margin-block-end: var(--space-s);
+  }
+
+  .vs-chip-line {
+    border: 1px solid var(--line-soft);
+  }
+
+  .combo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: var(--space-l);
+  }
+
+  .combo {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+
+  .combo-sample {
+    border-radius: var(--radius-m);
+    overflow: hidden;
+    min-height: 11rem;
+  }
+
+  .combo-sample-ok {
+    background: var(--surface-accent);
+    color: var(--text-on-accent);
+    padding: var(--space-l);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .combo-overline {
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--heredom-green-soft);
+  }
+
+  .combo-title {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    max-width: none;
+  }
+
+  .combo-filete {
+    display: block;
+    width: 4rem;
+    height: 3px;
+    background: var(--accent-heraldic-strong);
+    border-block: 1px solid var(--accent-bronze);
+    box-sizing: content-box;
+  }
+
+  .combo-body {
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    color: rgba(253, 246, 236, 0.85);
+    max-width: none;
+  }
+
+  .combo-sample-bad {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .combo-half {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    color: #fffdf5;
+  }
+
+  .combo-half-red {
+    background: #b3121f;
+  }
+
+  .combo-half-green {
+    background: var(--heredom-green);
+  }
+
+  .combo-caption {
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+  }
+
+  .combo-caption-ok {
+    color: var(--text-heraldic);
+  }
+
+  .combo-caption-bad {
+    color: var(--text-accent-strong);
+  }
+
+  .contrast-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    gap: var(--space-s);
+    margin-block-end: var(--space-m);
+  }
+
+  .contrast-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-s);
+    padding: var(--space-s) var(--space-m);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-s);
+    flex-wrap: wrap;
+  }
+
+  .contrast-row code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .states-table {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-m);
+    padding: var(--space-m);
+    margin-block-end: var(--space-m);
+  }
+
+  .states-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-l);
+    flex-wrap: wrap;
+  }
+
+  .states-label {
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    color: var(--text-faint);
+    min-width: 9rem;
+  }
+
+  /* Estados forzados para demostración */
+  .link-secondary.demo-hover {
+    color: var(--link-secondary-hover);
+    border-color: currentColor;
+  }
+
+  .link-secondary.demo-focus,
+  .demo-navlink.demo-nav-focus {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-offset);
+    border-radius: var(--radius-s);
+  }
+
+  .link-secondary.demo-active {
+    color: var(--accent-heraldic-strong);
+    border-color: currentColor;
+  }
+
+  .demo-navlink {
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-muted);
+    padding-block: 0.4em;
+    border-bottom: 1px solid transparent;
+  }
+
+  .demo-navlink.demo-nav-hover {
+    color: var(--text-accent-strong);
+    border-color: var(--line-accent);
+  }
+
+  .demo-navlink[aria-current="page"] {
+    color: var(--nav-active);
+    border-color: var(--nav-active);
+    font-weight: 600;
+  }
+
+  /* ---------- Tipografía ---------- */
+  .type-proposals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: var(--space-l);
+  }
+
+  .proposal {
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-m);
+    padding: var(--space-l);
+    background: var(--surface-panel-soft);
+  }
+
+  .proposal-sample {
+    font-size: var(--step-4);
+    line-height: 1.1;
+    margin-block: var(--space-s);
+    max-width: none;
+  }
+
+  .type-scale {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .type-row {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr auto;
+    align-items: baseline;
+    gap: var(--space-m);
+    padding-block: var(--space-s);
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .type-sample {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+  }
+
+  .type-use {
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    color: var(--text-faint);
+    text-align: end;
+  }
+
+  @media (max-width: 480px) {
+    .type-row {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xs);
+    }
+
+    .type-use {
+      text-align: start;
+    }
+  }
+
+  /* ---------- Marcos de demostración ---------- */
+  .demo-frame {
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius-m);
+    overflow: hidden;
+  }
+
+  .demo-frame-mobile {
+    max-width: 360px;
+  }
+
+  .demo-frame-flush {
+    border-inline: none;
+    border-radius: 0;
+  }
+
+  /* ---------- Tarjetas ---------- */
+  .cards-articles {
+    border-bottom: 1px solid var(--line-soft);
+    max-width: 46rem;
+  }
+
+  .cards-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+    gap: var(--space-l);
+  }
+
+  /* ---------- Cronología ---------- */
+  .timeline {
+    list-style: none;
+    padding: 0;
+    max-width: 42rem;
+  }
+
+  /* ---------- Botones / etiquetas ---------- */
+  .button-row,
+  .tag-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-m);
+    flex-wrap: wrap;
+    margin-block-end: var(--space-m);
+  }
+
+  /* ---------- Página editorial ---------- */
+  .editorial-demo {
+    padding: clamp(var(--space-l), 6vw, var(--space-2xl)) var(--gutter);
+    max-width: calc(var(--width-prose) + 2 * var(--gutter));
+    margin-inline: auto;
+  }
+
+  .editorial-head {
+    margin-block-end: var(--space-xl);
+  }
+
+  .editorial-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    flex-wrap: wrap;
+    margin-block-end: var(--space-m);
+  }
+
+  .editorial-reading {
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    color: var(--text-faint);
+  }
+
+  .editorial-title {
+    font-size: var(--step-4);
+    margin-block-end: var(--space-s);
+  }
+
+  .editorial-byline {
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+
+  .editorial-foot {
+    text-align: center;
+  }
+
+  .sg-footer {
+    padding-block: var(--space-xl) var(--space-2xl);
+    border-top: 1px solid var(--line-soft);
+    text-align: center;
+  }
+</style>

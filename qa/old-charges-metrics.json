@@ -1,0 +1,777 @@
+[
+  {
+    "width": 360,
+    "overflow": 0,
+    "h1Count": 1,
+    "headings": [
+      {
+        "level": "H1",
+        "text": "Orden Real de Heredom de Kilwinning"
+      },
+      {
+        "level": "H2",
+        "text": "Una tradición anterior a 1717"
+      },
+      {
+        "level": "H2",
+        "text": "La Geometría como ciencia del Oficio"
+      },
+      {
+        "level": "H2",
+        "text": "Una herencia que se estudia, se comprende y se transmite"
+      },
+      {
+        "level": "H2",
+        "text": "Tres puertas de entrada"
+      },
+      {
+        "level": "H3",
+        "text": "La Orden"
+      },
+      {
+        "level": "H3",
+        "text": "La Biblioteca"
+      },
+      {
+        "level": "H3",
+        "text": "Formación"
+      },
+      {
+        "level": "H2",
+        "text": "Sobre las cuatro Piedras Angulares de la antigua Masonería de Heredom."
+      },
+      {
+        "level": "H3",
+        "text": "La Salomónica"
+      },
+      {
+        "level": "H3",
+        "text": "La Pitagórica"
+      },
+      {
+        "level": "H3",
+        "text": "La Hermética"
+      },
+      {
+        "level": "H3",
+        "text": "La Templaria"
+      },
+      {
+        "level": "H2",
+        "text": "Qué es Heredom — y qué no es"
+      },
+      {
+        "level": "H3",
+        "text": "Qué es"
+      },
+      {
+        "level": "H3",
+        "text": "Qué no es"
+      },
+      {
+        "level": "H2",
+        "text": "Dos registros, un mismo respeto"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Relato fundacional según la tradición"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Hito con respaldo documental"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Lectura doctrinal de un símbolo"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Continuidad en México y el Caribe"
+      },
+      {
+        "level": "H2",
+        "text": "Lecturas para empezar"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] El simbolismo del eje en la construcción"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] La escuadra y el nivel: una lectura simbólica"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Manuscrito de demostración"
+      },
+      {
+        "level": "H2",
+        "text": "Comenzar por los fundamentos"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Introducción a la lectura simbólica"
+      },
+      {
+        "level": "H2",
+        "text": "El conocimiento comienza al cruzar el umbral"
+      }
+    ],
+    "band": {
+      "x": 0,
+      "y": 2460,
+      "width": 360,
+      "height": 80
+    },
+    "section": {
+      "x": 0,
+      "y": 2540,
+      "width": 360,
+      "height": 1619
+    },
+    "copy": {
+      "x": 16,
+      "y": 2620,
+      "width": 328,
+      "height": 980
+    },
+    "figure": {
+      "x": 16,
+      "y": 3652,
+      "width": 328,
+      "height": 427
+    },
+    "image": {
+      "x": 23,
+      "y": 3659,
+      "width": 313,
+      "height": 346
+    },
+    "naturalImage": {
+      "width": 1000,
+      "height": 1105
+    },
+    "bandCircles": 2,
+    "caption": "Personificación de la Geometría. Elementos de Euclides, ca. 1309–1316. British Library. Dominio público."
+  },
+  {
+    "width": 768,
+    "overflow": 0,
+    "h1Count": 1,
+    "headings": [
+      {
+        "level": "H1",
+        "text": "Orden Real de Heredom de Kilwinning"
+      },
+      {
+        "level": "H2",
+        "text": "Una tradición anterior a 1717"
+      },
+      {
+        "level": "H2",
+        "text": "La Geometría como ciencia del Oficio"
+      },
+      {
+        "level": "H2",
+        "text": "Una herencia que se estudia, se comprende y se transmite"
+      },
+      {
+        "level": "H2",
+        "text": "Tres puertas de entrada"
+      },
+      {
+        "level": "H3",
+        "text": "La Orden"
+      },
+      {
+        "level": "H3",
+        "text": "La Biblioteca"
+      },
+      {
+        "level": "H3",
+        "text": "Formación"
+      },
+      {
+        "level": "H2",
+        "text": "Sobre las cuatro Piedras Angulares de la antigua Masonería de Heredom."
+      },
+      {
+        "level": "H3",
+        "text": "La Salomónica"
+      },
+      {
+        "level": "H3",
+        "text": "La Pitagórica"
+      },
+      {
+        "level": "H3",
+        "text": "La Hermética"
+      },
+      {
+        "level": "H3",
+        "text": "La Templaria"
+      },
+      {
+        "level": "H2",
+        "text": "Qué es Heredom — y qué no es"
+      },
+      {
+        "level": "H3",
+        "text": "Qué es"
+      },
+      {
+        "level": "H3",
+        "text": "Qué no es"
+      },
+      {
+        "level": "H2",
+        "text": "Dos registros, un mismo respeto"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Relato fundacional según la tradición"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Hito con respaldo documental"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Lectura doctrinal de un símbolo"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Continuidad en México y el Caribe"
+      },
+      {
+        "level": "H2",
+        "text": "Lecturas para empezar"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] El simbolismo del eje en la construcción"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] La escuadra y el nivel: una lectura simbólica"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Manuscrito de demostración"
+      },
+      {
+        "level": "H2",
+        "text": "Comenzar por los fundamentos"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Introducción a la lectura simbólica"
+      },
+      {
+        "level": "H2",
+        "text": "El conocimiento comienza al cruzar el umbral"
+      }
+    ],
+    "band": {
+      "x": 0,
+      "y": 2196,
+      "width": 768,
+      "height": 80
+    },
+    "section": {
+      "x": 0,
+      "y": 2276,
+      "width": 768,
+      "height": 1425
+    },
+    "copy": {
+      "x": 31,
+      "y": 2356,
+      "width": 672,
+      "height": 688
+    },
+    "figure": {
+      "x": 168,
+      "y": 3097,
+      "width": 432,
+      "height": 524
+    },
+    "image": {
+      "x": 177,
+      "y": 3106,
+      "width": 415,
+      "height": 458
+    },
+    "naturalImage": {
+      "width": 1000,
+      "height": 1105
+    },
+    "bandCircles": 2,
+    "caption": "Personificación de la Geometría. Elementos de Euclides, ca. 1309–1316. British Library. Dominio público."
+  },
+  {
+    "width": 1024,
+    "overflow": 0,
+    "h1Count": 1,
+    "headings": [
+      {
+        "level": "H1",
+        "text": "Orden Real de Heredom de Kilwinning"
+      },
+      {
+        "level": "H2",
+        "text": "Una tradición anterior a 1717"
+      },
+      {
+        "level": "H2",
+        "text": "La Geometría como ciencia del Oficio"
+      },
+      {
+        "level": "H2",
+        "text": "Una herencia que se estudia, se comprende y se transmite"
+      },
+      {
+        "level": "H2",
+        "text": "Tres puertas de entrada"
+      },
+      {
+        "level": "H3",
+        "text": "La Orden"
+      },
+      {
+        "level": "H3",
+        "text": "La Biblioteca"
+      },
+      {
+        "level": "H3",
+        "text": "Formación"
+      },
+      {
+        "level": "H2",
+        "text": "Sobre las cuatro Piedras Angulares de la antigua Masonería de Heredom."
+      },
+      {
+        "level": "H3",
+        "text": "La Salomónica"
+      },
+      {
+        "level": "H3",
+        "text": "La Pitagórica"
+      },
+      {
+        "level": "H3",
+        "text": "La Hermética"
+      },
+      {
+        "level": "H3",
+        "text": "La Templaria"
+      },
+      {
+        "level": "H2",
+        "text": "Qué es Heredom — y qué no es"
+      },
+      {
+        "level": "H3",
+        "text": "Qué es"
+      },
+      {
+        "level": "H3",
+        "text": "Qué no es"
+      },
+      {
+        "level": "H2",
+        "text": "Dos registros, un mismo respeto"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Relato fundacional según la tradición"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Hito con respaldo documental"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Lectura doctrinal de un símbolo"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Continuidad en México y el Caribe"
+      },
+      {
+        "level": "H2",
+        "text": "Lecturas para empezar"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] El simbolismo del eje en la construcción"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] La escuadra y el nivel: una lectura simbólica"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Manuscrito de demostración"
+      },
+      {
+        "level": "H2",
+        "text": "Comenzar por los fundamentos"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Introducción a la lectura simbólica"
+      },
+      {
+        "level": "H2",
+        "text": "El conocimiento comienza al cruzar el umbral"
+      }
+    ],
+    "band": {
+      "x": 0,
+      "y": 1398,
+      "width": 1024,
+      "height": 80
+    },
+    "section": {
+      "x": 0,
+      "y": 1478,
+      "width": 1024,
+      "height": 959
+    },
+    "copy": {
+      "x": 475,
+      "y": 1559,
+      "width": 509,
+      "height": 795
+    },
+    "figure": {
+      "x": 40,
+      "y": 1733,
+      "width": 363,
+      "height": 447
+    },
+    "image": {
+      "x": 51,
+      "y": 1745,
+      "width": 341,
+      "height": 377
+    },
+    "naturalImage": {
+      "width": 1000,
+      "height": 1105
+    },
+    "bandCircles": 2,
+    "caption": "Personificación de la Geometría. Elementos de Euclides, ca. 1309–1316. British Library. Dominio público."
+  },
+  {
+    "width": 1440,
+    "overflow": 0,
+    "h1Count": 1,
+    "headings": [
+      {
+        "level": "H1",
+        "text": "Orden Real de Heredom de Kilwinning"
+      },
+      {
+        "level": "H2",
+        "text": "Una tradición anterior a 1717"
+      },
+      {
+        "level": "H2",
+        "text": "La Geometría como ciencia del Oficio"
+      },
+      {
+        "level": "H2",
+        "text": "Una herencia que se estudia, se comprende y se transmite"
+      },
+      {
+        "level": "H2",
+        "text": "Tres puertas de entrada"
+      },
+      {
+        "level": "H3",
+        "text": "La Orden"
+      },
+      {
+        "level": "H3",
+        "text": "La Biblioteca"
+      },
+      {
+        "level": "H3",
+        "text": "Formación"
+      },
+      {
+        "level": "H2",
+        "text": "Sobre las cuatro Piedras Angulares de la antigua Masonería de Heredom."
+      },
+      {
+        "level": "H3",
+        "text": "La Salomónica"
+      },
+      {
+        "level": "H3",
+        "text": "La Pitagórica"
+      },
+      {
+        "level": "H3",
+        "text": "La Hermética"
+      },
+      {
+        "level": "H3",
+        "text": "La Templaria"
+      },
+      {
+        "level": "H2",
+        "text": "Qué es Heredom — y qué no es"
+      },
+      {
+        "level": "H3",
+        "text": "Qué es"
+      },
+      {
+        "level": "H3",
+        "text": "Qué no es"
+      },
+      {
+        "level": "H2",
+        "text": "Dos registros, un mismo respeto"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Relato fundacional según la tradición"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Hito con respaldo documental"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Lectura doctrinal de un símbolo"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Continuidad en México y el Caribe"
+      },
+      {
+        "level": "H2",
+        "text": "Lecturas para empezar"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] El simbolismo del eje en la construcción"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] La escuadra y el nivel: una lectura simbólica"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Manuscrito de demostración"
+      },
+      {
+        "level": "H2",
+        "text": "Comenzar por los fundamentos"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Introducción a la lectura simbólica"
+      },
+      {
+        "level": "H2",
+        "text": "El conocimiento comienza al cruzar el umbral"
+      }
+    ],
+    "band": {
+      "x": 0,
+      "y": 1427,
+      "width": 1440,
+      "height": 80
+    },
+    "section": {
+      "x": 0,
+      "y": 1507,
+      "width": 1440,
+      "height": 1024
+    },
+    "copy": {
+      "x": 683,
+      "y": 1623,
+      "width": 613,
+      "height": 794
+    },
+    "figure": {
+      "x": 147,
+      "y": 1758,
+      "width": 432,
+      "height": 523
+    },
+    "image": {
+      "x": 158,
+      "y": 1769,
+      "width": 409,
+      "height": 452
+    },
+    "naturalImage": {
+      "width": 1000,
+      "height": 1105
+    },
+    "bandCircles": 2,
+    "caption": "Personificación de la Geometría. Elementos de Euclides, ca. 1309–1316. British Library. Dominio público."
+  },
+  {
+    "width": 1920,
+    "overflow": 0,
+    "h1Count": 1,
+    "headings": [
+      {
+        "level": "H1",
+        "text": "Orden Real de Heredom de Kilwinning"
+      },
+      {
+        "level": "H2",
+        "text": "Una tradición anterior a 1717"
+      },
+      {
+        "level": "H2",
+        "text": "La Geometría como ciencia del Oficio"
+      },
+      {
+        "level": "H2",
+        "text": "Una herencia que se estudia, se comprende y se transmite"
+      },
+      {
+        "level": "H2",
+        "text": "Tres puertas de entrada"
+      },
+      {
+        "level": "H3",
+        "text": "La Orden"
+      },
+      {
+        "level": "H3",
+        "text": "La Biblioteca"
+      },
+      {
+        "level": "H3",
+        "text": "Formación"
+      },
+      {
+        "level": "H2",
+        "text": "Sobre las cuatro Piedras Angulares de la antigua Masonería de Heredom."
+      },
+      {
+        "level": "H3",
+        "text": "La Salomónica"
+      },
+      {
+        "level": "H3",
+        "text": "La Pitagórica"
+      },
+      {
+        "level": "H3",
+        "text": "La Hermética"
+      },
+      {
+        "level": "H3",
+        "text": "La Templaria"
+      },
+      {
+        "level": "H2",
+        "text": "Qué es Heredom — y qué no es"
+      },
+      {
+        "level": "H3",
+        "text": "Qué es"
+      },
+      {
+        "level": "H3",
+        "text": "Qué no es"
+      },
+      {
+        "level": "H2",
+        "text": "Dos registros, un mismo respeto"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Relato fundacional según la tradición"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Hito con respaldo documental"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Lectura doctrinal de un símbolo"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Continuidad en México y el Caribe"
+      },
+      {
+        "level": "H2",
+        "text": "Lecturas para empezar"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] El simbolismo del eje en la construcción"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] La escuadra y el nivel: una lectura simbólica"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Manuscrito de demostración"
+      },
+      {
+        "level": "H2",
+        "text": "Comenzar por los fundamentos"
+      },
+      {
+        "level": "H3",
+        "text": "[DEMO] Introducción a la lectura simbólica"
+      },
+      {
+        "level": "H2",
+        "text": "El conocimiento comienza al cruzar el umbral"
+      }
+    ],
+    "band": {
+      "x": 0,
+      "y": 1494,
+      "width": 1920,
+      "height": 80
+    },
+    "section": {
+      "x": 0,
+      "y": 1574,
+      "width": 1920,
+      "height": 1050
+    },
+    "copy": {
+      "x": 939,
+      "y": 1702,
+      "width": 597,
+      "height": 794
+    },
+    "figure": {
+      "x": 384,
+      "y": 1840,
+      "width": 427,
+      "height": 517
+    },
+    "image": {
+      "x": 395,
+      "y": 1852,
+      "width": 404,
+      "height": 446
+    },
+    "naturalImage": {
+      "width": 1000,
+      "height": 1105
+    },
+    "bandCircles": 2,
+    "caption": "Personificación de la Geometría. Elementos de Euclides, ca. 1309–1316. British Library. Dominio público."
+  }
+]
