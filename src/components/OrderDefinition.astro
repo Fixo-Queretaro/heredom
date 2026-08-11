@@ -1,0 +1,115 @@
+<section class="order-definition" aria-labelledby="order-definition-title">
+  <div class="container definition-inner">
+    <header>
+      <p class="overline">Naturaleza institucional</p>
+      <h2 id="order-definition-title">Qué es Heredom — y qué no es</h2>
+    </header>
+
+    <div class="definition-grid">
+      <div>
+        <h3 class="definition-yes">Qué es</h3>
+        <ul role="list">
+          <li>Una tradición de estudio y trabajo simbólico.</li>
+          <li>Una vía vinculada a la herencia de los antiguos constructores.</li>
+          <li>Un espacio de formación, reflexión y transmisión.</li>
+        </ul>
+      </div>
+      <div class="definition-no">
+        <h3>Qué no es</h3>
+        <ul role="list">
+          <li>Una organización partidista.</li>
+          <li>Un producto de entretenimiento esotérico.</li>
+          <li>Una promesa de poder, prestigio o ascenso social.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="cornerstones-link">
+      Las cuatro corrientes doctrinales se presentan en la
+      <a href="/#piedras-angulares">sección de las Piedras Angulares</a>.
+    </p>
+  </div>
+</section>
+
+<style>
+  .order-definition {
+    background: var(--surface-page);
+    padding-block: var(--space-2xl);
+  }
+
+  .definition-inner > header {
+    max-width: 38rem;
+  }
+
+  .definition-inner .overline {
+    color: var(--text-accent-strong);
+  }
+
+  .definition-inner h2 {
+    font-size: var(--step-3);
+    margin-block-start: var(--space-xs);
+  }
+
+  .definition-grid {
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-block-start: var(--space-xl);
+    max-width: 58rem;
+  }
+
+  .definition-grid > div {
+    border-top: 1px solid var(--line-bronze);
+    padding-block-start: var(--space-m);
+  }
+
+  .definition-grid h3 {
+    color: var(--text-faint);
+    font-size: var(--step-1);
+  }
+
+  .definition-grid .definition-yes {
+    color: var(--text-heraldic);
+  }
+
+  .definition-grid ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    list-style: none;
+    margin: var(--space-m) 0 0;
+    padding: 0;
+  }
+
+  .definition-grid li {
+    padding-inline-start: var(--space-m);
+    position: relative;
+  }
+
+  .definition-grid li::before {
+    color: var(--accent-bronze);
+    content: "·";
+    font-weight: 700;
+    inset-inline-start: 0;
+    position: absolute;
+  }
+
+  .definition-no {
+    color: var(--text-muted);
+  }
+
+  .cornerstones-link {
+    border-top: 1px solid var(--line-soft);
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    margin-block-start: var(--space-xl);
+    max-width: 42rem;
+    padding-block-start: var(--space-m);
+  }
+
+  @media (max-width: 699px) {
+    .definition-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,177 @@
+---
+import NatureTag from "./NatureTag.astro";
+
+const markers = [
+  {
+    year: "1129",
+    title: "Reconocimiento del Temple",
+    nature: "historia-documentada" as const,
+  },
+  {
+    year: "1314",
+    title: "Bannockburn y la memoria escocesa",
+    nature: "tradicion" as const,
+  },
+  {
+    year: "1717",
+    title: "Ruptura especulativa moderna",
+    nature: "doctrina" as const,
+  },
+  {
+    year: "2004",
+    title: "Correspondencia entre México y Buenos Aires",
+    nature: "historia-documentada" as const,
+  },
+];
+---
+
+<section id="tradicion-historia" class="history-preview" aria-labelledby="history-preview-title">
+  <div class="container">
+    <header class="preview-head">
+      <div>
+        <p class="overline preview-eyebrow">Tradición e historia</p>
+        <h2 id="history-preview-title">Nueve siglos, cuatro fechas para orientarse</h2>
+      </div>
+      <p>
+        La cronología completa distingue los hechos documentados de los relatos
+        conservados por la Orden y conduce hasta el establecimiento de sus Trabajos
+        en México.
+      </p>
+    </header>
+
+    <ol class="preview-dates" role="list">
+      {markers.map((marker) => (
+        <li>
+          <p class="preview-year">{marker.year}</p>
+          <NatureTag naturaleza={marker.nature} />
+          <h3>{marker.title}</h3>
+        </li>
+      ))}
+    </ol>
+
+    <footer class="preview-foot">
+      <p>La síntesis de la Home abre el recorrido; la página interior conserva el relato completo.</p>
+      <a class="btn btn-secondary" href="/tradicion-e-historia/">
+        Consultar tradición e historia
+      </a>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .history-preview {
+    background: var(--surface-page);
+    padding-block: var(--space-2xl);
+  }
+
+  .preview-head {
+    align-items: end;
+    border-bottom: 1px solid var(--line-bronze);
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: minmax(0, 7fr) minmax(18rem, 5fr);
+    padding-block-end: var(--space-l);
+  }
+
+  .preview-eyebrow {
+    color: var(--text-accent-strong);
+  }
+
+  .preview-head h2 {
+    font-size: var(--step-4);
+    margin-block-start: var(--space-xs);
+    max-width: 18ch;
+  }
+
+  .preview-head > p {
+    color: var(--text-muted);
+  }
+
+  .preview-dates {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: var(--space-xl) 0;
+  }
+
+  .preview-dates li {
+    min-width: 0;
+    padding-inline: var(--space-m);
+  }
+
+  .preview-dates li:first-child {
+    padding-inline-start: 0;
+  }
+
+  .preview-dates li + li {
+    border-inline-start: 1px solid var(--line-soft);
+  }
+
+  .preview-year {
+    color: var(--text-accent-strong);
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 600;
+    line-height: 1;
+    margin-block-end: var(--space-s);
+  }
+
+  .preview-dates h3 {
+    font-size: var(--step-1);
+    margin-block-start: var(--space-s);
+  }
+
+  .preview-foot {
+    align-items: center;
+    border-top: 1px solid var(--line-bronze);
+    display: flex;
+    gap: var(--space-l);
+    justify-content: space-between;
+    padding-block-start: var(--space-l);
+  }
+
+  .preview-foot p {
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    font-style: italic;
+  }
+
+  @media (max-width: 899px) {
+    .preview-head {
+      grid-template-columns: 1fr;
+    }
+
+    .preview-dates {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-l) 0;
+    }
+
+    .preview-dates li:nth-child(odd) {
+      border-inline-start: 0;
+      padding-inline-start: 0;
+    }
+  }
+
+  @media (max-width: 599px) {
+    .preview-dates {
+      grid-template-columns: 1fr;
+    }
+
+    .preview-dates li,
+    .preview-dates li:nth-child(odd) {
+      border-inline-start: 0;
+      border-top: 1px solid var(--line-soft);
+      padding: var(--space-m) 0;
+    }
+
+    .preview-dates li:first-child {
+      border-top: 0;
+    }
+
+    .preview-foot {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

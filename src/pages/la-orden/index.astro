@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SiteHeader from "@components/SiteHeader.astro";
+import InteriorHero from "@components/InteriorHero.astro";
+import FoundationalTradition from "@components/FoundationalTradition.astro";
+import OldCharges from "@components/OldCharges.astro";
+import OrderDefinition from "@components/OrderDefinition.astro";
+import SiteFooter from "@components/SiteFooter.astro";
+---
+
+<BaseLayout
+  title="La Orden Real de Heredom de Kilwinning"
+  description="Fundamentos, Antiguos Deberes y naturaleza institucional de la Orden Real de Heredom de Kilwinning."
+>
+  <SiteHeader current="/la-orden/" />
+
+  <main id="contenido">
+    <InteriorHero
+      eyebrow="Identidad y fundamentos"
+      title="La Orden"
+      lede="Una introducción pública a la filiación, el Oficio y los deberes que orientan los Trabajos de la Orden Real de Heredom de Kilwinning."
+    />
+    <FoundationalTradition />
+    <OldCharges />
+    <OrderDefinition />
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

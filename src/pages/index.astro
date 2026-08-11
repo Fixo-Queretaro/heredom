@@ -1,515 +1,153 @@
 ---
-/**
- * HOME V1 — Heredom
- * Recorrido: llamada → comprensión → tradición e historia → biblioteca → formación.
- * Todos los textos marcados [DEMO] o señalados como provisionales requieren
- * revisión institucional antes de publicarse.
- */
 import BaseLayout from "@layouts/BaseLayout.astro";
 import SiteHeader from "@components/SiteHeader.astro";
 import HomeHero from "@components/HomeHero.astro";
-import FoundationalTradition from "@components/FoundationalTradition.astro";
-import OldCharges from "@components/OldCharges.astro";
-import OrnamentDivider from "@components/OrnamentDivider.astro";
-import LibraryShowcase from "@components/LibraryShowcase.astro";
-import HistoricalChronicle from "@components/HistoricalChronicle.astro";
+import HomeThreshold from "@components/HomeThreshold.astro";
 import FourCornerstones from "@components/FourCornerstones.astro";
+import HistoryPreview from "@components/HistoryPreview.astro";
+import LibraryShowcase from "@components/LibraryShowcase.astro";
 import ActivitiesFormation from "@components/ActivitiesFormation.astro";
-import MexicoInstitutionalHistory from "@components/MexicoInstitutionalHistory.astro";
 import SiteFooter from "@components/SiteFooter.astro";
 ---
 
 <BaseLayout
-  title="Inicio"
+  title="Orden Real de Heredom de Kilwinning | México y el Caribe"
   description="Orden Real de Heredom de Kilwinning — tradición, biblioteca y formación abierta sobre la Masonería Operativa. Capítulo Soberano para México y el Caribe."
 >
   <SiteHeader current="/" />
 
   <main id="contenido">
-    <!-- 2. HERO — el umbral -->
     <HomeHero />
+    <HomeThreshold />
 
-    <!-- 3. FUNDAMENTOS — síntesis doctrinal pública -->
-    <FoundationalTradition />
+    <section id="puertas" class="doors container" aria-labelledby="doors-title">
+      <header class="doors-head">
+        <p class="overline">Recorrer el portal</p>
+        <h2 id="doors-title">Tres puertas de entrada</h2>
+      </header>
 
-    <!-- 4. ANTIGUOS DEBERES — Constitución de 1607 -->
-    <OldCharges />
-
-    <!-- 5. FILIACIÓN INICIÁTICA — cuatro piedras angulares -->
-    <FourCornerstones />
-
-    <!-- 6. TRADICIÓN E HISTORIA — síntesis de la cronología institucional -->
-    <HistoricalChronicle />
-
-    <!-- 7. EL UMBRAL — transición hacia las puertas de entrada -->
-    <section class="intro" aria-labelledby="intro-title">
-      <div class="intro-wrap">
-        <header class="intro-head">
-          <p class="overline intro-eyebrow">El umbral</p>
-          <h2 id="intro-title" class="intro-title">
-            Una herencia que se estudia, se comprende y se transmite
-          </h2>
-        </header>
-
-        <div class="umbral-grid">
-          <div class="umbral-text prose">
-            <p>
-              Heredom reúne en un solo lugar la tradición recibida, los documentos que la
-              acompañan, los símbolos que la expresan y una formación abierta para
-              estudiarla con calma. Cada contenido declara su naturaleza: lo que pertenece
-              a la tradición se presenta como tradición, y lo que consta en archivos y
-              fuentes se presenta como historia documentada.
-            </p>
-            <p class="drop-cap">
-              La Orden Real de Heredom de Kilwinning es heredera de muy antiguas
-              filiaciones iniciáticas y posee el privilegio de haber recibido los ritos y
-              tradiciones del Templarismo refugiado en el Mull de Kintyre para escapar a
-              las persecuciones.
-            </p>
-          </div>
-
-          <!-- Lámina histórica. Derivado web de recursos-originales/Guenon.jpg
-               (CMYK→RGB, WebP q90, PSNR 45.6 dB). Original intacto.
-               Mirada frontal-descendente → posición derecha por defecto. -->
-          <figure class="umbral-figure">
-            <img
-              src="/images/rene-guenon.webp"
-              alt="Retrato de René Guénon"
-              width="440"
-              height="329"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>René Guénon</figcaption>
-          </figure>
-        </div>
-
-        <details class="story">
-          <summary class="story-toggle">
-            <svg
-              class="story-glyph"
-              viewBox="0 0 16 16"
-              width="14"
-              height="14"
-              aria-hidden="true"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.4"
-            >
-              <circle cx="8" cy="8" r="6.5" />
-              <path class="story-glyph-v" d="M 8 4.5 V 11.5" />
-              <path d="M 4.5 8 H 11.5" />
-            </svg>
-            <span class="story-label story-label-closed">Leer la historia completa</span>
-            <span class="story-label story-label-open">Cerrar la historia</span>
-          </summary>
-
-          <div class="story-body prose">
-            <p>
-              Luego de destruida la Orden de los Templarios en la mayor parte de los
-              países de Europa, los Caballeros refugiados en Escocia fueron protegidos
-              y organizados en la Orden de San Andrés del Cardo, fundada para ellos por
-              el rey Robert the Bruce luego de la batalla de Bannock-Burn (24 de Junio
-              de 1314) para premiar su decisiva acción en dicha batalla que selló la
-              independencia de Escocia.
-            </p>
-            <p>
-              Posteriormente, se les unieron las Logias Operativas dependientes de la
-              Abadía de Kilwinning perteneciente a los monjes tyronnenses.
-            </p>
-            <p>
-              El destino de la Orden quedó indisolublemente unido a la Casa de Estuardo
-              durante la Gran Maestría hereditaria detentada por el clan Saint-Clair
-              (Sinclair) de Rosslyn (ortografía antigua: Roslin), siendo el núcleo
-              principal de la llamada «Masonería Jacobita».
-            </p>
-            <p>
-              La Capilla de Rosslyn, cerca de Edimburgo, es un mudo testigo pétreo del
-              antiguo esplendor de la auténtica Masonería Escocesa —necesariamente
-              Jacobita—, en la cual se fundían los restos de la
-              <i lang="fr">Massenie du Saint-Graal</i>, los vestigios del Templarismo
-              secreto, las Logias Operativas y el naciente Rosacrucianismo.
-            </p>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <!-- 8. TRES PUERTAS DE ENTRADA -->
-    <section class="doors container" aria-labelledby="doors-title">
-      <h2 id="doors-title" class="sr-only">Tres puertas de entrada</h2>
       <div class="doors-grid">
         <article class="door door-orden">
           <p class="door-number" aria-hidden="true">I</p>
-          <h3 class="door-title">La Orden</h3>
-          <p class="door-text">
-            Qué es la Orden Real de Heredom de Kilwinning, de dónde procede su nombre y
-            cómo entiende el trabajo, el silencio y la transmisión.
+          <h3>La Orden</h3>
+          <p>
+            Filiación, fundamentos y Antiguos Deberes de la Orden Real de Heredom
+            de Kilwinning.
           </p>
           <a class="link-text" href="/la-orden/">Conocer la Orden</a>
         </article>
 
         <article class="door door-biblioteca">
           <p class="door-number" aria-hidden="true">II</p>
-          <h3 class="door-title">La Biblioteca</h3>
-          <p class="door-text">
-            Artículos, documentos y bibliografía comentada. Un archivo en crecimiento
-            donde cada pieza declara su procedencia y su naturaleza editorial.
+          <h3>La Biblioteca</h3>
+          <p>
+            Documentos públicos acompañados por una ficha que declara su procedencia
+            y naturaleza editorial.
           </p>
           <a class="link-text" href="/biblioteca/">Entrar a la Biblioteca</a>
         </article>
 
         <article class="door door-formacion">
           <p class="door-number" aria-hidden="true">III</p>
-          <h3 class="door-title">Formación</h3>
-          <p class="door-text">
-            Cursos y lecciones de acceso abierto, ordenados como rutas de estudio: de
-            los fundamentos hacia la lectura simbólica y doctrinal.
+          <h3>Formación</h3>
+          <p>
+            Cursos, conferencias y materiales de estudio conservados en un archivo
+            abierto.
           </p>
           <a class="link-secondary" href="/#actividades">Ver actividades y formación</a>
         </article>
       </div>
     </section>
 
-    <!-- 9. QUÉ ES Y QUÉ NO ES HEREDOM -->
-    <section class="isnt container" aria-labelledby="isnt-title">
-      <h2 id="isnt-title" class="isnt-heading">Qué es Heredom — y qué no es</h2>
-      <div class="isnt-grid">
-        <div class="isnt-col">
-          <h3 class="isnt-sub isnt-sub-yes">Qué es</h3>
-          <ul class="isnt-list" role="list">
-            <li>
-              <span class="isnt-mark isnt-mark-yes" aria-hidden="true">●</span>
-              Una tradición de estudio y trabajo simbólico.
-            </li>
-            <li>
-              <span class="isnt-mark isnt-mark-yes" aria-hidden="true">●</span>
-              Una vía vinculada a la herencia de los antiguos constructores.
-            </li>
-            <li>
-              <span class="isnt-mark isnt-mark-yes" aria-hidden="true">●</span>
-              Un espacio de formación, reflexión y transmisión.
-            </li>
-          </ul>
-        </div>
-        <div class="isnt-col isnt-col-no">
-          <h3 class="isnt-sub isnt-sub-no">Qué no es</h3>
-          <ul class="isnt-list" role="list">
-            <li>
-              <span class="isnt-mark isnt-mark-no" aria-hidden="true">—</span>
-              Una organización partidista.
-            </li>
-            <li>
-              <span class="isnt-mark isnt-mark-no" aria-hidden="true">—</span>
-              Un producto de entretenimiento esotérico.
-            </li>
-            <li>
-              <span class="isnt-mark isnt-mark-no" aria-hidden="true">—</span>
-              Una promesa de poder, prestigio o ascenso social.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <OrnamentDivider />
-
-    <!-- 10. BIBLIOTECA DESTACADA — selección del archivo público -->
+    <FourCornerstones />
+    <HistoryPreview />
     <LibraryShowcase />
-
-    <!-- 11. ACTIVIDADES Y FORMACIÓN — cátedra destacada + archivo vivo -->
     <ActivitiesFormation />
-
-    <!-- 12. MEMORIA INSTITUCIONAL — establecimiento en México -->
-    <MexicoInstitutionalHistory />
   </main>
 
-  <!-- 13. FOOTER -->
   <SiteFooter />
 </BaseLayout>
 
 <style>
-  /* ---------- 3. Introducción ---------- */
-  .intro {
-    padding-block: var(--space-2xl) var(--space-xl);
-    background: var(--surface-panel-soft);
+  .doors {
+    padding-block: var(--space-2xl);
   }
 
-  .intro-wrap {
-    width: min(100% - 2 * var(--gutter), 64rem);
-    margin-inline: auto;
+  .doors-head {
+    margin-block-end: var(--space-l);
   }
 
-  .intro-eyebrow {
+  .doors-head .overline {
     color: var(--text-accent-strong);
   }
 
-  .intro-title {
+  .doors-head h2 {
     font-size: var(--step-3);
-    margin-block: var(--space-s) var(--space-m);
-    max-width: 30ch;
-  }
-
-  /* Composición asimétrica: texto doctrinal (7) + lámina (4) */
-  .umbral-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-    gap: clamp(var(--space-l), 4vw, var(--space-2xl));
-    align-items: start;
-    margin-block-start: var(--space-m);
-  }
-
-  .umbral-text {
-    max-width: 42rem;
-  }
-
-  /* Lámina histórica: filete bronce + segundo borde interior sutil.
-     Armonización CSS reversible del medio tono azulado de imprenta. */
-  .umbral-figure {
-    margin: 0;
-    justify-self: end;
-    max-width: 27.5rem;
-  }
-
-  .umbral-figure img {
-    border: 1px solid var(--line-bronze);
-    outline: 1px solid var(--line-soft);
-    outline-offset: 5px;
-    filter: grayscale(0.35) sepia(0.14) contrast(1.02);
-  }
-
-  .umbral-figure figcaption {
-    margin-block-start: var(--space-s);
-    text-align: center;
-    font-style: italic;
-    font-size: var(--step--1);
-    color: var(--text-muted);
-  }
-
-  @media (max-width: 1023px) {
-    .umbral-grid {
-      grid-template-columns: 1fr;
-    }
-
-    /* Móvil/tablet apilado: retrato tras el título, antes del primer párrafo */
-    .umbral-figure {
-      order: -1;
-      justify-self: center;
-      width: min(100%, 270px);
-    }
-  }
-
-  /* ---------- 3b. Disclosure "la historia completa" ---------- */
-  .story {
-    margin-block-start: var(--space-l);
-  }
-
-  /* Sistema interactivo del disclosure: verde institucional (decisión Hex).
-     El cuerpo doctrinal desplegado permanece en tinta. */
-  .story-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-xs);
-    cursor: pointer;
-    list-style: none;
-    font-family: var(--font-ui);
-    font-size: var(--step--1);
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-heraldic);
-    border-bottom: 1px solid var(--line-heraldic);
-    padding-block-end: 0.2em;
-    transition: color var(--transition-quiet), border-color var(--transition-quiet);
-  }
-
-  .story-toggle::-webkit-details-marker {
-    display: none;
-  }
-
-  .story-toggle::marker {
-    content: "";
-  }
-
-  .story-toggle:hover {
-    color: var(--accent-heraldic);
-    border-color: var(--accent-heraldic);
-  }
-
-  .story-toggle:focus-visible {
-    outline-color: var(--accent-heraldic-strong);
-  }
-
-  .story-toggle:active {
-    color: var(--accent-heraldic-strong);
-  }
-
-  .story[open] .story-toggle {
-    color: var(--text-heraldic);
-    border-color: var(--accent-heraldic-strong);
-  }
-
-  .story-glyph {
-    flex-shrink: 0;
-  }
-
-  .story-glyph-v {
-    transition: opacity var(--transition-quiet);
-  }
-
-  .story[open] .story-glyph-v {
-    opacity: 0;
-  }
-
-  .story-label-open {
-    display: none;
-  }
-
-  .story[open] .story-label-closed {
-    display: none;
-  }
-
-  .story[open] .story-label-open {
-    display: inline;
-  }
-
-  .story-body {
-    margin-block-start: var(--space-l);
-    padding-inline-start: var(--space-l);
-    border-inline-start: 1px solid var(--line-heraldic);
-  }
-
-  .story-body > p + p {
-    margin-block-start: var(--space-m);
-  }
-
-  /* ---------- 4. Tres puertas ---------- */
-  .doors {
-    padding-block: var(--space-xl);
+    margin-block-start: var(--space-xs);
   }
 
   .doors-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-2xl);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .door {
+    align-items: flex-start;
+    border-top: 2px solid;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    padding-block-start: var(--space-m);
+  }
+
+  .door-orden {
+    border-color: var(--surface-accent);
+  }
+
+  .door-biblioteca {
+    border-color: var(--accent-bronze);
+  }
+
+  .door-formacion {
+    border-color: var(--accent-heraldic);
+  }
+
+  .door-number {
+    color: var(--text-faint);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    line-height: 1;
+  }
+
+  .door-orden .door-number {
+    color: var(--text-accent-strong);
+  }
+
+  .door-biblioteca .door-number {
+    color: var(--nature-historia-fg);
+  }
+
+  .door-formacion .door-number {
+    color: var(--text-heraldic);
+  }
+
+  .door h3 {
+    font-size: var(--step-2);
+  }
+
+  .door > p:not(.door-number) {
+    color: var(--text-muted);
+    flex-grow: 1;
+    font-size: var(--step--1);
+    line-height: 1.6;
   }
 
   @media (max-width: 899px) {
     .doors-grid {
-      grid-template-columns: 1fr;
       gap: var(--space-xl);
+      grid-template-columns: 1fr;
       max-width: 34rem;
     }
   }
-
-  .door {
-    border-top: 2px solid;
-    padding-block-start: var(--space-m);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-s);
-    align-items: flex-start;
-  }
-
-  .door-orden { border-color: var(--surface-accent); }
-  .door-biblioteca { border-color: var(--accent-bronze); }
-  .door-formacion { border-color: var(--accent-heraldic); }
-
-  .door-number {
-    font-family: var(--font-display);
-    font-size: var(--step-2);
-    line-height: 1;
-    color: var(--text-faint);
-  }
-
-  .door-orden .door-number { color: var(--text-accent-strong); }
-  .door-biblioteca .door-number { color: var(--nature-historia-fg); }
-  .door-formacion .door-number { color: var(--text-heraldic); }
-
-  .door-title {
-    font-size: var(--step-2);
-  }
-
-  .door-text {
-    color: var(--text-muted);
-    font-size: var(--step--1);
-    line-height: 1.6;
-    flex-grow: 1;
-  }
-
-  /* ---------- 6. Qué es / qué no es ---------- */
-  .isnt {
-    padding-block: var(--space-2xl) var(--space-xl);
-  }
-
-  .isnt-heading {
-    font-size: var(--step-3);
-    margin-block-end: var(--space-l);
-    max-width: 24ch;
-  }
-
-  .isnt-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-xl);
-    max-width: 56rem;
-  }
-
-  @media (max-width: 767px) {
-    .isnt-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .isnt-col-no {
-    border-inline-start: 1px solid var(--line-soft);
-    padding-inline-start: var(--space-xl);
-  }
-
-  @media (max-width: 767px) {
-    .isnt-col-no {
-      border-inline-start: none;
-      padding-inline-start: 0;
-      border-top: 1px solid var(--line-soft);
-      padding-block-start: var(--space-l);
-    }
-  }
-
-  .isnt-sub {
-    font-size: var(--step-1);
-    margin-block-end: var(--space-m);
-  }
-
-  .isnt-sub-yes { color: var(--text-heraldic); }
-  .isnt-sub-no { color: var(--text-faint); }
-
-  .isnt-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-m);
-  }
-
-  .isnt-list li {
-    display: flex;
-    gap: var(--space-s);
-    align-items: baseline;
-    line-height: 1.55;
-  }
-
-  .isnt-mark-yes {
-    color: var(--accent-bronze);
-    font-size: 0.6em;
-  }
-
-  .isnt-mark-no {
-    color: var(--text-faint);
-  }
-
-  .isnt-col-no .isnt-list li {
-    color: var(--text-muted);
-  }
-
 </style>

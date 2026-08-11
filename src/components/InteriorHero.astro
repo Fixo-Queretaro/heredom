@@ -1,0 +1,76 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  lede: string;
+  tone?: "parchment" | "ink";
+}
+
+const { eyebrow, title, lede, tone = "parchment" } = Astro.props;
+---
+
+<header class:list={["interior-hero", `interior-hero--${tone}`]}>
+  <div class="container interior-grid">
+    <div>
+      <p class="overline">{eyebrow}</p>
+      <h1>{title}</h1>
+    </div>
+    <p class="interior-lede">{lede}</p>
+  </div>
+</header>
+
+<style>
+  .interior-hero {
+    border-bottom: 1px solid var(--line-bronze);
+    padding-block: clamp(var(--space-xl), 8vw, var(--space-3xl));
+  }
+
+  .interior-hero--parchment {
+    background: var(--surface-panel);
+  }
+
+  .interior-hero--ink {
+    background: var(--surface-inverse);
+    color: var(--text-on-inverse);
+  }
+
+  .interior-grid {
+    align-items: end;
+    display: grid;
+    gap: clamp(var(--space-l), 6vw, var(--space-3xl));
+    grid-template-columns: minmax(0, 7fr) minmax(18rem, 5fr);
+  }
+
+  .interior-hero .overline {
+    color: var(--text-accent-strong);
+  }
+
+  .interior-hero--ink .overline {
+    color: var(--accent-bronze);
+  }
+
+  .interior-hero h1 {
+    font-size: clamp(2.7rem, 2rem + 3vw, 5rem);
+    margin-block-start: var(--space-s);
+    max-width: 18ch;
+  }
+
+  .interior-hero--ink h1 {
+    color: var(--text-on-inverse);
+  }
+
+  .interior-lede {
+    color: var(--text-muted);
+    font-size: var(--step-1);
+  }
+
+  .interior-hero--ink .interior-lede {
+    color: color-mix(in srgb, var(--text-on-inverse) 78%, transparent);
+  }
+
+  @media (max-width: 767px) {
+    .interior-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
