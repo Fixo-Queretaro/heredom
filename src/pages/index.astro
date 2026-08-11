@@ -15,6 +15,7 @@ import LibraryShowcase from "@components/LibraryShowcase.astro";
 import HistoricalChronicle from "@components/HistoricalChronicle.astro";
 import FourCornerstones from "@components/FourCornerstones.astro";
 import ActivitiesFormation from "@components/ActivitiesFormation.astro";
+import MexicoInstitutionalHistory from "@components/MexicoInstitutionalHistory.astro";
 import SiteFooter from "@components/SiteFooter.astro";
 ---
 
@@ -219,18 +220,8 @@ import SiteFooter from "@components/SiteFooter.astro";
     <!-- 11. ACTIVIDADES Y FORMACIÓN — cátedra destacada + archivo vivo -->
     <ActivitiesFormation />
 
-    <!-- 12. CIERRE -->
-    <section class="closing" aria-labelledby="closing-title">
-      <div class="prose-width closing-inner">
-        <h2 id="closing-title" class="closing-title">
-          El conocimiento comienza al cruzar el umbral
-        </h2>
-        <div class="closing-actions">
-          <a class="btn btn-primary" href="/biblioteca/">Explorar la Biblioteca</a>
-          <a class="btn btn-secondary" href="/la-orden/">Conocer la Orden</a>
-        </div>
-      </div>
-    </section>
+    <!-- 12. MEMORIA INSTITUCIONAL — establecimiento en México -->
+    <MexicoInstitutionalHistory />
   </main>
 
   <!-- 13. FOOTER -->
@@ -521,29 +512,4 @@ import SiteFooter from "@components/SiteFooter.astro";
     color: var(--text-muted);
   }
 
-  /* ---------- 11. Cierre ---------- */
-  .closing {
-    padding-block: var(--space-2xl);
-  }
-
-  .closing-inner {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-l);
-  }
-
-  .closing-title {
-    font-size: var(--step-3);
-    font-weight: 500;
-    max-width: 22ch;
-  }
-
-  .closing-actions {
-    display: flex;
-    gap: var(--space-m);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
 </style>

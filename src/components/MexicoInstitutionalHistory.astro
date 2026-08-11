@@ -1,0 +1,570 @@
+---
+const milestones = [
+  {
+    marker: "Origen",
+    title: "Filiación tradicional",
+    text: "La memoria de la Orden enlaza el Templarismo escocés, San Andrés del Cardo, Kilwinning y el clan Saint-Clair.",
+  },
+  {
+    marker: "Siglo XIX",
+    title: "Continuidad en Argentina",
+    text: "La transmisión atribuida a Jean-Jacques Régis de Cambacérès llega a Buenos Aires por medio de Antoine de Cambacérès.",
+  },
+  {
+    marker: "Oct. 2004",
+    title: "México y Buenos Aires",
+    text: "Comienza el intercambio epistolar entre el Oriente de la Ciudad de México y la Orden Real en Buenos Aires.",
+  },
+  {
+    marker: "2004",
+    title: "Compromiso de levantar Columnas",
+    text: "Se acuerda establecer los Trabajos en México conforme a Vetera Instituta et Fundamenta Ordinis.",
+  },
+  {
+    marker: "Dic. 2012",
+    title: "Ratificación documental",
+    text: "El acta institucional consigna la Logia Madre+Metropolitana y el Capítulo Soberano para México y el Caribe.",
+  },
+];
+
+const bodies = [
+  "Francmasonería Antediluviana y Apocalíptica —Pasaje del Ciclo y Francmasonería Noaquita—",
+  "F∴ F∴ D∴",
+  "Orden de los Jueces Filósofos Desconocidos —KDSH—",
+  "Capítulo de los Caballeros del Águila Negra",
+  "Academia de los Sabios Incógnitos",
+  "Orden de la Rosa Blanca y la Cruz Roja",
+  "Orden de los Caballeros Elegidos —Elus-Cohen—",
+  "Capítulo de Honor",
+  "Sacro Imperio del Águila Blanca y Negra, grado de Caballero de las Tres Cruces de Jerusalén",
+];
+---
+
+<section class="mexico-history" aria-labelledby="mexico-history-title">
+  <div class="container history-inner">
+    <header class="history-head">
+      <div>
+        <p class="overline history-eyebrow">Memoria institucional · México</p>
+        <h2 id="mexico-history-title">
+          Breve Historia de la Francmasonería Operativa y Templaria en México
+        </h2>
+      </div>
+      <p class="history-intro">
+        La presencia de la Orden Real en México se inscribe en una filiación que su
+        tradición vincula con el Templarismo escocés, la Abadía de Kilwinning y la
+        continuidad preservada en Argentina.
+      </p>
+    </header>
+
+    <p class="filiation" aria-label="Cadena de filiación tradicional">
+      <span>Pierre d’Aumont</span><i aria-hidden="true"></i>
+      <span>Mull de Kintyre</span><i aria-hidden="true"></i>
+      <span>Robert I the Bruce</span><i aria-hidden="true"></i>
+      <span>San Andrés del Cardo</span><i aria-hidden="true"></i>
+      <span>Abadía de Kilwinning</span><i aria-hidden="true"></i>
+      <span>Saint-Clair</span>
+    </p>
+
+    <div class="mexico-foundation">
+      <div class="foundation-year" aria-hidden="true">
+        <img src="/images/castillo-176.png" alt="" width="176" height="178" loading="lazy" />
+        <span>2004</span>
+        <small>Oriente de la Ciudad de México</small>
+      </div>
+
+      <div class="foundation-copy prose">
+        <p class="overline">El levantamiento de las Columnas</p>
+        <h3>De la correspondencia a los Trabajos de la Orden</h3>
+        <p>
+          En octubre de 2004, el Hermano H∴ de M∴ estableció contacto epistolar
+          desde la Ciudad de México con el M∴ Q∴ H∴ Merlín, S∴ G∴ M∴ de la
+          Orden Real en Buenos Aires. El intercambio quedó incorporado al archivo
+          institucional como testimonio del proceso de transmisión.
+        </p>
+        <p>
+          Entre octubre y noviembre se asumió el compromiso de levantar Columnas
+          en México. La instrucción tomó como guía el documento
+          <i lang="la">Vetera Instituta et Fundamenta Ordinis</i>, bajo los
+          principios de una Francmasonería vinculada con la Tradición Primordial,
+          el esoterismo cristiano y el legado templario.
+        </p>
+      </div>
+    </div>
+
+    <ol class="history-timeline" role="list">
+      {milestones.map((milestone) => (
+        <li>
+          <p class="timeline-marker">{milestone.marker}</p>
+          <h3>{milestone.title}</h3>
+          <p>{milestone.text}</p>
+        </li>
+      ))}
+    </ol>
+
+    <details class="institutional-act">
+      <summary>
+        <span class="act-label-closed">Leer el acta y la historia completa</span>
+        <span class="act-label-open">Cerrar el acta</span>
+        <span class="act-mark" aria-hidden="true"></span>
+      </summary>
+
+      <div class="act-body">
+        <header class="act-head">
+          <p class="overline">Documento institucional · Diciembre de 2012</p>
+          <h3>Continuidad, establecimiento y facultades en México</h3>
+        </header>
+
+        <div class="act-prose prose">
+          <p class="drop-cap">
+            La Orden Real de Heredom de Kilwinning deriva, según su tradición
+            institucional, de la filiación templaria Pierre d’Aumont — Mull de
+            Kintyre — Robert I the Bruce — Orden de San Andrés del Cardo — Logia de
+            Masones Operativos de la Abadía de Kilwinning — clan Saint-Clair.
+          </p>
+          <p>
+            La Orden Real de HRDM+KLWNNNG pertenece a la Masonería Operativa antigua
+            y sostiene profundas diferencias con la Masonería Especulativa moderna
+            surgida del cisma de 1717. Dichas diferencias comprenden cuestiones
+            doctrinales, rituales y simbólicas.
+          </p>
+          <p>
+            Los Trabajos de la Orden Real en Argentina retomaron fuerza y vigor
+            gracias a las transmisiones operadas por los Ilustres Hermanos A. M. y
+            c. M. v. L-S. Su filiación llegó a principios del siglo XIX mediante la
+            transmisión de Jean-Jacques Régis de Cambacérès —Archicanciller del
+            Imperio napoleónico y Gran Maestre de la Orden para el Imperio francés—
+            a su pariente Antoine de Cambacérès, quien se radicó en Buenos Aires.
+          </p>
+          <p>
+            En Argentina, la Orden se perpetuó familiarmente y fuera del cuadro de
+            las Obediencias Especulativas entonces en formación. En materia de
+            instrucción se rige por las doctrinas esotéricas tradicionales expuestas
+            por el Il∴ y M∴ Q∴ H∴ René Guénon.
+          </p>
+          <p>
+            El documento de 2012 consigna un intercambio de más de dos mil
+            comunicaciones entre México y Buenos Aires, conservadas como parte del
+            archivo institucional. A partir de este vínculo se estableció el
+            compromiso de regularizar a los Hermanos y comenzar los Trabajos bajo
+            los auspicios de la Orden Real de HRDM+KLWNNNG.
+          </p>
+          <p>
+            Se entregó el Brevet constitutivo de la Logia Madre+Metropolitana
+            «San Juan Evangelista» N.º 1 y una copia del manuscrito «Iñigo Jones».
+            La Logia levantó Columnas al Oriente de la Ciudad de México y conformó
+            el Gran Capítulo Soberano para México y el Caribe, con facultad para el
+            conferimiento de los siete grados de HRDM+KLWNNNG.
+          </p>
+        </div>
+
+        <section class="act-bodies" aria-labelledby="act-bodies-title">
+          <h4 id="act-bodies-title">Cuerpos y órdenes consignados</h4>
+          <ul role="list">
+            {bodies.map((body) => <li>{body}</li>)}
+          </ul>
+        </section>
+
+        <div class="act-declaration prose">
+          <p>
+            El acta establece que, mientras no se declare lo contrario en este
+            portal, la Orden Real de HRDM+KLWNNNG trabaja en México exclusivamente
+            en una sola sede: su Logia Madre+Metropolitana.
+          </p>
+          <p>Queda dicho, asentado y firmado; actas en registro.</p>
+        </div>
+
+        <footer class="act-signature">
+          <img src="/images/castillo-176.png" alt="" width="176" height="178" loading="lazy" />
+          <div>
+            <p class="signature-name">Orden Real de Heredom de Kilwinning</p>
+            <p>
+              Aug∴ y Resp∴ Logia Madre+Metropolitana<br />
+              San Juan Evangelista N.º 1<br />
+              Capítulo Soberano para México y el Caribe<br />
+              Oriente de la Ciudad de México
+            </p>
+          </div>
+          <p class="signature-date">
+            Dado en el Oriente de los Orientes por el P∴ I∴ y G∴ V∴ M∴ Merlín,
+            en la cima del Monte Heredom, el 21 de diciembre de 6012 V∴ L∴,
+            Solsticio de Verano en el Hemisferio Sur, bajo el Patronato de
+            San Juan el Bautista.
+          </p>
+        </footer>
+      </div>
+    </details>
+  </div>
+</section>
+
+<style>
+  .mexico-history {
+    position: relative;
+    padding-block: var(--space-3xl);
+    background: var(--surface-page);
+    border-top: 1px solid var(--line-bronze);
+  }
+
+  .history-head {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: clamp(var(--space-l), 6vw, var(--space-3xl));
+    align-items: end;
+  }
+
+  .history-eyebrow {
+    color: var(--text-accent-strong);
+  }
+
+  .history-head h2 {
+    font-size: clamp(2.3rem, 1.7rem + 2.5vw, 4.5rem);
+    margin-block-start: var(--space-s);
+    max-width: 18ch;
+  }
+
+  .history-intro {
+    color: var(--text-muted);
+    font-size: var(--step-1);
+  }
+
+  .filiation {
+    max-width: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    margin-block-start: var(--space-xl);
+    padding-block: var(--space-m);
+    border-block: 1px solid var(--line-bronze);
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .filiation i {
+    width: 1.5rem;
+    border-top: 1px solid var(--line-bronze);
+  }
+
+  .mexico-foundation {
+    display: grid;
+    grid-template-columns: minmax(15rem, 4fr) minmax(0, 8fr);
+    gap: clamp(var(--space-xl), 7vw, var(--space-3xl));
+    align-items: center;
+    padding-block: var(--space-2xl);
+  }
+
+  .foundation-year {
+    position: relative;
+    min-height: 22rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-l);
+    background: var(--surface-panel);
+    border: 1px solid var(--line-bronze);
+    overflow: hidden;
+  }
+
+  .foundation-year img {
+    position: absolute;
+    inset-inline-end: -1.5rem;
+    inset-block-end: -1.5rem;
+    width: 14rem;
+    opacity: 0.075;
+  }
+
+  .foundation-year span {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 10vw, 8.5rem);
+    line-height: 0.8;
+    color: var(--text-accent-strong);
+  }
+
+  .foundation-year small {
+    position: relative;
+    z-index: 1;
+    margin-block-start: var(--space-l);
+    padding-block-start: var(--space-s);
+    border-top: 1px solid var(--line-bronze);
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .foundation-copy > .overline {
+    color: var(--text-accent-strong);
+  }
+
+  .foundation-copy h3 {
+    font-size: var(--step-3);
+    max-width: 22ch;
+  }
+
+  .history-timeline {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-xl) 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    border-block: 1px solid var(--line-bronze);
+  }
+
+  .history-timeline li {
+    min-width: 0;
+    padding-inline: var(--space-m);
+  }
+
+  .history-timeline li + li {
+    border-inline-start: 1px solid var(--line-soft);
+  }
+
+  .timeline-marker {
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-accent-strong);
+  }
+
+  .history-timeline h3 {
+    font-size: var(--step-1);
+    margin-block-start: var(--space-s);
+  }
+
+  .history-timeline li > p:last-child {
+    margin-block-start: var(--space-s);
+    font-size: var(--step--1);
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  .institutional-act {
+    margin-block-start: var(--space-xl);
+  }
+
+  .institutional-act > summary {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    cursor: pointer;
+    list-style: none;
+    padding-block-end: 0.25em;
+    border-bottom: 1px solid var(--line-heraldic);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--text-heraldic);
+  }
+
+  .institutional-act > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .institutional-act > summary::marker {
+    content: "";
+  }
+
+  .act-label-open {
+    display: none;
+  }
+
+  .institutional-act[open] .act-label-closed {
+    display: none;
+  }
+
+  .institutional-act[open] .act-label-open {
+    display: inline;
+  }
+
+  .act-mark {
+    position: relative;
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+
+  .act-mark::before,
+  .act-mark::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 50%;
+    inset-block-start: 50%;
+    width: 0.75rem;
+    border-top: 1px solid currentColor;
+    transform: translate(-50%, -50%);
+  }
+
+  .act-mark::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .institutional-act[open] .act-mark::after {
+    display: none;
+  }
+
+  .act-body {
+    margin-block-start: var(--space-xl);
+    padding: clamp(var(--space-l), 6vw, var(--space-2xl));
+    background: var(--surface-panel-soft);
+    border: 1px solid var(--line-soft);
+    border-top-color: var(--line-bronze);
+  }
+
+  .act-head {
+    max-width: 48rem;
+    margin-block-end: var(--space-xl);
+  }
+
+  .act-head .overline {
+    color: var(--text-accent-strong);
+  }
+
+  .act-head h3 {
+    font-size: var(--step-3);
+    margin-block-start: var(--space-xs);
+  }
+
+  .act-prose {
+    max-width: var(--width-prose);
+  }
+
+  .act-bodies {
+    margin-block-start: var(--space-xl);
+    padding-block: var(--space-l);
+    border-block: 1px solid var(--line-bronze);
+  }
+
+  .act-bodies h4 {
+    font-size: var(--step-1);
+    margin-block-end: var(--space-m);
+  }
+
+  .act-bodies ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    columns: 2 20rem;
+    column-gap: var(--space-2xl);
+  }
+
+  .act-bodies li {
+    break-inside: avoid;
+    padding-block: var(--space-xs);
+    border-bottom: 1px solid var(--line-soft);
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+
+  .act-declaration {
+    margin-block-start: var(--space-xl);
+    max-width: var(--width-prose);
+  }
+
+  .act-signature {
+    display: grid;
+    grid-template-columns: 4rem minmax(16rem, 4fr) minmax(0, 6fr);
+    gap: var(--space-l);
+    align-items: start;
+    margin-block-start: var(--space-xl);
+    padding-block-start: var(--space-l);
+    border-top: 1px solid var(--line-bronze);
+  }
+
+  .act-signature img {
+    width: 4rem;
+  }
+
+  .signature-name {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+
+  .act-signature div > p:last-child,
+  .signature-date {
+    margin-block-start: var(--space-xs);
+    font-size: var(--step--1);
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .signature-date {
+    margin-block-start: 0;
+    font-style: italic;
+  }
+
+  @media (max-width: 1023px) {
+    .history-timeline {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-l) 0;
+    }
+
+    .history-timeline li:nth-child(odd) {
+      border-inline-start: 0;
+    }
+
+    .act-signature {
+      grid-template-columns: 4rem minmax(0, 1fr);
+    }
+
+    .signature-date {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .mexico-history {
+      padding-block: var(--space-2xl);
+    }
+
+    .history-head,
+    .mexico-foundation,
+    .history-timeline {
+      grid-template-columns: 1fr;
+    }
+
+    .filiation {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .filiation i {
+      width: 1px;
+      height: 1rem;
+      border-top: 0;
+      border-inline-start: 1px solid var(--line-bronze);
+      margin-inline-start: 0.25rem;
+    }
+
+    .foundation-year {
+      min-height: 17rem;
+    }
+
+    .history-timeline li {
+      padding: var(--space-m) 0;
+    }
+
+    .history-timeline li + li,
+    .history-timeline li:nth-child(odd) {
+      border-inline-start: 0;
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .act-signature {
+      grid-template-columns: 1fr;
+    }
+
+    .signature-date {
+      grid-column: auto;
+    }
+  }
+</style>
