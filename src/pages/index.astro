@@ -14,6 +14,7 @@ import OrnamentDivider from "@components/OrnamentDivider.astro";
 import LibraryShowcase from "@components/LibraryShowcase.astro";
 import HistoricalChronicle from "@components/HistoricalChronicle.astro";
 import FourCornerstones from "@components/FourCornerstones.astro";
+import ActivitiesFormation from "@components/ActivitiesFormation.astro";
 import SiteFooter from "@components/SiteFooter.astro";
 ---
 
@@ -164,7 +165,7 @@ import SiteFooter from "@components/SiteFooter.astro";
             Cursos y lecciones de acceso abierto, ordenados como rutas de estudio: de
             los fundamentos hacia la lectura simbólica y doctrinal.
           </p>
-          <a class="link-secondary" href="/formacion/">Ver las rutas de estudio</a>
+          <a class="link-secondary" href="/#actividades">Ver actividades y formación</a>
         </article>
       </div>
     </section>
@@ -215,41 +216,8 @@ import SiteFooter from "@components/SiteFooter.astro";
     <!-- 10. BIBLIOTECA DESTACADA — selección del archivo público -->
     <LibraryShowcase />
 
-    <!-- 11. FORMACIÓN -->
-    <section class="training" aria-labelledby="training-title">
-      <div class="container training-inner">
-        <div class="training-copy">
-          <p class="overline training-eyebrow">Formación abierta</p>
-          <h2 id="training-title" class="training-heading">Comenzar por los fundamentos</h2>
-          <p class="training-lede">
-            Las rutas de estudio ordenan los cursos de lo elemental a lo doctrinal.
-            Sin inscripciones, sin costos y sin registro: solo lectura y estudio.
-          </p>
-
-          <ol class="training-path" role="list">
-            <li><span class="path-node" aria-hidden="true"></span>Fundamentos e historia del oficio</li>
-            <li><span class="path-node" aria-hidden="true"></span>Lectura simbólica elemental</li>
-            <li><span class="path-node" aria-hidden="true"></span>Tradición, doctrina y fuentes</li>
-          </ol>
-
-          <p class="training-cta">
-            <a class="btn btn-on-dark" href="/formacion/">Conocer las rutas de estudio</a>
-          </p>
-        </div>
-
-        <article class="training-course" aria-label="Curso destacado de demostración">
-          <p class="course-flag">Curso introductorio · demo</p>
-          <h3 class="course-name">[DEMO] Introducción a la lectura simbólica</h3>
-          <dl class="course-facts">
-            <div><dt>Nivel</dt><dd>Introductorio</dd></div>
-            <div><dt>Módulos</dt><dd>3</dd></div>
-            <div><dt>Lecciones</dt><dd>12</dd></div>
-            <div><dt>Formato</dt><dd>Lectura abierta</dd></div>
-          </dl>
-          <a class="course-link" href="/formacion/cursos/">Ver el curso →</a>
-        </article>
-      </div>
-    </section>
+    <!-- 11. ACTIVIDADES Y FORMACIÓN — cátedra destacada + archivo vivo -->
+    <ActivitiesFormation />
 
     <!-- 12. CIERRE -->
     <section class="closing" aria-labelledby="closing-title">
@@ -551,145 +519,6 @@ import SiteFooter from "@components/SiteFooter.astro";
 
   .isnt-col-no .isnt-list li {
     color: var(--text-muted);
-  }
-
-  /* ---------- 9. Formación ---------- */
-  .training {
-    background: var(--surface-inverse);
-    color: var(--text-on-inverse);
-    padding-block: var(--space-2xl);
-    margin-block: 0;
-  }
-
-  .training-inner {
-    display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    gap: clamp(var(--space-l), 5vw, var(--space-2xl));
-    align-items: center;
-  }
-
-  @media (max-width: 899px) {
-    .training-inner {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .training-eyebrow {
-    color: var(--heredom-green-soft);
-  }
-
-  .training-heading {
-    font-size: var(--step-3);
-    color: var(--text-on-inverse);
-    margin-block: var(--space-s) var(--space-m);
-  }
-
-  .training-lede {
-    color: rgba(244, 239, 226, 0.78);
-    max-width: 34rem;
-  }
-
-  .training-path {
-    list-style: none;
-    margin: var(--space-l) 0 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-s);
-  }
-
-  .training-path li {
-    display: flex;
-    align-items: center;
-    gap: var(--space-s);
-    font-family: var(--font-ui);
-    font-size: var(--step--1);
-    color: rgba(244, 239, 226, 0.9);
-  }
-
-  .path-node {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    border: 2px solid var(--accent-heraldic);
-    flex-shrink: 0;
-  }
-
-  .training-cta {
-    margin-block-start: var(--space-l);
-  }
-
-  .btn-on-dark {
-    border: 1px solid rgba(244, 239, 226, 0.55);
-    color: var(--text-on-inverse);
-    background: transparent;
-  }
-
-  .btn-on-dark:hover {
-    border-color: var(--text-on-inverse);
-    background: rgba(244, 239, 226, 0.1);
-    color: var(--text-on-inverse);
-  }
-
-  .training-course {
-    background: rgba(255, 253, 245, 0.04);
-    border: 1px solid rgba(244, 239, 226, 0.22);
-    border-top: 2px solid var(--accent-heraldic);
-    padding: var(--space-l);
-  }
-
-  .course-flag {
-    font-family: var(--font-ui);
-    font-size: 0.72rem;
-    letter-spacing: var(--tracking-caps);
-    text-transform: uppercase;
-    color: var(--heredom-green-soft);
-    margin-block-end: var(--space-s);
-  }
-
-  .course-name {
-    font-size: var(--step-2);
-    color: var(--text-on-inverse);
-    margin-block-end: var(--space-m);
-  }
-
-  .course-facts {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-s) var(--space-m);
-    margin: 0 0 var(--space-m);
-  }
-
-  .course-facts dt {
-    font-family: var(--font-ui);
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(244, 239, 226, 0.6);
-  }
-
-  .course-facts dd {
-    margin: 0;
-    font-family: var(--font-ui);
-    font-size: var(--step--1);
-    color: var(--text-on-inverse);
-  }
-
-  .course-link {
-    font-family: var(--font-ui);
-    font-size: var(--step--1);
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--heredom-green-soft);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(232, 242, 232, 0.45);
-    padding-block-end: 0.15em;
-  }
-
-  .course-link:hover {
-    color: #ffffff;
-    border-color: currentColor;
   }
 
   /* ---------- 11. Cierre ---------- */

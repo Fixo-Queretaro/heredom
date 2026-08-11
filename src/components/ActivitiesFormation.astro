@@ -1,0 +1,414 @@
+---
+import Circumpunct from "@components/Circumpunct.astro";
+
+const programme = [
+  {
+    number: "I",
+    title: "Antecedentes europeos",
+    text: "Renacimiento, escuela de Flandes, Manierismo español y pintura del siglo XVII.",
+  },
+  {
+    number: "II",
+    title: "Los orígenes en Nueva España",
+    text: "Primeros talleres, pintores indígenas y formación del arte cristiano virreinal.",
+  },
+  {
+    number: "III",
+    title: "El apogeo del siglo XVII",
+    text: "Los Echave, los Juárez, Sebastián López de Arteaga, los Correa y Villalpando.",
+  },
+  {
+    number: "IV",
+    title: "El siglo XVIII y San Carlos",
+    text: "Últimas expresiones virreinales y tránsito hacia la Real Academia de las Tres Nobles Artes.",
+  },
+];
+
+const archive = [
+  {
+    type: "Peritexto · 2006–2007",
+    title: "Entrevista con el Dr. Jorge Francisco Ferro",
+    detail: "Primera parte de una conversación sobre transmisión, Templarismo y Masonería Operativa.",
+    href: "https://porlatradicion.com/jffprimeraparte.pdf",
+    label: "Abrir primera parte",
+  },
+  {
+    type: "Peritexto · 2012",
+    title: "Nueva entrevista con Jorge Francisco Ferro",
+    detail: "Continuación del diálogo doctrinal conservado por Por la Tradición.",
+    href: "https://porlatradicion.com/entrevista%20JFF%20enero%202012.pdf",
+    label: "Abrir entrevista",
+  },
+  {
+    type: "Conferencia · Archivo 2010",
+    title: "Elementos de numerología hermética",
+    detail: "Actividad impartida por Fernando Trejos sobre el carácter cualitativo y simbólico del número.",
+    href: "https://porlatradicion.com/actividades.html",
+    label: "Consultar registro",
+  },
+];
+---
+
+<section id="actividades" class="activities" aria-labelledby="activities-title">
+  <div class="container activities-inner">
+    <header class="activities-head">
+      <div>
+        <p class="overline activities-eyebrow">Actividades y formación</p>
+        <h2 id="activities-title">La tradición también se transmite de viva voz</h2>
+      </div>
+      <p class="activities-lede">
+        Cursos, conferencias y documentos de trabajo para profundizar en el arte,
+        el símbolo y las doctrinas tradicionales. Las nuevas convocatorias se
+        publicarán aquí cuando cuenten con programa y responsable confirmados.
+      </p>
+    </header>
+
+    <article class="featured-course" aria-labelledby="virreinal-title">
+      <div class="course-copy">
+        <p class="course-status">Curso monográfico · Archivo de actividades</p>
+        <h3 id="virreinal-title">
+          Introducción al Arte Virreinal: siglos XVI al XVIII, Nueva España
+        </h3>
+        <p class="course-summary">
+          Un acercamiento a la formación del arte virreinal desde sus antecedentes
+          europeos hasta el nacimiento de la Academia de San Carlos, atendiendo a
+          su iconografía, sus técnicas y sus lenguajes plásticos.
+        </p>
+      </div>
+
+      <aside class="course-register" aria-label="Ficha del curso">
+        <Circumpunct class="register-symbol" size={52} />
+        <dl>
+          <div><dt>Naturaleza</dt><dd>Curso histórico</dd></div>
+          <div><dt>Responsable</dt><dd>Mtro. Homero Moreno Arredondo</dd></div>
+          <div><dt>Programa</dt><dd>Cuatro núcleos temáticos</dd></div>
+          <div><dt>Estado</dt><dd>Conservado en archivo</dd></div>
+        </dl>
+      </aside>
+
+      <details id="programa-arte-virreinal" class="course-programme">
+        <summary>
+          <span class="summary-closed">Consultar programa</span>
+          <span class="summary-open">Cerrar programa</span>
+          <span class="summary-mark" aria-hidden="true"></span>
+        </summary>
+        <ol role="list">
+          {programme.map((item) => (
+            <li>
+              <span class="programme-number" aria-hidden="true">{item.number}</span>
+              <h4>{item.title}</h4>
+              <p>{item.text}</p>
+            </li>
+          ))}
+        </ol>
+      </details>
+    </article>
+
+    <section class="activity-archive" aria-labelledby="archive-title">
+      <header class="archive-head">
+        <p class="overline">Archivo vivo</p>
+        <h3 id="archive-title">Peritextos y actividades conservadas</h3>
+      </header>
+      <div class="archive-grid">
+        {archive.map((item) => (
+          <article class="archive-item">
+            <p class="archive-type">{item.type}</p>
+            <h4>{item.title}</h4>
+            <p class="archive-detail">{item.detail}</p>
+            <a href={item.href} target="_blank" rel="noopener">
+              {item.label}<span class="sr-only"> en una pestaña nueva</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+</section>
+
+<style>
+  .activities {
+    background: var(--surface-inverse);
+    color: var(--text-on-inverse);
+    padding-block: var(--space-2xl);
+    border-block: 1px solid var(--line-bronze);
+  }
+
+  .activities-head {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: clamp(var(--space-l), 5vw, var(--space-2xl));
+    align-items: end;
+    margin-block-end: var(--space-xl);
+  }
+
+  .activities-eyebrow {
+    color: var(--heredom-green-soft);
+  }
+
+  .activities-head h2 {
+    color: var(--text-on-inverse);
+    font-size: var(--step-4);
+    margin-block-start: var(--space-s);
+    max-width: 18ch;
+  }
+
+  .activities-lede {
+    color: rgba(244, 239, 226, 0.72);
+  }
+
+  .featured-course {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(18rem, 5fr);
+    gap: clamp(var(--space-l), 5vw, var(--space-2xl));
+    padding: clamp(var(--space-l), 5vw, var(--space-xl));
+    background: rgba(255, 253, 245, 0.045);
+    border: 1px solid rgba(244, 239, 226, 0.2);
+    border-top-color: var(--line-bronze);
+  }
+
+  .featured-course::before {
+    content: "";
+    position: absolute;
+    inset: var(--space-s);
+    border: 1px solid rgba(155, 117, 66, 0.18);
+    pointer-events: none;
+  }
+
+  .course-copy,
+  .course-register,
+  .course-programme {
+    position: relative;
+    z-index: 1;
+  }
+
+  .course-status,
+  .archive-type {
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+
+  .course-status {
+    color: rgba(244, 239, 226, 0.62);
+  }
+
+  .course-copy h3 {
+    color: var(--text-on-inverse);
+    font-size: clamp(2rem, 1.55rem + 1.7vw, 3.15rem);
+    margin-block-start: var(--space-s);
+    max-width: 18ch;
+  }
+
+  .course-summary {
+    color: rgba(244, 239, 226, 0.76);
+    margin-block-start: var(--space-m);
+    max-width: 40rem;
+  }
+
+  .course-register {
+    padding-inline-start: var(--space-l);
+    border-inline-start: 1px solid rgba(155, 117, 66, 0.5);
+  }
+
+  .register-symbol {
+    color: var(--accent-bronze);
+    margin-block-end: var(--space-m);
+  }
+
+  .course-register dl {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-m);
+  }
+
+  .course-register dt {
+    font-family: var(--font-ui);
+    font-size: 0.64rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(244, 239, 226, 0.48);
+  }
+
+  .course-register dd {
+    margin: var(--space-2xs) 0 0;
+    color: var(--text-on-inverse);
+    font-size: var(--step--1);
+    line-height: 1.5;
+  }
+
+  .course-programme {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(155, 117, 66, 0.48);
+    padding-block-start: var(--space-m);
+  }
+
+  .course-programme summary {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--text-on-inverse);
+  }
+
+  .course-programme summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .course-programme summary::marker {
+    content: "";
+  }
+
+  .summary-open {
+    display: none;
+  }
+
+  .course-programme[open] .summary-closed {
+    display: none;
+  }
+
+  .course-programme[open] .summary-open {
+    display: inline;
+  }
+
+  .summary-mark {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-inline-end: 1px solid currentColor;
+    border-block-end: 1px solid currentColor;
+    transform: rotate(45deg) translateY(-0.15rem);
+    transition: transform var(--transition-quiet);
+  }
+
+  .course-programme[open] .summary-mark {
+    transform: rotate(225deg) translate(-0.1rem, -0.1rem);
+  }
+
+  .course-programme ol {
+    list-style: none;
+    margin: var(--space-l) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-l);
+  }
+
+  .course-programme li {
+    padding-block-start: var(--space-m);
+    border-top: 1px solid rgba(244, 239, 226, 0.18);
+  }
+
+  .programme-number {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    color: var(--accent-bronze);
+  }
+
+  .course-programme h4 {
+    color: var(--text-on-inverse);
+    font-size: var(--step-1);
+    margin-block-start: var(--space-xs);
+  }
+
+  .course-programme li p {
+    color: rgba(244, 239, 226, 0.64);
+    font-size: var(--step--1);
+    line-height: 1.55;
+    margin-block-start: var(--space-xs);
+  }
+
+  .activity-archive {
+    margin-block-start: var(--space-xl);
+    padding-block-start: var(--space-xl);
+    border-top: 1px solid rgba(155, 117, 66, 0.55);
+  }
+
+  .archive-head .overline {
+    color: rgba(244, 239, 226, 0.56);
+  }
+
+  .archive-head h3 {
+    color: var(--text-on-inverse);
+    font-size: var(--step-2);
+    margin-block-start: var(--space-xs);
+  }
+
+  .archive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl);
+    margin-block-start: var(--space-l);
+  }
+
+  .archive-item {
+    min-width: 0;
+    padding-block-start: var(--space-m);
+    border-top: 1px solid rgba(244, 239, 226, 0.2);
+  }
+
+  .archive-type {
+    color: var(--heredom-green-soft);
+  }
+
+  .archive-item h4 {
+    color: var(--text-on-inverse);
+    font-size: var(--step-1);
+    margin-block-start: var(--space-s);
+  }
+
+  .archive-detail {
+    color: rgba(244, 239, 226, 0.64);
+    font-size: var(--step--1);
+    margin-block-start: var(--space-s);
+  }
+
+  .archive-item a {
+    display: inline-block;
+    margin-block-start: var(--space-m);
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-on-inverse);
+    text-decoration-color: rgba(155, 117, 66, 0.75);
+  }
+
+  .archive-item a::after {
+    content: " ↗";
+  }
+
+  @media (max-width: 899px) {
+    .activities-head,
+    .featured-course {
+      grid-template-columns: 1fr;
+    }
+
+    .course-register {
+      padding-inline-start: 0;
+      padding-block-start: var(--space-l);
+      border-inline-start: 0;
+      border-top: 1px solid rgba(155, 117, 66, 0.5);
+    }
+
+    .course-programme ol {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 639px) {
+    .course-register dl,
+    .course-programme ol,
+    .archive-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
