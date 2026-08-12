@@ -14,6 +14,10 @@ interface Props {
 
 const { title, description = "Heredom — portal institucional, editorial y formativo." } =
   Astro.props;
+const pageTitle = title.includes("Heredom") ? title : `${title} · Heredom`;
+// El dominio configurado sigue siendo de ejemplo; no publicar una canonical falsa.
+const hasProductionSite = Astro.site && !Astro.site.hostname.endsWith(".example");
+const canonicalURL = hasProductionSite ? new URL(Astro.url.pathname, Astro.site) : undefined;
 ---
 
 <!doctype html>
@@ -22,8 +26,17 @@ const { title, description = "Heredom — portal institucional, editorial y form
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#861f2c" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Heredom" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    {canonicalURL && <meta property="og:url" content={canonicalURL.toString()} />}
+    <meta name="twitter:card" content="summary" />
+    {canonicalURL && <link rel="canonical" href={canonicalURL.toString()} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} · Heredom</title>
+    <title>{pageTitle}</title>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>

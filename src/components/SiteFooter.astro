@@ -1,9 +1,10 @@
 ---
 const nav = [
   { href: "/", label: "Inicio" },
+  { href: "/la-orden/", label: "La Orden" },
+  { href: "/tradicion-e-historia/", label: "Tradición e historia" },
   { href: "/biblioteca/", label: "Biblioteca" },
   { href: "/#actividades", label: "Actividades y formación" },
-  { href: "/#memoria-mexico", label: "Memoria institucional" },
 ];
 
 const social = [
@@ -83,17 +84,16 @@ const social = [
       </ul>
     </div>
 
-    <figure class="footer-greco">
-      <div class="footer-greco-frame">
+    <figure class="footer-cup">
+      <div class="footer-cup-frame">
         <img
           src="/images/san-juan-evangelista-el-greco-640.webp"
-          alt="Detalle de San Juan Evangelista, obra de El Greco"
+          alt="Cáliz con el dragón en San Juan Evangelista, obra de El Greco"
           width="640"
           height="854"
           loading="lazy"
         />
       </div>
-      <figcaption>El Greco · ca. 1605</figcaption>
     </figure>
   </div>
 
@@ -104,7 +104,7 @@ const social = [
         historia documentada.
       </p>
 
-      <aside class="approach-channel" aria-labelledby="approach-title">
+      <aside id="canal-acercamiento" class="approach-channel" aria-labelledby="approach-title">
         <!-- Pendiente: convertir el título en enlace cuando exista el Google Forms oficial. -->
         <p id="approach-title" class="approach-title">Canal de acercamiento</p>
         <p>
@@ -225,41 +225,33 @@ const social = [
     width: 1rem;
   }
 
-  .footer-greco {
+  .footer-cup {
     justify-self: end;
     width: 5.25rem;
   }
 
-  .footer-greco-frame {
+  .footer-cup-frame {
+    aspect-ratio: 0.58;
     border: 1px solid var(--line-bronze);
     overflow: hidden;
-    padding: 0.2rem;
     position: relative;
   }
 
-  .footer-greco-frame::after {
-    box-shadow: inset 0 0 0.65rem 0.3rem var(--surface-accent);
+  .footer-cup-frame::after {
+    box-shadow: inset 0 0 0.75rem 0.28rem var(--surface-accent);
     content: "";
-    inset: 0.2rem;
+    inset: 0;
     pointer-events: none;
     position: absolute;
   }
 
-  .footer-greco img {
-    aspect-ratio: 3 / 4;
+  .footer-cup img {
     filter: sepia(0.12) saturate(0.82) contrast(0.94);
-    object-fit: cover;
-    width: 100%;
-  }
-
-  .footer-greco figcaption {
-    color: color-mix(in srgb, var(--text-on-accent) 72%, transparent);
-    font-family: var(--font-ui);
-    font-size: 0.6rem;
-    letter-spacing: 0.06em;
-    line-height: 1.4;
-    margin-block-start: var(--space-xs);
-    text-align: center;
+    inset-block-start: -114%;
+    inset-inline-start: -0.1rem;
+    max-width: none;
+    position: absolute;
+    width: 280%;
   }
 
   .footer-lower {
@@ -319,7 +311,7 @@ const social = [
       grid-column: 1;
     }
 
-    .footer-greco {
+    .footer-cup {
       grid-column: 2;
       grid-row: 2;
       justify-self: start;
@@ -347,12 +339,12 @@ const social = [
     }
 
     .footer-social,
-    .footer-greco {
+    .footer-cup {
       grid-column: 1;
       grid-row: auto;
     }
 
-    .footer-greco {
+    .footer-cup {
       justify-self: start;
       width: 4.75rem;
     }

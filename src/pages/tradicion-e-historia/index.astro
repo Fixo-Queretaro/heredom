@@ -1,0 +1,28 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SiteHeader from "@components/SiteHeader.astro";
+import InteriorHero from "@components/InteriorHero.astro";
+import HistoricalChronicle from "@components/HistoricalChronicle.astro";
+import MexicoInstitutionalHistory from "@components/MexicoInstitutionalHistory.astro";
+import SiteFooter from "@components/SiteFooter.astro";
+---
+
+<BaseLayout
+  title="Tradición e historia"
+  description="Cronología de la tradición templario-escocesa y memoria institucional de la Orden Real de Heredom de Kilwinning en México."
+>
+  <SiteHeader current="/tradicion-e-historia/" />
+
+  <main id="contenido">
+    <InteriorHero
+      eyebrow="Memoria y fuentes"
+      title="Tradición e historia"
+      lede="Un recorrido que distingue los acontecimientos documentados de los relatos conservados por la tradición institucional, desde el Temple hasta los Trabajos en México."
+      tone="ink"
+    />
+    <HistoricalChronicle />
+    <MexicoInstitutionalHistory />
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

@@ -1,0 +1,129 @@
+<section id="umbral" class="threshold" aria-labelledby="threshold-title">
+  <div class="threshold-inner">
+    <header class="threshold-head">
+      <p class="overline threshold-eyebrow">El umbral</p>
+      <h2 id="threshold-title">Una herencia que se estudia, se comprende y se transmite</h2>
+    </header>
+
+    <div class="threshold-grid">
+      <div class="threshold-copy prose">
+        <p class="drop-cap">
+          Heredom reúne la tradición recibida, los documentos que la acompañan, los
+          símbolos que la expresan y una formación pública para estudiarla con calma.
+          Cada contenido declara su naturaleza: tradición institucional, doctrina,
+          estudio o historia documentada.
+        </p>
+        <p>
+          La Orden se presenta como una vía iniciática de estudio, disciplina y
+          construcción interior; no como organización partidista, entretenimiento
+          esotérico ni promesa de poder o prestigio.
+        </p>
+        <a class="threshold-link" href="/la-orden/">
+          Conocer los fundamentos de la Orden
+        </a>
+      </div>
+
+      <figure class="threshold-figure">
+        <img
+          src="/images/rene-guenon.webp"
+          alt="Retrato de René Guénon"
+          width="440"
+          height="329"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>René Guénon</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .threshold {
+    background: var(--surface-panel-soft);
+    padding-block: var(--space-2xl);
+  }
+
+  .threshold-inner {
+    width: min(100% - 2 * var(--gutter), 64rem);
+    margin-inline: auto;
+  }
+
+  .threshold-head {
+    max-width: 43rem;
+  }
+
+  .threshold-eyebrow {
+    color: var(--text-accent-strong);
+  }
+
+  .threshold-head h2 {
+    font-size: var(--step-3);
+    margin-block-start: var(--space-s);
+    max-width: 30ch;
+  }
+
+  .threshold-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(15rem, 4fr);
+    gap: clamp(var(--space-l), 5vw, var(--space-2xl));
+    align-items: center;
+    margin-block-start: var(--space-l);
+  }
+
+  .threshold-copy {
+    max-width: 42rem;
+  }
+
+  .threshold-copy p + p {
+    margin-block-start: var(--space-m);
+  }
+
+  .threshold-link {
+    display: inline-block;
+    margin-block-start: var(--space-l);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-heraldic);
+    text-decoration-color: var(--line-heraldic);
+  }
+
+  .threshold-figure {
+    justify-self: end;
+    margin: 0;
+    width: min(100%, 22rem);
+  }
+
+  .threshold-figure img {
+    border: 1px solid var(--line-bronze);
+    filter: grayscale(0.35) sepia(0.14) contrast(1.02);
+    outline: 1px solid var(--line-soft);
+    outline-offset: 5px;
+  }
+
+  .threshold-figure figcaption {
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    font-style: italic;
+    margin-block-start: var(--space-s);
+    text-align: center;
+  }
+
+  @media (max-width: 767px) {
+    .threshold {
+      padding-block: var(--space-xl);
+    }
+
+    .threshold-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .threshold-figure {
+      justify-self: center;
+      width: min(100%, 17rem);
+    }
+  }
+</style>
