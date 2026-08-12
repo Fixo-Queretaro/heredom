@@ -8,7 +8,7 @@ export type LibraryNature =
   | "Estudio de fondo"
   | "Simbolismo cíclico";
 
-export type LibraryCoverTone = "ink" | "burgundy" | "parchment";
+export type LibraryCoverTone = "ink" | "burgundy" | "bottle" | "parchment";
 
 export interface LibraryDocument {
   slug: string;
@@ -111,7 +111,7 @@ export const libraryDocuments: LibraryDocument[] = [
       "La pieza articula memoria institucional, tradición jacobita y documentos conservados por la Orden.",
     topics: ["Arras", "Charles Edward Stuart", "Jacobitismo", "Rosa+Cruz"],
     relatedSlugs: ["soberano-principe-rosa-cruz-heredom", "aspectos-historia-sagrada-francmasoneria-operativa"],
-    coverTone: "burgundy",
+    coverTone: "bottle",
     featured: true,
   },
   {
