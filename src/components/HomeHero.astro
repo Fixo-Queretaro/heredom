@@ -75,8 +75,11 @@
 
 <style>
   .home-hero {
-    background: var(--surface-panel);
-    border-bottom: 1px solid var(--line-soft);
+    background:
+      linear-gradient(135deg, rgba(23, 35, 61, 0.16), transparent 48%),
+      var(--surface-hero);
+    border-bottom: 1px solid rgba(244, 239, 226, 0.18);
+    color: var(--text-on-inverse);
   }
 
   .hero-grid {
@@ -121,7 +124,7 @@
     width: clamp(5.5rem, 8vw, 7.25rem);
     height: auto;
     margin-block-start: 0.35rem; /* alineación óptica con el H1 */
-    filter: drop-shadow(0 3px 10px rgba(89, 21, 29, 0.11));
+    filter: drop-shadow(0 4px 12px rgba(7, 20, 17, 0.34));
     transform-origin: 50% 48%;
   }
 
@@ -144,7 +147,7 @@
   }
 
   .hero-heading {
-    color: var(--text-accent);
+    color: var(--text-on-inverse);
     font-weight: 500;
     font-size: clamp(2.35rem, 1.6rem + 2.8vw, 3.75rem);
     line-height: 1.08;
@@ -158,14 +161,14 @@
     font-weight: 500;
     font-style: italic;
     line-height: 1.3;
-    color: var(--text-primary);
+    color: rgba(244, 239, 226, 0.92);
   }
 
   .hero-lede {
     max-width: 33rem;
     font-size: var(--step-1);
     line-height: 1.55;
-    color: var(--text-muted);
+    color: rgba(244, 239, 226, 0.78);
   }
 
   .hero-actions {
@@ -181,7 +184,7 @@
     gap: 0.2em;
     max-width: 31rem;
     padding-inline-start: var(--space-m);
-    border-inline-start: 1px solid var(--line-heraldic);
+    border-inline-start: 1px solid rgba(155, 117, 66, 0.82);
   }
 
   .hero-seat-primary {
@@ -190,14 +193,40 @@
     font-weight: 650;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--text-primary);
+    color: var(--text-on-inverse);
   }
 
   .hero-seat-secondary {
     font-family: var(--font-body);
     font-size: var(--step--1);
     font-style: italic;
-    color: var(--text-muted);
+    color: rgba(244, 239, 226, 0.72);
+  }
+
+  .hero-actions .btn-primary {
+    background: var(--text-on-inverse);
+    color: var(--surface-hero);
+    box-shadow: 0 5px 18px -10px rgba(0, 0, 0, 0.62);
+  }
+
+  .hero-actions .btn-primary:hover {
+    background: #fffdf5;
+    color: #102a24;
+  }
+
+  .hero-actions .btn-secondary {
+    color: var(--text-on-inverse);
+    border-color: rgba(244, 239, 226, 0.48);
+  }
+
+  .hero-actions .btn-secondary:hover {
+    color: #fffdf5;
+    border-color: rgba(255, 253, 245, 0.9);
+    background: rgba(255, 253, 245, 0.08);
+  }
+
+  .home-hero :focus-visible {
+    outline-color: var(--accent-bronze);
   }
 
   .hero-art {

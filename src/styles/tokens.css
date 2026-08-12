@@ -12,6 +12,7 @@
   --raw-borgona: #861f2c;
   --raw-borgona-oscuro: #59151d;
   --raw-azul-tinta: #17233d;
+  --raw-verde-botella: #183b33;
   --raw-bronce: #9b7542;
   --raw-salvia: #a7b29a;
   --raw-linea: rgba(25, 22, 18, 0.18);
@@ -27,6 +28,7 @@
   --surface-panel-soft: #f9f1de;              /* intermedio pergamino/marfil */
   --surface-inverse: var(--raw-azul-tinta);   /* bandas solemnes invertidas */
   --surface-accent: var(--raw-borgona);       /* llamadas institucionales */
+  --surface-hero: var(--raw-verde-botella);   /* portada institucional */
   --surface-heraldic: var(--heredom-green-dark); /* transiciones doctrinales */
 
   /* ---- Texto ---- */
