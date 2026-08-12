@@ -4,6 +4,9 @@
  * Imagen: Woman teaching geometry, British Library Burney 275, f. 293r,
  * ca. 1309–1316. Dominio público. Original conservado en recursos-originales/.
  */
+
+import InstitutionalDocument from "./InstitutionalDocument.astro";
+import { inigoJonesBlocks } from "../data/institutionalDocuments";
 ---
 
 <section class="old-charges" aria-labelledby="old-charges-title">
@@ -53,6 +56,20 @@
       </figcaption>
     </figure>
   </div>
+
+  <div class="old-charges__document">
+    <InstitutionalDocument
+      variant="jones"
+      blocks={inigoJonesBlocks}
+      closedLabel="Leer el Manuscrito Iñigo Jones"
+      openLabel="Cerrar el manuscrito"
+      eyebrow="Los Antiguos Deberes · Manuscrito Iñigo Jones"
+      title="La Antigua Constitución de los Libres y Aceptados Masones"
+      sourceLine="Año 1607"
+      pageCount={13}
+      pdfHref="/documentos/manuscrito-inigo-jones-1607.pdf"
+    />
+  </div>
 </section>
 
 <style>
@@ -66,6 +83,11 @@
     width: min(100% - (2 * var(--gutter)), var(--width-content));
     margin-inline: auto;
     gap: clamp(var(--space-xl), 7vw, var(--space-3xl));
+  }
+
+  .old-charges__document {
+    width: min(100% - (2 * var(--gutter)), var(--width-content));
+    margin-inline: auto;
   }
 
   .old-charges__copy {
