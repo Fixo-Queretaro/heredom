@@ -53,19 +53,6 @@ const worldOrders = [
 ---
 
 <footer class="site-footer">
-  <div class="footer-controls" aria-label="Comparador temporal de color">
-    <div class="footer-controls-inner">
-      <button
-        class="footer-color-toggle"
-        type="button"
-        aria-pressed="false"
-        data-footer-color-toggle
-      >
-        <span data-footer-color-label>Probar footer verde</span>
-      </button>
-    </div>
-  </div>
-
   <div class="footer-inner">
     <div class="footer-brand">
       <img
@@ -186,76 +173,15 @@ const worldOrders = [
   </div>
 </footer>
 
-<script>
-  const footer = document.querySelector<HTMLElement>(".site-footer");
-  const footerColorToggle = footer?.querySelector<HTMLButtonElement>(
-    "[data-footer-color-toggle]",
-  );
-  const footerColorLabel = footer?.querySelector<HTMLElement>("[data-footer-color-label]");
-
-  footerColorToggle?.addEventListener("click", () => {
-    const isGreen = footer?.classList.toggle("is-green") ?? false;
-    footerColorToggle.setAttribute("aria-pressed", String(isGreen));
-
-    if (footerColorLabel) {
-      footerColorLabel.textContent = isGreen
-        ? "Volver al footer bermejo"
-        : "Probar footer verde";
-    }
-  });
-</script>
-
 <style>
   .site-footer {
-    --footer-surface: var(--surface-accent);
+    --footer-surface: var(--surface-hero);
     background: var(--footer-surface);
     border-top: 1px solid var(--line-bronze);
     color: var(--text-on-accent);
     margin-block-start: 0;
     position: relative;
     transition: background-color var(--transition-quiet);
-  }
-
-  .site-footer.is-green {
-    --footer-surface: var(--surface-hero);
-  }
-
-  .footer-controls {
-    inset-block-start: 0;
-    inset-inline: 0;
-    pointer-events: none;
-    position: absolute;
-    z-index: 2;
-  }
-
-  .footer-controls-inner {
-    display: flex;
-    justify-content: flex-end;
-    margin-inline: auto;
-    width: min(100% - 2 * var(--gutter), var(--width-content));
-  }
-
-  .footer-color-toggle {
-    background: var(--surface-page);
-    border: 1px solid var(--line-bronze);
-    color: var(--text-accent-strong);
-    cursor: pointer;
-    font-family: var(--font-ui);
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    padding: 0.55rem 0.8rem;
-    pointer-events: auto;
-    text-transform: uppercase;
-    transform: translateY(-50%);
-  }
-
-  .footer-color-toggle:hover {
-    background: var(--surface-panel-soft);
-  }
-
-  .footer-color-toggle:focus-visible {
-    outline-color: var(--line-bronze);
   }
 
   .footer-inner,
@@ -367,7 +293,7 @@ const worldOrders = [
 
   .footer-cup-frame {
     aspect-ratio: 0.58;
-    border: 1px solid var(--line-bronze);
+    border: 3px solid var(--line-accent);
     overflow: hidden;
     position: relative;
   }
