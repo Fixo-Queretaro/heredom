@@ -1,4 +1,6 @@
 ---
+import MonochromeFlag from "@components/MonochromeFlag.astro";
+
 const nav = [
   { href: "/", label: "Inicio" },
   { href: "/biblioteca/", label: "Biblioteca" },
@@ -23,27 +25,28 @@ const worldOrders = [
   {
     country: "Argentina",
     name: "Logia Madre",
+    flag: "argentina" as const,
     href: "https://hrdm.com.ar/index.html",
     mother: true,
   },
   {
     country: "Brasil",
-    name: "Orden Real de Heredom de Kilwinning",
+    flag: "brasil" as const,
     href: "https://hrdmoficial.com.br/",
   },
   {
     country: "Chile",
-    name: "Gran Capítulo Soberano",
+    flag: "chile" as const,
     href: "https://masoneriaheredom.blogspot.com/",
   },
   {
     country: "España",
-    name: "Heredom de Kilwinning",
+    flag: "espana" as const,
     href: "https://www.heredom.es/",
   },
   {
     country: "Paraguay",
-    name: "Orden Real de Heredom de Kilwinning",
+    flag: "paraguay" as const,
     href: "https://masoneriaheredomparaguay.org/",
   },
 ];
@@ -140,10 +143,7 @@ const worldOrders = [
 
   <section class="footer-world" aria-labelledby="footer-world-title">
     <div class="footer-world-inner">
-      <header class="footer-world-head">
-        <p class="footer-world-kicker">Presencia internacional</p>
-        <h2 id="footer-world-title">Heredom de Kilwinning en el mundo</h2>
-      </header>
+      <h2 id="footer-world-title" class="footer-world-title">Presencia internacional</h2>
 
       <ul class="footer-world-list" role="list">
         {
@@ -153,11 +153,13 @@ const worldOrders = [
                 href={order.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`${order.name}, ${order.country} (abre en una pestaña nueva)`}
+                aria-label={`${order.country}${order.name ? `, ${order.name}` : ""} (abre en una pestaña nueva)`}
               >
-                <span class="world-country">{order.country}</span>
-                <span class="world-name">{order.name}</span>
-                <span class="world-arrow" aria-hidden="true">↗</span>
+                <MonochromeFlag country={order.flag} />
+                <span class="world-copy">
+                  <span class="world-country">{order.country}</span>
+                  {order.name && <span class="world-name">{order.name}</span>}
+                </span>
               </a>
             </li>
           ))
@@ -392,84 +394,64 @@ const worldOrders = [
   }
 
   .footer-world-inner {
-    align-items: start;
-    display: grid;
-    gap: var(--space-xl);
-    grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 2.25fr);
-    padding-block: var(--space-l);
+    padding-block: var(--space-m) var(--space-l);
   }
 
-  .footer-world-kicker {
+  .footer-world-title {
     color: color-mix(in srgb, var(--text-on-accent) 70%, transparent);
     font-family: var(--font-ui);
     font-size: 0.66rem;
+    font-weight: 600;
     letter-spacing: var(--tracking-caps);
+    line-height: 1.4;
     text-transform: uppercase;
-  }
-
-  .footer-world-head h2 {
-    color: var(--text-on-accent);
-    font-size: var(--step-2);
-    margin-block-start: var(--space-2xs);
-    max-width: 17ch;
   }
 
   .footer-world-list {
     display: grid;
-    gap: var(--space-m);
+    gap: var(--space-s) var(--space-l);
     grid-template-columns: repeat(5, minmax(0, 1fr));
     list-style: none;
-    margin: 0;
+    margin: var(--space-m) 0 0;
     padding: 0;
   }
 
   .footer-world-list a {
-    border-top: 1px solid color-mix(in srgb, var(--line-bronze) 78%, transparent);
-    color: var(--text-on-accent);
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    padding-block-start: var(--space-s);
+    align-items: center;
+    color: color-mix(in srgb, var(--text-on-accent) 82%, transparent);
+    display: inline-flex;
+    gap: var(--space-xs);
     text-decoration: none;
   }
 
-  .footer-world-list a:hover .world-country {
-    text-decoration: underline;
-    text-decoration-color: var(--line-bronze);
-    text-underline-offset: 0.25em;
+  .footer-world-list a:hover {
+    color: var(--text-on-accent);
   }
 
   .footer-world-list a:focus-visible {
     outline-color: var(--line-bronze);
   }
 
+  .world-copy {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
   .world-country {
-    font-family: var(--font-display);
-    font-size: var(--step-1);
+    font-family: var(--font-ui);
+    font-size: 0.76rem;
     font-weight: 600;
-    line-height: 1.2;
+    letter-spacing: 0.04em;
+    line-height: 1.35;
   }
 
   .world-name {
-    color: color-mix(in srgb, var(--text-on-accent) 68%, transparent);
+    color: color-mix(in srgb, var(--text-on-accent) 66%, transparent);
     font-family: var(--font-ui);
-    font-size: 0.64rem;
-    grid-column: 1 / -1;
-    line-height: 1.45;
-    margin-block-start: var(--space-2xs);
-  }
-
-  .world-arrow {
-    color: var(--line-bronze);
-    font-size: 0.8rem;
-  }
-
-  .footer-world-list .is-mother a {
-    border-top-width: 2px;
-  }
-
-  .footer-world-list .is-mother .world-name {
-    color: color-mix(in srgb, var(--text-on-accent) 84%, transparent);
+    font-size: 0.6rem;
     font-style: italic;
+    line-height: 1.45;
   }
 
   .footer-lower {
@@ -536,12 +518,7 @@ const worldOrders = [
     }
 
     .footer-world-inner {
-      grid-template-columns: 1fr;
-      gap: var(--space-l);
-    }
-
-    .footer-world-head h2 {
-      max-width: none;
+      padding-block-end: var(--space-l);
     }
 
     .footer-world-list {
@@ -581,7 +558,7 @@ const worldOrders = [
     }
 
     .footer-world-list {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--space-s);
     }
 
