@@ -60,7 +60,7 @@ const eras = [
 ] as const;
 ---
 
-<section class="chronicle container" aria-labelledby="chronicle-title">
+<section id="tradicion-historia" class="chronicle container" aria-labelledby="chronicle-title">
   <header class="chronicle-intro">
     <p class="overline">Tradición e historia</p>
     <h2 id="chronicle-title">De Jerusalén al Oriente de México</h2>
@@ -123,6 +123,9 @@ const eras = [
 </section>
 
 <style>
+  .chronicle {
+    scroll-margin-top: 5rem;
+  }
   .chronicle {
     padding-block: clamp(var(--space-xl), 7vw, var(--space-3xl));
   }

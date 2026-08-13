@@ -84,7 +84,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/operativo-y-especulativo.pdf",
     pages: 3,
     bytes: 133795,
-    responsible: "Ambrosio Merlino · Logia de Investigaciones «René Guénon» N.º 2",
+    responsible: "S∴ G∴ M∴ Merlín · Logia de Investigaciones «René Guénon» N.º 2",
     nature: "Controversia doctrinal",
     shelf: "fundamentos",
     summary:
@@ -102,7 +102,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/capitulo-primordial-arras.pdf",
     pages: 5,
     bytes: 78422,
-    responsible: "Ambrosio Merlino · Logia de Investigaciones «René Guénon» N.º 2",
+    responsible: "S∴ G∴ M∴ Merlín · Logia de Investigaciones «René Guénon» N.º 2",
     nature: "Tradición",
     shelf: "fundamentos",
     summary:
@@ -121,7 +121,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/soberano-principe-rosa-cruz-heredom.pdf",
     pages: 5,
     bytes: 79431,
-    responsible: "Ambrosio Merlino · Logia de Investigaciones «René Guénon» N.º 2",
+    responsible: "S∴ G∴ M∴ Merlín · Logia de Investigaciones «René Guénon» N.º 2",
     nature: "Estudio ritual",
     shelf: "fundamentos",
     summary:
@@ -166,7 +166,7 @@ export const libraryDocuments: LibraryDocument[] = [
       "Documento central del expediente crítico sobre la Masonería moderna. Expone una postura deliberadamente polémica y aporta bibliografía para contrastarla.",
     topics: ["1717", "James Anderson", "Inversiones rituales", "Geometría"],
     relatedSlugs: ["lado-oscuro-james-anderson", "a-300-anos-fundacion-gran-logia-londres", "regularidad-masonica"],
-    coverTone: "ink",
+    coverTone: "bottle",
     featured: true,
   },
   {
@@ -176,7 +176,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/lado-oscuro-james-anderson.pdf",
     pages: 5,
     bytes: 141435,
-    responsible: "Ambrosio Merlino · Logia de Investigaciones «René Guénon» N.º 2",
+    responsible: "S∴ G∴ M∴ Merlín · Logia de Investigaciones «René Guénon» N.º 2",
     nature: "Controversia doctrinal",
     shelf: "ruptura-1717",
     summary:
@@ -193,7 +193,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/regularidad-masonica.pdf",
     pages: 3,
     bytes: 137348,
-    responsible: "Ambrosio Merlino · Logia de Investigaciones «René Guénon» N.º 2",
+    responsible: "S∴ G∴ M∴ Merlín · Logia de Investigaciones «René Guénon» N.º 2",
     nature: "Debate doctrinal",
     shelf: "ruptura-1717",
     summary:
@@ -211,7 +211,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/palabra-sagrada-arco-real-ingles.pdf",
     pages: 2,
     bytes: 134535,
-    responsible: "Ambrosio Merlino · Logia de Investigaciones «René Guénon» N.º 2",
+    responsible: "S∴ G∴ M∴ Merlín · Logia de Investigaciones «René Guénon» N.º 2",
     nature: "Estudio ritual",
     shelf: "ritual-y-ciclo",
     summary:
@@ -228,7 +228,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/joyas-primer-segundo-guardian.pdf",
     pages: 4,
     bytes: 136209,
-    responsible: "Ambrosio Merlino · Logia de Investigaciones «René Guénon» N.º 2",
+    responsible: "S∴ G∴ M∴ Merlín · Logia de Investigaciones «René Guénon» N.º 2",
     nature: "Estudio ritual",
     shelf: "ritual-y-ciclo",
     summary:
@@ -237,7 +237,7 @@ export const libraryDocuments: LibraryDocument[] = [
       "Estudio simbólico sobre la correspondencia entre herramientas, cargos y operaciones espirituales.",
     topics: ["Nivel", "Plomada", "Guardianes", "Simbolismo operativo"],
     relatedSlugs: ["palabra-sagrada-arco-real-ingles", "escuadrando-historia-oficial-masoneria-moderna"],
-    coverTone: "parchment",
+    coverTone: "bottle",
   },
   {
     slug: "fin-de-ciclo-simbolos-cristianos",

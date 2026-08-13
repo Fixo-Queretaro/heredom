@@ -74,13 +74,21 @@ function displayText(block: string, kind: string) {
     <span class="document-mark" aria-hidden="true"></span>
   </summary>
 
-  <article class="document-sheet" aria-label={title}>
+  <article id={`document-${variant}`} class="document-sheet" aria-label={title}>
     <header class="document-head">
       <img src="/images/castillo-176.png" alt="" width="176" height="178" loading="lazy" />
       <p class="overline">{eyebrow}</p>
       <h3>{title}</h3>
       <p class="document-source">{sourceLine} · Transcripción íntegra · {pageCount} páginas</p>
     </header>
+
+    <button
+      class="document-back-top"
+      type="button"
+      data-back-to-top={`document-${variant}`}
+      aria-label="Volver al inicio del documento"
+      title="Volver al inicio del documento"
+    >↑</button>
 
     <div class="document-prose">
       {contentBlocks.map((block, index) => {
@@ -109,6 +117,22 @@ function displayText(block: string, kind: string) {
     </footer>
   </article>
 </details>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-back-to-top]").forEach((button) => {
+    if (button.dataset.backTopReady === "true") return;
+    button.dataset.backTopReady = "true";
+
+    button.addEventListener("click", () => {
+      const targetId = button.dataset.backToTop;
+      const target = targetId ? document.getElementById(targetId) : null;
+      target?.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        block: "start",
+      });
+    });
+  });
+</script>
 
 <style>
   .document-disclosure {
@@ -194,6 +218,36 @@ function displayText(block: string, kind: string) {
     box-shadow:
       0 1.5rem 4rem -3rem rgba(23, 28, 24, 0.55),
       inset 0 0 0 0.3rem rgba(255, 255, 255, 0.42);
+  }
+
+  .document-sheet {
+    scroll-margin-top: 1rem;
+  }
+
+  .document-back-top {
+    align-items: center;
+    background: #fffaf0;
+    border: 1px solid var(--line-bronze);
+    border-radius: 50%;
+    color: var(--text-accent-strong);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    height: 2rem;
+    justify-content: center;
+    float: right;
+    margin-inline-end: -0.5rem;
+    position: sticky;
+    top: calc(100svh - 3rem);
+    width: 2rem;
+    z-index: 3;
+  }
+
+  .document-back-top:hover,
+  .document-back-top:focus-visible {
+    background: var(--surface-accent);
+    color: var(--text-on-accent);
   }
 
   .document-sheet::after {

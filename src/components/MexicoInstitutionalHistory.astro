@@ -65,7 +65,7 @@ const bodies = [
       <span>Saint-Clair</span>
     </p>
 
-    <div class="mexico-foundation">
+    <div id="levantamiento-columnas" class="mexico-foundation">
       <div class="foundation-year" aria-hidden="true">
         <img src="/images/castillo-176.png" alt="" width="176" height="178" loading="lazy" />
         <span>2004</span>
@@ -108,11 +108,19 @@ const bodies = [
         <span class="act-mark" aria-hidden="true"></span>
       </summary>
 
-      <div class="act-body">
+      <div id="acta-mexico" class="act-body">
         <header class="act-head">
           <p class="overline">Documento de la Orden · Diciembre de 2012</p>
           <h3>Continuidad, establecimiento y facultades en México</h3>
         </header>
+
+        <button
+          class="document-back-top"
+          type="button"
+          data-back-to-top="acta-mexico"
+          aria-label="Volver al inicio del documento"
+          title="Volver al inicio del documento"
+        >↑</button>
 
         <div class="act-prose prose">
           <p class="drop-cap">
@@ -196,12 +204,32 @@ const bodies = [
   </div>
 </section>
 
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-back-to-top]").forEach((button) => {
+    if (button.dataset.backTopReady === "true") return;
+    button.dataset.backTopReady = "true";
+
+    button.addEventListener("click", () => {
+      const targetId = button.dataset.backToTop;
+      const target = targetId ? document.getElementById(targetId) : null;
+      target?.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        block: "start",
+      });
+    });
+  });
+</script>
+
 <style>
   .mexico-history {
     position: relative;
     padding-block: var(--space-3xl);
     background: var(--surface-page);
     border-top: 1px solid var(--line-bronze);
+  }
+
+  #levantamiento-columnas {
+    scroll-margin-top: 5rem;
   }
 
   .history-head {
@@ -412,11 +440,38 @@ const bodies = [
   }
 
   .act-body {
+    position: relative;
+    scroll-margin-top: 1rem;
     margin-block-start: var(--space-xl);
     padding: clamp(var(--space-l), 6vw, var(--space-2xl));
     background: var(--surface-panel-soft);
     border: 1px solid var(--line-soft);
     border-top-color: var(--line-bronze);
+  }
+
+  .document-back-top {
+    align-items: center;
+    background: #fffaf0;
+    border: 1px solid var(--line-bronze);
+    border-radius: 50%;
+    color: var(--text-accent-strong);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    height: 2rem;
+    justify-content: center;
+    float: right;
+    margin-inline-end: -0.5rem;
+    position: sticky;
+    top: calc(100svh - 3rem);
+    width: 2rem;
+  }
+
+  .document-back-top:hover,
+  .document-back-top:focus-visible {
+    background: var(--surface-accent);
+    color: var(--text-on-accent);
   }
 
   .act-head {
