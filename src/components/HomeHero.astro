@@ -5,7 +5,7 @@
  * Une la presentación de la Orden y la identidad de San Juan Evangelista en
  * una sola portada, sin convertir las imágenes en paneles de fondo:
  *   - El Greco es la lámina principal, completa y contenida.
- *   - El escudo funciona como sello secundario dentro del bloque institucional.
+ *   - El escudo funciona como sello secundario dentro del bloque principal.
  *   - La información de la Logia vive en un zócalo borgoña unido a la obra.
  *
  * El contenido aparece primero en el DOM; CSS coloca la lámina a la izquierda
@@ -16,7 +16,7 @@
 <section class="home-hero">
   <div class="hero-grid">
     <div class="hero-copy">
-      <!-- Firma institucional horizontal: título + escudo como sello -->
+      <!-- Firma principal horizontal: título + escudo como sello -->
       <div class="hero-signature">
         <div class="hero-signature-text">
           <h1 class="hero-heading">Orden Real de Heredom de&nbsp;Kilwinning</h1>
@@ -310,7 +310,7 @@
   }
 
   /* En anchuras medias y móvil la firma se apila: el texto usa todo el
-     ancho y el escudo pasa después del bloque institucional, a la derecha */
+     ancho y el escudo pasa después del bloque principal, a la derecha */
   @media (max-width: 1023px) {
     .hero-signature {
       flex-direction: column;

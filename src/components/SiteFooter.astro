@@ -3,7 +3,7 @@ const nav = [
   { href: "/", label: "Inicio" },
   { href: "/biblioteca/", label: "Biblioteca" },
   { href: "/#actividades", label: "Actividades y formación" },
-  { href: "/#memoria-mexico", label: "Memoria institucional" },
+  { href: "/#memoria-mexico", label: "Memoria tradicional" },
 ];
 
 const social = [
@@ -18,9 +18,51 @@ const social = [
     icon: "facebook",
   },
 ];
+
+const worldOrders = [
+  {
+    country: "Argentina",
+    name: "Logia Madre",
+    href: "https://hrdm.com.ar/index.html",
+    mother: true,
+  },
+  {
+    country: "Brasil",
+    name: "Orden Real de Heredom de Kilwinning",
+    href: "https://hrdmoficial.com.br/",
+  },
+  {
+    country: "Chile",
+    name: "Gran Capítulo Soberano",
+    href: "https://masoneriaheredom.blogspot.com/",
+  },
+  {
+    country: "España",
+    name: "Heredom de Kilwinning",
+    href: "https://www.heredom.es/",
+  },
+  {
+    country: "Paraguay",
+    name: "Orden Real de Heredom de Kilwinning",
+    href: "https://masoneriaheredomparaguay.org/",
+  },
+];
 ---
 
 <footer class="site-footer">
+  <div class="footer-controls" aria-label="Comparador temporal de color">
+    <div class="footer-controls-inner">
+      <button
+        class="footer-color-toggle"
+        type="button"
+        aria-pressed="false"
+        data-footer-color-toggle
+      >
+        <span data-footer-color-label>Probar footer verde</span>
+      </button>
+    </div>
+  </div>
+
   <div class="footer-inner">
     <div class="footer-brand">
       <img
@@ -83,25 +125,51 @@ const social = [
       </ul>
     </div>
 
-    <figure class="footer-greco">
-      <div class="footer-greco-frame">
+    <figure class="footer-cup">
+      <div class="footer-cup-frame">
         <img
           src="/images/san-juan-evangelista-el-greco-640.webp"
-          alt="Detalle de San Juan Evangelista, obra de El Greco"
+          alt="Cáliz con el dragón en San Juan Evangelista, obra de El Greco"
           width="640"
           height="854"
           loading="lazy"
         />
       </div>
-      <figcaption>El Greco · ca. 1605</figcaption>
     </figure>
   </div>
+
+  <section class="footer-world" aria-labelledby="footer-world-title">
+    <div class="footer-world-inner">
+      <header class="footer-world-head">
+        <p class="footer-world-kicker">Presencia internacional</p>
+        <h2 id="footer-world-title">Heredom de Kilwinning en el mundo</h2>
+      </header>
+
+      <ul class="footer-world-list" role="list">
+        {
+          worldOrders.map((order) => (
+            <li class:list={{ "is-mother": order.mother }}>
+              <a
+                href={order.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${order.name}, ${order.country} (abre en una pestaña nueva)`}
+              >
+                <span class="world-country">{order.country}</span>
+                <span class="world-name">{order.name}</span>
+                <span class="world-arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
 
   <div class="footer-lower">
     <div class="footer-lower-inner">
       <p class="footer-editorial">
-        Este portal distingue entre tradición institucional, doctrina, estudio e
-        historia documentada.
+        Este portal distingue entre tradición, doctrina, estudio e historia documentada.
       </p>
 
       <aside class="approach-channel" aria-labelledby="approach-title">
@@ -110,21 +178,86 @@ const social = [
         <p>
           Espacio reservado para solicitar información sobre una posible incorporación.
         </p>
-        <p class="approach-status">Formulario institucional en preparación.</p>
+        <p class="approach-status">Formulario de contacto en preparación.</p>
       </aside>
     </div>
   </div>
 </footer>
 
+<script>
+  const footer = document.querySelector<HTMLElement>(".site-footer");
+  const footerColorToggle = footer?.querySelector<HTMLButtonElement>(
+    "[data-footer-color-toggle]",
+  );
+  const footerColorLabel = footer?.querySelector<HTMLElement>("[data-footer-color-label]");
+
+  footerColorToggle?.addEventListener("click", () => {
+    const isGreen = footer?.classList.toggle("is-green") ?? false;
+    footerColorToggle.setAttribute("aria-pressed", String(isGreen));
+
+    if (footerColorLabel) {
+      footerColorLabel.textContent = isGreen
+        ? "Volver al footer bermejo"
+        : "Probar footer verde";
+    }
+  });
+</script>
+
 <style>
   .site-footer {
-    background: var(--surface-accent);
+    --footer-surface: var(--surface-accent);
+    background: var(--footer-surface);
     border-top: 1px solid var(--line-bronze);
     color: var(--text-on-accent);
     margin-block-start: 0;
+    position: relative;
+    transition: background-color var(--transition-quiet);
+  }
+
+  .site-footer.is-green {
+    --footer-surface: var(--surface-hero);
+  }
+
+  .footer-controls {
+    inset-block-start: 0;
+    inset-inline: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .footer-controls-inner {
+    display: flex;
+    justify-content: flex-end;
+    margin-inline: auto;
+    width: min(100% - 2 * var(--gutter), var(--width-content));
+  }
+
+  .footer-color-toggle {
+    background: var(--surface-page);
+    border: 1px solid var(--line-bronze);
+    color: var(--text-accent-strong);
+    cursor: pointer;
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 0.55rem 0.8rem;
+    pointer-events: auto;
+    text-transform: uppercase;
+    transform: translateY(-50%);
+  }
+
+  .footer-color-toggle:hover {
+    background: var(--surface-panel-soft);
+  }
+
+  .footer-color-toggle:focus-visible {
+    outline-color: var(--line-bronze);
   }
 
   .footer-inner,
+  .footer-world-inner,
   .footer-lower-inner {
     width: min(100% - 2 * var(--gutter), var(--width-content));
     margin-inline: auto;
@@ -225,41 +358,118 @@ const social = [
     width: 1rem;
   }
 
-  .footer-greco {
+  .footer-cup {
     justify-self: end;
     width: 5.25rem;
   }
 
-  .footer-greco-frame {
+  .footer-cup-frame {
+    aspect-ratio: 0.58;
     border: 1px solid var(--line-bronze);
     overflow: hidden;
-    padding: 0.2rem;
     position: relative;
   }
 
-  .footer-greco-frame::after {
-    box-shadow: inset 0 0 0.65rem 0.3rem var(--surface-accent);
+  .footer-cup-frame::after {
+    box-shadow: inset 0 0 0.75rem 0.28rem var(--footer-surface);
     content: "";
-    inset: 0.2rem;
+    inset: 0;
     pointer-events: none;
     position: absolute;
   }
 
-  .footer-greco img {
-    aspect-ratio: 3 / 4;
+  .footer-cup img {
     filter: sepia(0.12) saturate(0.82) contrast(0.94);
-    object-fit: cover;
-    width: 100%;
+    inset-block-start: -114%;
+    inset-inline-start: -0.1rem;
+    max-width: none;
+    position: absolute;
+    width: 280%;
   }
 
-  .footer-greco figcaption {
-    color: color-mix(in srgb, var(--text-on-accent) 72%, transparent);
+  .footer-world {
+    border-top: 1px solid color-mix(in srgb, var(--line-bronze) 70%, transparent);
+  }
+
+  .footer-world-inner {
+    align-items: start;
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 2.25fr);
+    padding-block: var(--space-l);
+  }
+
+  .footer-world-kicker {
+    color: color-mix(in srgb, var(--text-on-accent) 70%, transparent);
     font-family: var(--font-ui);
-    font-size: 0.6rem;
-    letter-spacing: 0.06em;
-    line-height: 1.4;
-    margin-block-start: var(--space-xs);
-    text-align: center;
+    font-size: 0.66rem;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+
+  .footer-world-head h2 {
+    color: var(--text-on-accent);
+    font-size: var(--step-2);
+    margin-block-start: var(--space-2xs);
+    max-width: 17ch;
+  }
+
+  .footer-world-list {
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-world-list a {
+    border-top: 1px solid color-mix(in srgb, var(--line-bronze) 78%, transparent);
+    color: var(--text-on-accent);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding-block-start: var(--space-s);
+    text-decoration: none;
+  }
+
+  .footer-world-list a:hover .world-country {
+    text-decoration: underline;
+    text-decoration-color: var(--line-bronze);
+    text-underline-offset: 0.25em;
+  }
+
+  .footer-world-list a:focus-visible {
+    outline-color: var(--line-bronze);
+  }
+
+  .world-country {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .world-name {
+    color: color-mix(in srgb, var(--text-on-accent) 68%, transparent);
+    font-family: var(--font-ui);
+    font-size: 0.64rem;
+    grid-column: 1 / -1;
+    line-height: 1.45;
+    margin-block-start: var(--space-2xs);
+  }
+
+  .world-arrow {
+    color: var(--line-bronze);
+    font-size: 0.8rem;
+  }
+
+  .footer-world-list .is-mother a {
+    border-top-width: 2px;
+  }
+
+  .footer-world-list .is-mother .world-name {
+    color: color-mix(in srgb, var(--text-on-accent) 84%, transparent);
+    font-style: italic;
   }
 
   .footer-lower {
@@ -319,10 +529,23 @@ const social = [
       grid-column: 1;
     }
 
-    .footer-greco {
+    .footer-cup {
       grid-column: 2;
       grid-row: 2;
       justify-self: start;
+    }
+
+    .footer-world-inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+    }
+
+    .footer-world-head h2 {
+      max-width: none;
+    }
+
+    .footer-world-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .footer-lower-inner {
@@ -347,14 +570,19 @@ const social = [
     }
 
     .footer-social,
-    .footer-greco {
+    .footer-cup {
       grid-column: 1;
       grid-row: auto;
     }
 
-    .footer-greco {
+    .footer-cup {
       justify-self: start;
       width: 4.75rem;
+    }
+
+    .footer-world-list {
+      grid-template-columns: 1fr;
+      gap: var(--space-s);
     }
 
     .footer-lower-inner {

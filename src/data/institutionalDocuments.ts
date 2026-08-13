@@ -1,5 +1,5 @@
 /**
- * Transcripciones editoriales obtenidas de los PDF institucionales originales.
+ * Transcripciones editoriales obtenidas de los PDF originales de la Orden.
  *
  * Se conservan mayúsculas, grafías y puntuación de las fuentes. Únicamente se
  * eliminaron números de página y saltos físicos de renglón/página para permitir

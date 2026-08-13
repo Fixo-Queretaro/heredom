@@ -2,8 +2,8 @@ export type LibraryShelfId = "fundamentos" | "ruptura-1717" | "ritual-y-ciclo";
 
 export type LibraryNature =
   | "Controversia doctrinal"
-  | "Debate institucional"
-  | "Tradición institucional"
+  | "Debate doctrinal"
+  | "Tradición"
   | "Estudio ritual"
   | "Estudio de fondo"
   | "Simbolismo cíclico";
@@ -90,7 +90,7 @@ export const libraryDocuments: LibraryDocument[] = [
     summary:
       "Contrasta la Masonería Operativa con la Especulativa a partir de tres elementos: filiación, doctrina tradicional y método de realización.",
     editorialNote:
-      "Texto breve y frontal. Presenta una posición doctrinal propia de la tradición institucional de Heredom.",
+      "Texto breve y frontal. Presenta una posición doctrinal propia de la tradición de Heredom.",
     topics: ["Masonería Operativa", "Masonería Especulativa", "René Guénon"],
     relatedSlugs: ["aspectos-historia-sagrada-francmasoneria-operativa", "regularidad-masonica"],
     coverTone: "ink",
@@ -103,12 +103,12 @@ export const libraryDocuments: LibraryDocument[] = [
     pages: 5,
     bytes: 78422,
     responsible: "Ambrosio Merlino · Logia de Investigaciones «René Guénon» N.º 2",
-    nature: "Tradición institucional",
+    nature: "Tradición",
     shelf: "fundamentos",
     summary:
       "Examina la fundación atribuida a Charles Edward Stuart en 1747 y la transmisión capitular de Heredom fuera del sistema de Grandes Logias.",
     editorialNote:
-      "La pieza articula memoria institucional, tradición jacobita y documentos conservados por la Orden.",
+      "La pieza articula memoria de la Orden, tradición jacobita y documentos conservados por la Orden.",
     topics: ["Arras", "Charles Edward Stuart", "Jacobitismo", "Rosa+Cruz"],
     relatedSlugs: ["soberano-principe-rosa-cruz-heredom", "aspectos-historia-sagrada-francmasoneria-operativa"],
     coverTone: "bottle",
@@ -127,7 +127,7 @@ export const libraryDocuments: LibraryDocument[] = [
     summary:
       "Estudia el séptimo grado de Heredom, sus antecedentes hermético-cristianos y las prerrogativas que la tradición le atribuye.",
     editorialNote:
-      "Lectura institucional del grado supremo de la Orden y de su lugar frente a escalas masónicas posteriores.",
+      "Lectura tradicional del grado supremo de la Orden y de su lugar frente a escalas masónicas posteriores.",
     topics: ["Rosa+Cruz", "Altos Grados", "Heredom", "Escocismo"],
     relatedSlugs: ["capitulo-primordial-arras", "regularidad-masonica"],
     coverTone: "parchment",
@@ -140,7 +140,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pages: 7,
     bytes: 81639,
     responsible: "Logia de Investigaciones «René Guénon» N.º 2",
-    nature: "Debate institucional",
+    nature: "Debate doctrinal",
     shelf: "ruptura-1717",
     summary:
       "Una revisión crítica del contexto político y religioso de 1717 y de las transformaciones asociadas al nacimiento de la Masonería Especulativa.",
@@ -194,7 +194,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pages: 3,
     bytes: 137348,
     responsible: "Ambrosio Merlino · Logia de Investigaciones «René Guénon» N.º 2",
-    nature: "Debate institucional",
+    nature: "Debate doctrinal",
     shelf: "ruptura-1717",
     summary:
       "Distingue la regularidad administrativa de la iniciática y cuestiona los criterios de reconocimiento de las obediencias modernas.",
@@ -202,7 +202,7 @@ export const libraryDocuments: LibraryDocument[] = [
       "Un alegato breve sobre autoridad, filiación y legitimidad masónica desde la posición doctrinal de Heredom.",
     topics: ["Regularidad iniciática", "Obediencias", "Reconocimiento", "René Guénon"],
     relatedSlugs: ["operativo-y-especulativo", "escuadrando-historia-oficial-masoneria-moderna"],
-    coverTone: "parchment",
+    coverTone: "burgundy",
     featured: true,
   },
   {
