@@ -1,0 +1,204 @@
+---
+const peritextos = [
+  {
+    type: "Peritexto · 2006–2007",
+    title: "Entrevista con el Dr. Jorge Francisco Ferro",
+    detail: "Primera parte de una conversación sobre transmisión, Templarismo y Masonería Operativa.",
+    href: "https://porlatradicion.com/jffprimeraparte.pdf",
+    label: "Abrir primera parte",
+  },
+  {
+    type: "Peritexto · 2012",
+    title: "Nueva entrevista con Jorge Francisco Ferro",
+    detail: "Continuación del diálogo doctrinal conservado por Por la Tradición.",
+    href: "https://porlatradicion.com/entrevista%20JFF%20enero%202012.pdf",
+    label: "Abrir entrevista",
+  },
+];
+---
+
+<section id="actividades" class="activities" aria-labelledby="activities-title">
+  <div class="container activities-inner">
+    <header class="activities-head">
+      <div>
+        <p class="overline activities-eyebrow">Formación abierta</p>
+        <h2 id="activities-title">Sympósion y Peritextos</h2>
+      </div>
+      <div class="activities-lede">
+        <p>Un espacio dedicado a la transmisión oral, la conversación y el estudio del símbolo. Las entrevistas y charlas reunidas aquí buscan aproximarse al conocimiento tradicional mediante una lectura que integra inteligencia, imaginación y experiencia interior.</p>
+        <p>Sympósion recupera la imagen del banquete como encuentro en torno al conocimiento; los Peritextos conservan la palabra y la memoria de autores fundamentales para comprender la tradición.</p>
+      </div>
+    </header>
+
+    <article class="symposion" aria-labelledby="symposion-title">
+      <div>
+        <p class="feature-type">Sympósion · Antecedente editorial</p>
+        <h3 id="symposion-title">El conocimiento compartido alrededor de la mesa</h3>
+      </div>
+      <div class="feature-copy">
+        <p>Una forma de reunión consagrada a conversar, escuchar y estudiar en común. Su antecedente conserva el sentido tradicional del banquete como espacio de transmisión intelectual y encuentro entre disciplinas.</p>
+        <a href="https://porlatradicion.com/symposion.html" target="_blank" rel="noopener noreferrer">
+          Conocer el antecedente de Sympósion ↗<span class="sr-only"> en una pestaña nueva</span>
+        </a>
+      </div>
+    </article>
+
+    <section class="peritextos" aria-labelledby="peritextos-title">
+      <header class="archive-head">
+        <p class="overline">Archivo vivo</p>
+        <h3 id="peritextos-title">La palabra de Jorge Francisco Ferro</h3>
+      </header>
+      <div class="archive-grid">
+        {peritextos.map((item) => (
+          <article class="archive-item">
+            <p class="archive-type">{item.type}</p>
+            <h4>{item.title}</h4>
+            <p class="archive-detail">{item.detail}</p>
+            <a href={item.href} target="_blank" rel="noopener noreferrer">
+              {item.label} ↗<span class="sr-only"> en una pestaña nueva</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+</section>
+
+<style>
+  .activities {
+    background: var(--surface-inverse);
+    border-block: 1px solid var(--line-bronze);
+    color: var(--text-on-inverse);
+    padding-block: var(--space-2xl);
+  }
+
+  .activities-head {
+    align-items: start;
+    display: grid;
+    gap: clamp(var(--space-l), 5vw, var(--space-2xl));
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    margin-block-end: var(--space-xl);
+  }
+
+  .activities-eyebrow,
+  .archive-type { color: var(--heredom-green-soft); }
+
+  .activities-head h2 {
+    color: var(--text-on-inverse);
+    font-size: var(--step-4);
+    margin-block-start: var(--space-s);
+    max-width: 12ch;
+  }
+
+  .activities-lede { color: rgba(244, 239, 226, 0.74); }
+  .activities-lede p + p { margin-block-start: var(--space-m); }
+
+  .symposion {
+    background: rgba(255, 253, 245, 0.045);
+    border: 1px solid rgba(244, 239, 226, 0.2);
+    border-top-color: var(--line-bronze);
+    display: grid;
+    gap: clamp(var(--space-l), 5vw, var(--space-2xl));
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    padding: clamp(var(--space-l), 5vw, var(--space-xl));
+    position: relative;
+  }
+
+  .symposion::before {
+    border: 1px solid rgba(155, 117, 66, 0.18);
+    content: "";
+    inset: var(--space-s);
+    pointer-events: none;
+    position: absolute;
+  }
+
+  .symposion > * { position: relative; z-index: 1; }
+  .feature-type,
+  .archive-type {
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+
+  .feature-type { color: rgba(244, 239, 226, 0.62); }
+  .symposion h3 {
+    color: var(--text-on-inverse);
+    font-size: clamp(2rem, 1.55rem + 1.7vw, 3.15rem);
+    margin-block-start: var(--space-s);
+    max-width: 17ch;
+  }
+
+  .feature-copy {
+    border-inline-start: 1px solid rgba(155, 117, 66, 0.5);
+    color: rgba(244, 239, 226, 0.74);
+    padding-inline-start: var(--space-l);
+  }
+
+  .feature-copy a,
+  .archive-item a {
+    color: var(--text-on-inverse);
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-block-start: var(--space-m);
+    text-decoration-color: rgba(155, 117, 66, 0.75);
+    text-transform: uppercase;
+  }
+
+  .peritextos {
+    border-top: 1px solid rgba(155, 117, 66, 0.55);
+    margin-block-start: var(--space-xl);
+    padding-block-start: var(--space-xl);
+  }
+
+  .archive-head .overline { color: rgba(244, 239, 226, 0.56); }
+  .archive-head h3 {
+    color: var(--text-on-inverse);
+    font-size: var(--step-2);
+    margin-block-start: var(--space-xs);
+  }
+
+  .archive-grid {
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-block-start: var(--space-l);
+  }
+
+  .archive-item {
+    border-top: 1px solid rgba(244, 239, 226, 0.2);
+    min-width: 0;
+    padding-block-start: var(--space-l);
+  }
+
+  .archive-item h4 {
+    color: var(--text-on-inverse);
+    font-size: var(--step-2);
+    margin-block-start: var(--space-s);
+    max-width: 23ch;
+  }
+
+  .archive-detail {
+    color: rgba(244, 239, 226, 0.66);
+    margin-block-start: var(--space-s);
+    max-width: 38rem;
+  }
+
+  @media (max-width: 899px) {
+    .activities-head,
+    .symposion { grid-template-columns: 1fr; }
+    .feature-copy {
+      border-inline-start: 0;
+      border-top: 1px solid rgba(155, 117, 66, 0.5);
+      padding-block-start: var(--space-l);
+      padding-inline-start: 0;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .archive-grid { grid-template-columns: 1fr; }
+  }
+</style>

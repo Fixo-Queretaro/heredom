@@ -3,19 +3,19 @@
  * HOME V1 — Heredom
  * Recorrido: llamada → comprensión → tradición e historia → biblioteca → formación.
  * Todos los textos marcados [DEMO] o señalados como provisionales requieren
- * revisión institucional antes de publicarse.
+ * revisión editorial antes de publicarse.
  */
 import BaseLayout from "@layouts/BaseLayout.astro";
 import SiteHeader from "@components/SiteHeader.astro";
 import HomeHero from "@components/HomeHero.astro";
 import FoundationalTradition from "@components/FoundationalTradition.astro";
-import CircumpunctBand from "@components/CircumpunctBand.astro";
 import OldCharges from "@components/OldCharges.astro";
 import OrnamentDivider from "@components/OrnamentDivider.astro";
-import ArticleCard from "@components/ArticleCard.astro";
-import DocumentCard from "@components/DocumentCard.astro";
+import LibraryShowcase from "@components/LibraryShowcase.astro";
 import HistoricalChronicle from "@components/HistoricalChronicle.astro";
 import FourCornerstones from "@components/FourCornerstones.astro";
+import ActivitiesFormation from "@components/ActivitiesFormation.astro";
+import MexicoInstitutionalHistory from "@components/MexicoInstitutionalHistory.astro";
 import SiteFooter from "@components/SiteFooter.astro";
 ---
 
@@ -32,13 +32,16 @@ import SiteFooter from "@components/SiteFooter.astro";
     <!-- 3. FUNDAMENTOS — síntesis doctrinal pública -->
     <FoundationalTradition />
 
-    <!-- Transición entre capítulos doctrinales mayores -->
-    <CircumpunctBand />
-
     <!-- 4. ANTIGUOS DEBERES — Constitución de 1607 -->
     <OldCharges />
 
-    <!-- 5. INTRODUCCIÓN — la herencia -->
+    <!-- 5. FILIACIÓN INICIÁTICA — cuatro piedras angulares -->
+    <FourCornerstones />
+
+    <!-- 6. TRADICIÓN E HISTORIA — síntesis de la cronología tradicional -->
+    <HistoricalChronicle />
+
+    <!-- 7. EL UMBRAL — transición hacia las puertas de entrada -->
     <section class="intro" aria-labelledby="intro-title">
       <div class="intro-wrap">
         <header class="intro-head">
@@ -132,9 +135,7 @@ import SiteFooter from "@components/SiteFooter.astro";
       </div>
     </section>
 
-    <OrnamentDivider />
-
-    <!-- 4. TRES PUERTAS DE ENTRADA -->
+    <!-- 8. TRES PUERTAS DE ENTRADA -->
     <section class="doors container" aria-labelledby="doors-title">
       <h2 id="doors-title" class="sr-only">Tres puertas de entrada</h2>
       <div class="doors-grid">
@@ -145,7 +146,7 @@ import SiteFooter from "@components/SiteFooter.astro";
             Qué es la Orden Real de Heredom de Kilwinning, de dónde procede su nombre y
             cómo entiende el trabajo, el silencio y la transmisión.
           </p>
-          <a class="link-text" href="/la-orden/">Conocer la Orden</a>
+          <a class="link-text" href="/#levantamiento-columnas">Conocer la Orden</a>
         </article>
 
         <article class="door door-biblioteca">
@@ -160,20 +161,17 @@ import SiteFooter from "@components/SiteFooter.astro";
 
         <article class="door door-formacion">
           <p class="door-number" aria-hidden="true">III</p>
-          <h3 class="door-title">Formación</h3>
+          <h3 class="door-title">Sympósion y Peritextos</h3>
           <p class="door-text">
-            Cursos y lecciones de acceso abierto, ordenados como rutas de estudio: de
-            los fundamentos hacia la lectura simbólica y doctrinal.
+            Entrevistas, conversaciones y charlas para aproximarse a la tradición
+            mediante la palabra, el símbolo y la memoria.
           </p>
-          <a class="link-secondary" href="/formacion/">Ver las rutas de estudio</a>
+          <a class="link-secondary" href="/#actividades">Explorar la formación abierta</a>
         </article>
       </div>
     </section>
 
-    <!-- 5. LAS CUATRO PIEDRAS ANGULARES (contenido institucional oficial) -->
-    <FourCornerstones />
-
-    <!-- 6. QUÉ ES Y QUÉ NO ES HEREDOM -->
+    <!-- 9. QUÉ ES Y QUÉ NO ES HEREDOM -->
     <section class="isnt container" aria-labelledby="isnt-title">
       <h2 id="isnt-title" class="isnt-heading">Qué es Heredom — y qué no es</h2>
       <div class="isnt-grid">
@@ -182,15 +180,15 @@ import SiteFooter from "@components/SiteFooter.astro";
           <ul class="isnt-list" role="list">
             <li>
               <span class="isnt-mark isnt-mark-yes" aria-hidden="true">●</span>
-              Una tradición de estudio y trabajo simbólico.
+              Una Orden esotérica tradicional de Occidente perteneciente a la Iniciación Obrera y Artesanal.
             </li>
             <li>
               <span class="isnt-mark isnt-mark-yes" aria-hidden="true">●</span>
-              Una vía vinculada a la herencia de los antiguos constructores.
+              Posee un origen suprahumano de donde proviene su influencia espiritual.
             </li>
             <li>
               <span class="isnt-mark isnt-mark-yes" aria-hidden="true">●</span>
-              Un espacio de formación, reflexión y transmisión.
+              Derivada de la antigua Masonería Operativa y del Templarismo Jacobita escocés.
             </li>
           </ul>
         </div>
@@ -199,15 +197,19 @@ import SiteFooter from "@components/SiteFooter.astro";
           <ul class="isnt-list" role="list">
             <li>
               <span class="isnt-mark isnt-mark-no" aria-hidden="true">—</span>
-              Una organización partidista.
+              Una sociedad civil con fines profanos tales como el progresismo, el humanitarismo, el laicismo, el liberalismo, etc.
             </li>
             <li>
               <span class="isnt-mark isnt-mark-no" aria-hidden="true">—</span>
-              Un producto de entretenimiento esotérico.
+              Un sistema especial de moralidad.
             </li>
             <li>
               <span class="isnt-mark isnt-mark-no" aria-hidden="true">—</span>
-              Una promesa de poder, prestigio o ascenso social.
+              Una religión o secta religiosa, ni mucho menos un sustituto de ellas.
+            </li>
+            <li>
+              <span class="isnt-mark isnt-mark-no" aria-hidden="true">—</span>
+              Un medio de ascenso social en la sociedad profana.
             </li>
           </ul>
         </div>
@@ -216,134 +218,25 @@ import SiteFooter from "@components/SiteFooter.astro";
 
     <OrnamentDivider />
 
-    <!-- 7. TRADICIÓN E HISTORIA — síntesis de la cronología institucional -->
-    <HistoricalChronicle />
+    <!-- 10. BIBLIOTECA DESTACADA — selección del archivo público -->
+    <LibraryShowcase />
 
-    <OrnamentDivider />
+    <!-- 11. ACTIVIDADES Y FORMACIÓN — cátedra destacada + archivo vivo -->
+    <ActivitiesFormation />
 
-    <!-- 8. BIBLIOTECA DESTACADA -->
-    <section class="library container" aria-labelledby="library-title">
-      <div class="section-head">
-        <p class="overline">Biblioteca</p>
-        <h2 id="library-title">Lecturas para empezar</h2>
-      </div>
-
-      <div class="library-grid">
-        <div class="library-articles">
-          <ArticleCard
-            title="[DEMO] El simbolismo del eje en la construcción"
-            summary="[DEMO] Artículo de demostración: resumen provisional que anticipa el argumento sin agotarlo."
-            naturaleza="estudio"
-            authorName="Autor de Demostración"
-            date="Agosto 2026"
-            readingMinutes={12}
-            href="/biblioteca/articulos/"
-          />
-          <ArticleCard
-            title="[DEMO] La escuadra y el nivel: una lectura simbólica"
-            summary="[DEMO] Pieza de estudio simbólico de demostración, presentada desde la tradición de la Orden."
-            naturaleza="tradicion"
-            authorName="Autor de Demostración"
-            date="Julio 2026"
-            readingMinutes={9}
-            href="/biblioteca/articulos/"
-          />
-        </div>
-        <div class="library-doc">
-          <DocumentCard
-            title="[DEMO] Manuscrito de demostración"
-            summary="[DEMO] Documento de ejemplo con nota de procedencia; no atribuido a la Orden ni a autor real."
-            naturaleza="historia-documentada"
-            docType="Manuscrito"
-            period="c. 1740"
-            sourceNote="[DEMO] Procedencia de ejemplo"
-            href="/biblioteca/documentos/"
-          />
-        </div>
-      </div>
-
-      <p class="section-cta">
-        <a class="btn btn-secondary" href="/biblioteca/">Entrar a la Biblioteca</a>
-      </p>
-    </section>
-
-    <!-- 9. FORMACIÓN -->
-    <section class="training" aria-labelledby="training-title">
-      <div class="container training-inner">
-        <div class="training-copy">
-          <p class="overline training-eyebrow">Formación abierta</p>
-          <h2 id="training-title" class="training-heading">Comenzar por los fundamentos</h2>
-          <p class="training-lede">
-            Las rutas de estudio ordenan los cursos de lo elemental a lo doctrinal.
-            Sin inscripciones, sin costos y sin registro: solo lectura y estudio.
-          </p>
-
-          <ol class="training-path" role="list">
-            <li><span class="path-node" aria-hidden="true"></span>Fundamentos e historia del oficio</li>
-            <li><span class="path-node" aria-hidden="true"></span>Lectura simbólica elemental</li>
-            <li><span class="path-node" aria-hidden="true"></span>Tradición, doctrina y fuentes</li>
-          </ol>
-
-          <p class="training-cta">
-            <a class="btn btn-on-dark" href="/formacion/">Conocer las rutas de estudio</a>
-          </p>
-        </div>
-
-        <article class="training-course" aria-label="Curso destacado de demostración">
-          <p class="course-flag">Curso introductorio · demo</p>
-          <h3 class="course-name">[DEMO] Introducción a la lectura simbólica</h3>
-          <dl class="course-facts">
-            <div><dt>Nivel</dt><dd>Introductorio</dd></div>
-            <div><dt>Módulos</dt><dd>3</dd></div>
-            <div><dt>Lecciones</dt><dd>12</dd></div>
-            <div><dt>Formato</dt><dd>Lectura abierta</dd></div>
-          </dl>
-          <a class="course-link" href="/formacion/cursos/">Ver el curso →</a>
-        </article>
-      </div>
-    </section>
-
-    <!-- 10. CIERRE -->
-    <section class="closing" aria-labelledby="closing-title">
-      <div class="prose-width closing-inner">
-        <h2 id="closing-title" class="closing-title">
-          El conocimiento comienza al cruzar el umbral
-        </h2>
-        <div class="closing-actions">
-          <a class="btn btn-primary" href="/biblioteca/">Explorar la Biblioteca</a>
-          <a class="btn btn-secondary" href="/la-orden/">Conocer la Orden</a>
-        </div>
-      </div>
-    </section>
+    <!-- 12. MEMORIA TRADICIONAL — establecimiento en México -->
+    <MexicoInstitutionalHistory />
   </main>
 
-  <!-- 12. FOOTER -->
+  <!-- 13. FOOTER -->
   <SiteFooter />
 </BaseLayout>
 
 <style>
-  /* ---------- Secciones comunes ---------- */
-  .section-head {
-    max-width: 46rem;
-    margin-block-end: var(--space-l);
-  }
-
-  .section-head h2 {
-    font-size: var(--step-3);
-    margin-block: var(--space-xs) var(--space-s);
-  }
-
-  .section-lede {
-    color: var(--text-muted);
-  }
-
-  .section-cta {
-    margin-block-start: var(--space-l);
-  }
-
   /* ---------- 3. Introducción ---------- */
   .intro {
     padding-block: var(--space-2xl) var(--space-xl);
+    background: var(--surface-panel-soft);
   }
 
   .intro-wrap {
@@ -415,7 +308,7 @@ import SiteFooter from "@components/SiteFooter.astro";
     margin-block-start: var(--space-l);
   }
 
-  /* Sistema interactivo del disclosure: verde institucional (decisión Hex).
+  /* Sistema interactivo del disclosure: verde Heredom (decisión Hex).
      El cuerpo doctrinal desplegado permanece en tinta. */
   .story-toggle {
     display: inline-flex;
@@ -623,191 +516,4 @@ import SiteFooter from "@components/SiteFooter.astro";
     color: var(--text-muted);
   }
 
-  /* ---------- 8. Biblioteca ---------- */
-  .library {
-    padding-block: var(--space-l) var(--space-xl);
-  }
-
-  .library-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    gap: var(--space-2xl);
-    align-items: start;
-  }
-
-  @media (max-width: 899px) {
-    .library-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-l);
-    }
-  }
-
-  .library-articles {
-    border-bottom: 1px solid var(--line-soft);
-  }
-
-  /* ---------- 9. Formación ---------- */
-  .training {
-    background: var(--surface-inverse);
-    color: var(--text-on-inverse);
-    padding-block: var(--space-2xl);
-    margin-block: var(--space-xl) 0;
-  }
-
-  .training-inner {
-    display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    gap: clamp(var(--space-l), 5vw, var(--space-2xl));
-    align-items: center;
-  }
-
-  @media (max-width: 899px) {
-    .training-inner {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .training-eyebrow {
-    color: var(--heredom-green-soft);
-  }
-
-  .training-heading {
-    font-size: var(--step-3);
-    color: var(--text-on-inverse);
-    margin-block: var(--space-s) var(--space-m);
-  }
-
-  .training-lede {
-    color: rgba(244, 239, 226, 0.78);
-    max-width: 34rem;
-  }
-
-  .training-path {
-    list-style: none;
-    margin: var(--space-l) 0 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-s);
-  }
-
-  .training-path li {
-    display: flex;
-    align-items: center;
-    gap: var(--space-s);
-    font-family: var(--font-ui);
-    font-size: var(--step--1);
-    color: rgba(244, 239, 226, 0.9);
-  }
-
-  .path-node {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    border: 2px solid var(--accent-heraldic);
-    flex-shrink: 0;
-  }
-
-  .training-cta {
-    margin-block-start: var(--space-l);
-  }
-
-  .btn-on-dark {
-    border: 1px solid rgba(244, 239, 226, 0.55);
-    color: var(--text-on-inverse);
-    background: transparent;
-  }
-
-  .btn-on-dark:hover {
-    border-color: var(--text-on-inverse);
-    background: rgba(244, 239, 226, 0.1);
-    color: var(--text-on-inverse);
-  }
-
-  .training-course {
-    background: rgba(255, 253, 245, 0.04);
-    border: 1px solid rgba(244, 239, 226, 0.22);
-    border-top: 2px solid var(--accent-heraldic);
-    padding: var(--space-l);
-  }
-
-  .course-flag {
-    font-family: var(--font-ui);
-    font-size: 0.72rem;
-    letter-spacing: var(--tracking-caps);
-    text-transform: uppercase;
-    color: var(--heredom-green-soft);
-    margin-block-end: var(--space-s);
-  }
-
-  .course-name {
-    font-size: var(--step-2);
-    color: var(--text-on-inverse);
-    margin-block-end: var(--space-m);
-  }
-
-  .course-facts {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-s) var(--space-m);
-    margin: 0 0 var(--space-m);
-  }
-
-  .course-facts dt {
-    font-family: var(--font-ui);
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(244, 239, 226, 0.6);
-  }
-
-  .course-facts dd {
-    margin: 0;
-    font-family: var(--font-ui);
-    font-size: var(--step--1);
-    color: var(--text-on-inverse);
-  }
-
-  .course-link {
-    font-family: var(--font-ui);
-    font-size: var(--step--1);
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--heredom-green-soft);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(232, 242, 232, 0.45);
-    padding-block-end: 0.15em;
-  }
-
-  .course-link:hover {
-    color: #ffffff;
-    border-color: currentColor;
-  }
-
-  /* ---------- 11. Cierre ---------- */
-  .closing {
-    padding-block: var(--space-2xl);
-  }
-
-  .closing-inner {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-l);
-  }
-
-  .closing-title {
-    font-size: var(--step-3);
-    font-weight: 500;
-    max-width: 22ch;
-  }
-
-  .closing-actions {
-    display: flex;
-    gap: var(--space-m);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
 </style>

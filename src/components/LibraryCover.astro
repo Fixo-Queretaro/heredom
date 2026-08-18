@@ -1,0 +1,115 @@
+---
+import MalteseCross from "@components/MalteseCross.astro";
+import type { LibraryDocument } from "../data/library";
+
+interface Props {
+  document: LibraryDocument;
+  compact?: boolean;
+}
+
+const { document, compact = false } = Astro.props;
+---
+
+<div
+  class:list={["library-cover", `library-cover--${document.coverTone}`, { "is-compact": compact }]}
+  aria-hidden="true"
+>
+  <div class="cover-rule"></div>
+  <p class="cover-kicker">Archivo Heredom</p>
+  <MalteseCross class="cover-symbol" size={112} />
+  <p class="cover-title">{document.shortTitle ?? document.title}</p>
+  <p class="cover-foot">H∴R∴D∴M · K∴L∴W∴N∴N∴N∴G</p>
+</div>
+
+<style>
+  .library-cover {
+    position: relative;
+    isolation: isolate;
+    min-height: 21rem;
+    padding: clamp(var(--space-m), 5vw, var(--space-l));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    box-shadow: var(--shadow-card);
+  }
+
+  .library-cover.is-compact {
+    min-height: 17rem;
+    padding: var(--space-m);
+  }
+
+  .library-cover--ink {
+    background: var(--surface-inverse);
+    color: var(--text-on-inverse);
+    border-color: rgba(155, 117, 66, 0.7);
+  }
+
+  .library-cover--burgundy {
+    background: var(--surface-accent);
+    color: var(--text-on-accent);
+    border-color: rgba(155, 117, 66, 0.75);
+  }
+
+  .library-cover--bottle {
+    background: var(--surface-hero);
+    color: var(--text-on-inverse);
+    border-color: rgba(155, 117, 66, 0.75);
+  }
+
+  .library-cover--parchment {
+    background: var(--surface-panel);
+    color: var(--text-primary);
+    border-color: var(--line-bronze);
+  }
+
+  .cover-rule {
+    width: 3rem;
+    border-top: 1px solid var(--accent-bronze);
+    margin-block-end: var(--space-s);
+  }
+
+  .cover-kicker,
+  .cover-foot {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-ui);
+    font-size: 0.66rem;
+    line-height: 1.4;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    opacity: 0.76;
+  }
+
+  .cover-symbol {
+    position: absolute;
+    z-index: 0;
+    inset-inline-end: -1.35rem;
+    inset-block-start: 2.8rem;
+    width: clamp(7rem, 44%, 10rem);
+    opacity: 0.13;
+  }
+
+  .cover-title {
+    position: relative;
+    z-index: 2;
+    margin-block: auto var(--space-l);
+    font-family: var(--font-display);
+    font-size: clamp(1.55rem, 1.2rem + 1vw, 2.2rem);
+    line-height: 1.08;
+    font-weight: 600;
+    text-wrap: balance;
+    max-width: 13ch;
+  }
+
+  .is-compact .cover-title {
+    font-size: clamp(1.35rem, 1.1rem + 0.7vw, 1.75rem);
+    margin-block-end: var(--space-m);
+  }
+
+  .cover-foot {
+    padding-block-start: var(--space-s);
+    border-top: 1px solid currentColor;
+    opacity: 0.56;
+  }
+</style>

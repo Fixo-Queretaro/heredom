@@ -12,6 +12,9 @@
  * La niebla del cuarto inferior es un overlay CSS (::after), nunca parte
  * del archivo; desaparece antes de la mitad del grabado.
  */
+
+import InstitutionalDocument from "./InstitutionalDocument.astro";
+import { veteraInstitutaBlocks } from "../data/institutionalDocuments";
 ---
 
 <section class="foundation" aria-labelledby="foundation-title">
@@ -57,6 +60,20 @@
       </figcaption>
     </figure>
   </div>
+
+  <div class="foundation-document">
+    <InstitutionalDocument
+      variant="vetera"
+      blocks={veteraInstitutaBlocks}
+      closedLabel="Leer el documento completo"
+      openLabel="Cerrar el documento"
+      eyebrow="Documento doctrinal · Vetera Instituta"
+      title="Vetera Instituta et Fundamenta Ordinis"
+      sourceLine="Gran Capítulo Soberano para México y el Caribe"
+      pageCount={20}
+      pdfHref="/documentos/vetera-instituta-et-fundamenta-ordinis.pdf"
+    />
+  </div>
 </section>
 
 <style>
@@ -72,6 +89,11 @@
     grid-template-columns: minmax(0, 56fr) minmax(0, 44fr);
     gap: clamp(var(--space-xl), 6vw, var(--space-3xl));
     align-items: center;
+  }
+
+  .foundation-document {
+    width: min(100% - 2 * var(--gutter), var(--width-content));
+    margin-inline: auto;
   }
 
   .foundation-copy {

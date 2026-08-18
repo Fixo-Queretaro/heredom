@@ -1,0 +1,91 @@
+---
+type Country = "argentina" | "brasil" | "chile" | "espana" | "paraguay";
+
+interface Props {
+  country: Country;
+}
+
+const { country } = Astro.props;
+---
+
+<svg class="mono-flag" viewBox="0 0 32 20" aria-hidden="true">
+  <rect class="flag-outline" x="0.75" y="0.75" width="30.5" height="18.5" rx="0.8" />
+
+  {
+    country === "argentina" && (
+      <>
+        <path class="flag-soft" d="M1.5 1.5h29v5.7h-29zm0 11.3h29v5.7h-29z" />
+        <circle cx="16" cy="10" r="1.7" />
+        <path d="m16 6.9.45 1.45 1.28-.8-.8 1.28 1.45.45-1.45.45.8 1.28-1.28-.8-.45 1.45-.45-1.45-1.28.8.8-1.28-1.45-.45 1.45-.45-.8-1.28 1.28.8z" />
+      </>
+    )
+  }
+
+  {
+    country === "brasil" && (
+      <>
+        <path class="flag-soft" d="m16 3 11.5 7L16 17 4.5 10z" />
+        <circle cx="16" cy="10" r="3.4" />
+        <path class="flag-cut" d="M12.9 9.2c2.1-.65 4.3-.25 6.2 1.1" />
+      </>
+    )
+  }
+
+  {
+    country === "chile" && (
+      <>
+        <path class="flag-soft" d="M1.5 10h29v8.5h-29zM1.5 1.5h10.4V10H1.5z" />
+        <path d="m6.7 3.1.75 1.55 1.7.25-1.23 1.2.3 1.7-1.52-.8-1.52.8.3-1.7-1.23-1.2 1.7-.25z" />
+      </>
+    )
+  }
+
+  {
+    country === "espana" && (
+      <>
+        <path class="flag-soft" d="M1.5 1.5h29v4.7h-29zm0 12.3h29v4.7h-29z" />
+        <path d="M10.4 8.1h2.4v4.5h-2.4zM9.8 7.3h3.6v1.1H9.8z" />
+        <path class="flag-cut" d="M10.9 9.2h1.4m-1.4 1.2h1.4" />
+      </>
+    )
+  }
+
+  {
+    country === "paraguay" && (
+      <>
+        <path class="flag-soft" d="M1.5 1.5h29v5.7h-29zm0 11.3h29v5.7h-29z" />
+        <circle class="flag-ring" cx="16" cy="10" r="2.5" />
+        <path d="m16 8 .48 1.02 1.12.14-.82.77.22 1.1-1-.54-1 .54.22-1.1-.82-.77 1.12-.14z" />
+      </>
+    )
+  }
+</svg>
+
+<style>
+  .mono-flag {
+    color: currentColor;
+    display: block;
+    fill: currentColor;
+    flex: 0 0 auto;
+    height: 1rem;
+    overflow: visible;
+    width: 1.6rem;
+  }
+
+  .flag-outline,
+  .flag-ring {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 0.9;
+  }
+
+  .flag-soft {
+    opacity: 0.38;
+  }
+
+  .flag-cut {
+    fill: none;
+    stroke: var(--footer-surface);
+    stroke-width: 0.7;
+  }
+</style>

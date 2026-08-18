@@ -1,6 +1,6 @@
 ---
 /**
- * LAS CUATRO PIEDRAS ANGULARES — contenido institucional oficial.
+ * LAS CUATRO PIEDRAS ANGULARES — contenido oficial de la Orden.
  * Cinco momentos: eyebrow doctrinal → H2 oficial → marco histórico →
  * declaración doctrinal (transición) → cuatro piezas → cierre doctrinal.
  * Texto oficial transcrito íntegro; solo normalización ortotipográfica.
@@ -76,7 +76,7 @@ const cornerstones = [
     <ul class="stones-row" role="list">
       {cornerstones.map((s) => (
         <li class="stone">
-          <svg class="stone-glyph" viewBox="0 0 40 72" width="34" height="61" aria-hidden="true" fill="none" stroke="var(--raw-tinta)" stroke-width="1.1">
+          <svg class="stone-glyph" viewBox="0 0 40 72" width="34" height="61" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.1">
             <rect x="7" y="4" width="26" height="7" />
             <line x1="14" y1="11" x2="14" y2="58" />
             <line x1="20" y1="11" x2="20" y2="58" />
@@ -91,22 +91,14 @@ const cornerstones = [
     </ul>
   </div>
 
-  <!-- Cierre doctrinal (piedra de cierre, ancho completo) -->
-  <div class="stones-close">
-    <p class="stones-close-text">
-      La Orden Real practica lo que, en el siglo XVIII, se denominaba
-      <i lang="en">Early Grand Scottish Rite</i> (Gran Rito Escocés Primitivo) en sus
-      Logias y Capítulos, herederos directos de las cuatro corrientes antedichas.
-    </p>
-  </div>
 </section>
 
 <style>
   .stones {
-    background: var(--surface-panel);
-    border-block: 1px solid var(--line-soft);
+    background: var(--surface-inverse);
+    color: var(--text-on-inverse);
+    border-block: 1px solid rgba(155, 117, 66, 0.45);
     padding-block-start: var(--space-2xl);
-    margin-block-start: var(--space-xl);
   }
 
   /* ---- Encabezado ---- */
@@ -115,7 +107,8 @@ const cornerstones = [
   }
 
   .stones-eyebrow {
-    color: var(--text-accent-strong);
+    color: var(--text-on-inverse);
+    color: color-mix(in srgb, var(--accent-bronze) 55%, var(--text-on-inverse));
   }
 
   .stones-title {
@@ -123,6 +116,7 @@ const cornerstones = [
     line-height: 1.28;
     margin-block: var(--space-s) 0;
     text-wrap: balance;
+    color: var(--text-on-inverse);
   }
 
   /* ---- Marco histórico + declaración ---- */
@@ -147,6 +141,7 @@ const cornerstones = [
   }
 
   .stones-history p {
+    color: rgba(244, 239, 226, 0.82);
     line-height: var(--leading-body);
     hyphens: auto;
   }
@@ -157,13 +152,13 @@ const cornerstones = [
 
   /* Declaración doctrinal: pausa editorial, no cita */
   .stones-declaration {
-    background: var(--surface-panel-soft);
-    border-top: 1px solid var(--line-heraldic);
-    border-bottom: 1px solid var(--line-heraldic);
+    background: rgba(255, 253, 245, 0.045);
+    border-top: 1px solid rgba(155, 117, 66, 0.7);
+    border-bottom: 1px solid rgba(155, 117, 66, 0.7);
     padding: var(--space-l) var(--space-m);
     max-width: 24rem;
     text-align: center;
-    color: var(--text-primary);
+    color: var(--text-on-inverse);
   }
 
   .stones-declaration :global(.declaration-mark) {
@@ -222,7 +217,7 @@ const cornerstones = [
   }
 
   .stone + .stone {
-    border-inline-start: 1px solid var(--line-soft);
+    border-inline-start: 1px solid rgba(244, 239, 226, 0.16);
   }
 
   @media (max-width: 1023px) {
@@ -233,6 +228,7 @@ const cornerstones = [
 
   .stone-glyph {
     margin-block-end: var(--space-2xs);
+    color: rgba(244, 239, 226, 0.84);
   }
 
   .stone-numeral {
@@ -244,31 +240,14 @@ const cornerstones = [
 
   .stone-title {
     font-size: var(--step-1);
+    color: var(--text-on-inverse);
   }
 
   .stone-text {
     font-size: var(--step--1);
-    color: var(--text-muted);
+    color: rgba(244, 239, 226, 0.72);
     line-height: 1.6;
     max-width: 30ch;
   }
 
-  /* ---- Cierre doctrinal ---- */
-  .stones-close {
-    background: var(--surface-inverse);
-    border-top: 2px solid var(--accent-heraldic-strong);
-    box-shadow: inset 0 1px 0 var(--accent-bronze);
-  }
-
-  .stones-close-text {
-    width: min(100% - 2 * var(--gutter), 46rem);
-    margin-inline: auto;
-    padding-block: var(--space-xl);
-    text-align: center;
-    font-family: var(--font-display);
-    font-size: var(--step-1);
-    line-height: 1.55;
-    color: var(--text-on-inverse);
-    max-width: 46rem;
-  }
 </style>

@@ -1,7 +1,7 @@
 ---
 /**
- * Banda institucional — díptico horizontal (ronda 6).
- * Pintura a la izquierda, contenido institucional a la derecha, ambos como
+ * Banda de la Orden — díptico horizontal (ronda 6).
+ * Pintura a la izquierda, contenido principal a la derecha, ambos como
  * columnas hermanas de una sola cuadrícula, centrados verticalmente.
  * La altura surge del contenido (solo padding-block); sin alturas de viewport.
  *
@@ -14,7 +14,7 @@
 interface Props {
   overline?: string;
   title: string;
-  /** Líneas institucionales en orden: denominación, jurisdicción, oriente */
+  /** Líneas de la Orden: denominación, jurisdicción, oriente */
   lines?: string[];
   headingLevel?: "h2" | "h3";
 }
@@ -102,7 +102,7 @@ const Heading = headingLevel;
     color: rgba(253, 246, 236, 0.78);
   }
 
-  /* ---- Contenido institucional ---- */
+  /* ---- Contenido principal ---- */
   /* Conector único entre columnas: filete vertical verde fino */
   .inst-content {
     border-inline-start: 1px solid var(--accent-heraldic);

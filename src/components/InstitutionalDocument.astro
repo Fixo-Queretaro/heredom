@@ -1,0 +1,508 @@
+---
+interface Props {
+  variant: "vetera" | "jones";
+  blocks: readonly string[];
+  closedLabel: string;
+  openLabel: string;
+  eyebrow: string;
+  title: string;
+  sourceLine: string;
+  pageCount: number;
+  pdfHref: string;
+}
+
+const {
+  variant,
+  blocks,
+  closedLabel,
+  openLabel,
+  eyebrow,
+  title,
+  sourceLine,
+  pageCount,
+  pdfHref,
+} = Astro.props;
+
+const contentBlocks = blocks;
+const jonesGeneralStart = blocks.findIndex((block) => block.startsWith("EL PRIMER DEBER ES ESTE"));
+const jonesGeneralEnd = blocks.findIndex((block) => block.startsWith("ESTOS son los Deberes"));
+const jonesParticularStart = blocks.findIndex((block) => block.startsWith("REPETIRE otros Deberes"));
+const jonesParticularEnd = blocks.findIndex((block) => block.startsWith("ESTOS Deberes que nosotros"));
+const jonesSciencesEnd = blocks.findIndex((block) => block.startsWith("NOTE, le ruego"));
+
+const romanHeading = /^(?:I|II|III|IV|V|VI|VII|VIII|IX|X)\.\s/;
+const chargeOpening = /^(?:EL PRIMER DEBER|PRIMERO|SEGUNDO|TERCERO|CUARTO|QUINTO|SEXTO|SEPTIMO|OCTAVO|NOVENO|DECIMO|UNDECIMO|DECIMO(?:PRIMERO|SEGUNDO|TERCERO|CUARTO|QUINTO|SEXTO|SEPTIMO|OCTAVO))\b/;
+
+function blockKind(block: string, contentIndex: number) {
+  const sourceIndex = contentIndex;
+
+  if (variant === "vetera") {
+    if (romanHeading.test(block)) return "section";
+    if (block.startsWith("•")) return "bullet";
+    if (/^\d+\)\s/.test(block)) return "numbered";
+    if (/^-\s/.test(block)) return "timeline";
+    if (block.startsWith("Las anteriores Instrucciones")) return "colophon";
+    if (sourceIndex === 1) return "lead";
+    return "paragraph";
+  }
+
+  if (sourceIndex === 0) return "invocation";
+  if (block === "LOS Nombres de estas Siete Ciencias liberales.") return "subheading";
+  if (sourceIndex < jonesSciencesEnd && romanHeading.test(block)) return "numbered";
+  if (sourceIndex === jonesParticularStart) return "subheading";
+  if (block === "FINIS") return "finis";
+  if (block.startsWith("(1) Palabra de difícil etimología")) return "note";
+
+  const inGeneralCharges = sourceIndex >= jonesGeneralStart && sourceIndex < jonesGeneralEnd;
+  const inParticularCharges = sourceIndex > jonesParticularStart && sourceIndex < jonesParticularEnd;
+  if ((inGeneralCharges || inParticularCharges) && chargeOpening.test(block)) return "charge";
+
+  return "paragraph";
+}
+
+function displayText(block: string, kind: string) {
+  if (kind === "bullet") return block.replace(/^•\s*/, "");
+  if (kind === "timeline") return block.replace(/^-\s*/, "");
+  return block;
+}
+---
+
+<details class:list={["document-disclosure", `document-disclosure--${variant}`]}>
+  <summary>
+    <span class="document-label-closed">{closedLabel}</span>
+    <span class="document-label-open">{openLabel}</span>
+    <span class="document-mark" aria-hidden="true"></span>
+  </summary>
+
+  <article id={`document-${variant}`} class="document-sheet" aria-label={title}>
+    <header class="document-head">
+      <img src="/images/castillo-176.png" alt="" width="176" height="178" loading="lazy" />
+      <p class="overline">{eyebrow}</p>
+      <h3>{title}</h3>
+      <p class="document-source">{sourceLine} · Transcripción íntegra · {pageCount} páginas</p>
+    </header>
+
+    <button
+      class="document-back-top"
+      type="button"
+      data-back-to-top={`document-${variant}`}
+      aria-label="Volver al inicio del documento"
+      title="Volver al inicio del documento"
+    >↑</button>
+
+    <div class="document-prose">
+      {contentBlocks.map((block, index) => {
+        const kind = blockKind(block, index);
+        const text = displayText(block, kind);
+
+        if (kind === "section") return <h4>{text}</h4>;
+        if (kind === "subheading") return <h4 class="document-subheading">{text}</h4>;
+        if (kind === "invocation") return <blockquote><p>{text}</p></blockquote>;
+        if (kind === "finis") return <p class="document-finis">{text}</p>;
+        if (kind === "note") return <aside class="document-note">{text}</aside>;
+
+        return <p class:list={[`document-${kind}`]}>{text}</p>;
+      })}
+    </div>
+
+    <footer class="document-footer">
+      <div>
+        <p class="document-footer-title">Orden Real de Heredom de Kilwinning</p>
+        <p>Archivo de la Orden · Versión original preservada</p>
+      </div>
+      <a href={pdfHref} target="_blank" rel="noreferrer">
+        Consultar PDF original
+        <span aria-hidden="true">↗</span>
+      </a>
+    </footer>
+  </article>
+</details>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-back-to-top]").forEach((button) => {
+    if (button.dataset.backTopReady === "true") return;
+    button.dataset.backTopReady = "true";
+
+    button.addEventListener("click", () => {
+      const targetId = button.dataset.backToTop;
+      const target = targetId ? document.getElementById(targetId) : null;
+      target?.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        block: "start",
+      });
+    });
+  });
+</script>
+
+<style>
+  .document-disclosure {
+    margin-block-start: clamp(var(--space-xl), 5vw, var(--space-2xl));
+  }
+
+  .document-disclosure > summary {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    cursor: pointer;
+    list-style: none;
+    padding-block-end: 0.25em;
+    border-bottom: 1px solid var(--line-heraldic);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--text-heraldic);
+  }
+
+  .document-disclosure > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .document-disclosure > summary::marker {
+    content: "";
+  }
+
+  .document-label-open {
+    display: none;
+  }
+
+  .document-disclosure[open] .document-label-closed {
+    display: none;
+  }
+
+  .document-disclosure[open] .document-label-open {
+    display: inline;
+  }
+
+  .document-mark {
+    position: relative;
+    width: 0.8rem;
+    height: 0.8rem;
+    flex: 0 0 auto;
+  }
+
+  .document-mark::before,
+  .document-mark::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 50%;
+    inset-block-start: 50%;
+    width: 0.75rem;
+    border-top: 1px solid currentColor;
+    transform: translate(-50%, -50%);
+  }
+
+  .document-mark::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .document-disclosure[open] .document-mark::after {
+    display: none;
+  }
+
+  .document-sheet {
+    position: relative;
+    isolation: isolate;
+    width: min(100%, 60rem);
+    margin: var(--space-xl) auto 0;
+    padding: clamp(1.5rem, 5vw, 4.75rem);
+    overflow: hidden;
+    color: #28251f;
+    background:
+      linear-gradient(90deg, transparent 0 7%, rgba(142, 31, 42, 0.12) 7% calc(7% + 1px), transparent calc(7% + 1px)),
+      radial-gradient(circle at 82% 8%, rgba(155, 117, 66, 0.08), transparent 26%),
+      #fffaf0;
+    border: 1px solid color-mix(in srgb, var(--line-bronze) 70%, #fffaf0);
+    box-shadow:
+      0 1.5rem 4rem -3rem rgba(23, 28, 24, 0.55),
+      inset 0 0 0 0.3rem rgba(255, 255, 255, 0.42);
+  }
+
+  .document-sheet {
+    scroll-margin-top: 1rem;
+  }
+
+  .document-back-top {
+    align-items: center;
+    background: #fffaf0;
+    border: 1px solid var(--line-bronze);
+    border-radius: 50%;
+    color: var(--text-accent-strong);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    height: 2rem;
+    justify-content: center;
+    float: right;
+    margin-inline-end: -0.5rem;
+    position: sticky;
+    top: calc(100svh - 3rem);
+    width: 2rem;
+    z-index: 3;
+  }
+
+  .document-back-top:hover,
+  .document-back-top:focus-visible {
+    background: var(--surface-accent);
+    color: var(--text-on-accent);
+  }
+
+  .document-sheet::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset-inline-end: -2.5rem;
+    inset-block-start: 12rem;
+    width: 14rem;
+    aspect-ratio: 176 / 178;
+    background: url("/images/castillo-176.png") center / contain no-repeat;
+    opacity: 0.035;
+    transform: rotate(4deg);
+    pointer-events: none;
+  }
+
+  .document-head {
+    width: min(100%, 46rem);
+    margin-inline: auto;
+    padding-block-end: var(--space-xl);
+    border-bottom: 3px double var(--line-bronze);
+    text-align: center;
+  }
+
+  .document-head img {
+    width: 3.4rem;
+    height: auto;
+    margin-inline: auto;
+    opacity: 0.82;
+  }
+
+  .document-head .overline {
+    margin-block-start: var(--space-s);
+    color: var(--text-heraldic);
+  }
+
+  .document-head h3 {
+    max-width: 24ch;
+    margin: var(--space-s) auto 0;
+    color: #26251f;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 1.45rem + 2vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  .document-source {
+    margin-block-start: var(--space-m);
+    color: #746d61;
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.07em;
+    line-height: 1.55;
+    text-transform: uppercase;
+  }
+
+  .document-prose {
+    width: min(100%, 47rem);
+    margin: var(--space-xl) auto 0;
+  }
+
+  .document-prose p,
+  .document-note {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 0.96rem + 0.16vw, 1.09rem);
+    line-height: 1.82;
+    text-wrap: pretty;
+  }
+
+  .document-prose p + p,
+  .document-prose p + h4,
+  .document-prose h4 + p,
+  .document-prose blockquote + p,
+  .document-prose p + blockquote,
+  .document-note {
+    margin-block-start: var(--space-m);
+  }
+
+  .document-prose h4 {
+    margin: clamp(2.5rem, 6vw, 4rem) 0 var(--space-l);
+    padding-block-end: var(--space-s);
+    border-bottom: 1px solid color-mix(in srgb, var(--line-bronze) 72%, transparent);
+    color: var(--text-heraldic);
+    font-family: var(--font-display);
+    font-size: clamp(1.55rem, 1.3rem + 0.8vw, 2.15rem);
+    font-weight: 600;
+    line-height: 1.22;
+    text-wrap: balance;
+  }
+
+  .document-prose .document-subheading {
+    color: #3a352d;
+    font-size: var(--step-2);
+  }
+
+  .document-lead::first-letter {
+    float: left;
+    margin: 0.08em 0.11em 0 0;
+    color: var(--text-heraldic);
+    font-family: var(--font-display);
+    font-size: 4.3em;
+    font-weight: 600;
+    line-height: 0.72;
+  }
+
+  .document-bullet,
+  .document-numbered,
+  .document-charge {
+    position: relative;
+    padding-inline-start: 1.65rem;
+  }
+
+  .document-bullet::before {
+    content: "◆";
+    position: absolute;
+    inset-inline-start: 0.15rem;
+    inset-block-start: 0.66em;
+    color: var(--text-heraldic);
+    font-size: 0.52em;
+  }
+
+  .document-numbered,
+  .document-charge {
+    padding-block: var(--space-s);
+    border-inline-start: 1px solid color-mix(in srgb, var(--line-bronze) 62%, transparent);
+  }
+
+  .document-charge {
+    background: linear-gradient(90deg, rgba(155, 117, 66, 0.055), transparent 70%);
+  }
+
+  .document-timeline {
+    position: relative;
+    margin-inline-start: 0.35rem !important;
+    padding-inline-start: 1.8rem;
+  }
+
+  .document-timeline::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0.78em;
+    width: 0.58rem;
+    border-top: 1px solid var(--line-bronze);
+  }
+
+  blockquote {
+    margin: var(--space-xl) 0;
+    padding: var(--space-l) clamp(var(--space-m), 5vw, var(--space-xl));
+    border-block: 1px solid var(--line-bronze);
+    color: #403a31;
+    text-align: center;
+  }
+
+  blockquote p {
+    font-family: var(--font-display) !important;
+    font-size: var(--step-1) !important;
+    font-style: italic;
+    line-height: 1.6 !important;
+  }
+
+  .document-colophon {
+    margin-block-start: var(--space-2xl) !important;
+    padding: var(--space-l);
+    border: 1px solid color-mix(in srgb, var(--line-bronze) 62%, transparent);
+    font-style: italic;
+    text-align: center;
+  }
+
+  .document-finis {
+    margin-block-start: var(--space-2xl) !important;
+    color: var(--text-heraldic);
+    font-family: var(--font-display) !important;
+    font-size: var(--step-2) !important;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-align: center;
+  }
+
+  .document-note {
+    display: block;
+    padding-block-start: var(--space-m);
+    border-top: 1px solid rgba(84, 76, 63, 0.25);
+    color: #746d61;
+    font-size: var(--step--1);
+    line-height: 1.65;
+  }
+
+  .document-footer {
+    width: min(100%, 47rem);
+    margin: var(--space-2xl) auto 0;
+    padding-block-start: var(--space-l);
+    border-top: 3px double var(--line-bronze);
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-l);
+  }
+
+  .document-footer p {
+    margin: 0;
+    color: #746d61;
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    line-height: 1.55;
+    text-transform: uppercase;
+  }
+
+  .document-footer .document-footer-title {
+    color: #38342d;
+    font-family: var(--font-display);
+    font-size: var(--step-0);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .document-footer a {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    padding-block-end: 0.2em;
+    border-bottom: 1px solid currentColor;
+    color: var(--text-heraldic);
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .document-footer a:hover {
+    color: var(--text-accent-strong);
+  }
+
+  @media (max-width: 47.99rem) {
+    .document-sheet {
+      padding: var(--space-l) var(--space-m);
+      background:
+        radial-gradient(circle at 82% 8%, rgba(155, 117, 66, 0.08), transparent 26%),
+        #fffaf0;
+    }
+
+    .document-prose p,
+    .document-note {
+      line-height: 1.72;
+      text-align: start;
+    }
+
+    .document-footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

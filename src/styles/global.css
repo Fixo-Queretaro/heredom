@@ -298,7 +298,7 @@ a:hover {
   color: var(--accent-heraldic-strong);
 }
 
-/* Etiqueta institucional (verde Heredom sobre fondo suave) */
+/* Etiqueta de la Orden (verde Heredom sobre fondo suave) */
 .tag-institutional {
   display: inline-block;
   font-family: var(--font-ui);

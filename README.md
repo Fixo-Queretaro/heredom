@@ -1,6 +1,6 @@
 # Heredom
 
-Portal masónico institucional, editorial y formativo. **Fase actual: laboratorio visual.**
+Portal masónico de tradición, estudio y formación. **Fase actual: laboratorio visual.**
 
 ## Stack
 

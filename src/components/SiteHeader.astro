@@ -15,11 +15,11 @@ const navId = `nav-${uid}`;
 
 const links = [
   { href: "/", label: "Inicio" },
-  { href: "/la-orden/", label: "La Orden" },
-  { href: "/tradicion-e-historia/", label: "Tradición e Historia" },
+  { href: "/#levantamiento-columnas", label: "La Orden" },
+  { href: "/#tradicion-historia", label: "Tradición e Historia" },
   { href: "/biblioteca/", label: "Biblioteca" },
-  { href: "/formacion/", label: "Formación" },
-  { href: "/contacto/", label: "Contacto" },
+  { href: "/#actividades", label: "Formación" },
+  { href: "https://porlatradicion.com/", label: "Legado", external: true },
 ];
 ---
 
@@ -59,7 +59,13 @@ const links = [
         <ul>
           {links.map((l) => (
             <li>
-              <a href={l.href} aria-current={l.href === current ? "page" : undefined}>
+              <a
+                href={l.href}
+                aria-current={l.href === current ? "page" : undefined}
+                aria-label={l.external ? `${l.label} (abre en una pestaña nueva)` : undefined}
+                target={l.external ? "_blank" : undefined}
+                rel={l.external ? "noopener noreferrer" : undefined}
+              >
                 {l.label}
               </a>
             </li>
@@ -76,8 +82,9 @@ const links = [
   }
 
   .site-header {
-    background: var(--surface-page);
-    border-bottom: 1px solid var(--line-soft);
+    background: var(--surface-header);
+    border-bottom: 1px solid rgba(155, 117, 66, 0.46);
+    color: var(--text-on-inverse);
   }
 
   .header-inner {
@@ -86,8 +93,9 @@ const links = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-m);
-    padding-block: var(--space-s);
+    column-gap: var(--space-m);
+    row-gap: 0.35rem;
+    padding-block: 0.55rem 0.45rem;
     flex-wrap: wrap;
   }
 
@@ -96,13 +104,13 @@ const links = [
     align-items: center;
     gap: var(--space-s);
     text-decoration: none;
-    color: var(--text-primary);
+    color: var(--text-on-inverse);
     min-width: 0;
     flex-shrink: 1;
   }
 
   .brand-mark {
-    width: 2.75rem;
+    width: 2.5rem;
     height: auto;
     flex-shrink: 0;
   }
@@ -129,7 +137,7 @@ const links = [
     font-size: 0.66rem;
     letter-spacing: var(--tracking-caps);
     text-transform: uppercase;
-    color: var(--text-faint);
+    color: rgba(244, 239, 226, 0.58);
     margin-block-start: 0.15em;
   }
 
@@ -139,7 +147,7 @@ const links = [
     margin: 0;
     padding: 0;
     display: flex;
-    gap: var(--space-l);
+    gap: clamp(0.9rem, 2.2vw, var(--space-l));
   }
 
   .site-nav a {
@@ -149,20 +157,20 @@ const links = [
     letter-spacing: 0.05em;
     text-transform: uppercase;
     text-decoration: none;
-    color: var(--text-muted);
+    color: rgba(244, 239, 226, 0.7);
     padding-block: 0.4em;
     border-bottom: 1px solid transparent;
   }
 
   .site-nav a:hover {
-    color: var(--text-accent-strong);
-    border-color: var(--line-accent);
+    color: #fffdf5;
+    border-color: var(--accent-bronze);
   }
 
-  /* Sección activa: indicador verde heráldico */
+  /* Sección activa: indicador en bronce viejo sobre el verde profundo. */
   .site-nav a[aria-current="page"] {
-    color: var(--nav-active);
-    border-color: var(--nav-active);
+    color: #d0b27b;
+    border-color: var(--accent-bronze);
     font-weight: 600;
   }
 
@@ -172,7 +180,7 @@ const links = [
     align-items: center;
     gap: var(--space-xs);
     background: none;
-    border: 1px solid var(--line-strong);
+    border: 1px solid rgba(244, 239, 226, 0.38);
     border-radius: var(--radius-s);
     padding: 0.5em 0.9em;
     cursor: pointer;
@@ -180,7 +188,7 @@ const links = [
     font-size: var(--step--1);
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--text-primary);
+    color: var(--text-on-inverse);
   }
 
   .nav-toggle-icon {
@@ -218,7 +226,7 @@ const links = [
     .site-nav {
       flex-basis: 100%;
       display: none;
-      border-top: 1px solid var(--line-soft);
+      border-top: 1px solid rgba(244, 239, 226, 0.16);
       padding-block: var(--space-s);
     }
 
@@ -234,7 +242,7 @@ const links = [
     .site-nav a {
       display: block;
       padding: var(--space-s) var(--space-2xs);
-      border-bottom: 1px solid var(--line-soft);
+      border-bottom: 1px solid rgba(244, 239, 226, 0.14);
     }
 
     .site-nav li:last-child a {
@@ -251,7 +259,7 @@ const links = [
     .site-nav {
       flex-basis: 100%;
       display: none;
-      border-top: 1px solid var(--line-soft);
+      border-top: 1px solid rgba(244, 239, 226, 0.16);
       padding-block: var(--space-s);
     }
 
@@ -267,7 +275,7 @@ const links = [
     .site-nav a {
       display: block;
       padding: var(--space-s) var(--space-2xs);
-      border-bottom: 1px solid var(--line-soft);
+      border-bottom: 1px solid rgba(244, 239, 226, 0.14);
     }
 
     .site-nav li:last-child a {

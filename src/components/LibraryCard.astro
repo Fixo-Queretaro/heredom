@@ -1,0 +1,122 @@
+---
+import LibraryCover from "@components/LibraryCover.astro";
+import type { LibraryDocument } from "../data/library";
+import { formatLibraryFileSize } from "../data/library";
+
+interface Props {
+  document: LibraryDocument;
+  compact?: boolean;
+  headingLevel?: 2 | 3 | 4;
+}
+
+const { document, compact = false, headingLevel = 3 } = Astro.props;
+const Heading = `h${headingLevel}` as const;
+const detailPath = `/biblioteca/${document.slug}/`;
+---
+
+<article class:list={["library-card", { "is-compact": compact }]}>
+  <a class="cover-link" href={detailPath} aria-label={`Consultar ficha: ${document.title}`}>
+    <LibraryCover document={document} compact={compact} />
+  </a>
+  <div class="card-copy">
+    <p class="card-meta">
+      <span>{document.nature}</span>
+      <span aria-hidden="true">·</span>
+      <span>{document.pages} {document.pages === 1 ? "página" : "páginas"}</span>
+      <span aria-hidden="true">·</span>
+      <span>{formatLibraryFileSize(document.bytes)}</span>
+    </p>
+    <Heading class="card-title">
+      <a href={detailPath}>{document.title}</a>
+    </Heading>
+    <p class="card-summary">{document.summary}</p>
+    <a class="card-link" href={detailPath}>Consultar la ficha</a>
+  </div>
+</article>
+
+<style>
+  .library-card {
+    min-width: 0;
+  }
+
+  .cover-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    transition: transform var(--transition-quiet);
+  }
+
+  .library-card:hover .cover-link {
+    transform: translateY(-3px);
+  }
+
+  .card-copy {
+    padding-block-start: var(--space-m);
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35em;
+    max-width: none;
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    line-height: 1.45;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .card-meta span:first-child {
+    color: var(--text-accent-strong);
+  }
+
+  .card-title {
+    font-size: var(--step-2);
+    margin-block-start: var(--space-xs);
+  }
+
+  .card-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .card-title a:hover {
+    color: var(--text-accent-strong);
+  }
+
+  .card-summary {
+    margin-block-start: var(--space-s);
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    line-height: 1.65;
+  }
+
+  .card-link {
+    display: inline-block;
+    margin-block-start: var(--space-m);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-accent-strong);
+    border-bottom: 1px solid var(--link-underline);
+  }
+
+  .card-link::after {
+    content: " →";
+  }
+
+  .is-compact .card-title {
+    font-size: var(--step-1);
+  }
+
+  .is-compact .card-summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

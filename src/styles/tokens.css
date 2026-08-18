@@ -12,6 +12,8 @@
   --raw-borgona: #861f2c;
   --raw-borgona-oscuro: #59151d;
   --raw-azul-tinta: #17233d;
+  --raw-verde-botella-profundo: #102a24;
+  --raw-verde-botella: #183b33;
   --raw-bronce: #9b7542;
   --raw-salvia: #a7b29a;
   --raw-linea: rgba(25, 22, 18, 0.18);
@@ -26,7 +28,9 @@
   --surface-panel: var(--raw-pergamino);      /* paneles, bandas, asides */
   --surface-panel-soft: #f9f1de;              /* intermedio pergamino/marfil */
   --surface-inverse: var(--raw-azul-tinta);   /* bandas solemnes invertidas */
-  --surface-accent: var(--raw-borgona);       /* llamadas institucionales */
+  --surface-accent: var(--raw-borgona);       /* llamadas principales */
+  --surface-header: var(--raw-verde-botella-profundo); /* cabecera de portada */
+  --surface-hero: var(--raw-verde-botella);   /* portada principal */
   --surface-heraldic: var(--heredom-green-dark); /* transiciones doctrinales */
 
   /* ---- Texto ---- */
@@ -56,7 +60,7 @@
 
   /* ---- Acento heráldico (verde Heredom) ----
      Identitario y preciso: contrapunto del borgoña, nunca su igual.
-     Usos: navegación activa, filetes finos, etiquetas institucionales,
+     Usos: navegación activa, filetes finos, etiquetas de la Orden,
      metadatos seleccionados, enlaces secundarios, contenidos formativos.
      Contraste medido: verde AA texto normal solo sobre marfil (5.04:1);
      sobre pergamino usar verde oscuro (6.49:1) o reservar a texto grande. */
