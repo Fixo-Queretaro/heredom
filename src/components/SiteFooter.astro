@@ -4,7 +4,7 @@ import MonochromeFlag from "@components/MonochromeFlag.astro";
 const nav = [
   { href: "/", label: "Inicio" },
   { href: "/biblioteca/", label: "Biblioteca" },
-  { href: "/#actividades", label: "Actividades y formación" },
+  { href: "/#actividades", label: "Sympósion y Peritextos" },
   { href: "/#memoria-mexico", label: "Memoria tradicional" },
 ];
 
@@ -124,6 +124,21 @@ const worldOrders = [
           ))
         }
       </ul>
+      <aside class="featured-publication" aria-labelledby="featured-publication-title">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 4.5c2.7-.8 5-.5 7 .8v14.2c-2-1.3-4.3-1.6-7-.8V4.5Zm14 0c-2.7-.8-5-.5-7 .8v14.2c2-1.3 4.3-1.6 7-.8V4.5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
+        </svg>
+        <div>
+          <p class="publication-kicker">Publicación destacada</p>
+          <p id="featured-publication-title" class="publication-title">La Francmasonería Tradicional y Operativa en el Siglo XXI</p>
+          <a
+            href="https://www.mercadolibre.com.mx/up/MLMU3748329834?matt_tool=17030900&amp;pdp_filters=item_id:MLM4689814522&amp;ua=ZgoJzBJmT-iaSO_l3ETmnohis5OzoTSjetjpOyCjd3Z0DXNJ#origin=share&amp;sid=share&amp;wid=MLM4689814522&amp;action=whatsapp"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Consultar el libro La Francmasonería Tradicional y Operativa en el Siglo XXI (abre en una pestaña nueva)"
+          >Consultar el libro ↗</a>
+        </div>
+      </aside>
     </div>
 
     <figure class="footer-cup">
@@ -173,12 +188,17 @@ const worldOrders = [
       </p>
 
       <aside class="approach-channel" aria-labelledby="approach-title">
-        <!-- Pendiente: convertir el título en enlace cuando exista el Google Forms oficial. -->
         <p id="approach-title" class="approach-title">Canal de acercamiento</p>
         <p>
-          Espacio reservado para solicitar información sobre una posible incorporación.
+          Espacio reservado para quienes desean solicitar información sobre una posible incorporación a la Orden.
         </p>
-        <p class="approach-status">Formulario de contacto en preparación.</p>
+        <a
+          class="approach-link"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfgiDWhsQwmMrca4y43sPNu45gwji_t-iZyJqYz6jEF2abEfA/viewform?usp=dialog"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Iniciar acercamiento mediante el formulario de la Orden (abre en una pestaña nueva)"
+        >Iniciar acercamiento ↗</a>
       </aside>
     </div>
   </div>
@@ -295,6 +315,45 @@ const worldOrders = [
     flex: 0 0 auto;
     height: 1rem;
     width: 1rem;
+  }
+
+  .featured-publication {
+    border-top: 1px solid color-mix(in srgb, var(--line-bronze) 64%, transparent);
+    display: grid;
+    gap: var(--space-xs);
+    grid-template-columns: 1.15rem minmax(0, 1fr);
+    margin-block-start: var(--space-m);
+    padding-block-start: var(--space-m);
+  }
+
+  .featured-publication > svg {
+    color: var(--line-bronze);
+    height: 1.15rem;
+    margin-block-start: 0.15rem;
+    width: 1.15rem;
+  }
+
+  .featured-publication .publication-kicker {
+    color: color-mix(in srgb, var(--text-on-accent) 58%, transparent);
+    font-family: var(--font-ui);
+    font-size: 0.59rem;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+
+  .featured-publication .publication-title {
+    color: var(--text-on-accent);
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    line-height: 1.3;
+    margin-block-start: var(--space-2xs);
+  }
+
+  .featured-publication a {
+    display: inline-block;
+    font-size: 0.63rem;
+    margin-block-start: var(--space-xs);
+    text-transform: uppercase;
   }
 
   .footer-cup {
@@ -449,11 +508,16 @@ const worldOrders = [
     margin-block-end: var(--space-2xs);
   }
 
-  .approach-channel .approach-status {
-    color: color-mix(in srgb, var(--text-on-accent) 72%, transparent);
-    font-size: 0.66rem;
-    font-style: italic;
-    margin-block-start: var(--space-2xs);
+  .approach-channel .approach-link {
+    color: var(--text-on-accent);
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-block-start: var(--space-s);
+    text-decoration-color: var(--line-bronze);
+    text-transform: uppercase;
   }
 
   @media (max-width: 899px) {

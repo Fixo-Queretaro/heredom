@@ -1,11 +1,12 @@
 ---
 import Circumpunct from "@components/Circumpunct.astro";
 import LibraryCard from "@components/LibraryCard.astro";
-import { featuredLibraryDocuments, getLibraryDocument } from "../data/library";
+import { featuredLibraryDocuments, getLibraryDocument, libraryDocuments } from "../data/library";
 
 const lead = getLibraryDocument("escuadrando-historia-oficial-masoneria-moderna");
 const related = getLibraryDocument("lado-oscuro-james-anderson");
 const companions = featuredLibraryDocuments.filter((document) => document.slug !== lead?.slug);
+const totalPages = libraryDocuments.reduce((total, document) => total + document.pages, 0);
 
 if (!lead || !related) {
   throw new Error("No se encontró la selección editorial de la Biblioteca.");
@@ -20,7 +21,7 @@ if (!lead || !related) {
         <h2 id="library-showcase-title">Textos para entrar en materia</h2>
       </div>
       <p class="showcase-intro">
-        Doce documentos de acceso público, ordenados por tema y acompañados de una
+        {libraryDocuments.length} documentos de acceso público, ordenados por tema y acompañados de una
         ficha editorial para distinguir tradición, estudio y controversia.
       </p>
     </header>
@@ -57,8 +58,8 @@ if (!lead || !related) {
     </div>
 
     <footer class="showcase-foot">
-      <p>La colección completa reúne 12 documentos y 127 páginas de estudio.</p>
-      <a class="btn btn-secondary" href="/biblioteca/">Consultar los 12 documentos</a>
+      <p>La colección completa reúne {libraryDocuments.length} documentos y {totalPages} páginas de estudio.</p>
+      <a class="btn btn-secondary" href="/biblioteca/">Consultar los {libraryDocuments.length} documentos</a>
     </footer>
   </div>
 </section>
