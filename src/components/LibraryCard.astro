@@ -1,7 +1,7 @@
 ---
 import LibraryCover from "@components/LibraryCover.astro";
 import type { LibraryDocument } from "../data/library";
-import { formatLibraryFileSize } from "../data/library";
+import { formatLibraryExtent } from "../data/library";
 
 interface Props {
   document: LibraryDocument;
@@ -22,9 +22,7 @@ const detailPath = `/biblioteca/${document.slug}/`;
     <p class="card-meta">
       <span>{document.nature}</span>
       <span aria-hidden="true">·</span>
-      <span>{document.pages} {document.pages === 1 ? "página" : "páginas"}</span>
-      <span aria-hidden="true">·</span>
-      <span>{formatLibraryFileSize(document.bytes)}</span>
+      <span>{formatLibraryExtent(document)}</span>
     </p>
     <Heading class="card-title">
       <a href={detailPath}>{document.title}</a>

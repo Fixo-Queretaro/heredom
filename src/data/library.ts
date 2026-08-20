@@ -1,9 +1,16 @@
-export type LibraryShelfId = "fundamentos" | "ruptura-1717" | "ritual-y-ciclo";
+export type LibraryShelfId =
+  | "fundamentos"
+  | "ruptura-1717"
+  | "ritual-y-ciclo"
+  | "peritextos"
+  | "otras";
 
 export type LibraryNature =
   | "Controversia doctrinal"
   | "Debate doctrinal"
   | "Tradición"
+  | "Entrevista"
+  | "Lectura introductoria"
   | "Estudio ritual"
   | "Estudio de fondo"
   | "Simbolismo cíclico";
@@ -14,9 +21,12 @@ export interface LibraryDocument {
   slug: string;
   title: string;
   shortTitle?: string;
-  pdfPath: string;
-  pages: number;
-  bytes: number;
+  pdfPath?: string;
+  webPath?: string;
+  pages?: number;
+  bytes?: number;
+  sourceName?: string;
+  sourceUrl?: string;
   responsible: string;
   nature: LibraryNature;
   shelf: LibraryShelfId;
@@ -57,6 +67,20 @@ export const libraryShelves: LibraryShelf[] = [
     description:
       "Estudios de palabras, joyas, grados y correspondencias del simbolismo cristiano tradicional.",
   },
+  {
+    id: "peritextos",
+    number: "IV",
+    title: "Peritextos",
+    description:
+      "Entrevistas con Jorge Francisco Ferro sobre iniciación, tradición occidental, Templarismo y Masonería.",
+  },
+  {
+    id: "otras",
+    number: "V",
+    title: "Otras",
+    description:
+      "Breves nociones para acercarse al vocabulario y los principios del pensamiento tradicional.",
+  },
 ];
 
 export const libraryDocuments: LibraryDocument[] = [
@@ -67,7 +91,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/aspectos-historia-sagrada-francmasoneria-operativa.pdf",
     pages: 67,
     bytes: 522346,
-    responsible: "Homero Moreno Arredondo · San Juan Evangelista N.º 1",
+    responsible: "H∴ M∴ · San Juan Evangelista N.º 1",
     nature: "Estudio de fondo",
     shelf: "fundamentos",
     summary:
@@ -263,7 +287,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/comentarios-fin-de-ciclo.pdf",
     pages: 12,
     bytes: 577590,
-    responsible: "Homero Moreno Arredondo",
+    responsible: "H∴ M∴",
     nature: "Simbolismo cíclico",
     shelf: "ritual-y-ciclo",
     summary:
@@ -280,7 +304,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/hermes-guia-de-almas.pdf",
     pages: 14,
     bytes: 272868,
-    responsible: "Homero Moreno Arredondo",
+    responsible: "H∴ M∴",
     nature: "Estudio de fondo",
     shelf: "ritual-y-ciclo",
     summary:
@@ -297,7 +321,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/algunos-aspectos-de-la-piedra.pdf",
     pages: 7,
     bytes: 184262,
-    responsible: "Homero Moreno Arredondo",
+    responsible: "H∴ M∴",
     nature: "Estudio ritual",
     shelf: "ritual-y-ciclo",
     summary:
@@ -314,7 +338,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/la-iniciacion-femenina.pdf",
     pages: 13,
     bytes: 252646,
-    responsible: "Homero Moreno Arredondo",
+    responsible: "H∴ M∴",
     nature: "Debate doctrinal",
     shelf: "fundamentos",
     summary:
@@ -332,7 +356,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/los-antiguos-deberes-y-sus-marcas.pdf",
     pages: 12,
     bytes: 217573,
-    responsible: "Homero Moreno Arredondo",
+    responsible: "H∴ M∴",
     nature: "Tradición",
     shelf: "fundamentos",
     summary:
@@ -351,7 +375,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/las-puertas-solsticiales.pdf",
     pages: 6,
     bytes: 159024,
-    responsible: "Homero Moreno Arredondo",
+    responsible: "H∴ M∴",
     nature: "Simbolismo cíclico",
     shelf: "ritual-y-ciclo",
     summary:
@@ -368,7 +392,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/el-compas-y-la-escuadra.pdf",
     pages: 8,
     bytes: 162925,
-    responsible: "Homero Moreno Arredondo",
+    responsible: "H∴ M∴",
     nature: "Estudio ritual",
     shelf: "ritual-y-ciclo",
     summary:
@@ -386,7 +410,7 @@ export const libraryDocuments: LibraryDocument[] = [
     pdfPath: "/biblioteca/pdf/puntos-imprescindibles-para-todo-mason.pdf",
     pages: 8,
     bytes: 210146,
-    responsible: "Homero Moreno Arredondo",
+    responsible: "H∴ M∴",
     nature: "Debate doctrinal",
     shelf: "fundamentos",
     summary:
@@ -397,6 +421,286 @@ export const libraryDocuments: LibraryDocument[] = [
     relatedSlugs: ["operativo-y-especulativo", "la-iniciacion-femenina", "hermes-guia-de-almas"],
     coverTone: "burgundy",
   },
+  {
+    slug: "peritexto-jorge-francisco-ferro-primera-parte",
+    title: "Entrevista con Jorge Francisco Ferro · Primera parte",
+    shortTitle: "Jorge Francisco Ferro · Primera parte",
+    pdfPath: "https://porlatradicion.com/jffprimeraparte.pdf",
+    pages: 17,
+    responsible: "Jorge Francisco Ferro",
+    nature: "Entrevista",
+    shelf: "peritextos",
+    summary:
+      "Primera entrega de una conversación sobre la transmisión iniciática en Occidente, el Temple y las filiaciones reunidas en la Masonería.",
+    editorialNote:
+      "Entrevista realizada en Buenos Aires entre julio de 2006 y enero de 2007. El PDF se consulta en su publicación original.",
+    topics: ["Iniciación", "Templarismo", "Masonería", "René Guénon"],
+    relatedSlugs: ["peritexto-jorge-francisco-ferro-segunda-parte"],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
+  {
+    slug: "peritexto-jorge-francisco-ferro-segunda-parte",
+    title: "Entrevista con Jorge Francisco Ferro · Segunda parte",
+    shortTitle: "Jorge Francisco Ferro · Segunda parte",
+    pdfPath: "https://porlatradicion.com/jffsegundaparte.pdf",
+    pages: 14,
+    responsible: "Jorge Francisco Ferro",
+    nature: "Entrevista",
+    shelf: "peritextos",
+    summary:
+      "Segunda entrega del diálogo dedicado a las vías iniciáticas occidentales, sus transmisiones y el lugar de la Masonería Operativa.",
+    editorialNote:
+      "Forma parte de la entrevista publicada en cuatro entregas. El PDF permanece alojado en la fuente original.",
+    topics: ["Tradición occidental", "Filiación", "Masonería Operativa", "Iniciación"],
+    relatedSlugs: [
+      "peritexto-jorge-francisco-ferro-primera-parte",
+      "peritexto-jorge-francisco-ferro-tercera-parte",
+    ],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
+  {
+    slug: "peritexto-jorge-francisco-ferro-tercera-parte",
+    title: "Entrevista con Jorge Francisco Ferro · Tercera parte",
+    shortTitle: "Jorge Francisco Ferro · Tercera parte",
+    pdfPath: "https://porlatradicion.com/jffterceraparte.pdf",
+    pages: 13,
+    responsible: "Jorge Francisco Ferro",
+    nature: "Entrevista",
+    shelf: "peritextos",
+    summary:
+      "Tercera parte de la conversación sobre tradición, organizaciones iniciáticas y las continuidades espirituales de Occidente.",
+    editorialNote:
+      "Forma parte de la entrevista publicada en cuatro entregas. El PDF permanece alojado en la fuente original.",
+    topics: ["Tradición", "Organizaciones iniciáticas", "Occidente", "Masonería"],
+    relatedSlugs: [
+      "peritexto-jorge-francisco-ferro-segunda-parte",
+      "peritexto-jorge-francisco-ferro-cuarta-parte",
+    ],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
+  {
+    slug: "peritexto-jorge-francisco-ferro-cuarta-parte",
+    title: "Entrevista con Jorge Francisco Ferro · Cuarta parte",
+    shortTitle: "Jorge Francisco Ferro · Cuarta parte",
+    pdfPath: "https://porlatradicion.com/jffcuartaparte.pdf",
+    pages: 16,
+    responsible: "Jorge Francisco Ferro",
+    nature: "Entrevista",
+    shelf: "peritextos",
+    summary:
+      "Cuarta y última entrega de la entrevista iniciada en 2006 sobre doctrina tradicional, transmisión y Masonería occidental.",
+    editorialNote:
+      "Cierra la conversación publicada originalmente en cuatro entregas. El PDF se abre desde su fuente.",
+    topics: ["Doctrina tradicional", "Transmisión", "Masonería occidental", "Iniciación"],
+    relatedSlugs: [
+      "peritexto-jorge-francisco-ferro-tercera-parte",
+      "peritexto-jorge-francisco-ferro-addendum",
+    ],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
+  {
+    slug: "peritexto-jorge-francisco-ferro-addendum",
+    title: "Addendum a la entrevista con Jorge Francisco Ferro",
+    shortTitle: "Addendum · Jorge Francisco Ferro",
+    pdfPath: "https://porlatradicion.com/addendumentrevistajff.pdf",
+    pages: 2,
+    responsible: "Jorge Francisco Ferro",
+    nature: "Entrevista",
+    shelf: "peritextos",
+    summary:
+      "Apéndice de julio de 2008 que prolonga y precisa asuntos tratados en la entrevista publicada en cuatro partes.",
+    editorialNote:
+      "Documento complementario de lectura breve. El PDF permanece alojado en la publicación original.",
+    topics: ["Addendum", "Tradición", "Masonería", "Entrevista"],
+    relatedSlugs: [
+      "peritexto-jorge-francisco-ferro-cuarta-parte",
+      "peritexto-jorge-francisco-ferro-2012",
+    ],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
+  {
+    slug: "peritexto-jorge-francisco-ferro-2012",
+    title: "Nueva entrevista con Jorge Francisco Ferro · 2012",
+    shortTitle: "Jorge Francisco Ferro · Entrevista de 2012",
+    pdfPath: "https://porlatradicion.com/entrevista%20JFF%20enero%202012.pdf",
+    pages: 20,
+    responsible: "Jorge Francisco Ferro",
+    nature: "Entrevista",
+    shelf: "peritextos",
+    summary:
+      "Nueva conversación publicada en enero de 2012 que retoma los temas de tradición, iniciación y Masonería desde una perspectiva histórica y doctrinal.",
+    editorialNote:
+      "Entrevista posterior e independiente de la serie de 2006–2007. El PDF se consulta en su fuente original.",
+    topics: ["Tradición", "Iniciación", "Masonería", "Historia"],
+    relatedSlugs: ["peritexto-jorge-francisco-ferro-addendum"],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
+  {
+    slug: "otra-la-iniciacion",
+    title: "La iniciación",
+    webPath: "https://porlatradicion.com/lainiciacion.html",
+    responsible: "Por la Tradición",
+    nature: "Lectura introductoria",
+    shelf: "otras",
+    summary:
+      "Introducción a la recepción iniciática, la transmisión de una influencia espiritual y el trabajo interior que actualiza sus posibilidades.",
+    editorialNote:
+      "Lectura breve presentada como material introductorio. Se abre íntegra en el sitio que la publicó.",
+    topics: ["Iniciación", "Transmisión", "Trabajo interior", "Realización"],
+    relatedSlugs: ["otra-el-rito", "otra-la-doctrina-iniciatica"],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
+  {
+    slug: "otra-el-simbolo",
+    title: "El símbolo",
+    webPath: "https://porlatradicion.com/elsimbolo.html",
+    responsible: "Por la Tradición",
+    nature: "Lectura introductoria",
+    shelf: "otras",
+    summary:
+      "Expone el símbolo como soporte de conocimiento y vehículo capaz de relacionar una realidad particular con principios de orden superior.",
+    editorialNote:
+      "Lectura breve presentada como material introductorio. Se abre íntegra en el sitio que la publicó.",
+    topics: ["Símbolo", "Intelección", "Arquetipos", "Conocimiento"],
+    relatedSlugs: ["otra-el-mito", "otra-el-rito"],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
+  {
+    slug: "otra-el-rito",
+    title: "El rito",
+    webPath: "https://porlatradicion.com/elrito.html",
+    responsible: "Por la Tradición",
+    nature: "Lectura introductoria",
+    shelf: "otras",
+    summary:
+      "Presenta el rito como una acción ordenada a un fin y como vínculo entre el principio y el desarrollo armónico de los seres y los mundos.",
+    editorialNote:
+      "Lectura breve presentada como material introductorio. Se abre íntegra en el sitio que la publicó.",
+    topics: ["Rito", "Orden", "Invocación", "Tres mundos"],
+    relatedSlugs: ["otra-la-iniciacion", "otra-el-simbolo"],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
+  {
+    slug: "otra-el-mito",
+    title: "El mito",
+    webPath: "https://porlatradicion.com/elmito.html",
+    responsible: "Por la Tradición",
+    nature: "Lectura introductoria",
+    shelf: "otras",
+    summary:
+      "Define el mito como relato simbólico que interrumpe el discurso ordinario y alude a realidades que no pueden expresarse directamente.",
+    editorialNote:
+      "Lectura breve presentada como material introductorio. Se abre íntegra en el sitio que la publicó.",
+    topics: ["Mito", "Misterio", "Silencio", "Relato simbólico"],
+    relatedSlugs: ["otra-el-simbolo", "otra-la-tradicion"],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
+  {
+    slug: "otra-esoterismo-y-exoterismo",
+    title: "Esoterismo y exoterismo",
+    webPath: "https://porlatradicion.com/esoterismoyexoterismo.html",
+    responsible: "Por la Tradición",
+    nature: "Lectura introductoria",
+    shelf: "otras",
+    summary:
+      "Distingue el aspecto interior o iniciático de una doctrina de su expresión exterior destinada al conjunto de una comunidad tradicional.",
+    editorialNote:
+      "Lectura breve presentada como material introductorio. Se abre íntegra en el sitio que la publicó.",
+    topics: ["Esoterismo", "Exoterismo", "Doctrina", "Iniciación"],
+    relatedSlugs: ["otra-la-doctrina-iniciatica", "otra-elite-espiritual"],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
+  {
+    slug: "otra-la-tradicion",
+    title: "La tradición",
+    webPath: "https://porlatradicion.com/latradicion.html",
+    responsible: "Por la Tradición",
+    nature: "Lectura introductoria",
+    shelf: "otras",
+    summary:
+      "Describe la Tradición como conocimiento de origen suprahumano y como núcleo común de formas tradicionales adaptadas a pueblos distintos.",
+    editorialNote:
+      "Lectura breve presentada como material introductorio. Se abre íntegra en el sitio que la publicó.",
+    topics: ["Tradición", "Metafísica", "Ortodoxia", "Conocimiento"],
+    relatedSlugs: ["otra-la-doctrina-iniciatica", "otra-realizacion-espiritual"],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
+  {
+    slug: "otra-la-doctrina-iniciatica",
+    title: "La doctrina iniciática",
+    webPath: "https://porlatradicion.com/doctrinainiciatica.html",
+    responsible: "Por la Tradición",
+    nature: "Lectura introductoria",
+    shelf: "otras",
+    summary:
+      "Explica la doctrina iniciática como soporte técnico para la realización espiritual dentro de una forma tradicional auténtica.",
+    editorialNote:
+      "Lectura breve presentada como material introductorio. Se abre íntegra en el sitio que la publicó.",
+    topics: ["Doctrina iniciática", "Metafísica", "Método", "Realización"],
+    relatedSlugs: ["otra-la-iniciacion", "otra-realizacion-espiritual"],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
+  {
+    slug: "otra-elite-espiritual",
+    title: "La noción de élite espiritual",
+    shortTitle: "Élite espiritual",
+    webPath: "https://porlatradicion.com/eliteespiritual.html",
+    responsible: "Por la Tradición",
+    nature: "Lectura introductoria",
+    shelf: "otras",
+    summary:
+      "Aborda la élite espiritual como una jerarquía fundada en el conocimiento efectivo y la realización, no en prestigio o poder profano.",
+    editorialNote:
+      "Lectura breve presentada como material introductorio. Se abre íntegra en el sitio que la publicó.",
+    topics: ["Élite espiritual", "Jerarquía", "Conocimiento", "Realización"],
+    relatedSlugs: ["otra-esoterismo-y-exoterismo", "otra-realizacion-espiritual"],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
+  {
+    slug: "otra-realizacion-espiritual",
+    title: "Realización espiritual",
+    webPath: "https://porlatradicion.com/realizacionespiritual.html",
+    responsible: "Por la Tradición",
+    nature: "Lectura introductoria",
+    shelf: "otras",
+    summary:
+      "Presenta la realización espiritual como identificación efectiva con el Sí Mismo mediante el conocimiento supremo.",
+    editorialNote:
+      "Lectura breve presentada como material introductorio. Se abre íntegra en el sitio que la publicó.",
+    topics: ["Realización espiritual", "Sí Mismo", "Gnosis", "Conocimiento"],
+    relatedSlugs: ["otra-la-doctrina-iniciatica", "otra-elite-espiritual"],
+    coverTone: "bottle",
+    sourceName: "Por la Tradición",
+    sourceUrl: "https://porlatradicion.com/actividades.html",
+  },
 ];
 
 export const featuredLibraryDocuments = libraryDocuments.filter(
@@ -405,6 +709,26 @@ export const featuredLibraryDocuments = libraryDocuments.filter(
 
 export function getLibraryDocument(slug: string): LibraryDocument | undefined {
   return libraryDocuments.find((document) => document.slug === slug);
+}
+
+export function getLibraryResourcePath(document: LibraryDocument): string {
+  return document.pdfPath ?? document.webPath ?? "#";
+}
+
+export function isLibraryPdf(document: LibraryDocument): boolean {
+  return Boolean(document.pdfPath);
+}
+
+export function formatLibraryExtent(document: LibraryDocument): string {
+  if (!isLibraryPdf(document)) return "Lectura web";
+
+  const pageLabel = document.pages
+    ? `${document.pages} ${document.pages === 1 ? "página" : "páginas"}`
+    : "PDF";
+
+  return document.bytes
+    ? `${pageLabel} · ${formatLibraryFileSize(document.bytes)}`
+    : pageLabel;
 }
 
 export function formatLibraryFileSize(bytes: number): string {
