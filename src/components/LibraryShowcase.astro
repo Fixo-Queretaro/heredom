@@ -1,12 +1,17 @@
 ---
 import Circumpunct from "@components/Circumpunct.astro";
 import LibraryCard from "@components/LibraryCard.astro";
-import { featuredLibraryDocuments, getLibraryDocument, libraryDocuments } from "../data/library";
+import {
+  featuredLibraryDocuments,
+  getLibraryDocument,
+  getLibraryResourcePath,
+  libraryDocuments,
+} from "../data/library";
 
 const lead = getLibraryDocument("escuadrando-historia-oficial-masoneria-moderna");
 const related = getLibraryDocument("lado-oscuro-james-anderson");
 const companions = featuredLibraryDocuments.filter((document) => document.slug !== lead?.slug);
-const totalPages = libraryDocuments.reduce((total, document) => total + document.pages, 0);
+const totalPages = libraryDocuments.reduce((total, document) => total + (document.pages ?? 0), 0);
 
 if (!lead || !related) {
   throw new Error("No se encontró la selección editorial de la Biblioteca.");
@@ -21,7 +26,7 @@ if (!lead || !related) {
         <h2 id="library-showcase-title">Textos para entrar en materia</h2>
       </div>
       <p class="showcase-intro">
-        {libraryDocuments.length} documentos de acceso público, ordenados por tema y acompañados de una
+        {libraryDocuments.length} recursos de acceso público, ordenados por tema y acompañados de una
         ficha editorial para distinguir tradición, estudio y controversia.
       </p>
     </header>
@@ -36,11 +41,11 @@ if (!lead || !related) {
         <p class="lead-summary">{lead.summary}</p>
         <dl class="lead-facts">
           <div><dt>Responsable</dt><dd>{lead.responsible}</dd></div>
-          <div><dt>Extensión</dt><dd>{lead.pages} páginas</dd></div>
+          <div><dt>Extensión</dt><dd>{lead.pages ?? 0} páginas</dd></div>
         </dl>
         <div class="lead-actions">
           <a class="btn btn-library" href={`/biblioteca/${lead.slug}/`}>Leer la ficha</a>
-          <a class="lead-pdf" href={lead.pdfPath} target="_blank" rel="noopener">
+          <a class="lead-pdf" href={getLibraryResourcePath(lead)} target="_blank" rel="noopener">
             Abrir PDF <span class="sr-only">en una pestaña nueva</span>
           </a>
         </div>
@@ -58,8 +63,8 @@ if (!lead || !related) {
     </div>
 
     <footer class="showcase-foot">
-      <p>La colección completa reúne {libraryDocuments.length} documentos y {totalPages} páginas de estudio.</p>
-      <a class="btn btn-secondary" href="/biblioteca/">Consultar los {libraryDocuments.length} documentos</a>
+      <p>La colección completa reúne {libraryDocuments.length} recursos y {totalPages} páginas en PDF.</p>
+      <a class="btn btn-secondary" href="/biblioteca/">Consultar los {libraryDocuments.length} recursos</a>
     </footer>
   </div>
 </section>

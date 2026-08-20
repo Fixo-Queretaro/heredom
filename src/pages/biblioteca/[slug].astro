@@ -5,8 +5,10 @@ import SiteFooter from "@components/SiteFooter.astro";
 import LibraryCover from "@components/LibraryCover.astro";
 import LibraryCard from "@components/LibraryCard.astro";
 import {
-  formatLibraryFileSize,
+  formatLibraryExtent,
   getLibraryDocument,
+  getLibraryResourcePath,
+  isLibraryPdf,
   libraryDocuments,
   libraryShelves,
   type LibraryDocument,
@@ -25,6 +27,9 @@ interface Props {
 
 const { document } = Astro.props;
 const shelf = libraryShelves.find((item) => item.id === document.shelf);
+const resourcePath = getLibraryResourcePath(document);
+const isPdf = isLibraryPdf(document);
+const isLocalPdf = isPdf && resourcePath.startsWith("/");
 const related = document.relatedSlugs
   .map((slug) => getLibraryDocument(slug))
   .filter((item): item is LibraryDocument => Boolean(item));
@@ -54,15 +59,30 @@ const related = document.relatedSlugs
             <dl class="document-facts">
               <div><dt>Responsable</dt><dd>{document.responsible}</dd></div>
               <div><dt>Colección</dt><dd>{shelf?.title}</dd></div>
-              <div><dt>Extensión</dt><dd>{document.pages} páginas · {formatLibraryFileSize(document.bytes)}</dd></div>
-              <div><dt>Formato</dt><dd>PDF · acceso público</dd></div>
+              <div><dt>Extensión</dt><dd>{formatLibraryExtent(document)}</dd></div>
+              <div><dt>Formato</dt><dd>{isPdf ? "PDF" : "Lectura web"} · acceso público</dd></div>
+              {document.sourceUrl && (
+                <div>
+                  <dt>Fuente</dt>
+                  <dd>
+                    <a href={document.sourceUrl} target="_blank" rel="noopener">
+                      {document.sourceName ?? "Publicación original"}
+                    </a>
+                  </dd>
+                </div>
+              )}
             </dl>
 
             <div class="document-actions">
-              <a class="btn btn-primary" href={document.pdfPath} target="_blank" rel="noopener">
-                Abrir PDF <span class="sr-only">en una pestaña nueva</span>
+              <a class="btn btn-primary" href={resourcePath} target="_blank" rel="noopener">
+                {isPdf ? "Abrir PDF" : "Abrir lectura"} <span class="sr-only">en una pestaña nueva</span>
               </a>
-              <a class="btn btn-secondary" href={document.pdfPath} download>Descargar</a>
+              {isLocalPdf && <a class="btn btn-secondary" href={resourcePath} download>Descargar</a>}
+              {document.sourceUrl && (
+                <a class="btn btn-secondary" href={document.sourceUrl} target="_blank" rel="noopener">
+                  Ver colección de origen
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -80,8 +100,9 @@ const related = document.relatedSlugs
             <h2 id="note-title">Nota editorial</h2>
             <p>{document.editorialNote}</p>
             <p>
-              El archivo se ofrece íntegro y sin modificaciones. La ficha facilita su
-              identificación y sitúa su naturaleza editorial antes de abrir el documento.
+              {isPdf
+                ? "El archivo se enlaza íntegro y sin modificaciones. La ficha facilita su identificación y sitúa su naturaleza editorial antes de abrir el documento."
+                : "La ficha facilita la identificación de la lectura y sitúa su naturaleza editorial antes de abrir el texto en su publicación original."}
             </p>
           </section>
         </div>

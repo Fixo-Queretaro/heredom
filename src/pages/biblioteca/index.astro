@@ -6,12 +6,12 @@ import Circumpunct from "@components/Circumpunct.astro";
 import LibraryCard from "@components/LibraryCard.astro";
 import { libraryDocuments, libraryShelves } from "../../data/library";
 
-const totalPages = libraryDocuments.reduce((total, document) => total + document.pages, 0);
+const totalPages = libraryDocuments.reduce((total, document) => total + (document.pages ?? 0), 0);
 ---
 
 <BaseLayout
   title="Biblioteca"
-  description="Biblioteca pública de Heredom: documentos de tradición, historia, doctrina, ritual y controversia masónica para lectura y descarga."
+  description="Biblioteca pública de Heredom: documentos, entrevistas y lecturas de tradición, historia, doctrina y ritual."
 >
   <SiteHeader current="/biblioteca/" />
 
@@ -22,14 +22,14 @@ const totalPages = libraryDocuments.reduce((total, document) => total + document
           <p class="overline hero-eyebrow">Archivo público · Heredom</p>
           <h1>Biblioteca</h1>
           <p class="hero-lede">
-            Textos para estudiar la Masonería Operativa, la filiación de Heredom y
-            las controversias que acompañan la ruptura especulativa moderna.
+            Documentos y lecturas para estudiar la Masonería Operativa, la filiación
+            de Heredom y los principios del pensamiento tradicional.
           </p>
         </div>
         <div class="hero-register" aria-label="Alcance de la colección">
           <Circumpunct size={56} />
           <dl>
-            <div><dt>Documentos</dt><dd>{libraryDocuments.length}</dd></div>
+            <div><dt>Recursos</dt><dd>{libraryDocuments.length}</dd></div>
             <div><dt>Páginas</dt><dd>{totalPages}</dd></div>
             <div><dt>Acceso</dt><dd>Público</dd></div>
           </dl>
@@ -42,9 +42,9 @@ const totalPages = libraryDocuments.reduce((total, document) => total + document
         <p class="overline">Criterio editorial</p>
         <h2 id="editorial-note-title">Leer cada documento según su naturaleza</h2>
         <p>
-          Las fichas distinguen estudios, tradición y controversia
-          doctrinal. Los textos polémicos se publican como posiciones argumentadas
-          para su lectura y contraste, no como consenso historiográfico.
+          Las fichas distinguen estudios, entrevistas, lecturas introductorias,
+          tradición y controversia doctrinal. Los textos polémicos se publican como
+          posiciones argumentadas para su lectura y contraste, no como consenso historiográfico.
         </p>
       </div>
     </aside>
