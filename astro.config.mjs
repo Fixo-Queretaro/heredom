@@ -5,6 +5,6 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
   integrations: [mdx()],
-  site: "https://heredom.example",
+  site: "https://heredom.com.mx",
   trailingSlash: "always",
 });
