@@ -1,0 +1,106 @@
+---
+import { satellitePages } from "../data/satellites";
+
+interface Props {
+  current: string;
+}
+
+const { current } = Astro.props;
+const relatedPages = satellitePages.filter((page) => page.href !== current);
+---
+
+{
+  relatedPages.length > 0 && (
+    <nav class="satellite-navigation" aria-labelledby="satellite-navigation-title">
+      <div class="container">
+        <header>
+          <p class="overline">Continúa el recorrido</p>
+          <h2 id="satellite-navigation-title">Temas relacionados de Heredom</h2>
+        </header>
+
+        <ul role="list">
+          {relatedPages.map((page) => (
+            <li>
+              <a href={page.href}>
+                <span>{page.title}</span>
+                <small>{page.description}</small>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  )
+}
+
+<style>
+  .satellite-navigation {
+    padding-block: var(--space-2xl);
+    background: var(--surface-panel-soft);
+    border-block: 1px solid var(--line-soft);
+  }
+
+  .satellite-navigation header {
+    max-width: 42rem;
+    margin-block-end: var(--space-xl);
+  }
+
+  .satellite-navigation .overline {
+    color: var(--text-accent-strong);
+  }
+
+  .satellite-navigation h2 {
+    margin-block-start: var(--space-xs);
+    font-size: var(--step-3);
+  }
+
+  .satellite-navigation ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-l);
+  }
+
+  .satellite-navigation a {
+    display: block;
+    height: 100%;
+    padding: var(--space-l);
+    border: 1px solid var(--line-bronze);
+    background: var(--surface-page);
+    text-decoration: none;
+  }
+
+  .satellite-navigation a > span {
+    display: block;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+  }
+
+  .satellite-navigation small {
+    display: block;
+    margin-block-start: var(--space-s);
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    line-height: 1.55;
+  }
+
+  .satellite-navigation a:hover {
+    border-color: var(--text-accent-strong);
+  }
+
+  @media (max-width: 899px) {
+    .satellite-navigation ul {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 599px) {
+    .satellite-navigation ul {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
