@@ -124,8 +124,15 @@ const structuredData = {
           <p class="hero-principle">Ser masón no es pertenecer. Es trabajar.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#requisitos">Conocer los requisitos</a>
-            <a class="btn btn-quiet" href="#preguntas">Resolver mis dudas</a>
+            <a
+              class="btn btn-quiet"
+              href={approachUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Solicitar acercamiento mediante el formulario de la Orden (abre en una pestaña nueva)"
+            >Solicitar acercamiento ↗</a>
           </div>
+          <p class="hero-trust">Conversación reservada · La solicitud no implica admisión</p>
         </div>
       </div>
     </header>
@@ -457,6 +464,14 @@ const structuredData = {
     flex-wrap: wrap;
     gap: var(--space-s);
     margin-block-start: var(--space-xl);
+  }
+
+  .hero-trust {
+    margin-block-start: var(--space-s);
+    color: rgba(244, 239, 226, 0.58);
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    letter-spacing: 0.025em;
   }
 
   .hero-principle {
