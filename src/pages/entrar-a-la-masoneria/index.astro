@@ -1,0 +1,716 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SiteHeader from "@components/SiteHeader.astro";
+import SiteFooter from "@components/SiteFooter.astro";
+import OrnamentDivider from "@components/OrnamentDivider.astro";
+import { absoluteSiteUrl, site } from "../../lib/site";
+
+const pagePath = "/entrar-a-la-masoneria/";
+const pageUrl = absoluteSiteUrl(pagePath);
+const pageTitle = "Entrar a la Masonería: requisitos y compromiso";
+const pageDescription =
+  "Conoce los requisitos para entrar a la Masonería en Heredom, quién puede solicitar acercamiento y qué compromiso exige la Masonería Operativa.";
+const approachUrl =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfgiDWhsQwmMrca4y43sPNu45gwji_t-iZyJqYz6jEF2abEfA/viewform?usp=dialog";
+
+const faqItems = [
+  {
+    question: "¿Cuáles son los requisitos para entrar a la Masonería?",
+    answer:
+      "En Heredom, la candidatura exige ser una persona adulta, libre y de buenas costumbres; estar debidamente cualificada física, psíquica y espiritualmente; conocer y aceptar el sello crístico de la Orden; y poder asumir con constancia las tenidas, el ritual y los trabajos de cada nivel. La solicitud abre un proceso de acercamiento y evaluación, no garantiza la admisión.",
+  },
+  {
+    question: "¿A qué edad se puede entrar a la Masonería?",
+    answer:
+      "El acercamiento de Heredom está dirigido a personas adultas. Los documentos públicos de la Orden no establecen una edad mínima numérica única; la edad aplicable y las demás condiciones formales se confirman durante el proceso. La madurez y la capacidad de sostener el compromiso son indispensables.",
+  },
+  {
+    question: "¿Las mujeres pueden entrar a la Masonería?",
+    answer:
+      "Sí. La Orden Real de Heredom de Kilwinning declara que recibe en sus Logias a hombres y mujeres debidamente cualificados, con las adaptaciones necesarias y en igualdad de deberes y derechos.",
+  },
+  {
+    question: "¿Quién puede entrar a la Masonería?",
+    answer:
+      "Puede solicitar acercamiento una persona adulta, sea hombre o mujer, con una búsqueda iniciática auténtica y capacidad para asumir la disciplina de la Orden. La consulta está abierta tanto a quien no posee iniciación previa como a masones procedentes de otras obediencias. Cada candidatura se considera individualmente.",
+  },
+  {
+    question: "¿Qué se necesita para entrar a la Masonería?",
+    answer:
+      "Se necesita algo más que curiosidad: libertad personal, rectitud de conducta, disposición espiritual, aceptación consciente de la identidad cristiano-templaria de Heredom y compromiso sostenido con la asistencia, el ritual y el trabajo iniciático. Para este Capítulo también se requiere disponibilidad real para participar presencialmente en Querétaro.",
+  },
+] as const;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: pageTitle,
+      description: pageDescription,
+      isPartOf: { "@id": `${absoluteSiteUrl("/")}#website` },
+      about: { "@id": `${absoluteSiteUrl("/")}#organization` },
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+      inLanguage: site.language,
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Inicio",
+          item: absoluteSiteUrl("/"),
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Entrar a la Masonería",
+          item: pageUrl,
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#preguntas`,
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={pagePath}
+  structuredData={structuredData}
+>
+  <SiteHeader current={pagePath} />
+
+  <main id="contenido">
+    <header class="page-hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <nav class="breadcrumb" aria-label="Migas de pan">
+            <a href="/">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">Acercamiento</span>
+          </nav>
+          <p class="overline hero-eyebrow">Acercamiento · Heredom México</p>
+          <h1>¿Qué se necesita para entrar a la Masonería?</h1>
+          <p class="hero-lede">
+            Antes de preguntar cómo entrar, conviene comprender qué significa ser masón:
+            una vía iniciática que exige trabajo, presencia y un compromiso que no depende
+            del ánimo del día.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#requisitos">Conocer los requisitos</a>
+            <a class="btn btn-quiet" href="#preguntas">Resolver mis dudas</a>
+          </div>
+        </div>
+
+        <aside class="hero-principle" aria-labelledby="principle-title">
+          <p class="overline">El punto de partida</p>
+          <p id="principle-title" class="principle-title">Ser masón no es pertenecer. Es trabajar.</p>
+          <p>
+            Para Heredom, la iniciación no es una credencial social: es la aceptación
+            consciente de una disciplina espiritual y de una obra sobre uno mismo.
+          </p>
+        </aside>
+      </div>
+    </header>
+
+    <section class="meaning section-space" aria-labelledby="meaning-title">
+      <div class="container meaning-grid">
+        <header class="section-head">
+          <p class="overline">Antes del ingreso</p>
+          <h2 id="meaning-title">¿Qué significa ser masón para Heredom?</h2>
+        </header>
+
+        <div class="meaning-copy prose">
+          <p class="lead">
+            Ser masón es emprender un camino iniciático arduo y, al mismo tiempo,
+            gozoso: buscar una guía espiritual, trabajar por el retorno al Padre y
+            orientar la existencia hacia la Unidad.
+          </p>
+          <p>
+            Ese camino implica un compromiso de por vida. No consiste en asistir sólo
+            cuando hay ánimo, sino en concurrir a las tenidas, practicar el ritual y
+            realizar los trabajos correspondientes a cada nivel. Exige compromiso con
+            la verdad, con el espíritu y con uno mismo.
+          </p>
+          <p>
+            La integridad, los principios y los valores no se usan como distintivos para
+            presumir: se demuestran en la conducta y en la continuidad del trabajo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="not-list" aria-labelledby="not-title">
+      <div class="container not-grid">
+        <div>
+          <p class="overline">Una precisión necesaria</p>
+          <h2 id="not-title">Lo que no debe buscarse al entrar</h2>
+        </div>
+        <ul role="list">
+          <li>Una organización para acumular relaciones o prestigio.</li>
+          <li>Un peldaño de oportunidad política o ascenso social.</li>
+          <li>Una asociación cuya finalidad principal sea la actividad caritativa.</li>
+          <li>Una membresía cómoda que pueda atenderse sólo cuando sobra tiempo.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="paths section-space" aria-labelledby="paths-title">
+      <div class="container">
+        <header class="section-head paths-head">
+          <p class="overline">Dos puntos de partida</p>
+          <h2 id="paths-title">¿Necesito haber sido masón antes?</h2>
+          <p>
+            No todos llegan con la misma experiencia. El acercamiento permite conocer
+            cada caso sin confundir una consulta con una admisión automática.
+          </p>
+        </header>
+
+        <div class="path-grid">
+          <article>
+            <p class="path-number" aria-hidden="true">I</p>
+            <h3>Sin iniciación previa</h3>
+            <p>
+              Una persona que nunca ha pertenecido a una logia puede solicitar
+              información si su interés es auténticamente iniciático y comprende la
+              disciplina que está considerando asumir.
+            </p>
+          </article>
+          <article>
+            <p class="path-number" aria-hidden="true">II</p>
+            <h3>Desde otra obediencia</h3>
+            <p>
+              Un masón procedente de la corriente especulativa o de otra obediencia puede
+              acercarse para conocer la perspectiva operativa de Heredom. Su experiencia
+              previa se escucha, pero no sustituye el proceso propio de la Orden.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <OrnamentDivider />
+
+    <section id="requisitos" class="requirements section-space" aria-labelledby="requirements-title">
+      <div class="container">
+        <header class="section-head requirements-head">
+          <p class="overline">Condiciones de acercamiento</p>
+          <h2 id="requirements-title">Requisitos para entrar a la Masonería en Heredom</h2>
+          <p>
+            Los documentos públicos de la Orden y su criterio de formación señalan las
+            siguientes condiciones generales. El cumplimiento de esta lista no concede
+            por sí mismo el ingreso.
+          </p>
+        </header>
+
+        <ol class="requirement-grid">
+          <li>
+            <span aria-hidden="true">01</span>
+            <h3>Libertad y conducta</h3>
+            <p>Ser una persona adulta, libre y de buenas costumbres.</p>
+          </li>
+          <li>
+            <span aria-hidden="true">02</span>
+            <h3>Cualificación integral</h3>
+            <p>Estar debidamente cualificada en los planos físico, psíquico y espiritual.</p>
+          </li>
+          <li>
+            <span aria-hidden="true">03</span>
+            <h3>Identidad de la Orden</h3>
+            <p>
+              Conocer y aceptar su sello crístico y templario. Esto no exige una
+              conversión confesional, pero no es compatible con una posición expresamente atea.
+            </p>
+          </li>
+          <li>
+            <span aria-hidden="true">04</span>
+            <h3>Compromiso sostenido</h3>
+            <p>Asumir la asistencia a las tenidas, la práctica ritual y el trabajo por niveles.</p>
+          </li>
+          <li>
+            <span aria-hidden="true">05</span>
+            <h3>Presencia real</h3>
+            <p>Contar con disponibilidad para participar periódicamente de manera presencial en Querétaro.</p>
+          </li>
+          <li>
+            <span aria-hidden="true">06</span>
+            <h3>Proceso individual</h3>
+            <p>Participar con honestidad en el acercamiento, el diálogo y la evaluación de la candidatura.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="women" aria-labelledby="women-title">
+      <div class="container women-grid">
+        <div>
+          <p class="overline">Una respuesta inequívoca</p>
+          <h2 id="women-title">¿Las mujeres pueden entrar a la Masonería?</h2>
+        </div>
+        <div class="prose women-answer">
+          <p class="answer-lead">Sí, en Heredom pueden solicitar acercamiento.</p>
+          <p>
+            Los <cite>Vetera Instituta et Fundamenta Ordinis</cite> declaran que la Orden
+            recibe en sus Logias, con las adaptaciones necesarias, a hombres y mujeres
+            debidamente cualificados «en igualdad de deberes y derechos».
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="preguntas" class="faq section-space" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <header class="section-head faq-head">
+          <p class="overline">Preguntas frecuentes</p>
+          <h2 id="faq-title">Antes de solicitar acercamiento</h2>
+          <p>
+            Respuestas públicas y concretas. Las circunstancias particulares se revisan
+            de forma reservada durante el proceso.
+          </p>
+        </header>
+
+        <div class="faq-list">
+          {faqItems.map((item, index) => (
+            <details open={index === 0}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="source-note" aria-labelledby="source-title">
+      <div class="prose-width prose">
+        <p class="overline">Base de esta orientación</p>
+        <h2 id="source-title">Doctrina pública y criterio de formación</h2>
+        <p>
+          Esta página sintetiza los <cite>Vetera Instituta et Fundamenta Ordinis</cite>,
+          los Antiguos Deberes conservados por Heredom y una exposición oral sobre el
+          significado y el compromiso de ser masón. No revela rituales ni sustituye la
+          conversación personal con la Orden.
+        </p>
+        <p>
+          <a href="/documentos/vetera-instituta-et-fundamenta-ordinis.pdf">Consultar los fundamentos de la Orden (PDF)</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-labelledby="cta-title">
+      <div class="container cta-grid">
+        <div>
+          <p class="overline">El primer paso</p>
+          <h2 id="cta-title">Solicitar información no obliga ni garantiza el ingreso</h2>
+          <p>
+            Abre una conversación reservada para discernir si tu búsqueda, tus
+            posibilidades y la vía de Heredom pueden encontrarse.
+          </p>
+        </div>
+        <div class="cta-action">
+          <a
+            class="btn btn-primary"
+            href={approachUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Iniciar acercamiento mediante el formulario de la Orden (abre en una pestaña nueva)"
+          >Iniciar acercamiento ↗</a>
+          <p>Capítulo Soberano para México y el Caribe · Actividad presencial en Querétaro</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .section-space {
+    padding-block: clamp(var(--space-2xl), 8vw, var(--space-3xl));
+  }
+
+  .section-head {
+    max-width: 45rem;
+  }
+
+  .section-head .overline,
+  .not-grid .overline,
+  .women .overline,
+  .source-note .overline,
+  .final-cta .overline {
+    color: var(--text-accent-strong);
+  }
+
+  .section-head h2,
+  .not-grid h2,
+  .women h2,
+  .source-note h2,
+  .final-cta h2 {
+    margin-block-start: var(--space-xs);
+  }
+
+  .section-head > p:last-child,
+  .final-cta h2 + p {
+    margin-block-start: var(--space-m);
+    color: var(--text-muted);
+  }
+
+  .page-hero {
+    padding-block: clamp(var(--space-xl), 8vw, var(--space-3xl));
+    background: var(--surface-inverse);
+    color: var(--text-on-inverse);
+    border-bottom: 1px solid var(--line-bronze);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(18rem, 0.8fr);
+    gap: var(--space-2xl);
+    align-items: end;
+  }
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-block-end: var(--space-xl);
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    color: rgba(244, 239, 226, 0.56);
+  }
+
+  .breadcrumb a {
+    color: rgba(244, 239, 226, 0.72);
+  }
+
+  .hero-eyebrow {
+    color: #d0b27b;
+  }
+
+  .hero-copy h1 {
+    color: var(--text-on-inverse);
+    max-width: 50rem;
+    margin-block-start: var(--space-s);
+  }
+
+  .hero-lede {
+    margin-block-start: var(--space-l);
+    color: rgba(244, 239, 226, 0.8);
+    font-size: var(--step-1);
+    max-width: 44rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    margin-block-start: var(--space-xl);
+  }
+
+  .btn-quiet {
+    color: var(--text-on-inverse);
+    border-color: rgba(244, 239, 226, 0.38);
+    background: transparent;
+  }
+
+  .btn-quiet:hover {
+    color: #fffdf5;
+    border-color: #d0b27b;
+  }
+
+  .hero-principle {
+    padding: var(--space-l);
+    border: 1px solid rgba(155, 117, 66, 0.58);
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .hero-principle .overline {
+    color: rgba(244, 239, 226, 0.58);
+  }
+
+  .principle-title {
+    margin-block: var(--space-s);
+    color: #d0b27b;
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    line-height: var(--leading-heading);
+  }
+
+  .hero-principle > p:last-child {
+    color: rgba(244, 239, 226, 0.72);
+  }
+
+  .meaning-grid,
+  .women-grid {
+    display: grid;
+    grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.25fr);
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+
+  .meaning-copy {
+    max-width: var(--width-prose);
+  }
+
+  .not-list {
+    padding-block: var(--space-xl);
+    background: var(--surface-panel);
+    border-block: 1px solid var(--line-soft);
+  }
+
+  .not-grid {
+    display: grid;
+    grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.25fr);
+    gap: var(--space-2xl);
+  }
+
+  .not-grid ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-m) var(--space-l);
+  }
+
+  .not-grid li {
+    position: relative;
+    padding-inline-start: var(--space-l);
+    color: var(--text-muted);
+  }
+
+  .not-grid li::before {
+    content: "—";
+    position: absolute;
+    inset-inline-start: 0;
+    color: var(--text-accent-strong);
+  }
+
+  .paths-head {
+    margin-block-end: var(--space-xl);
+  }
+
+  .path-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-l);
+  }
+
+  .path-grid article {
+    padding: var(--space-xl);
+    border: 1px solid var(--line-bronze);
+    background: var(--surface-panel-soft);
+  }
+
+  .path-number {
+    color: var(--text-accent-strong);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+  }
+
+  .path-grid h3 {
+    margin-block: var(--space-xs) var(--space-s);
+    font-size: var(--step-3);
+  }
+
+  .path-grid article > p:last-child {
+    color: var(--text-muted);
+  }
+
+  .requirements {
+    background: var(--surface-panel-soft);
+  }
+
+  .requirements-head {
+    margin-block-end: var(--space-xl);
+  }
+
+  .requirement-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--line-bronze);
+    border-inline-start: 1px solid var(--line-soft);
+  }
+
+  .requirement-grid li {
+    padding: var(--space-l);
+    border-inline-end: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .requirement-grid span {
+    color: var(--text-accent-strong);
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    letter-spacing: 0.08em;
+  }
+
+  .requirement-grid h3 {
+    margin-block: var(--space-s);
+    font-size: var(--step-2);
+  }
+
+  .requirement-grid p {
+    color: var(--text-muted);
+  }
+
+  .women {
+    padding-block: var(--space-2xl);
+    background: var(--surface-accent);
+    color: var(--text-on-accent);
+  }
+
+  .women h2,
+  .women .overline {
+    color: var(--text-on-accent);
+  }
+
+  .women .overline {
+    opacity: 0.62;
+  }
+
+  .women-answer p {
+    color: color-mix(in srgb, var(--text-on-accent) 82%, transparent);
+  }
+
+  .women-answer .answer-lead {
+    color: var(--text-on-accent);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.25fr);
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+
+  .faq-head {
+    position: sticky;
+    top: 7rem;
+  }
+
+  .faq-list {
+    border-top: 1px solid var(--line-bronze);
+  }
+
+  .faq-list details {
+    border-bottom: 1px solid var(--line-soft);
+    padding-block: var(--space-m);
+  }
+
+  .faq-list summary {
+    cursor: pointer;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    line-height: var(--leading-heading);
+  }
+
+  .faq-list summary::marker {
+    color: var(--text-accent-strong);
+  }
+
+  .faq-list p {
+    margin-block-start: var(--space-m);
+    color: var(--text-muted);
+  }
+
+  .source-note {
+    padding-block: var(--space-xl);
+    background: var(--surface-panel);
+    border-block: 1px solid var(--line-soft);
+  }
+
+  .source-note h2 {
+    font-size: var(--step-2);
+  }
+
+  .final-cta {
+    padding-block: var(--space-2xl);
+  }
+
+  .cta-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+
+  .cta-action {
+    padding-inline-start: var(--space-xl);
+    border-inline-start: 1px solid var(--line-bronze);
+  }
+
+  .cta-action p {
+    margin-block-start: var(--space-m);
+    color: var(--text-muted);
+    font-size: var(--step--1);
+  }
+
+  @media (max-width: 899px) {
+    .hero-grid,
+    .meaning-grid,
+    .not-grid,
+    .women-grid,
+    .faq-grid,
+    .cta-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-principle {
+      max-width: 35rem;
+    }
+
+    .requirement-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .faq-head {
+      position: static;
+    }
+
+    .cta-action {
+      padding-inline-start: 0;
+      padding-block-start: var(--space-l);
+      border-inline-start: 0;
+      border-top: 1px solid var(--line-bronze);
+    }
+  }
+
+  @media (max-width: 599px) {
+    .hero-actions,
+    .hero-actions .btn,
+    .final-cta .btn {
+      width: 100%;
+    }
+
+    .hero-actions .btn,
+    .final-cta .btn {
+      justify-content: center;
+    }
+
+    .not-grid ul,
+    .path-grid,
+    .requirement-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
