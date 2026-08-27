@@ -3,6 +3,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import SiteHeader from "@components/SiteHeader.astro";
 import SiteFooter from "@components/SiteFooter.astro";
 import OrnamentDivider from "@components/OrnamentDivider.astro";
+import MalteseCross from "@components/MalteseCross.astro";
+import Circumpunct from "@components/Circumpunct.astro";
 import SatelliteNavigation from "@components/SatelliteNavigation.astro";
 import { absoluteSiteUrl, site } from "../../lib/site";
 
@@ -140,6 +142,11 @@ const structuredData = {
     <section class="meaning section-space" aria-labelledby="meaning-title">
       <div class="container meaning-grid">
         <header class="section-head">
+          <div class="meaning-marks" aria-hidden="true">
+            <MalteseCross size={42} class="meaning-cross" />
+            <span></span>
+            <Circumpunct size={34} class="meaning-circumpunct" />
+          </div>
           <p class="overline">Antes del ingreso</p>
           <h2 id="meaning-title">¿Qué significa ser masón para Heredom?</h2>
         </header>
@@ -160,7 +167,18 @@ const structuredData = {
             La integridad, los principios y los valores no se usan como distintivos para
             presumir: se demuestran en la conducta y en la continuidad del trabajo.
           </p>
+          <blockquote>
+            Ser masón es comprometerse con la verdad, con el espíritu y, sobre todo,
+            con uno mismo.
+          </blockquote>
         </div>
+      </div>
+
+      <div class="container commitment-axis" aria-label="Ejes del compromiso masónico">
+        <div><span aria-hidden="true">I</span><strong>Verdad</strong></div>
+        <div><span aria-hidden="true">II</span><strong>Espíritu</strong></div>
+        <div><span aria-hidden="true">III</span><strong>Presencia</strong></div>
+        <div><span aria-hidden="true">IV</span><strong>Trabajo</strong></div>
       </div>
     </section>
 
@@ -325,6 +343,7 @@ const structuredData = {
     <section class="final-cta" aria-labelledby="cta-title">
       <div class="container cta-grid">
         <div>
+          <MalteseCross size={38} class="cta-cross" />
           <p class="overline">El primer paso</p>
           <h2 id="cta-title">Solicitar información no obliga ni garantiza el ingreso</h2>
           <p>
@@ -398,13 +417,13 @@ const structuredData = {
     background:
       linear-gradient(
         90deg,
-        rgba(7, 17, 14, 0.98) 0%,
-        rgba(7, 17, 14, 0.94) 28%,
-        rgba(7, 17, 14, 0.82) 48%,
-        rgba(7, 17, 14, 0.3) 72%,
-        rgba(7, 17, 14, 0.16) 100%
+        rgba(9, 29, 24, 0.98) 0%,
+        rgba(16, 42, 36, 0.94) 28%,
+        rgba(24, 59, 51, 0.82) 48%,
+        rgba(16, 42, 36, 0.34) 72%,
+        rgba(9, 29, 24, 0.16) 100%
       ),
-      linear-gradient(0deg, rgba(7, 17, 14, 0.72) 0%, transparent 48%, rgba(7, 17, 14, 0.28) 100%);
+      linear-gradient(0deg, rgba(9, 29, 24, 0.76) 0%, transparent 48%, rgba(9, 29, 24, 0.3) 100%);
   }
 
   .hero-art {
@@ -487,8 +506,9 @@ const structuredData = {
 
   .btn-quiet {
     color: var(--text-on-inverse);
-    border-color: rgba(244, 239, 226, 0.38);
-    background: transparent;
+    border-color: rgba(208, 178, 123, 0.58);
+    background: rgba(16, 42, 36, 0.34);
+    backdrop-filter: blur(3px);
   }
 
   .btn-quiet:hover {
@@ -508,9 +528,104 @@ const structuredData = {
     max-width: var(--width-prose);
   }
 
+  .meaning {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    color: var(--text-on-inverse);
+    background: var(--surface-header);
+    border-block: 1px solid color-mix(in srgb, var(--accent-bronze) 58%, transparent);
+  }
+
+  .meaning::before,
+  .final-cta::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    opacity: 0.16;
+    background-image:
+      repeating-linear-gradient(112deg, transparent 0 9px, rgba(244, 239, 226, 0.11) 9px 10px),
+      repeating-linear-gradient(68deg, transparent 0 16px, rgba(155, 117, 66, 0.12) 16px 17px);
+    pointer-events: none;
+  }
+
+  .meaning .section-head .overline {
+    color: #d0b27b;
+  }
+
+  .meaning .section-head h2,
+  .meaning-copy .lead {
+    color: var(--text-on-inverse);
+  }
+
+  .meaning-copy p {
+    color: rgba(244, 239, 226, 0.76);
+  }
+
+  .meaning-marks {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    width: min(15rem, 100%);
+    margin-block-end: var(--space-l);
+    color: #d0b27b;
+  }
+
+  .meaning-marks span {
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.58;
+  }
+
+  .meaning-copy blockquote {
+    margin: var(--space-xl) 0 0;
+    padding: var(--space-m) 0 var(--space-m) var(--space-l);
+    border-inline-start: 1px solid #d0b27b;
+    color: #f7ecd2;
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    line-height: var(--leading-heading);
+  }
+
+  .commitment-axis {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-block-start: var(--space-2xl);
+    border-block: 1px solid rgba(208, 178, 123, 0.44);
+  }
+
+  .commitment-axis div {
+    display: grid;
+    gap: var(--space-xs);
+    padding: var(--space-l) var(--space-m);
+    text-align: center;
+  }
+
+  .commitment-axis div + div {
+    border-inline-start: 1px solid rgba(208, 178, 123, 0.3);
+  }
+
+  .commitment-axis span {
+    color: rgba(208, 178, 123, 0.72);
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    letter-spacing: 0.12em;
+  }
+
+  .commitment-axis strong {
+    color: var(--text-on-inverse);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+  }
+
   .not-list {
     padding-block: var(--space-xl);
-    background: var(--surface-panel);
+    background: color-mix(in srgb, var(--surface-panel) 87%, var(--surface-hero));
     border-block: 1px solid var(--line-soft);
   }
 
@@ -553,8 +668,11 @@ const structuredData = {
 
   .path-grid article {
     padding: var(--space-xl);
-    border: 1px solid var(--line-bronze);
-    background: var(--surface-panel-soft);
+    border: 1px solid var(--line-soft);
+    border-top: 3px solid var(--surface-hero);
+    background:
+      repeating-linear-gradient(112deg, transparent 0 13px, rgba(24, 59, 51, 0.025) 13px 14px),
+      var(--surface-panel-soft);
   }
 
   .path-number {
@@ -573,7 +691,7 @@ const structuredData = {
   }
 
   .requirements {
-    background: var(--surface-panel-soft);
+    background: color-mix(in srgb, var(--surface-panel-soft) 82%, var(--surface-heraldic-soft));
   }
 
   .requirements-head {
@@ -596,7 +714,7 @@ const structuredData = {
   }
 
   .requirement-grid span {
-    color: var(--text-accent-strong);
+    color: var(--surface-hero);
     font-family: var(--font-ui);
     font-size: var(--step--1);
     letter-spacing: 0.08em;
@@ -604,6 +722,7 @@ const structuredData = {
 
   .requirement-grid h3 {
     margin-block: var(--space-s);
+    color: var(--surface-header);
     font-size: var(--step-2);
   }
 
@@ -686,7 +805,28 @@ const structuredData = {
   }
 
   .final-cta {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     padding-block: var(--space-2xl);
+    color: var(--text-on-inverse);
+    background: var(--surface-hero);
+    border-top: 1px solid color-mix(in srgb, var(--accent-bronze) 58%, transparent);
+  }
+
+  .final-cta .overline {
+    color: #d0b27b;
+  }
+
+  .final-cta h2,
+  .final-cta h2 + p {
+    color: var(--text-on-inverse);
+  }
+
+  .cta-cross {
+    display: block;
+    margin-block-end: var(--space-m);
+    color: #d0b27b;
   }
 
   .cta-grid {
@@ -698,13 +838,25 @@ const structuredData = {
 
   .cta-action {
     padding-inline-start: var(--space-xl);
-    border-inline-start: 1px solid var(--line-bronze);
+    border-inline-start: 1px solid rgba(208, 178, 123, 0.52);
   }
 
   .cta-action p {
     margin-block-start: var(--space-m);
-    color: var(--text-muted);
+    color: rgba(244, 239, 226, 0.68);
     font-size: var(--step--1);
+  }
+
+  .final-cta .btn-primary {
+    color: var(--surface-header);
+    border-color: var(--surface-page);
+    background: var(--surface-page);
+  }
+
+  .final-cta .btn-primary:hover {
+    color: var(--surface-header);
+    border-color: #d0b27b;
+    background: #f7ecd2;
   }
 
   @media (max-width: 899px) {
@@ -718,8 +870,8 @@ const structuredData = {
 
     .page-hero::after {
       background:
-        linear-gradient(90deg, rgba(7, 17, 14, 0.97) 0%, rgba(7, 17, 14, 0.86) 58%, rgba(7, 17, 14, 0.45) 100%),
-        linear-gradient(0deg, rgba(7, 17, 14, 0.78) 0%, transparent 55%);
+        linear-gradient(90deg, rgba(9, 29, 24, 0.97) 0%, rgba(16, 42, 36, 0.88) 58%, rgba(24, 59, 51, 0.48) 100%),
+        linear-gradient(0deg, rgba(9, 29, 24, 0.8) 0%, transparent 55%);
     }
 
     .hero-grid {
@@ -738,7 +890,7 @@ const structuredData = {
       padding-inline-start: 0;
       padding-block-start: var(--space-l);
       border-inline-start: 0;
-      border-top: 1px solid var(--line-bronze);
+      border-top: 1px solid rgba(208, 178, 123, 0.52);
     }
   }
 
@@ -748,7 +900,7 @@ const structuredData = {
     }
 
     .page-hero::after {
-      background: rgba(7, 17, 14, 0.79);
+      background: rgba(16, 42, 36, 0.84);
     }
 
     .hero-art {
@@ -774,6 +926,19 @@ const structuredData = {
     .path-grid,
     .requirement-grid {
       grid-template-columns: 1fr;
+    }
+
+    .commitment-axis {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .commitment-axis div:nth-child(3) {
+      border-inline-start: 0;
+      border-top: 1px solid rgba(208, 178, 123, 0.3);
+    }
+
+    .commitment-axis div:nth-child(4) {
+      border-top: 1px solid rgba(208, 178, 123, 0.3);
     }
   }
 </style>
