@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
+    "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/literata": "^5.2.5",
     "@fontsource/cormorant-garamond": "^5.2.5",
     "@fontsource/marcellus": "^5.2.5",
