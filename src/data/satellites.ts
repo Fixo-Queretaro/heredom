@@ -1,0 +1,20 @@
+export interface SatellitePage {
+  href: string;
+  title: string;
+  description: string;
+}
+
+/**
+ * Catálogo SEO de páginas satélite.
+ *
+ * La portada lo declara mediante datos estructurados sin alterar su diseño.
+ * Cada satélite usa el mismo catálogo para enlazar visualmente a los demás.
+ */
+export const satellitePages: SatellitePage[] = [
+  {
+    href: "/entrar-a-la-masoneria/",
+    title: "Entrar a la Masonería",
+    description:
+      "Requisitos, compromiso y proceso de acercamiento a la Masonería Operativa en Heredom.",
+  },
+];
