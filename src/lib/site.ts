@@ -1,3 +1,5 @@
+import { satellitePages } from "../data/satellites";
+
 export const site = {
   url: "https://heredom.com.mx",
   name: "Orden Real de Heredom de Kilwinning",
@@ -53,6 +55,13 @@ export function createHomeStructuredData() {
         description: site.description,
         inLanguage: site.language,
         publisher: { "@id": `${homeUrl}#organization` },
+        hasPart: satellitePages.map((page) => ({
+          "@type": "WebPage",
+          "@id": `${absoluteSiteUrl(page.href)}#webpage`,
+          url: absoluteSiteUrl(page.href),
+          name: page.title,
+          description: page.description,
+        })),
       },
       {
         "@type": "ImageObject",
