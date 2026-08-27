@@ -17,11 +17,20 @@ import FourCornerstones from "@components/FourCornerstones.astro";
 import ActivitiesFormation from "@components/ActivitiesFormation.astro";
 import MexicoInstitutionalHistory from "@components/MexicoInstitutionalHistory.astro";
 import SiteFooter from "@components/SiteFooter.astro";
+import { createHomeStructuredData, site } from "../lib/site";
+
+const homeTitle = "Orden Real de Heredom de Kilwinning | México y el Caribe";
+const homeStructuredData = createHomeStructuredData();
 ---
 
 <BaseLayout
-  title="Inicio"
-  description="Orden Real de Heredom de Kilwinning — tradición, biblioteca y formación abierta sobre la Masonería Operativa. Capítulo Soberano para México y el Caribe."
+  title={homeTitle}
+  description={site.description}
+  canonical="/"
+  image={site.socialImage}
+  imageAlt={site.socialImageAlt}
+  exactTitle={true}
+  structuredData={homeStructuredData}
 >
   <SiteHeader current="/" />
 

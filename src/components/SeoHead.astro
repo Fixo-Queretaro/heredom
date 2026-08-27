@@ -1,0 +1,70 @@
+---
+import { absoluteSiteUrl, site } from "../lib/site";
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  imageAlt?: string;
+  pageType?: "website" | "article";
+  noindex?: boolean;
+  exactTitle?: boolean;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description = site.description,
+  canonical,
+  image = site.socialImage,
+  imageAlt = site.socialImageAlt,
+  pageType = "website",
+  noindex = false,
+  exactTitle = false,
+  structuredData,
+} = Astro.props;
+
+const documentTitle = exactTitle ? title : `${title} | ${site.shortName}`;
+const canonicalUrl = canonical
+  ? absoluteSiteUrl(canonical)
+  : new URL(Astro.url.pathname, Astro.site ?? site.url).toString();
+const imageUrl = absoluteSiteUrl(image);
+const imageType = image.toLowerCase().endsWith(".png") ? "image/png" : "image/jpeg";
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{documentTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+<meta name="theme-color" content={site.themeColor} />
+
+<meta property="og:type" content={pageType} />
+<meta property="og:locale" content={site.locale} />
+<meta property="og:site_name" content={site.shortName} />
+<meta property="og:title" content={documentTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:secure_url" content={imageUrl} />
+<meta property="og:image:type" content={imageType} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={imageAlt} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={documentTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={imageAlt} />
+
+{
+  structuredData && (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  )
+}
