@@ -3,6 +3,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import SiteHeader from "@components/SiteHeader.astro";
 import SiteFooter from "@components/SiteFooter.astro";
 import OrnamentDivider from "@components/OrnamentDivider.astro";
+import SatelliteNavigation from "@components/SatelliteNavigation.astro";
 import { absoluteSiteUrl, site } from "../../lib/site";
 
 const pagePath = "/entrar-a-la-masoneria/";
@@ -310,6 +311,8 @@ const structuredData = {
         </p>
       </div>
     </section>
+
+    <SatelliteNavigation current={pagePath} />
 
     <section class="final-cta" aria-labelledby="cta-title">
       <div class="container cta-grid">
