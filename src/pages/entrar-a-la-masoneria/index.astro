@@ -311,6 +311,17 @@ const structuredData = {
 
     <section class="women" aria-labelledby="women-title">
       <div class="container women-grid">
+        <figure class="women-figure">
+          <img
+            src="/images/primavera-botticelli-figura-central.webp"
+            alt="Figura femenina central de La Primavera de Sandro Botticelli, utilizada como alegoría visual"
+            width="234"
+            height="348"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Figura central de <cite>La Primavera</cite> · Sandro Botticelli</figcaption>
+        </figure>
         <div class="women-copy">
           <p class="overline">Una respuesta inequívoca</p>
           <h2 id="women-title">¿Las mujeres pueden entrar a la Masonería?</h2>
@@ -323,17 +334,6 @@ const structuredData = {
             </p>
           </div>
         </div>
-        <figure class="women-figure">
-          <img
-            src="/images/primavera-botticelli-figura-central.webp"
-            alt="Figura femenina central de La Primavera de Sandro Botticelli, utilizada como alegoría visual"
-            width="234"
-            height="348"
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption>Figura central de <cite>La Primavera</cite> · Sandro Botticelli</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -536,7 +536,7 @@ const structuredData = {
 
   .women-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(14rem, 0.65fr);
+    grid-template-columns: minmax(14rem, 0.65fr) minmax(0, 1.35fr);
     gap: clamp(var(--space-l), 4vw, var(--space-2xl));
     align-items: center;
   }
@@ -799,7 +799,7 @@ const structuredData = {
     box-shadow: 0 1rem 3rem rgba(32, 0, 0, 0.22);
     transform: rotate(-1deg);
     width: min(19rem, 100%);
-    justify-self: end;
+    justify-self: start;
   }
 
   .women-figure::after {
@@ -911,6 +911,11 @@ const structuredData = {
     .women-figure {
       width: min(20rem, 100%);
       justify-self: center;
+      order: 2;
+    }
+
+    .women-copy {
+      order: 1;
     }
 
     .requirement-grid {
