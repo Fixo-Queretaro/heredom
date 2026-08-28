@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 150">
+  <defs>
+    <mask id="facets">
+      <rect width="180" height="150" fill="#fff"/>
+      <path fill="#000" d="m31 68 24-30 34-11-16 27-24 23Zm48-13 18-31 33 18-19 19Zm39 12 20-20 17 36-24 13Zm-87 13 18 5-9 34-17-8Zm22 3 26-22 7 31-34 25Zm37-19 19 3 14 31-31-7Zm43 40 20-11-8 27-27 7Zm-79 20 37-25 19 30-47 3Z"/>
+    </mask>
+  </defs>
+  <g fill="#200000">
+    <path mask="url(#facets)" d="M13 115 27 67 53 29l49-17 39 22 25 47-12 48-55 13-57-7Z"/>
+    <path d="m55 50 6-8 5 3-7 9Zm32-24 9-4 3 5-11 4Zm42 21 8-5 4 6-9 5ZM25 94l5-12 5 3-5 13Zm31 14 12-8 3 5-13 9Zm39-37 7-5 5 7-9 4Zm19 41 13-7 3 5-14 8Zm24-25 8-4 3 7-9 3Zm-57 39 9-7 5 5-11 7Z"/>
+    <circle cx="43" cy="61" r="2.5"/><circle cx="71" cy="35" r="2"/>
+    <circle cx="111" cy="42" r="2.5"/><circle cx="145" cy="72" r="2"/>
+    <circle cx="42" cy="102" r="2"/><circle cx="78" cy="82" r="2.5"/>
+    <circle cx="108" cy="103" r="2"/><circle cx="137" cy="116" r="2.5"/>
+  </g>
+</svg>

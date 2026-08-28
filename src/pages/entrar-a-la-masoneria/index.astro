@@ -7,10 +7,11 @@ import MalteseCross from "@components/MalteseCross.astro";
 import Circumpunct from "@components/Circumpunct.astro";
 import SatelliteNavigation from "@components/SatelliteNavigation.astro";
 import ApronIcon from "@components/ApronIcon.astro";
-import CommitmentIcon from "@components/CommitmentIcon.astro";
 import { absoluteSiteUrl, site } from "../../lib/site";
 import sphereMark from "../../../recursos-originales/esfera.svg?url";
 import balanceMark from "../../../recursos-originales/libra.svg?url";
+import cupMark from "../../../recursos-originales/copa.svg?url";
+import roughStoneMark from "../../../recursos-originales/piedra-bruta.svg?url";
 
 const pagePath = "/entrar-a-la-masoneria/";
 const pageUrl = absoluteSiteUrl(pagePath);
@@ -191,12 +192,12 @@ const structuredData = {
         </div>
         <div>
           <span class="axis-numeral" aria-hidden="true">III</span>
-          <CommitmentIcon variant="compass" class="axis-symbol" />
+          <span class="axis-mark axis-mark--cup" style={`--axis-mask: url("${cupMark}")`} aria-hidden="true"></span>
           <strong>Presencia</strong>
         </div>
         <div>
           <span class="axis-numeral" aria-hidden="true">IV</span>
-          <CommitmentIcon variant="tools" class="axis-symbol" />
+          <span class="axis-mark axis-mark--stone" style={`--axis-mask: url("${roughStoneMark}")`} aria-hidden="true"></span>
           <strong>Trabajo</strong>
         </div>
       </div>
@@ -644,10 +645,12 @@ const structuredData = {
     opacity: 0.82;
   }
 
-  .commitment-axis :global(.axis-symbol) {
-    display: block;
-    margin-inline: auto;
-    opacity: 0.82;
+  .axis-mark--cup {
+    width: 2.8rem;
+  }
+
+  .axis-mark--stone {
+    width: 4rem;
   }
 
   .commitment-axis strong {
