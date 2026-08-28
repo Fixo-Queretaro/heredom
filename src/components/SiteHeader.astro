@@ -9,11 +9,13 @@ interface Props {
   uid?: string;
   /** ruta activa; marca el enlace con aria-current="page" */
   current?: string;
+  /** conserva el menú institucional por defecto; los satélites usan su propio mapa */
+  variant?: "institutional" | "satellite";
 }
-const { uid = "main", current } = Astro.props;
+const { uid = "main", current, variant = "institutional" } = Astro.props;
 const navId = `nav-${uid}`;
 
-const links = [
+const institutionalLinks = [
   { href: "/", label: "Inicio" },
   { href: "/#levantamiento-columnas", label: "La Orden" },
   { href: "/#tradicion-historia", label: "Tradición e Historia" },
@@ -21,6 +23,15 @@ const links = [
   { href: "/#actividades", label: "Formación" },
   { href: "https://porlatradicion.com/", label: "Legado", external: true },
 ];
+
+const satelliteLinks = [
+  { href: "/", label: "Inicio" },
+  { href: "/entrar-a-la-masoneria/", label: "Entrar a la Masonería" },
+  { href: "/biblioteca/", label: "Biblioteca" },
+  { href: "https://porlatradicion.com/", label: "Legado", external: true },
+];
+
+const links = variant === "satellite" ? satelliteLinks : institutionalLinks;
 ---
 
 <div class="header-container">
