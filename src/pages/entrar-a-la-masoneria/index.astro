@@ -6,7 +6,11 @@ import OrnamentDivider from "@components/OrnamentDivider.astro";
 import MalteseCross from "@components/MalteseCross.astro";
 import Circumpunct from "@components/Circumpunct.astro";
 import SatelliteNavigation from "@components/SatelliteNavigation.astro";
+import ApronIcon from "@components/ApronIcon.astro";
 import { absoluteSiteUrl, site } from "../../lib/site";
+import sphereMark from "../../../recursos-originales/esfera.svg?url";
+import balanceMark from "../../../recursos-originales/libra.svg?url";
+import trowelMark from "../../../recursos-originales/tula.svg?url";
 
 const pagePath = "/entrar-a-la-masoneria/";
 const pageUrl = absoluteSiteUrl(pagePath);
@@ -20,12 +24,12 @@ const faqItems = [
   {
     question: "¿Cuáles son los requisitos para entrar a la Masonería?",
     answer:
-      "En Heredom, la candidatura exige ser una persona adulta, libre y de buenas costumbres; estar debidamente cualificada física, psíquica y espiritualmente; conocer y aceptar el sello crístico de la Orden; y poder asumir con constancia las tenidas, el ritual y los trabajos de cada nivel. La solicitud abre un proceso de acercamiento y evaluación, no garantiza la admisión.",
+      "En Heredom, la candidatura exige ser una persona mayor de edad y acreditarlo mediante documentación oficial vigente; ser libre y de buenas costumbres; estar debidamente cualificada física, psíquica y espiritualmente; conocer y aceptar el sello crístico de la Orden; y poder asumir con constancia las tenidas, el ritual y los trabajos de cada nivel. La solicitud abre un proceso de acercamiento y evaluación, no garantiza la admisión.",
   },
   {
     question: "¿A qué edad se puede entrar a la Masonería?",
     answer:
-      "El acercamiento de Heredom está dirigido a personas adultas. Los documentos públicos de la Orden no establecen una edad mínima numérica única; la edad aplicable y las demás condiciones formales se confirman durante el proceso. La madurez y la capacidad de sostener el compromiso son indispensables.",
+      "Sólo pueden solicitar acercamiento personas mayores de edad. La mayoría de edad deberá acreditarse mediante documentación oficial vigente durante el proceso; también son indispensables la madurez y la capacidad de sostener el compromiso.",
   },
   {
     question: "¿Las mujeres pueden entrar a la Masonería?",
@@ -35,7 +39,7 @@ const faqItems = [
   {
     question: "¿Quién puede entrar a la Masonería?",
     answer:
-      "Puede solicitar acercamiento una persona adulta, sea hombre o mujer, con una búsqueda iniciática auténtica y capacidad para asumir la disciplina de la Orden. La consulta está abierta tanto a quien no posee iniciación previa como a masones procedentes de otras obediencias. Cada candidatura se considera individualmente.",
+      "Puede solicitar acercamiento una persona mayor de edad, sea hombre o mujer, con una búsqueda iniciática auténtica y capacidad para asumir la disciplina de la Orden. La mayoría de edad deberá acreditarse mediante documentación oficial vigente. La consulta está abierta tanto a quien no posee iniciación previa como a masones procedentes de otras obediencias. Cada candidatura se considera individualmente.",
   },
   {
     question: "¿Qué se necesita para entrar a la Masonería?",
@@ -98,7 +102,7 @@ const structuredData = {
   canonical={pagePath}
   structuredData={structuredData}
 >
-  <SiteHeader current={pagePath} />
+  <SiteHeader current={pagePath} variant="satellite" />
 
   <main id="contenido">
     <header class="page-hero">
@@ -161,7 +165,7 @@ const structuredData = {
             Ese camino implica un compromiso de por vida. No consiste en asistir sólo
             cuando hay ánimo, sino en concurrir a las tenidas, practicar el ritual y
             realizar los trabajos correspondientes a cada nivel. Exige compromiso con
-            la verdad, con el espíritu y con uno mismo.
+            la verdad, con el espíritu y con la unidad.
           </p>
           <p>
             La integridad, los principios y los valores no se usan como distintivos para
@@ -169,16 +173,32 @@ const structuredData = {
           </p>
           <blockquote>
             Ser masón es comprometerse con la verdad, con el espíritu y, sobre todo,
-            con uno mismo.
+            con la unidad.
           </blockquote>
         </div>
       </div>
 
       <div class="container commitment-axis" aria-label="Ejes del compromiso masónico">
-        <div><span aria-hidden="true">I</span><strong>Verdad</strong></div>
-        <div><span aria-hidden="true">II</span><strong>Espíritu</strong></div>
-        <div><span aria-hidden="true">III</span><strong>Presencia</strong></div>
-        <div><span aria-hidden="true">IV</span><strong>Trabajo</strong></div>
+        <div>
+          <span class="axis-numeral" aria-hidden="true">I</span>
+          <span class="axis-mark" style={`--axis-mask: url("${balanceMark}")`} aria-hidden="true"></span>
+          <strong>Verdad</strong>
+        </div>
+        <div>
+          <span class="axis-numeral" aria-hidden="true">II</span>
+          <span class="axis-mark" style={`--axis-mask: url("${sphereMark}")`} aria-hidden="true"></span>
+          <strong>Espíritu</strong>
+        </div>
+        <div>
+          <span class="axis-numeral" aria-hidden="true">III</span>
+          <Circumpunct size={50} class="axis-circumpunct" />
+          <strong>Presencia</strong>
+        </div>
+        <div>
+          <span class="axis-numeral" aria-hidden="true">IV</span>
+          <span class="axis-mark axis-mark--wide" style={`--axis-mask: url("${trowelMark}")`} aria-hidden="true"></span>
+          <strong>Trabajo</strong>
+        </div>
       </div>
     </section>
 
@@ -211,6 +231,7 @@ const structuredData = {
         <div class="path-grid">
           <article>
             <p class="path-number" aria-hidden="true">I</p>
+            <ApronIcon variant="apprentice" class="path-apron" />
             <h3>Sin iniciación previa</h3>
             <p>
               Una persona que nunca ha pertenecido a una logia puede solicitar
@@ -220,6 +241,7 @@ const structuredData = {
           </article>
           <article>
             <p class="path-number" aria-hidden="true">II</p>
+            <ApronIcon variant="templar" class="path-apron" />
             <h3>Desde otra obediencia</h3>
             <p>
               Un masón procedente de la corriente especulativa o de otra obediencia puede
@@ -249,7 +271,10 @@ const structuredData = {
           <li>
             <span aria-hidden="true">01</span>
             <h3>Libertad y conducta</h3>
-            <p>Ser una persona adulta, libre y de buenas costumbres.</p>
+            <p>
+              Ser mayor de edad, acreditarlo mediante documentación oficial vigente,
+              y ser una persona libre y de buenas costumbres.
+            </p>
           </li>
           <li>
             <span aria-hidden="true">02</span>
@@ -289,6 +314,17 @@ const structuredData = {
           <p class="overline">Una respuesta inequívoca</p>
           <h2 id="women-title">¿Las mujeres pueden entrar a la Masonería?</h2>
         </div>
+        <figure class="women-figure">
+          <img
+            src="/images/primavera-botticelli-figura-central.webp"
+            alt="Figura femenina central de La Primavera de Sandro Botticelli, utilizada como alegoría visual"
+            width="234"
+            height="348"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Figura central de <cite>La Primavera</cite> · Sandro Botticelli</figcaption>
+        </figure>
         <div class="prose women-answer">
           <p class="answer-lead">Sí, en Heredom pueden solicitar acercamiento.</p>
           <p>
@@ -340,29 +376,6 @@ const structuredData = {
 
     <SatelliteNavigation current={pagePath} />
 
-    <section class="final-cta" aria-labelledby="cta-title">
-      <div class="container cta-grid">
-        <div>
-          <MalteseCross size={38} class="cta-cross" />
-          <p class="overline">El primer paso</p>
-          <h2 id="cta-title">Solicitar información no obliga ni garantiza el ingreso</h2>
-          <p>
-            Abre una conversación reservada para discernir si tu búsqueda, tus
-            posibilidades y la vía de Heredom pueden encontrarse.
-          </p>
-        </div>
-        <div class="cta-action">
-          <a
-            class="btn btn-primary"
-            href={approachUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Iniciar acercamiento mediante el formulario de la Orden (abre en una pestaña nueva)"
-          >Iniciar acercamiento ↗</a>
-          <p>Capítulo Soberano para México y el Caribe · Actividad presencial en Querétaro</p>
-        </div>
-      </div>
-    </section>
   </main>
 
   <SiteFooter />
@@ -380,21 +393,18 @@ const structuredData = {
   .section-head .overline,
   .not-grid .overline,
   .women .overline,
-  .source-note .overline,
-  .final-cta .overline {
+  .source-note .overline {
     color: var(--text-accent-strong);
   }
 
   .section-head h2,
   .not-grid h2,
   .women h2,
-  .source-note h2,
-  .final-cta h2 {
+  .source-note h2 {
     margin-block-start: var(--space-xs);
   }
 
-  .section-head > p:last-child,
-  .final-cta h2 + p {
+  .section-head > p:last-child {
     margin-block-start: var(--space-m);
     color: var(--text-muted);
   }
@@ -516,12 +526,18 @@ const structuredData = {
     border-color: #d0b27b;
   }
 
-  .meaning-grid,
-  .women-grid {
+  .meaning-grid {
     display: grid;
     grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.25fr);
     gap: var(--space-2xl);
     align-items: start;
+  }
+
+  .women-grid {
+    display: grid;
+    grid-template-columns: minmax(13rem, 0.7fr) minmax(12rem, 0.55fr) minmax(0, 1fr);
+    gap: clamp(var(--space-l), 4vw, var(--space-2xl));
+    align-items: center;
   }
 
   .meaning-copy {
@@ -537,8 +553,7 @@ const structuredData = {
     border-block: 1px solid color-mix(in srgb, var(--accent-bronze) 58%, transparent);
   }
 
-  .meaning::before,
-  .final-cta::before {
+  .meaning::before {
     content: "";
     position: absolute;
     z-index: -1;
@@ -600,6 +615,8 @@ const structuredData = {
 
   .commitment-axis div {
     display: grid;
+    grid-template-rows: auto 4rem auto;
+    align-items: center;
     gap: var(--space-xs);
     padding: var(--space-l) var(--space-m);
     text-align: center;
@@ -609,11 +626,33 @@ const structuredData = {
     border-inline-start: 1px solid rgba(208, 178, 123, 0.3);
   }
 
-  .commitment-axis span {
+  .axis-numeral {
     color: rgba(208, 178, 123, 0.72);
     font-family: var(--font-ui);
     font-size: var(--step--1);
     letter-spacing: 0.12em;
+  }
+
+  .axis-mark {
+    display: block;
+    width: 3.35rem;
+    height: 3.35rem;
+    margin-inline: auto;
+    background: #d0b27b;
+    -webkit-mask: var(--axis-mask) center / contain no-repeat;
+    mask: var(--axis-mask) center / contain no-repeat;
+    opacity: 0.82;
+  }
+
+  .axis-mark--wide {
+    width: 4.5rem;
+  }
+
+  .commitment-axis :global(.axis-circumpunct) {
+    display: block;
+    margin-inline: auto;
+    color: #d0b27b;
+    opacity: 0.82;
   }
 
   .commitment-axis strong {
@@ -681,6 +720,10 @@ const structuredData = {
     font-size: var(--step-2);
   }
 
+  .path-grid :global(.path-apron) {
+    margin-block: var(--space-s) var(--space-m);
+  }
+
   .path-grid h3 {
     margin-block: var(--space-xs) var(--space-s);
     font-size: var(--step-3);
@@ -745,6 +788,41 @@ const structuredData = {
     opacity: 0.62;
   }
 
+  .women-figure {
+    position: relative;
+    margin: 0;
+    padding: var(--space-xs);
+    background: #f2e4c8;
+    border: 1px solid rgba(244, 239, 226, 0.48);
+    box-shadow: 0 1rem 3rem rgba(32, 0, 0, 0.22);
+    transform: rotate(-1deg);
+  }
+
+  .women-figure::after {
+    content: "";
+    position: absolute;
+    inset: var(--space-xs);
+    border: 1px solid rgba(32, 0, 0, 0.24);
+    pointer-events: none;
+  }
+
+  .women-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: saturate(0.82) contrast(1.04);
+  }
+
+  .women-figure figcaption {
+    padding: var(--space-s) var(--space-xs) var(--space-xs);
+    color: #4c271d;
+    font-family: var(--font-display);
+    font-size: var(--step--1);
+    font-style: italic;
+    line-height: 1.35;
+    text-align: center;
+  }
+
   .women-answer p {
     color: color-mix(in srgb, var(--text-on-accent) 82%, transparent);
   }
@@ -804,67 +882,11 @@ const structuredData = {
     font-size: var(--step-2);
   }
 
-  .final-cta {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    padding-block: var(--space-2xl);
-    color: var(--text-on-inverse);
-    background: var(--surface-hero);
-    border-top: 1px solid color-mix(in srgb, var(--accent-bronze) 58%, transparent);
-  }
-
-  .final-cta .overline {
-    color: #d0b27b;
-  }
-
-  .final-cta h2,
-  .final-cta h2 + p {
-    color: var(--text-on-inverse);
-  }
-
-  .cta-cross {
-    display: block;
-    margin-block-end: var(--space-m);
-    color: #d0b27b;
-  }
-
-  .cta-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
-    gap: var(--space-2xl);
-    align-items: center;
-  }
-
-  .cta-action {
-    padding-inline-start: var(--space-xl);
-    border-inline-start: 1px solid rgba(208, 178, 123, 0.52);
-  }
-
-  .cta-action p {
-    margin-block-start: var(--space-m);
-    color: rgba(244, 239, 226, 0.68);
-    font-size: var(--step--1);
-  }
-
-  .final-cta .btn-primary {
-    color: var(--surface-header);
-    border-color: var(--surface-page);
-    background: var(--surface-page);
-  }
-
-  .final-cta .btn-primary:hover {
-    color: var(--surface-header);
-    border-color: #d0b27b;
-    background: #f7ecd2;
-  }
-
   @media (max-width: 899px) {
     .meaning-grid,
     .not-grid,
     .women-grid,
-    .faq-grid,
-    .cta-grid {
+    .faq-grid {
       grid-template-columns: 1fr;
     }
 
@@ -878,19 +900,17 @@ const structuredData = {
       min-height: 36rem;
     }
 
+    .women-figure {
+      width: min(20rem, 100%);
+      justify-self: center;
+    }
+
     .requirement-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .faq-head {
       position: static;
-    }
-
-    .cta-action {
-      padding-inline-start: 0;
-      padding-block-start: var(--space-l);
-      border-inline-start: 0;
-      border-top: 1px solid rgba(208, 178, 123, 0.52);
     }
   }
 
@@ -912,13 +932,11 @@ const structuredData = {
     }
 
     .hero-actions,
-    .hero-actions .btn,
-    .final-cta .btn {
+    .hero-actions .btn {
       width: 100%;
     }
 
-    .hero-actions .btn,
-    .final-cta .btn {
+    .hero-actions .btn {
       justify-content: center;
     }
 

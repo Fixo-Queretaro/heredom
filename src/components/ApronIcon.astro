@@ -1,0 +1,53 @@
+---
+interface Props {
+  variant?: "apprentice" | "templar";
+  class?: string;
+}
+
+const { variant = "apprentice", class: className } = Astro.props;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 160 150"
+  role="img"
+  aria-label={variant === "templar" ? "Mandil con cruz templaria" : "Mandil liso de aprendiz"}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path class="strap" d="M8 31C37 20 123 20 152 31" />
+  <path class="apron" d="M25 34h110l-8 100H33L25 34Z" />
+  <path class="flap" d="M26 35h108L80 82 26 35Z" />
+  {variant === "templar" && (
+    <path
+      class="cross"
+      d="M80 80c-7-10-15-15-27-18 4 12 9 20 19 27-10 7-15 15-19 27 12-3 20-8 27-18 7 10 15 15 27 18-4-12-9-20-19-27 10-7 15-15 19-27-12 3-20 8-27 18Z"
+    />
+  )}
+</svg>
+
+<style>
+  svg {
+    display: block;
+    width: 5.5rem;
+    height: auto;
+    color: var(--surface-header);
+  }
+
+  .strap,
+  .apron,
+  .flap {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .flap {
+    fill: color-mix(in srgb, var(--surface-page) 78%, transparent);
+  }
+
+  .cross {
+    fill: var(--text-accent-strong);
+  }
+</style>
