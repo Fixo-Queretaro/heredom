@@ -17,4 +17,10 @@ export const satellitePages: SatellitePage[] = [
     description:
       "Requisitos, compromiso y proceso de acercamiento a la Masonería Operativa en Heredom.",
   },
+  {
+    href: "/masoneria-operativa/",
+    title: "Masonería Operativa",
+    description:
+      "Origen, doctrina, realización espiritual y diferencias con la Masonería especulativa.",
+  },
 ];

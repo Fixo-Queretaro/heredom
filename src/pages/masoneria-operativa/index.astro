@@ -1,0 +1,1172 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SiteHeader from "@components/SiteHeader.astro";
+import SiteFooter from "@components/SiteFooter.astro";
+import MalteseCross from "@components/MalteseCross.astro";
+import Circumpunct from "@components/Circumpunct.astro";
+import SatelliteNavigation from "@components/SatelliteNavigation.astro";
+import { absoluteSiteUrl, site } from "../../lib/site";
+
+const pagePath = "/masoneria-operativa/";
+const pageUrl = absoluteSiteUrl(pagePath);
+const pageTitle = "Masonería Operativa: origen, doctrina y realización";
+const pageDescription =
+  "Qué es la Masonería Operativa según Heredom: sus orígenes, doctrina, método de realización y diferencias con la Masonería especulativa.";
+
+const faqItems = [
+  {
+    question: "¿Qué es la Masonería Operativa?",
+    answer:
+      "Para Heredom, la Masonería Operativa es una vía iniciática tradicional que integra una filiación, una doctrina expresada mediante símbolos constructivos y un método efectivo de realización espiritual. No se reduce al antiguo oficio material de los canteros ni a una interpretación moral de sus herramientas.",
+  },
+  {
+    question: "¿Cuál es la diferencia entre Masonería Operativa y especulativa?",
+    answer:
+      "Desde la perspectiva doctrinal de Heredom, la Masonería Operativa conserva unidos el oficio, la doctrina y la práctica de realización; la Masonería especulativa moderna heredó símbolos y formas de ese tronco, pero desplazó el trabajo material y, en distinta medida, su aplicación espiritual efectiva. Esta síntesis expresa la posición de la Orden y no pretende describir por igual a todas las obediencias actuales.",
+  },
+  {
+    question: "¿La Masonería Operativa desapareció en 1717?",
+    answer:
+      "Heredom sostiene que no. En su lectura histórica y doctrinal, 1717 marca la organización pública de la Gran Logia de Londres y una ruptura con fuentes operativas anteriores, no el nacimiento de toda la Masonería ni la extinción automática de las transmisiones operativas.",
+  },
+  {
+    question: "¿Un masón operativo tiene que trabajar físicamente la piedra?",
+    answer:
+      "No necesariamente. Los documentos de Heredom distinguen un trabajo material del oficio y un sentido espiritual superior. La construcción, la geometría, el rito y las herramientas sirven como soportes de una transformación que debe realizarse, no sólo estudiarse.",
+  },
+  {
+    question: "¿Qué relación tiene René Guénon con la Masonería Operativa?",
+    answer:
+      "La obra de René Guénon proporciona a Heredom un marco para comprender la iniciación de oficio, el simbolismo constructivo, la regularidad iniciática y la diferencia entre conocimiento teórico y realización espiritual. Sus estudios son una referencia doctrinal central, aunque no sustituyen la práctica ritual ni la transmisión.",
+  },
+  {
+    question: "¿Puede acercarse a Heredom alguien de la Masonería especulativa?",
+    answer:
+      "Sí. La experiencia previa no se desprecia ni garantiza el ingreso. Un masón procedente de otra obediencia puede solicitar acercamiento si desea estudiar las fuentes operativas, revisar el sentido del símbolo y asumir un trabajo iniciático serio y sostenido.",
+  },
+] as const;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": `${pageUrl}#article`,
+      headline: pageTitle,
+      description: pageDescription,
+      mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
+      author: { "@id": `${absoluteSiteUrl("/")}#organization` },
+      publisher: { "@id": `${absoluteSiteUrl("/")}#organization` },
+      image: absoluteSiteUrl(site.socialImage),
+      inLanguage: site.language,
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: pageTitle,
+      description: pageDescription,
+      isPartOf: { "@id": `${absoluteSiteUrl("/")}#website` },
+      about: [
+        { "@id": `${absoluteSiteUrl("/")}#organization` },
+        { "@type": "Thing", name: "Masonería Operativa" },
+      ],
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+      inLanguage: site.language,
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Inicio",
+          item: absoluteSiteUrl("/"),
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Masonería Operativa",
+          item: pageUrl,
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#preguntas`,
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={pagePath}
+  pageType="article"
+  exactTitle={true}
+  structuredData={structuredData}
+>
+  <SiteHeader current={pagePath} variant="satellite" />
+
+  <main id="contenido">
+    <header class="page-hero">
+      <img
+        class="hero-art"
+        src="/images/kilwinning-abbey-1901.webp"
+        alt="Grabado histórico de las ruinas de la abadía escocesa de Kilwinning"
+        width="1500"
+        height="2196"
+        decoding="async"
+        fetchpriority="high"
+      />
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <nav class="breadcrumb" aria-label="Migas de pan">
+            <a href="/">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">Masonería Operativa</span>
+          </nav>
+          <p class="overline hero-eyebrow">Doctrina · Oficio · Realización</p>
+          <h1>¿Qué es la Masonería Operativa?</h1>
+          <p class="hero-lede">
+            No es solamente la Masonería de quienes levantaban catedrales. Para Heredom,
+            es una vía iniciática en la que el símbolo vuelve a ser instrumento, el rito
+            se convierte en trabajo y el conocimiento debe realizarse en el ser.
+          </p>
+          <p class="hero-principle">Materializar el espíritu. Espiritualizar la materia.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#definicion">Comprender lo operativo</a>
+            <a class="btn btn-quiet" href="#diferencias">Operativo y especulativo</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="definicion" class="definition section-space" aria-labelledby="definition-title">
+      <div class="container definition-grid">
+        <header class="section-head">
+          <div class="symbol-line" aria-hidden="true">
+            <MalteseCross size={38} />
+            <span></span>
+            <Circumpunct size={30} />
+          </div>
+          <p class="overline">Una precisión de principio</p>
+          <h2 id="definition-title">Operar no es solamente comprender</h2>
+        </header>
+
+        <div class="prose definition-copy">
+          <p class="lead">
+            En el lenguaje de Heredom, <strong>operativo</strong> designa aquello que
+            produce una transformación efectiva. La enseñanza no termina en una idea:
+            se encarna mediante el rito, la geometría, el símbolo y el trabajo sostenido.
+          </p>
+          <p>
+            Los antiguos constructores poseían un oficio material, pero la tradición no
+            los entiende como simples picapedreros. Junto a la destreza de la mano existía
+            una ciencia de las proporciones y un sentido espiritual de la construcción.
+            La obra exterior y la obra interior pertenecían a una misma arquitectura.
+          </p>
+          <p>
+            Por eso la Masonería Operativa no se define por acumular información ni por
+            adoptar una identidad social. Se reconoce en la continuidad de una
+            transmisión, en una doctrina tradicional y en un método capaz de llevar esa
+            doctrina a la práctica.
+          </p>
+        </div>
+      </div>
+
+      <div class="container operative-foundations" aria-label="Fundamentos de la Masonería Operativa">
+        <article>
+          <span aria-hidden="true">I</span>
+          <h3>Filiación</h3>
+          <p>Una transmisión que vincula el trabajo presente con fuentes operativas anteriores.</p>
+        </article>
+        <article>
+          <span aria-hidden="true">II</span>
+          <h3>Doctrina</h3>
+          <p>Un lenguaje simbólico y geométrico que ordena el sentido de la construcción.</p>
+        </article>
+        <article>
+          <span aria-hidden="true">III</span>
+          <h3>Método</h3>
+          <p>Una práctica ritual y espiritual mediante la cual el conocimiento se vuelve realización.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="geometry" aria-labelledby="geometry-title">
+      <div class="container geometry-grid">
+        <figure class="geometry-figure">
+          <img
+            src="/images/geometry-personification.webp"
+            alt="Personificación medieval de la Geometría enseñando a sus discípulos el uso del compás"
+            width="1000"
+            height="1105"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>La Geometría como ciencia del oficio y soporte de contemplación.</figcaption>
+        </figure>
+
+        <div class="geometry-copy prose">
+          <p class="overline">La ciencia del constructor</p>
+          <h2 id="geometry-title">De la piedra visible a la construcción interior</h2>
+          <p class="lead">
+            La escuadra, el compás, la proporción y la piedra no son adornos heredados:
+            son soportes para aprender a ordenar, medir y transformar.
+          </p>
+          <p>
+            El oficio material enseña que ninguna obra se sostiene sin fundamento,
+            orientación y medida. Trasladado al plano iniciático, ese mismo principio
+            exige trabajar sobre uno mismo con continuidad y precisión.
+          </p>
+          <blockquote>
+            El símbolo no se contempla desde fuera: debe convertirse en una operación
+            sobre quien lo recibe.
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="estates section-space" aria-labelledby="estates-title">
+      <div class="container">
+        <header class="section-head estates-head">
+          <p class="overline">La antigua composición de las Logias</p>
+          <h2 id="estates-title">Tres estamentos de una misma obra</h2>
+          <p>
+            Los documentos doctrinales de Heredom distinguen tres funciones integradas.
+            Esta clasificación evita confundir a los Masones Aceptados con la posterior
+            Masonería especulativa.
+          </p>
+        </header>
+
+        <div class="estate-grid">
+          <article>
+            <span class="estate-number" aria-hidden="true">01</span>
+            <p class="estate-kicker">Sentido superior</p>
+            <h3>Operativa espiritual</h3>
+            <p>
+              Reúne a los llamados «inspiradores hermetistas»: custodios de la doctrina,
+              de las ciencias sagradas y del sentido interior de la construcción.
+            </p>
+          </article>
+          <article>
+            <span class="estate-number" aria-hidden="true">02</span>
+            <p class="estate-kicker">Realización del oficio</p>
+            <h3>Operativa material</h3>
+            <p>
+              Corresponde a los obreros de la piedra, poseedores de los conocimientos
+              técnicos, geométricos y corporativos necesarios para levantar la obra.
+            </p>
+          </article>
+          <article>
+            <span class="estate-number" aria-hidden="true">03</span>
+            <p class="estate-kicker">Protección y asistencia</p>
+            <h3>Masonería Aceptada</h3>
+            <p>
+              Comprendía miembros ajenos al oficio manual —como capellanes, médicos,
+              nobles o protectores— incorporados regularmente a las antiguas Logias.
+            </p>
+          </article>
+        </div>
+        <p class="estate-synthesis">
+          Tres funciones, una sola obra: <strong>materializar el espíritu y espiritualizar la materia.</strong>
+        </p>
+      </div>
+    </section>
+
+    <section id="diferencias" class="comparison section-space" aria-labelledby="comparison-title">
+      <div class="container">
+        <header class="comparison-head">
+          <div>
+            <p class="overline">Una diferencia de orientación</p>
+            <h2 id="comparison-title">Masonería Operativa y Masonería especulativa</h2>
+          </div>
+          <p>
+            La comparación siguiente sintetiza la posición doctrinal de los textos de
+            Heredom. No juzga la calidad personal de los masones ni pretende que todas
+            las obediencias especulativas sean idénticas.
+          </p>
+        </header>
+
+        <div class="comparison-table" role="table" aria-label="Comparación doctrinal entre Masonería Operativa y especulativa">
+          <div class="comparison-row comparison-labels" role="row">
+            <span role="columnheader">Aspecto</span>
+            <strong role="columnheader">Operativa</strong>
+            <strong role="columnheader">Especulativa moderna</strong>
+          </div>
+          <div class="comparison-row" role="row">
+            <span role="rowheader">Relación con el oficio</span>
+            <p role="cell">Integra construcción material, simbolismo y trabajo interior.</p>
+            <p role="cell">Conserva principalmente las herramientas como símbolos.</p>
+          </div>
+          <div class="comparison-row" role="row">
+            <span role="rowheader">Doctrina</span>
+            <p role="cell">La Geometría y las ciencias del oficio articulan una doctrina tradicional.</p>
+            <p role="cell">Predomina la explicación moral, filosófica o social del símbolo.</p>
+          </div>
+          <div class="comparison-row" role="row">
+            <span role="rowheader">Finalidad</span>
+            <p role="cell">Busca una realización espiritual efectiva mediante un método.</p>
+            <p role="cell">Suele privilegiar la formación ética, intelectual o fraternal.</p>
+          </div>
+          <div class="comparison-row" role="row">
+            <span role="rowheader">Regularidad</span>
+            <p role="cell">Se mide por la filiación iniciática y la observancia de fuentes operativas.</p>
+            <p role="cell">Suele definirse mediante reconocimiento y normas administrativas.</p>
+          </div>
+          <div class="comparison-row" role="row">
+            <span role="rowheader">1717</span>
+            <p role="cell">Representa una ruptura dentro de una historia anterior.</p>
+            <p role="cell">Funciona como referencia fundacional de la organización moderna.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rupture" aria-labelledby="rupture-title">
+      <div class="container rupture-grid">
+        <div class="rupture-year" aria-hidden="true">1717</div>
+        <div class="rupture-copy prose">
+          <p class="overline">La lectura histórica de Heredom</p>
+          <h2 id="rupture-title">No es el comienzo de toda la Masonería</h2>
+          <p class="lead">
+            Para la Orden, la fundación de la Gran Logia de Londres señala la formación
+            de la Masonería especulativa moderna y una ruptura con el orden operativo,
+            no el nacimiento absoluto de la institución.
+          </p>
+          <p>
+            Esta interpretación se apoya en los Antiguos Deberes, en vestigios de las
+            corporaciones de oficio y en la lectura tradicional desarrollada por René
+            Guénon y otros autores. Se presenta aquí como posición histórica y doctrinal
+            de Heredom, consciente de que existen otras interpretaciones académicas y
+            masónicas del mismo proceso.
+          </p>
+          <a class="text-link" href="/biblioteca/los-antiguos-deberes-y-sus-marcas/">Estudiar los Antiguos Deberes</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="guenon section-space" aria-labelledby="guenon-title">
+      <div class="container guenon-grid">
+        <div class="guenon-copy prose">
+          <p class="overline">Una clave de lectura</p>
+          <h2 id="guenon-title">René Guénon y el sentido de lo operativo</h2>
+          <p class="lead">
+            La obra de René Guénon permite distinguir el conocimiento discursivo de la
+            realización y recuperar el alcance espiritual del simbolismo constructivo.
+          </p>
+          <p>
+            Los documentos que fundamentan esta página recurren a Guénon para explicar
+            que «operativo» posee un sentido superior al puramente gremial. El constructor
+            no sólo transforma materia: participa de un orden y utiliza el oficio como
+            soporte de conocimiento.
+          </p>
+          <p>
+            Heredom encuentra en esta perspectiva una orientación para volver a las
+            fuentes, revisar los rituales y devolver a la Geometría, al símbolo y al rito
+            su función efectiva. Leer a Guénon abre la comprensión; el trabajo iniciático
+            es el que debe convertirla en experiencia.
+          </p>
+          <a class="text-link" href="/biblioteca/">Explorar la Biblioteca de Heredom</a>
+        </div>
+
+        <figure class="guenon-figure">
+          <img
+            src="/images/rene-guenon.webp"
+            alt="René Guénon sentado ante una mesa de estudio"
+            width="440"
+            height="329"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>René Guénon · Tradición, símbolo y realización</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="bridge" aria-labelledby="bridge-title">
+      <div class="container bridge-grid">
+        <header>
+          <p class="overline">Un puente, no una descalificación</p>
+          <h2 id="bridge-title">Si vienes de la Masonería especulativa</h2>
+        </header>
+        <div class="prose">
+          <p class="lead">
+            Tu experiencia previa no tiene que negarse. Puede convertirse en el punto de
+            partida para preguntar qué hay detrás de los símbolos que ya conoces.
+          </p>
+          <p>
+            El acercamiento a Heredom propone revisar las fuentes anteriores a 1717,
+            comprender la Geometría como soporte doctrinal y asumir que el rito requiere
+            presencia, disciplina y práctica. No se ofrece una acumulación de grados,
+            sino una orientación distinta del trabajo.
+          </p>
+          <p>
+            También puede acercarse quien nunca ha pertenecido a una Logia. En ambos
+            casos, la candidatura se considera individualmente y el ingreso no es
+            automático.
+          </p>
+          <a class="btn btn-light" href="/entrar-a-la-masoneria/">Conocer el proceso de acercamiento</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="readings section-space" aria-labelledby="readings-title">
+      <div class="container">
+        <header class="section-head readings-head">
+          <p class="overline">Continuar el estudio</p>
+          <h2 id="readings-title">Documentos de la Biblioteca</h2>
+          <p>
+            La síntesis de esta página conduce a textos doctrinales y fuentes de mayor
+            profundidad. Los documentos públicos no sustituyen la transmisión interna.
+          </p>
+        </header>
+
+        <div class="reading-grid">
+          <a href="/biblioteca/operativo-y-especulativo/">
+            <span>Texto doctrinal</span>
+            <strong>Operativo y especulativo</strong>
+            <small>Filiación, doctrina tradicional y método de realización.</small>
+          </a>
+          <a href="/biblioteca/aspectos-historia-sagrada-francmasoneria-operativa/">
+            <span>Estudio de fondo</span>
+            <strong>Historia sagrada de la Francmasonería Operativa</strong>
+            <small>Antiguos Deberes, constructores medievales, Kilwinning y Templarismo.</small>
+          </a>
+          <a href="/biblioteca/los-antiguos-deberes-y-sus-marcas/">
+            <span>Fuentes operativas</span>
+            <strong>Los Antiguos Deberes y sus marcas</strong>
+            <small>Memoria del oficio, deberes tradicionales y límites del trabajo.</small>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="preguntas" class="faq section-space" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <header class="faq-head">
+          <p class="overline">Preguntas frecuentes</p>
+          <h2 id="faq-title">Masonería Operativa, sin simplificaciones</h2>
+          <p>
+            Respuestas breves desde la perspectiva pública de Heredom. Los temas rituales
+            y reservados no se exponen en este portal.
+          </p>
+        </header>
+
+        <div class="faq-list">
+          {faqItems.map((item, index) => (
+            <details open={index === 0}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="source-note" aria-labelledby="source-title">
+      <div class="prose-width prose">
+        <p class="overline">Procedencia doctrinal</p>
+        <h2 id="source-title">Tres documentos, una síntesis pública</h2>
+        <p>
+          Esta página fue elaborada a partir de <cite>Algunas claves de la Masonería
+          Tradicional</cite>, <cite>La Masonería tradicional</cite> y <cite>Operativo y
+          especulativo</cite>, textos de la tradición de Heredom firmados por Merlín. La
+          redacción resume su doctrina sin reproducir contenidos rituales ni presentar
+          sus afirmaciones históricas como consenso universal.
+        </p>
+      </div>
+    </section>
+
+    <SatelliteNavigation current={pagePath} />
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .section-space {
+    padding-block: clamp(var(--space-2xl), 8vw, var(--space-3xl));
+  }
+
+  .section-head {
+    max-width: 45rem;
+  }
+
+  .section-head h2,
+  .comparison-head h2,
+  .faq-head h2,
+  .bridge h2,
+  .source-note h2 {
+    margin-block-start: var(--space-xs);
+  }
+
+  .section-head > p:last-child,
+  .faq-head > p:last-child {
+    margin-block-start: var(--space-m);
+    color: var(--text-muted);
+  }
+
+  .page-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--surface-header);
+    color: var(--text-on-inverse);
+    border-bottom: 1px solid var(--line-bronze);
+  }
+
+  .page-hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(9, 29, 24, 0.99) 0%, rgba(16, 42, 36, 0.94) 42%, rgba(16, 42, 36, 0.45) 72%, rgba(9, 29, 24, 0.16) 100%),
+      linear-gradient(0deg, rgba(9, 29, 24, 0.78) 0%, transparent 58%);
+  }
+
+  .hero-art {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 72% 48%;
+    filter: sepia(0.2) contrast(1.08);
+  }
+
+  .hero-grid {
+    min-height: clamp(38rem, 62vw, 51rem);
+    display: flex;
+    align-items: center;
+    padding-block: var(--space-xl) var(--space-2xl);
+  }
+
+  .hero-copy {
+    width: min(100%, 48rem);
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.38);
+  }
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-block-end: var(--space-xl);
+    color: rgba(244, 239, 226, 0.56);
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+  }
+
+  .breadcrumb a {
+    color: rgba(244, 239, 226, 0.72);
+  }
+
+  .hero-eyebrow,
+  .definition .overline,
+  .rupture .overline,
+  .bridge .overline {
+    color: #d0b27b;
+  }
+
+  .hero-copy h1 {
+    max-width: 44rem;
+    margin-block-start: var(--space-s);
+    color: var(--text-on-inverse);
+  }
+
+  .hero-lede {
+    max-width: 43rem;
+    margin-block-start: var(--space-l);
+    color: rgba(244, 239, 226, 0.82);
+    font-size: var(--step-1);
+  }
+
+  .hero-principle {
+    margin-block-start: var(--space-l);
+    padding-inline-start: var(--space-m);
+    border-inline-start: 2px solid #d0b27b;
+    color: #ead6ad;
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    margin-block-start: var(--space-xl);
+  }
+
+  .btn-quiet {
+    color: var(--text-on-inverse);
+    border-color: rgba(208, 178, 123, 0.58);
+    background: rgba(16, 42, 36, 0.4);
+  }
+
+  .btn-quiet:hover {
+    color: #fffdf5;
+    border-color: #d0b27b;
+  }
+
+  .definition {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--surface-header);
+    color: var(--text-on-inverse);
+  }
+
+  .definition::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    opacity: 0.16;
+    background-image:
+      repeating-linear-gradient(112deg, transparent 0 9px, rgba(244, 239, 226, 0.11) 9px 10px),
+      repeating-linear-gradient(68deg, transparent 0 16px, rgba(155, 117, 66, 0.12) 16px 17px);
+  }
+
+  .definition-grid {
+    display: grid;
+    grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.25fr);
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+
+  .definition h2,
+  .definition-copy .lead {
+    color: var(--text-on-inverse);
+  }
+
+  .definition-copy p {
+    color: rgba(244, 239, 226, 0.76);
+  }
+
+  .symbol-line {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    width: min(14rem, 100%);
+    margin-block-end: var(--space-l);
+    color: #d0b27b;
+  }
+
+  .symbol-line span {
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.55;
+  }
+
+  .operative-foundations {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-block-start: var(--space-2xl);
+    border-block: 1px solid rgba(208, 178, 123, 0.44);
+  }
+
+  .operative-foundations article {
+    padding: var(--space-l);
+  }
+
+  .operative-foundations article + article {
+    border-inline-start: 1px solid rgba(208, 178, 123, 0.3);
+  }
+
+  .operative-foundations span {
+    color: rgba(208, 178, 123, 0.72);
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    letter-spacing: 0.12em;
+  }
+
+  .operative-foundations h3 {
+    margin-block: var(--space-xs);
+    color: var(--text-on-inverse);
+    font-size: var(--step-2);
+  }
+
+  .operative-foundations p {
+    color: rgba(244, 239, 226, 0.68);
+  }
+
+  .geometry {
+    padding-block: clamp(var(--space-xl), 6vw, var(--space-2xl));
+    background: var(--surface-panel-soft);
+    border-block: 1px solid var(--line-soft);
+  }
+
+  .geometry-grid {
+    display: grid;
+    grid-template-columns: minmax(16rem, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(var(--space-l), 5vw, var(--space-3xl));
+    align-items: center;
+  }
+
+  .geometry-figure {
+    margin: 0;
+    padding: var(--space-xs);
+    background: var(--surface-page);
+    border: 1px solid var(--line-bronze);
+    box-shadow: var(--shadow-card);
+  }
+
+  .geometry-figure img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .geometry-figure figcaption,
+  .guenon-figure figcaption {
+    padding: var(--space-s) var(--space-xs) var(--space-xs);
+    color: var(--text-muted);
+    font-family: var(--font-display);
+    font-size: var(--step--1);
+    font-style: italic;
+    text-align: center;
+  }
+
+  .geometry-copy .overline,
+  .estates .overline,
+  .comparison .overline,
+  .guenon .overline,
+  .readings .overline,
+  .faq .overline,
+  .source-note .overline {
+    color: var(--text-accent-strong);
+  }
+
+  .geometry-copy h2,
+  .guenon-copy h2 {
+    margin-block-start: var(--space-xs);
+  }
+
+  .estates-head,
+  .readings-head {
+    margin-block-end: var(--space-xl);
+  }
+
+  .estate-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--line-bronze);
+    border-inline-start: 1px solid var(--line-soft);
+  }
+
+  .estate-grid article {
+    position: relative;
+    min-height: 24rem;
+    padding: var(--space-xl) var(--space-l);
+    border-inline-end: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+    background:
+      repeating-linear-gradient(112deg, transparent 0 13px, rgba(24, 59, 51, 0.028) 13px 14px),
+      var(--surface-panel-soft);
+  }
+
+  .estate-number {
+    color: var(--text-faint);
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+  }
+
+  .estate-kicker {
+    margin-block-start: var(--space-xl);
+    color: var(--text-accent-strong);
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+
+  .estate-grid h3 {
+    margin-block: var(--space-xs) var(--space-m);
+  }
+
+  .estate-grid article > p:last-child {
+    color: var(--text-muted);
+  }
+
+  .estate-synthesis {
+    max-width: none;
+    padding: var(--space-l);
+    border-bottom: 1px solid var(--line-bronze);
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    text-align: center;
+  }
+
+  .comparison {
+    background: color-mix(in srgb, var(--surface-panel) 72%, var(--surface-page));
+  }
+
+  .comparison-head {
+    display: grid;
+    grid-template-columns: minmax(16rem, 0.9fr) minmax(0, 1.1fr);
+    gap: var(--space-2xl);
+    align-items: end;
+    margin-block-end: var(--space-xl);
+  }
+
+  .comparison-head > p {
+    color: var(--text-muted);
+  }
+
+  .comparison-table {
+    border-top: 1px solid var(--line-bronze);
+    border-inline-start: 1px solid var(--line-soft);
+  }
+
+  .comparison-row {
+    display: grid;
+    grid-template-columns: minmax(9rem, 0.55fr) repeat(2, minmax(0, 1fr));
+  }
+
+  .comparison-row > * {
+    max-width: none;
+    padding: var(--space-m) var(--space-l);
+    border-inline-end: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .comparison-row > span {
+    color: var(--text-accent-strong);
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .comparison-row p {
+    color: var(--text-muted);
+  }
+
+  .comparison-labels {
+    background: var(--surface-header);
+    color: var(--text-on-inverse);
+  }
+
+  .comparison-labels > * {
+    color: var(--text-on-inverse);
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+
+  .rupture {
+    padding-block: var(--space-2xl);
+    background: var(--surface-inverse);
+    color: var(--text-on-inverse);
+    border-block: 1px solid var(--line-bronze);
+  }
+
+  .rupture-grid {
+    display: grid;
+    grid-template-columns: minmax(13rem, 0.65fr) minmax(0, 1.35fr);
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+
+  .rupture-year {
+    color: rgba(208, 178, 123, 0.76);
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 13vw, 10rem);
+    font-weight: 600;
+    line-height: 0.8;
+    letter-spacing: -0.08em;
+  }
+
+  .rupture h2,
+  .rupture-copy .lead {
+    color: var(--text-on-inverse);
+  }
+
+  .rupture-copy p {
+    color: rgba(244, 239, 226, 0.74);
+  }
+
+  .text-link {
+    display: inline-block;
+    margin-block-start: var(--space-m);
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+
+  .rupture .text-link {
+    color: #d0b27b;
+  }
+
+  .guenon-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(15rem, 0.7fr);
+    gap: clamp(var(--space-l), 5vw, var(--space-3xl));
+    align-items: center;
+  }
+
+  .guenon-figure {
+    margin: 0;
+    padding: var(--space-xs);
+    background: var(--surface-panel);
+    border: 1px solid var(--line-bronze);
+    box-shadow: var(--shadow-card);
+  }
+
+  .guenon-figure img {
+    width: 100%;
+    filter: sepia(0.16) contrast(1.08);
+  }
+
+  .bridge {
+    padding-block: var(--space-2xl);
+    background: var(--surface-header);
+    color: var(--text-on-inverse);
+  }
+
+  .bridge-grid {
+    display: grid;
+    grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.28fr);
+    gap: var(--space-2xl);
+  }
+
+  .bridge h2,
+  .bridge .lead {
+    color: var(--text-on-inverse);
+  }
+
+  .bridge p {
+    color: rgba(244, 239, 226, 0.74);
+  }
+
+  .btn-light {
+    margin-block-start: var(--space-l);
+    color: var(--surface-header);
+    background: #d0b27b;
+  }
+
+  .btn-light:hover {
+    color: var(--surface-header);
+    background: #ead6ad;
+  }
+
+  .reading-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-l);
+  }
+
+  .reading-grid a {
+    display: flex;
+    flex-direction: column;
+    min-height: 18rem;
+    padding: var(--space-l);
+    border: 1px solid var(--line-bronze);
+    background: var(--surface-panel-soft);
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .reading-grid a:hover {
+    border-color: var(--text-accent-strong);
+  }
+
+  .reading-grid span {
+    color: var(--text-accent-strong);
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+
+  .reading-grid strong {
+    margin-block-start: auto;
+    padding-block-start: var(--space-xl);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    line-height: var(--leading-heading);
+  }
+
+  .reading-grid small {
+    margin-block-start: var(--space-s);
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    line-height: 1.55;
+  }
+
+  .faq {
+    background: var(--surface-panel-soft);
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.25fr);
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+
+  .faq-head {
+    position: sticky;
+    top: 7rem;
+  }
+
+  .faq-list {
+    border-top: 1px solid var(--line-bronze);
+  }
+
+  .faq-list details {
+    padding-block: var(--space-m);
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .faq-list summary {
+    cursor: pointer;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+  }
+
+  .faq-list details p {
+    margin-block-start: var(--space-m);
+    color: var(--text-muted);
+  }
+
+  .source-note {
+    padding-block: var(--space-2xl);
+    background: var(--surface-page);
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .source-note h2 {
+    font-size: var(--step-3);
+  }
+
+  @media (max-width: 899px) {
+    .definition-grid,
+    .geometry-grid,
+    .comparison-head,
+    .rupture-grid,
+    .guenon-grid,
+    .bridge-grid,
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-grid {
+      min-height: 42rem;
+    }
+
+    .operative-foundations,
+    .estate-grid,
+    .reading-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .operative-foundations article + article {
+      border-inline-start: 0;
+      border-top: 1px solid rgba(208, 178, 123, 0.3);
+    }
+
+    .estate-grid article {
+      min-height: auto;
+    }
+
+    .comparison-row {
+      grid-template-columns: minmax(8rem, 0.45fr) repeat(2, minmax(0, 1fr));
+    }
+
+    .comparison-row > * {
+      padding: var(--space-m);
+    }
+
+    .rupture-year {
+      font-size: clamp(5rem, 24vw, 8rem);
+    }
+
+    .guenon-figure {
+      width: min(26rem, 100%);
+    }
+
+    .faq-head {
+      position: static;
+    }
+  }
+
+  @media (max-width: 599px) {
+    .page-hero::after {
+      background: rgba(9, 29, 24, 0.84);
+    }
+
+    .hero-art {
+      object-position: 67% center;
+    }
+
+    .hero-actions,
+    .hero-actions .btn {
+      width: 100%;
+    }
+
+    .hero-actions .btn {
+      justify-content: center;
+    }
+
+    .comparison-table {
+      border: 0;
+    }
+
+    .comparison-labels {
+      display: none;
+    }
+
+    .comparison-row {
+      display: block;
+      margin-block-end: var(--space-l);
+      border: 1px solid var(--line-soft);
+      background: var(--surface-page);
+    }
+
+    .comparison-row > * {
+      display: block;
+      border: 0;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .comparison-row > *:last-child {
+      border-bottom: 0;
+    }
+
+    .comparison-row p::before {
+      display: block;
+      margin-block-end: var(--space-xs);
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-size: var(--step-1);
+      font-weight: 600;
+    }
+
+    .comparison-row p:nth-child(2)::before {
+      content: "Operativa";
+    }
+
+    .comparison-row p:nth-child(3)::before {
+      content: "Especulativa moderna";
+    }
+  }
+</style>
