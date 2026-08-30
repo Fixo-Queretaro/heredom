@@ -206,14 +206,23 @@ const structuredData = {
       <div class="container geometry-grid">
         <figure class="geometry-figure">
           <img
-            src="/images/geometry-personification.webp"
-            alt="Personificación medieval de la Geometría enseñando a sus discípulos el uso del compás"
-            width="1000"
-            height="1105"
+            src="/images/dios-geometra-bible-moralisee.webp"
+            alt="Miniatura medieval de Dios como geómetra trazando el cosmos con un compás"
+            width="900"
+            height="1234"
             loading="lazy"
             decoding="async"
           />
-          <figcaption>La Geometría como ciencia del oficio y soporte de contemplación.</figcaption>
+          <figcaption>
+            <span>Dios como Geómetra · <i>Bible moralisée</i>, ca. 1220–1230.</span>
+            <span class="image-credit">
+              <a
+                href="https://commons.wikimedia.org/wiki/File:God_the_Geometer.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Dominio público · Österreichische Nationalbibliothek / Wikimedia Commons</a>
+            </span>
+          </figcaption>
         </figure>
 
         <div class="geometry-copy prose">
@@ -381,14 +390,28 @@ const structuredData = {
 
         <figure class="guenon-figure">
           <img
-            src="/images/rene-guenon.webp"
-            alt="René Guénon sentado ante una mesa de estudio"
-            width="440"
-            height="329"
+            src="/images/rene-guenon-retrato-verdum.webp"
+            alt="Retrato gráfico en blanco y negro de René Guénon, con su nombre en árabe"
+            width="650"
+            height="990"
             loading="lazy"
             decoding="async"
           />
-          <figcaption>René Guénon · Tradición, símbolo y realización</figcaption>
+          <figcaption>
+            <span>René Guénon · Tradición, símbolo y realización.</span>
+            <span class="image-credit">
+              Retrato: <a
+                href="https://commons.wikimedia.org/wiki/File:Rene_guenon.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Thiago Maia Verdum / Wikimedia Commons</a>
+              · <a
+                href="https://creativecommons.org/licenses/by/2.5/br/deed.es"
+                target="_blank"
+                rel="noopener noreferrer"
+              >CC BY 2.5 BR</a> · adaptado a WebP.
+            </span>
+          </figcaption>
         </figure>
       </div>
     </section>
@@ -726,9 +749,7 @@ const structuredData = {
 
   .geometry-figure img {
     width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    object-position: center top;
+    height: auto;
   }
 
   .geometry-figure figcaption,
@@ -739,6 +760,25 @@ const structuredData = {
     font-size: var(--step--1);
     font-style: italic;
     text-align: center;
+  }
+
+  .image-credit {
+    display: block;
+    margin-block-start: 0.35rem;
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-style: normal;
+    line-height: 1.45;
+  }
+
+  .image-credit a {
+    color: inherit;
+    text-decoration-color: color-mix(in srgb, currentColor 48%, transparent);
+    text-underline-offset: 0.16em;
+  }
+
+  .image-credit a:hover {
+    color: var(--text-accent-strong);
   }
 
   .geometry-copy .overline,
@@ -869,6 +909,10 @@ const structuredData = {
     font-weight: 600;
   }
 
+  .comparison-labels > span {
+    color: var(--text-on-inverse);
+  }
+
   .rupture {
     padding-block: var(--space-2xl);
     background: var(--surface-inverse);
@@ -930,6 +974,7 @@ const structuredData = {
 
   .guenon-figure img {
     width: 100%;
+    height: auto;
     filter: sepia(0.16) contrast(1.08);
   }
 
