@@ -214,6 +214,15 @@ const structuredData = {
 
     <section class="masonry section-space">
       <div class="masonry-geometry" aria-hidden="true"><span></span><span></span><span></span></div>
+      <img
+        class="masonry-silhouette"
+        src="/images/monte-heredom-silueta.png"
+        alt=""
+        width="1536"
+        height="1024"
+        loading="lazy"
+        aria-hidden="true"
+      />
       <div class="container masonry-grid">
         <header><p class="overline">Guénon y la Masonería</p><h2>El símbolo debe volver a ser <em>instrumento</em></h2></header>
         <div>
@@ -344,7 +353,10 @@ const structuredData = {
   .faq details{padding:2rem 0}
   .faq summary{line-height:1.35}
   .faq details p{margin:1.35rem 0 .35rem;line-height:1.8}
+  .masonry-silhouette{position:absolute;z-index:0;left:-6%;bottom:-13%;width:min(65vw,68rem);height:auto;opacity:.13;filter:sepia(.22) brightness(1.08);mix-blend-mode:screen;pointer-events:none;mask-image:linear-gradient(to top,transparent 0,#000 18%,#000 76%,transparent 100%)}
+  .masonry-grid{z-index:2}
   @media(max-width:900px){.hero-content{grid-template-columns:1fr;align-items:end;padding-top:5rem}.hero-copy{padding-top:2rem}.guenon-hero h1{font-size:clamp(5rem,20vw,8rem)}.hero-portrait{position:absolute;right:-5rem;bottom:0;width:65%;opacity:.48}.hero-aside{display:none}.threshold-grid,.manifesto-grid,.coordinates-head,.not-this-grid,.masonry-grid,.bibliography-grid,.faq-grid{grid-template-columns:1fr}.threshold-grid{gap:1rem}.threshold p+ p{padding:1rem 0 0;border-left:0;border-top:1px solid rgba(16,45,38,.35)}.manifesto-body,.masonry-grid>div{padding-top:0}.coordinate-grid,.reading-path{grid-template-columns:1fr 1fr}.coordinate-grid article:nth-child(2){border-right:0}.coordinate-grid article:last-child{border-top:1px solid rgba(205,170,100,.3)}.not-this h2{position:static}.manifesto blockquote{padding:4rem 2rem}.bibliography-grid,.faq-grid{gap:2rem}}
   @media(max-width:600px){.guenon-hero{min-height:46rem}.hero-content{padding-bottom:4rem}.hero-portrait{width:90%;right:-12rem}.hero-lede{max-width:18rem}.coordinate-grid,.reading-path{grid-template-columns:1fr}.coordinate-grid article,.coordinate-grid article:nth-child(2){border-right:0;border-bottom:1px solid rgba(205,170,100,.3)}.reading-path article{border-right:0;border-bottom:1px solid #c2b392}.bibliography li{grid-template-columns:1fr;gap:.4rem}.manifesto blockquote{width:calc(100% - 2rem)}}
   @media(max-width:900px){.faq-grid>div{padding-top:1rem}.faq details{padding-block:1.7rem}.guenon-watermark{right:-4%;bottom:-3%;width:min(48vw,22rem)}}
+  @media(max-width:900px){.masonry-silhouette{left:-32%;bottom:-2%;width:115%;opacity:.09}.masonry-grid{position:relative;z-index:2}}
 </style>
