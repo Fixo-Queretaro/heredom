@@ -129,9 +129,7 @@ const structuredData = {
 
     <section class="threshold" aria-label="Principio editorial">
       <div class="container threshold-grid">
-        <span class="threshold-number">I</span>
-        <p>Esta no es una apología de la personalidad de René Guénon.</p>
-        <p>Es una invitación a entrar en la arquitectura de su obra.</p>
+        <p>El <em>simbolismo</em> tradicional es una <strong>ciencia exacta</strong>, el símbolo debe ser portador de proporciones precisas.</p>
       </div>
     </section>
 
@@ -139,7 +137,7 @@ const structuredData = {
       <div class="container manifesto-grid">
         <header>
           <div class="ornament" aria-hidden="true"><MalteseCross size={40} /><span></span><Circumpunct size={30} /></div>
-          <p class="overline">René Guénon según René Guénon</p>
+          <p class="overline">Guénon</p>
           <h2>No una personalidad.<br /><em>Una transmisión.</em></h2>
         </header>
         <div class="manifesto-body">
@@ -163,7 +161,11 @@ const structuredData = {
         </header>
         <div class="coordinate-grid">
           <article>
-            <span class="roman">I</span><div class="concept-symbol transmission" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span class="roman">I</span>
+            <svg class="concept-symbol hourglass" viewBox="0 0 128 128" aria-hidden="true">
+              <path d="M31 19h66M31 109h66M36 20c0 23 10 32 28 44-18 12-28 21-28 44M92 20c0 23-10 32-28 44 18 12 28 21 28 44" />
+              <path class="sand" d="M45 35c5 13 12 19 19 24 7-5 14-11 19-24H45ZM48 97h32L64 74 48 97Z" />
+            </svg>
             <h3>Tradición</h3>
             <p>No costumbre inmóvil, sino transmisión de principios y formas capaces de atravesar las generaciones sin perder su centro.</p>
           </article>
@@ -182,6 +184,7 @@ const structuredData = {
     </section>
 
     <section class="not-this section-space">
+      <img class="guenon-watermark" src="/images/rene-guenon-hero.webp" alt="" width="750" height="1043" loading="lazy" aria-hidden="true" />
       <div class="container not-this-grid">
         <header><p class="overline">Una lectura sin reducciones</p><h2>Lo que su obra <em>no es</em></h2></header>
         <ol>
@@ -206,7 +209,6 @@ const structuredData = {
           <article><span>03</span><small>Del conocimiento al ser</small><h3>Iniciación y Realización Espiritual</h3><p>La diferencia entre comprender intelectualmente y realizar efectivamente.</p></article>
           <article><span>04</span><small>El oficio y sus símbolos</small><h3>Estudios sobre la Masonería y el Compañerazgo</h3><p>Una entrada al simbolismo constructivo, la iniciación de oficio y la regularidad.</p></article>
         </div>
-        <p class="reading-warning"><strong>Advertencia de método.</strong> El resumen —también el producido por una inteligencia artificial— puede orientar, pero nunca reemplaza la lectura directa, el estudio paciente ni la transmisión oral dentro de una organización iniciática.</p>
       </div>
     </section>
 
@@ -278,6 +280,42 @@ const structuredData = {
   .reading-path h3{margin-bottom:1.5rem;line-height:1.22}
   .reading-path p{line-height:1.75}
   .reading-warning{margin-top:7rem;padding:2.2rem 2.6rem;line-height:1.8}
+
+  /* Ritmo editorial final */
+  .threshold{padding-block:clamp(2.7rem,5vw,4.8rem)}
+  .threshold-grid{display:block;max-width:67rem;text-align:center}
+  .threshold p{font-size:clamp(1.55rem,3vw,2.7rem);line-height:1.25}
+  .threshold p em{font-weight:600}
+  .threshold p strong{font-weight:600;color:#7f2229}
+  .manifesto header .overline{margin:0 0 2.6rem}
+  .manifesto h2{margin:0}
+  .coordinates{padding-block:clamp(8rem,12vw,12rem)}
+  .coordinates-head{margin-bottom:clamp(6rem,9vw,9rem)}
+  .coordinates-head .overline{align-self:start;padding-top:.8rem}
+  .hourglass{color:#d3ae68;overflow:visible}
+  .hourglass path{fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+  .hourglass .sand{fill:rgba(211,174,104,.8);stroke:none}
+  .not-this{position:relative;overflow:hidden;isolation:isolate;padding-block:clamp(9rem,14vw,14rem)}
+  .not-this-grid{position:relative;z-index:1}
+  .not-this header .overline{margin-bottom:2.8rem}
+  .not-this h2{margin:0}
+  .not-this ol{padding-top:clamp(4rem,7vw,7rem)}
+  .guenon-watermark{position:absolute;z-index:0;left:2%;bottom:-18%;width:min(42vw,39rem);height:auto;opacity:.075;filter:grayscale(1) sepia(.3) contrast(1.25);mix-blend-mode:screen;pointer-events:none;mask-image:linear-gradient(to bottom,transparent 0,#000 22%,#000 82%,transparent 100%)}
+  .masonry{padding-block:clamp(10rem,15vw,15rem)}
+  .masonry-grid{gap:clamp(5rem,10vw,11rem)}
+  .masonry .overline{margin-bottom:2.8rem}
+  .masonry h2{margin:0;line-height:.95}
+  .masonry-grid>div{padding-top:clamp(6rem,9vw,9rem)}
+  .masonry-grid>div>p{margin:0 0 2.6rem}
+  .masonry-grid>div>.lead{margin-bottom:3.5rem}
+  .masonry-links{gap:1.25rem;margin-top:4.5rem}
+  .bibliography{padding-block:clamp(8rem,12vw,12rem)}
+  .bibliography-grid{gap:clamp(5rem,9vw,10rem)}
+  .bibliography .overline{margin-bottom:2.4rem}
+  .bibliography h2{margin:0}
+  .bibliography li{gap:2.8rem;padding:2.2rem 0}
+  .bibliography li span{display:block;padding-top:.35rem;line-height:1.6}
+  .bibliography li strong{display:block;line-height:1.25}
   @media(max-width:900px){.hero-content{grid-template-columns:1fr;align-items:end;padding-top:5rem}.hero-copy{padding-top:2rem}.guenon-hero h1{font-size:clamp(5rem,20vw,8rem)}.hero-portrait{position:absolute;right:-5rem;bottom:0;width:65%;opacity:.48}.hero-aside{display:none}.threshold-grid,.manifesto-grid,.coordinates-head,.not-this-grid,.masonry-grid,.bibliography-grid,.faq-grid{grid-template-columns:1fr}.threshold-grid{gap:1rem}.threshold p+ p{padding:1rem 0 0;border-left:0;border-top:1px solid rgba(16,45,38,.35)}.manifesto-body,.masonry-grid>div{padding-top:0}.coordinate-grid,.reading-path{grid-template-columns:1fr 1fr}.coordinate-grid article:nth-child(2){border-right:0}.coordinate-grid article:last-child{border-top:1px solid rgba(205,170,100,.3)}.not-this h2{position:static}.manifesto blockquote{padding:4rem 2rem}.bibliography-grid,.faq-grid{gap:2rem}}
   @media(max-width:600px){.guenon-hero{min-height:46rem}.hero-content{padding-bottom:4rem}.hero-portrait{width:90%;right:-12rem}.hero-lede{max-width:18rem}.coordinate-grid,.reading-path{grid-template-columns:1fr}.coordinate-grid article,.coordinate-grid article:nth-child(2){border-right:0;border-bottom:1px solid rgba(205,170,100,.3)}.reading-path article{border-right:0;border-bottom:1px solid #c2b392}.bibliography li{grid-template-columns:1fr;gap:.4rem}.manifesto blockquote{width:calc(100% - 2rem)}}
 </style>
