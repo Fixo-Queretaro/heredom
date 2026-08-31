@@ -36,8 +36,11 @@
 
       <p class="hero-lede">
         Heredom México es el portal público del Capítulo Soberano para México y el
-        Caribe, dedicado al conocimiento de la Masonería Operativa, su tradición, sus
-        símbolos y el legado de los antiguos constructores.
+        Caribe, dedicado al conocimiento de la <a
+          class="hero-topic-link"
+          href="/masoneria-operativa/"
+        >Masonería Operativa</a>, su tradición, sus símbolos y el legado de los antiguos
+        constructores.
       </p>
 
       <div class="hero-actions">
@@ -169,6 +172,23 @@
     font-size: var(--step-1);
     line-height: 1.55;
     color: rgba(244, 239, 226, 0.78);
+  }
+
+  .hero-topic-link {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-color: rgba(208, 178, 123, 0);
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.18em;
+    transition:
+      color 180ms ease,
+      text-decoration-color 180ms ease;
+  }
+
+  .hero-topic-link:hover,
+  .hero-topic-link:focus-visible {
+    color: #fffdf5;
+    text-decoration-color: rgba(208, 178, 123, 0.88);
   }
 
   .hero-actions {
