@@ -1,0 +1,56 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SiteHeader from "@components/SiteHeader.astro";
+import SiteFooter from "@components/SiteFooter.astro";
+import SatelliteNavigation from "@components/SatelliteNavigation.astro";
+import MalteseCross from "@components/MalteseCross.astro";
+import Circumpunct from "@components/Circumpunct.astro";
+import { absoluteSiteUrl, site } from "../../lib/site";
+
+const pagePath = "/rene-guenon/";
+const pageUrl = absoluteSiteUrl(pagePath);
+const pageTitle = "René Guénon: su obra, la tradición y la iniciación | Heredom";
+const pageDescription =
+  "Una introducción a la obra de René Guénon y una guía para abordar sus escritos sobre tradición, iniciación, simbolismo y Masonería.";
+const faqs = [
+  ["¿Quién fue René Guénon?", "René Guénon (Blois, 1886–El Cairo, 1951) fue un autor dedicado al estudio de la doctrina tradicional, el simbolismo y la iniciación. Esta página atiende principalmente a la importancia de su obra, no a una exaltación de su personalidad."],
+  ["¿Por dónde empezar a leer a René Guénon?", "Una entrada recomendable es Símbolos fundamentales de la Ciencia Sagrada. Después pueden abordarse Apercepciones sobre la Iniciación e Iniciación y Realización Espiritual, según la preparación y disposición de cada lector."],
+  ["¿Qué relación tiene Guénon con la Masonería?", "Sus estudios ofrecen herramientas para comprender la iniciación, el simbolismo constructivo y la diferencia entre conocimiento teórico y realización. No sustituyen la práctica ritual ni la transmisión de una organización iniciática."],
+] as const;
+const structuredData = { "@context": "https://schema.org", "@graph": [
+  { "@type": "Article", "@id": `${pageUrl}#article`, headline: pageTitle, description: pageDescription, mainEntityOfPage: { "@id": `${pageUrl}#webpage` }, author: { "@id": `${absoluteSiteUrl("/")}#organization` }, publisher: { "@id": `${absoluteSiteUrl("/")}#organization` }, image: absoluteSiteUrl(site.socialImage), inLanguage: site.language },
+  { "@type": "WebPage", "@id": `${pageUrl}#webpage`, url: pageUrl, name: pageTitle, description: pageDescription, isPartOf: { "@id": `${absoluteSiteUrl("/")}#website` }, breadcrumb: { "@id": `${pageUrl}#breadcrumb` }, inLanguage: site.language },
+  { "@type": "BreadcrumbList", "@id": `${pageUrl}#breadcrumb`, itemListElement: [{ "@type": "ListItem", position: 1, name: "Inicio", item: absoluteSiteUrl("/") }, { "@type": "ListItem", position: 2, name: "René Guénon", item: pageUrl }] },
+  { "@type": "FAQPage", "@id": `${pageUrl}#preguntas`, mainEntity: faqs.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) },
+] };
+---
+<BaseLayout title={pageTitle} description={pageDescription} canonical={pagePath} pageType="article" exactTitle={true} structuredData={structuredData}>
+  <SiteHeader current={pagePath} variant="satellite" />
+  <main id="contenido">
+    <header class="page-hero">
+      <img class="hero-art" src="/images/rene-guenon-1925-wikipedia.webp" alt="Retrato de René Guénon" width="900" height="1200" fetchpriority="high" />
+      <div class="container hero-grid"><div class="hero-copy">
+        <nav class="breadcrumb" aria-label="Migas de pan"><a href="/">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">René Guénon</span></nav>
+        <p class="overline hero-eyebrow">Tradición · Iniciación · Conocimiento</p>
+        <h1>René Guénon y la obra de la tradición</h1>
+        <p class="hero-lede">Una guía para acercarse a sus escritos sin convertirlos en una doctrina personal ni en un culto a su figura.</p>
+        <a class="btn btn-primary" href="#abordar">Cómo abordar su obra</a>
+      </div></div>
+    </header>
+    <section class="section-space prose-section"><div class="container narrow">
+      <div class="symbol-line" aria-hidden="true"><MalteseCross size={34} /><span></span><Circumpunct size={28} /></div>
+      <p class="overline">Una obra, no una personalidad</p><h2>La importancia está en lo que transmite</h2>
+      <p>René Guénon rechazó que su nombre se convirtiera en una escuela personal. Sus textos buscan expresar, con rigor y precisión, ideas que pertenecen a las formas tradicionales y no a una propiedad intelectual individual.</p>
+      <p>Por eso Heredom no presenta una apología de su vida ni fabrica “herederos de Guénon”. Presenta una obra que ayuda a distinguir tradición de modernidad, conocimiento teórico de realización y curiosidad intelectual de iniciación efectiva.</p>
+    </div></section>
+    <section class="section-space dark-section"><div class="container two-column"><div><p class="overline">Conceptos fundamentales</p><h2>Tradición, esoterismo e iniciación</h2></div><div><p>Tradición significa transmisión: una continuidad de principios, símbolos y formas recibidas a través de generaciones. Lo esotérico señala lo interior, mientras que la iniciación implica una transformación real y no sólo la adquisición de información.</p><p>Esta perspectiva permite leer el simbolismo masónico como soporte de un trabajo, no como decoración ni como una colección de opiniones.</p></div></div></section>
+    <section id="abordar" class="section-space prose-section"><div class="container narrow"><p class="overline">Guía de lectura</p><h2>¿Cómo abordar la obra de René Guénon?</h2><ol><li>Comenzar por <em>Símbolos fundamentales de la Ciencia Sagrada</em> para reconocer temas que atraviesan su corpus.</li><li>Continuar con <em>Apercepciones sobre la Iniciación</em> e <em>Iniciación y Realización Espiritual</em>.</li><li>Para el ámbito masónico, consultar <em>Estudios sobre la Masonería</em> y los textos relacionados con el esoterismo cristiano.</li><li>Leer según la propia capacidad y disposición, sin reducir la obra a resúmenes automáticos ni a una cronología rígida.</li></ol><p>El estudio puede orientar, pero no reemplaza la transmisión ni el trabajo interior de una vía iniciática.</p></div></section>
+    <section class="section-space dark-section"><div class="container narrow"><p class="overline">Lectura heredomita</p><h2>Guénon y la Masonería Operativa</h2><p>Para Heredom, Guénon ofrece un lenguaje preciso para comprender el oficio, el símbolo, la regularidad y la realización espiritual. Su obra acompaña el estudio de la Masonería Operativa; no sustituye sus trabajos ni sus enseñanzas reservadas.</p><p><a class="text-link" href="/masoneria-operativa/">Conocer la Masonería Operativa</a> · <a class="text-link" href="/biblioteca/">Explorar la Biblioteca</a></p></div></section>
+    <section class="section-space faq-section"><div class="container narrow"><p class="overline">Preguntas frecuentes</p>{faqs.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+    <SatelliteNavigation current={pagePath} />
+  </main>
+  <SiteFooter />
+</BaseLayout>
+<style>
+  .narrow{max-width:760px}.prose-section{background:#f5f1e8}.prose-section h2,.dark-section h2{max-width:720px}.prose-section p,.dark-section p,.prose-section li{font-size:1.08rem;line-height:1.8}.two-column{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem}.dark-section{background:#123a31;color:#f5f1e8}.dark-section .overline{color:#c8a96b}.text-link{color:#d8bd79}.faq-section{background:#ede8dc}.faq-section details{border-top:1px solid #bcae91;padding:1rem 0}.faq-section summary{cursor:pointer;font:inherit;font-weight:600}.faq-section details p{line-height:1.7;max-width:680px}@media(max-width:720px){.two-column{grid-template-columns:1fr;gap:1rem}.prose-section p,.dark-section p,.prose-section li{font-size:1rem}}
+</style>

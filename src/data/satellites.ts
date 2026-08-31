@@ -23,4 +23,10 @@ export const satellitePages: SatellitePage[] = [
     description:
       "Origen, doctrina, realización espiritual y diferencias con la Masonería especulativa.",
   },
+  {
+    href: "/rene-guenon/",
+    title: "René Guénon",
+    description:
+      "La obra de René Guénon, la tradición y una guía para abordar su pensamiento iniciático.",
+  },
 ];
