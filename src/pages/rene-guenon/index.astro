@@ -184,7 +184,7 @@ const structuredData = {
     </section>
 
     <section class="not-this section-space">
-      <img class="guenon-watermark" src="/images/rene-guenon-hero.webp" alt="" width="750" height="1043" loading="lazy" aria-hidden="true" />
+      <img class="guenon-watermark" src="/images/rene-guenon-1925-wikipedia.webp" alt="" width="430" height="540" loading="lazy" aria-hidden="true" />
       <div class="container not-this-grid">
         <header><p class="overline">Una lectura sin reducciones</p><h2>Lo que su obra <em>no es</em></h2></header>
         <ol>
@@ -316,6 +316,35 @@ const structuredData = {
   .bibliography li{gap:2.8rem;padding:2.2rem 0}
   .bibliography li span{display:block;padding-top:.35rem;line-height:1.6}
   .bibliography li strong{display:block;line-height:1.25}
+
+  /* Cadencia equilibrada: menos vacío y el mismo pulso en cada bloque. */
+  .coordinates{padding-block:clamp(6.5rem,9vw,9rem)}
+  .coordinates-head{margin-bottom:clamp(4.5rem,6.5vw,6.5rem)}
+  .not-this{padding-block:clamp(7rem,10vw,10rem)}
+  .not-this ol{padding-top:clamp(3rem,5vw,5rem)}
+  .guenon-watermark{left:auto;right:4%;bottom:-8%;width:min(30vw,27rem);opacity:.1;filter:sepia(.58) grayscale(.25) contrast(1.16);mix-blend-mode:screen;object-fit:contain;object-position:center;background-repeat:no-repeat}
+  .reading{padding-block:clamp(6.5rem,9.5vw,9.5rem)}
+  .reading-head{margin-bottom:clamp(5rem,7.5vw,7.5rem)}
+  .reading-head>p:last-child{margin-top:2.7rem}
+  .reading-path article{min-height:28rem;padding-block:4rem 3.3rem}
+  .masonry{padding-block:clamp(7.5rem,11vw,11rem)}
+  .masonry-grid{gap:clamp(4rem,7.5vw,8rem)}
+  .masonry-grid>div{padding-top:clamp(4rem,6vw,6rem)}
+  .masonry-grid>div>p{margin-bottom:2rem}
+  .masonry-grid>div>.lead{margin-bottom:2.7rem}
+  .masonry-links{margin-top:3.2rem}
+  .bibliography{padding-block:clamp(6.5rem,9.5vw,9.5rem)}
+  .bibliography-grid{gap:clamp(4rem,7vw,7rem)}
+  .bibliography li{padding-block:1.8rem}
+  .faq{padding-block:clamp(6.5rem,9.5vw,9.5rem)}
+  .faq-grid{gap:clamp(4rem,7vw,7rem)}
+  .faq .overline{margin-bottom:2.2rem}
+  .faq h2{margin:0;line-height:1}
+  .faq-grid>div{padding-top:3.5rem}
+  .faq details{padding:2rem 0}
+  .faq summary{line-height:1.35}
+  .faq details p{margin:1.35rem 0 .35rem;line-height:1.8}
   @media(max-width:900px){.hero-content{grid-template-columns:1fr;align-items:end;padding-top:5rem}.hero-copy{padding-top:2rem}.guenon-hero h1{font-size:clamp(5rem,20vw,8rem)}.hero-portrait{position:absolute;right:-5rem;bottom:0;width:65%;opacity:.48}.hero-aside{display:none}.threshold-grid,.manifesto-grid,.coordinates-head,.not-this-grid,.masonry-grid,.bibliography-grid,.faq-grid{grid-template-columns:1fr}.threshold-grid{gap:1rem}.threshold p+ p{padding:1rem 0 0;border-left:0;border-top:1px solid rgba(16,45,38,.35)}.manifesto-body,.masonry-grid>div{padding-top:0}.coordinate-grid,.reading-path{grid-template-columns:1fr 1fr}.coordinate-grid article:nth-child(2){border-right:0}.coordinate-grid article:last-child{border-top:1px solid rgba(205,170,100,.3)}.not-this h2{position:static}.manifesto blockquote{padding:4rem 2rem}.bibliography-grid,.faq-grid{gap:2rem}}
   @media(max-width:600px){.guenon-hero{min-height:46rem}.hero-content{padding-bottom:4rem}.hero-portrait{width:90%;right:-12rem}.hero-lede{max-width:18rem}.coordinate-grid,.reading-path{grid-template-columns:1fr}.coordinate-grid article,.coordinate-grid article:nth-child(2){border-right:0;border-bottom:1px solid rgba(205,170,100,.3)}.reading-path article{border-right:0;border-bottom:1px solid #c2b392}.bibliography li{grid-template-columns:1fr;gap:.4rem}.manifesto blockquote{width:calc(100% - 2rem)}}
+  @media(max-width:900px){.faq-grid>div{padding-top:1rem}.faq details{padding-block:1.7rem}.guenon-watermark{right:-4%;bottom:-3%;width:min(48vw,22rem)}}
 </style>
