@@ -1,0 +1,262 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SiteHeader from "@components/SiteHeader.astro";
+import SiteFooter from "@components/SiteFooter.astro";
+import SatelliteNavigation from "@components/SatelliteNavigation.astro";
+import MalteseCross from "@components/MalteseCross.astro";
+import Circumpunct from "@components/Circumpunct.astro";
+import { absoluteSiteUrl, site } from "../../lib/site";
+
+const pagePath = "/rene-guenon/";
+const pageUrl = absoluteSiteUrl(pagePath);
+const pageTitle = "René Guénon: obra, tradición e iniciación | Heredom";
+const pageDescription =
+  "Una introducción a René Guénon y una guía para abordar su obra sobre tradición, simbolismo, iniciación y Masonería desde la perspectiva de Heredom.";
+
+const faqItems = [
+  {
+    question: "¿Quién fue René Guénon?",
+    answer:
+      "René Guénon nació en Blois, Francia, en 1886 y murió en El Cairo en 1951. Dedicó su obra al conocimiento tradicional, el simbolismo y la iniciación. Heredom atiende principalmente a lo que su obra transmite, no a la exaltación de su personalidad.",
+  },
+  {
+    question: "¿Por dónde comenzar a leer a René Guénon?",
+    answer:
+      "Una entrada recomendable es Símbolos fundamentales de la Ciencia Sagrada. Después pueden abordarse Apercepciones sobre la Iniciación e Iniciación y Realización Espiritual. Quien estudia Masonería puede continuar con Estudios sobre la Masonería y el Compañerazgo.",
+  },
+  {
+    question: "¿Guénon fundó una escuela o tuvo discípulos?",
+    answer:
+      "Guénon rechazó que su nombre se convirtiera en una escuela personal y negó tener discípulos. Para él, lo esencial era la doctrina transmitida; las ideas tradicionales no eran propiedad de una individualidad.",
+  },
+  {
+    question: "¿Qué relación tiene René Guénon con la Masonería?",
+    answer:
+      "Su obra ofrece elementos para comprender la iniciación de oficio, el simbolismo constructivo, la regularidad iniciática y la diferencia entre conocimiento teórico y realización espiritual. El estudio no sustituye el rito, el trabajo ni la transmisión.",
+  },
+] as const;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": `${pageUrl}#article`,
+      headline: pageTitle,
+      description: pageDescription,
+      mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
+      author: { "@id": `${absoluteSiteUrl("/")}#organization` },
+      publisher: { "@id": `${absoluteSiteUrl("/")}#organization` },
+      image: absoluteSiteUrl("/images/rene-guenon-hero.webp"),
+      inLanguage: site.language,
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: pageTitle,
+      description: pageDescription,
+      isPartOf: { "@id": `${absoluteSiteUrl("/")}#website` },
+      about: { "@type": "Person", name: "René Guénon" },
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+      inLanguage: site.language,
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: absoluteSiteUrl("/") },
+        { "@type": "ListItem", position: 2, name: "René Guénon", item: pageUrl },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#preguntas`,
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={pagePath}
+  image="/images/rene-guenon-hero.webp"
+  imageAlt="Retrato de cuerpo entero de René Guénon"
+  pageType="article"
+  exactTitle={true}
+  structuredData={structuredData}
+>
+  <SiteHeader current={pagePath} variant="satellite" />
+
+  <main id="contenido">
+    <header class="guenon-hero">
+      <div class="hero-field" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="hero-content container">
+        <div class="hero-copy">
+          <nav class="breadcrumb" aria-label="Migas de pan">
+            <a href="/">Inicio</a><span>/</span><span aria-current="page">René Guénon</span>
+          </nav>
+          <p class="overline">Tradición · Iniciación · Conocimiento</p>
+          <h1>René<br /><em>Guénon</em></h1>
+          <p class="hero-lede">
+            Una obra para reconocer lo permanente en medio de la dispersión moderna.
+          </p>
+          <a class="hero-link" href="#obra">Atravesar el umbral <span aria-hidden="true">↓</span></a>
+        </div>
+
+        <figure class="hero-portrait">
+          <div class="portrait-frame">
+            <img
+              src="/images/rene-guenon-hero.webp"
+              alt="René Guénon de pie, vestido con túnica"
+              width="750"
+              height="1043"
+              fetchpriority="high"
+            />
+          </div>
+          <figcaption><span>1886</span><span>Blois · El Cairo</span><span>1951</span></figcaption>
+        </figure>
+
+        <p class="hero-aside">La doctrina importa.<br />El individuo se retira.</p>
+      </div>
+    </header>
+
+    <section class="threshold" aria-label="Principio editorial">
+      <div class="container threshold-grid">
+        <span class="threshold-number">I</span>
+        <p>Esta no es una apología de la personalidad de René Guénon.</p>
+        <p>Es una invitación a entrar en la arquitectura de su obra.</p>
+      </div>
+    </section>
+
+    <section id="obra" class="manifesto section-space">
+      <div class="container manifesto-grid">
+        <header>
+          <div class="ornament" aria-hidden="true"><MalteseCross size={40} /><span></span><Circumpunct size={30} /></div>
+          <p class="overline">René Guénon según René Guénon</p>
+          <h2>No una personalidad.<br /><em>Una transmisión.</em></h2>
+        </header>
+        <div class="manifesto-body">
+          <p class="lead">Guénon se negó a presentar sus escritos como una teoría personal. No quiso discípulos, una escuela con su nombre ni herederos encargados de custodiar una opinión.</p>
+          <p>Las ideas tradicionales, sostuvo, no pertenecen a quien las formula. El mérito individual consiste apenas en expresarlas con fidelidad, claridad y rigor. De ahí que su firma deba retroceder para que la doctrina ocupe el centro.</p>
+          <p>Leerlo como filósofo moderno, personaje exótico o fundador de un “guenonismo” sería reducir aquello que su propia obra intenta comunicar.</p>
+        </div>
+      </div>
+      <blockquote>
+        <span aria-hidden="true">“</span>
+        <p>La verdad no necesita una firma; necesita ser reconocida.</p>
+        <cite>Síntesis editorial de Heredom a partir de su obra</cite>
+      </blockquote>
+    </section>
+
+    <section class="coordinates section-space" aria-labelledby="coordinates-title">
+      <div class="container">
+        <header class="coordinates-head">
+          <p class="overline">Las coordenadas de la obra</p>
+          <h2 id="coordinates-title">Tres palabras que cambian el punto de vista</h2>
+        </header>
+        <div class="coordinate-grid">
+          <article>
+            <span class="roman">I</span><div class="concept-symbol transmission" aria-hidden="true"><i></i><i></i><i></i></div>
+            <h3>Tradición</h3>
+            <p>No costumbre inmóvil, sino transmisión de principios y formas capaces de atravesar las generaciones sin perder su centro.</p>
+          </article>
+          <article>
+            <span class="roman">II</span><div class="concept-symbol interior" aria-hidden="true"><i></i></div>
+            <h3>Esoterismo</h3>
+            <p>Lo interior: aquello cuyo sentido no se agota en la superficie de una forma, un relato o un símbolo.</p>
+          </article>
+          <article>
+            <span class="roman">III</span><div class="concept-symbol initiation" aria-hidden="true"><i></i><i></i></div>
+            <h3>Iniciación</h3>
+            <p>El comienzo efectivo de una transformación. No sólo conocer una doctrina, sino trabajar para realizarla en el ser.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="not-this section-space">
+      <div class="container not-this-grid">
+        <header><p class="overline">Una lectura sin reducciones</p><h2>Lo que su obra <em>no es</em></h2></header>
+        <ol>
+          <li><span>01</span><div><h3>No es una ideología política</h3><p>Guénon rechazó las consecuencias partidistas que otros intentaron extraer de sus escritos.</p></div></li>
+          <li><span>02</span><div><h3>No es filosofía académica</h3><p>Su posición se declara tradicional; no busca construir un sistema individual ni competir entre opiniones.</p></div></li>
+          <li><span>03</span><div><h3>No es erudición orientalista</h3><p>Las doctrinas de Oriente no aparecen como piezas de museo, sino como expresiones vivas de principios universales.</p></div></li>
+          <li><span>04</span><div><h3>No es un culto al autor</h3><p>La persona, la anécdota y la firma deben quedar subordinadas a aquello que la obra permite comprender.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="lectura" class="reading section-space">
+      <div class="container">
+        <header class="reading-head">
+          <p class="overline">Cómo abordar su obra</p>
+          <h2>Una lectura en espiral</h2>
+          <p>No existe una única puerta. Los mismos símbolos reaparecen, se iluminan entre sí y conducen progresivamente hacia el centro.</p>
+        </header>
+        <div class="reading-path">
+          <article><span>01</span><small>La puerta simbólica</small><h3>Símbolos fundamentales de la Ciencia Sagrada</h3><p>Una condensación de temas que atraviesan el conjunto de su obra.</p></article>
+          <article><span>02</span><small>La doctrina iniciática</small><h3>Apercepciones sobre la Iniciación</h3><p>Las condiciones, límites y naturaleza de la vía iniciática.</p></article>
+          <article><span>03</span><small>Del conocimiento al ser</small><h3>Iniciación y Realización Espiritual</h3><p>La diferencia entre comprender intelectualmente y realizar efectivamente.</p></article>
+          <article><span>04</span><small>El oficio y sus símbolos</small><h3>Estudios sobre la Masonería y el Compañerazgo</h3><p>Una entrada al simbolismo constructivo, la iniciación de oficio y la regularidad.</p></article>
+        </div>
+        <p class="reading-warning"><strong>Advertencia de método.</strong> El resumen —también el producido por una inteligencia artificial— puede orientar, pero nunca reemplaza la lectura directa, el estudio paciente ni la transmisión oral dentro de una organización iniciática.</p>
+      </div>
+    </section>
+
+    <section class="masonry section-space">
+      <div class="masonry-geometry" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="container masonry-grid">
+        <header><p class="overline">Guénon y la Masonería</p><h2>El símbolo debe volver a ser <em>instrumento</em></h2></header>
+        <div>
+          <p class="lead">Para Heredom, su obra ofrece un lenguaje preciso para comprender la iniciación de oficio, la regularidad y la diferencia entre especulación y realización.</p>
+          <p>Un símbolo no está completo cuando se explica: comienza a cumplir su función cuando ordena el trabajo y conduce del conocimiento virtual a una transformación efectiva.</p>
+          <p>Guénon aporta coordenadas doctrinales. No reemplaza el rito, la filiación, la presencia ni los trabajos que corresponden a una vía iniciática.</p>
+          <div class="masonry-links"><a href="/masoneria-operativa/">Masonería Operativa</a><a href="/biblioteca/">Biblioteca de Heredom</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bibliography section-space">
+      <div class="container bibliography-grid">
+        <header><p class="overline">Continuar el recorrido</p><h2>Otros umbrales de lectura</h2></header>
+        <ul>
+          <li><span>Tradición occidental</span><strong>El Esoterismo de Dante</strong></li>
+          <li><span>Centro espiritual</span><strong>El Rey del Mundo</strong></li>
+          <li><span>Esoterismo cristiano</span><strong>San Bernardo</strong></li>
+          <li><span>Estudios reunidos</span><strong>Esoterismo Cristiano</strong></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="faq section-space">
+      <div class="container faq-grid">
+        <header><p class="overline">Preguntas esenciales</p><h2>Antes de comenzar</h2></header>
+        <div>{faqItems.map((item) => <details><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div>
+      </div>
+    </section>
+
+    <SatelliteNavigation current={pagePath} />
+  </main>
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .guenon-hero{position:relative;min-height:clamp(46rem,88vh,62rem);overflow:hidden;background:#0d2923;color:#f3eddf;isolation:isolate}.guenon-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,26,22,.98) 0%,rgba(8,26,22,.9) 38%,rgba(8,26,22,.18) 69%,rgba(8,26,22,.64) 100%);z-index:-1}.hero-field{position:absolute;inset:0;z-index:-2;background:repeating-linear-gradient(115deg,transparent 0 28px,rgba(196,158,89,.045) 29px 30px)}.hero-field span{position:absolute;border:1px solid rgba(200,169,105,.21);border-radius:50%}.hero-field span:nth-child(1){width:42rem;height:42rem;right:-12rem;top:-17rem}.hero-field span:nth-child(2){width:25rem;height:25rem;left:38%;bottom:-17rem}.hero-field span:nth-child(3){width:8rem;height:8rem;left:48%;top:17%}.hero-content{position:relative;display:grid;grid-template-columns:minmax(21rem,.85fr) minmax(24rem,.9fr);align-items:center;min-height:inherit;padding-block:clamp(3rem,7vw,7rem);gap:clamp(2rem,6vw,7rem)}.hero-copy{position:relative;z-index:3}.breadcrumb{display:flex;gap:.4rem;margin-bottom:3rem;font-family:var(--font-ui);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(243,237,223,.55)}.breadcrumb a{color:#d8bd79}.guenon-hero .overline{color:#d8bd79}.guenon-hero h1{margin:.4rem 0 1.25rem;font-size:clamp(5.5rem,11vw,10.5rem);line-height:.7;letter-spacing:-.055em;color:#f3eddf}.guenon-hero h1 em{display:inline-block;margin-left:clamp(2rem,5vw,5rem);font-weight:500;color:#d0a85d}.hero-lede{max-width:35rem;font-family:var(--font-display);font-size:clamp(1.45rem,2.5vw,2.1rem);line-height:1.28;color:rgba(243,237,223,.85)}.hero-link{display:inline-flex;gap:2rem;align-items:center;margin-top:2rem;padding:1rem 0;border-bottom:1px solid #c9a45d;color:#f3eddf;text-decoration:none;font-family:var(--font-ui);font-size:.75rem;letter-spacing:.13em;text-transform:uppercase}.hero-link span{color:#d8bd79}.hero-portrait{position:relative;align-self:end;margin:0;z-index:1}.portrait-frame{position:relative;max-width:37rem;margin-inline:auto}.portrait-frame:before{content:"";position:absolute;inset:-1.1rem;border:1px solid rgba(208,168,93,.42);clip-path:polygon(0 0,35% 0,35% 1px,100% 1px,100% 100%,65% 100%,65% calc(100% - 1px),0 calc(100% - 1px))}.portrait-frame img{display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;filter:sepia(.32) contrast(1.12);mix-blend-mode:screen}.hero-portrait figcaption{display:flex;justify-content:space-between;margin-top:1.4rem;font-family:var(--font-ui);font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;color:#caa45c}.hero-aside{position:absolute;right:-2rem;top:50%;writing-mode:vertical-rl;transform:translateY(-50%);font-family:var(--font-ui);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(243,237,223,.46)}
+  .threshold{background:#c6a15b;color:#102d26}.threshold-grid{display:grid;grid-template-columns:auto 1fr 1fr;gap:3rem;align-items:center;padding-block:1.5rem}.threshold-number{font-family:var(--font-display);font-size:3rem}.threshold p{margin:0;font-family:var(--font-display);font-size:clamp(1.15rem,1.8vw,1.45rem);line-height:1.3}.threshold p+ p{padding-left:3rem;border-left:1px solid rgba(16,45,38,.35)}
+  .manifesto{background:#f3eee3}.manifesto-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(3rem,8vw,8rem)}.ornament{display:flex;align-items:center;gap:1rem;margin-bottom:3rem;color:#8f262d}.ornament span{width:5rem;height:1px;background:#b39868}.manifesto h2{font-size:clamp(3.6rem,7vw,6.5rem);line-height:.88;letter-spacing:-.04em}.manifesto h2 em{color:#8f262d}.manifesto-body{padding-top:4.5rem}.manifesto-body p{font-size:1.08rem;line-height:1.85}.manifesto-body .lead{font-family:var(--font-display);font-size:clamp(1.55rem,2.6vw,2.2rem);line-height:1.36}.manifesto blockquote{position:relative;width:min(100% - 3rem,72rem);margin:7rem auto 0;padding:4rem 8rem;border-block:1px solid #b9a77f;text-align:center}.manifesto blockquote>span{position:absolute;left:50%;top:-2.4rem;transform:translateX(-50%);font-family:var(--font-display);font-size:7rem;color:#8f262d;background:#f3eee3;padding:0 1rem}.manifesto blockquote p{font-family:var(--font-display);font-size:clamp(2.2rem,4vw,4rem);line-height:1.1}.manifesto cite{font-family:var(--font-ui);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#6c665c}
+  .coordinates{background:#123a31;color:#f3eddf}.coordinates-head{display:grid;grid-template-columns:.6fr 1.4fr;gap:4rem;align-items:end;margin-bottom:4rem}.coordinates .overline{color:#d5ad61}.coordinates h2{font-size:clamp(3rem,5vw,5rem);line-height:.95;color:#f3eddf}.coordinate-grid{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid rgba(205,170,100,.45)}.coordinate-grid article{position:relative;min-height:28rem;padding:2.5rem 2.5rem 3rem;border-right:1px solid rgba(205,170,100,.3)}.coordinate-grid article:last-child{border-right:0}.roman{font-family:var(--font-display);color:#d8bd79}.concept-symbol{position:relative;width:8rem;height:8rem;margin:2.5rem auto}.concept-symbol i{position:absolute;display:block;border:1px solid #d3ae68;border-radius:50%}.transmission i{inset:0}.transmission i:nth-child(2){inset:1.5rem}.transmission i:nth-child(3){inset:3.1rem;background:#d3ae68}.interior{border:1px solid #d3ae68;transform:rotate(45deg)}.interior i{inset:2.1rem;background:#d3ae68}.initiation:before,.initiation:after{content:"";position:absolute;background:#d3ae68}.initiation:before{width:1px;height:100%;left:50%}.initiation:after{height:1px;width:100%;top:50%}.initiation i:first-child{inset:.3rem}.initiation i:last-child{inset:3rem;background:#d3ae68}.coordinate-grid h3{font-size:2.5rem;color:#f3eddf}.coordinate-grid p{line-height:1.7;color:rgba(243,237,223,.75)}
+  .not-this{background:#0b201c;color:#f3eddf}.not-this-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(3rem,8vw,8rem)}.not-this .overline{color:#d5ad61}.not-this h2{position:sticky;top:8rem;font-size:clamp(3.4rem,6vw,6rem);line-height:.9;color:#f3eddf}.not-this h2 em{color:#d1a85d}.not-this ol{list-style:none;margin:0;padding:0}.not-this li{display:grid;grid-template-columns:4rem 1fr;gap:2rem;padding:2.1rem 0;border-top:1px solid rgba(213,173,97,.3)}.not-this li>span{font-family:var(--font-display);font-size:1.4rem;color:#d5ad61}.not-this h3{margin:0;color:#f3eddf;font-size:1.8rem}.not-this li p{margin:.6rem 0 0;line-height:1.7;color:rgba(243,237,223,.68)}
+  .reading{background:#f1ecdf}.reading-head{max-width:55rem;margin:0 auto 5rem;text-align:center}.reading-head h2{font-size:clamp(4rem,8vw,7.5rem);line-height:.9}.reading-head>p:last-child{font-family:var(--font-display);font-size:1.5rem;line-height:1.5}.reading-path{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #9e855a}.reading-path article{position:relative;padding:3rem 2rem;border-right:1px solid #c2b392}.reading-path article:last-child{border-right:0}.reading-path article:before{content:"";position:absolute;top:-.4rem;left:2rem;width:.8rem;height:.8rem;border-radius:50%;background:#8f262d}.reading-path article>span{font-family:var(--font-display);font-size:3.5rem;color:#b7a27a}.reading-path small{display:block;margin:1rem 0;font-family:var(--font-ui);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#8f262d}.reading-path h3{font-size:1.65rem;line-height:1.14}.reading-path p{line-height:1.65}.reading-warning{max-width:65rem;margin:4rem auto 0;padding:1.6rem 2rem;border:1px solid #bca77e;line-height:1.7;background:rgba(255,255,255,.3)}
+  .masonry{position:relative;overflow:hidden;background:#8f262d;color:#f5efe3}.masonry-geometry{position:absolute;inset:0;opacity:.18}.masonry-geometry span{position:absolute;border:1px solid #f5efe3;border-radius:50%}.masonry-geometry span:nth-child(1){width:40rem;height:40rem;left:-15rem;top:-15rem}.masonry-geometry span:nth-child(2){width:26rem;height:26rem;right:5%;bottom:-16rem}.masonry-geometry span:nth-child(3){width:8rem;height:8rem;left:50%;top:50%;transform:translate(-50%,-50%)}.masonry-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,8vw,9rem)}.masonry .overline{color:#e1c98c}.masonry h2{font-size:clamp(3.8rem,7vw,7rem);line-height:.88;color:#f5efe3}.masonry h2 em{color:#e1c98c}.masonry-grid>div{padding-top:4rem}.masonry p{font-size:1.08rem;line-height:1.8;color:rgba(245,239,227,.82)}.masonry .lead{font-family:var(--font-display);font-size:1.8rem;line-height:1.4;color:#fff}.masonry-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem}.masonry-links a{padding:.9rem 1.2rem;border:1px solid rgba(245,239,227,.5);color:#fff;text-decoration:none;font-family:var(--font-ui);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}.masonry-links a:hover{background:#f5efe3;color:#8f262d}
+  .bibliography{background:#d0ae69;color:#102d26}.bibliography-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:5rem}.bibliography h2{font-size:clamp(3rem,5vw,5rem);line-height:.95}.bibliography ul{list-style:none;margin:0;padding:0}.bibliography li{display:grid;grid-template-columns:.7fr 1.3fr;gap:2rem;padding:1.3rem 0;border-top:1px solid rgba(16,45,38,.35)}.bibliography li span{font-family:var(--font-ui);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}.bibliography li strong{font-family:var(--font-display);font-size:1.5rem;font-weight:600}
+  .faq{background:#f3eee3}.faq-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:5rem}.faq h2{font-size:clamp(3rem,5vw,5rem)}.faq details{border-top:1px solid #b7a47c;padding:1.25rem 0}.faq summary{cursor:pointer;font-family:var(--font-display);font-size:1.45rem;font-weight:600}.faq details p{max-width:45rem;line-height:1.75}
+  @media(max-width:900px){.hero-content{grid-template-columns:1fr;align-items:end;padding-top:5rem}.hero-copy{padding-top:2rem}.guenon-hero h1{font-size:clamp(5rem,20vw,8rem)}.hero-portrait{position:absolute;right:-5rem;bottom:0;width:65%;opacity:.48}.hero-aside{display:none}.threshold-grid,.manifesto-grid,.coordinates-head,.not-this-grid,.masonry-grid,.bibliography-grid,.faq-grid{grid-template-columns:1fr}.threshold-grid{gap:1rem}.threshold p+ p{padding:1rem 0 0;border-left:0;border-top:1px solid rgba(16,45,38,.35)}.manifesto-body,.masonry-grid>div{padding-top:0}.coordinate-grid,.reading-path{grid-template-columns:1fr 1fr}.coordinate-grid article:nth-child(2){border-right:0}.coordinate-grid article:last-child{border-top:1px solid rgba(205,170,100,.3)}.not-this h2{position:static}.manifesto blockquote{padding:4rem 2rem}.bibliography-grid,.faq-grid{gap:2rem}}
+  @media(max-width:600px){.guenon-hero{min-height:46rem}.hero-content{padding-bottom:4rem}.hero-portrait{width:90%;right:-12rem}.hero-lede{max-width:18rem}.coordinate-grid,.reading-path{grid-template-columns:1fr}.coordinate-grid article,.coordinate-grid article:nth-child(2){border-right:0;border-bottom:1px solid rgba(205,170,100,.3)}.reading-path article{border-right:0;border-bottom:1px solid #c2b392}.bibliography li{grid-template-columns:1fr;gap:.4rem}.manifesto blockquote{width:calc(100% - 2rem)}}
+</style>
