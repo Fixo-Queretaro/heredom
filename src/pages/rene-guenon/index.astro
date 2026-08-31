@@ -150,8 +150,8 @@ const structuredData = {
       </div>
       <blockquote>
         <span aria-hidden="true">“</span>
-        <p>La verdad no necesita una firma; necesita ser reconocida.</p>
-        <cite>Síntesis editorial de Heredom a partir de su obra</cite>
+        <p>El simbolismo es una ciencia exacta y no una libre ensoñación en la que las fantasías individuales puedan tener libre curso.</p>
+        <cite>René Guénon · Símbolos fundamentales de la Ciencia Sagrada</cite>
       </blockquote>
     </section>
 
@@ -173,7 +173,7 @@ const structuredData = {
             <p>Lo interior: aquello cuyo sentido no se agota en la superficie de una forma, un relato o un símbolo.</p>
           </article>
           <article>
-            <span class="roman">III</span><div class="concept-symbol initiation" aria-hidden="true"><i></i><i></i></div>
+            <span class="roman">III</span><div class="concept-symbol initiation" aria-hidden="true"><i></i></div>
             <h3>Iniciación</h3>
             <p>El comienzo efectivo de una transformación. No sólo conocer una doctrina, sino trabajar para realizarla en el ser.</p>
           </article>
@@ -257,6 +257,27 @@ const structuredData = {
   .masonry{position:relative;overflow:hidden;background:#8f262d;color:#f5efe3}.masonry-geometry{position:absolute;inset:0;opacity:.18}.masonry-geometry span{position:absolute;border:1px solid #f5efe3;border-radius:50%}.masonry-geometry span:nth-child(1){width:40rem;height:40rem;left:-15rem;top:-15rem}.masonry-geometry span:nth-child(2){width:26rem;height:26rem;right:5%;bottom:-16rem}.masonry-geometry span:nth-child(3){width:8rem;height:8rem;left:50%;top:50%;transform:translate(-50%,-50%)}.masonry-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,8vw,9rem)}.masonry .overline{color:#e1c98c}.masonry h2{font-size:clamp(3.8rem,7vw,7rem);line-height:.88;color:#f5efe3}.masonry h2 em{color:#e1c98c}.masonry-grid>div{padding-top:4rem}.masonry p{font-size:1.08rem;line-height:1.8;color:rgba(245,239,227,.82)}.masonry .lead{font-family:var(--font-display);font-size:1.8rem;line-height:1.4;color:#fff}.masonry-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem}.masonry-links a{padding:.9rem 1.2rem;border:1px solid rgba(245,239,227,.5);color:#fff;text-decoration:none;font-family:var(--font-ui);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}.masonry-links a:hover{background:#f5efe3;color:#8f262d}
   .bibliography{background:#d0ae69;color:#102d26}.bibliography-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:5rem}.bibliography h2{font-size:clamp(3rem,5vw,5rem);line-height:.95}.bibliography ul{list-style:none;margin:0;padding:0}.bibliography li{display:grid;grid-template-columns:.7fr 1.3fr;gap:2rem;padding:1.3rem 0;border-top:1px solid rgba(16,45,38,.35)}.bibliography li span{font-family:var(--font-ui);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}.bibliography li strong{font-family:var(--font-display);font-size:1.5rem;font-weight:600}
   .faq{background:#f3eee3}.faq-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:5rem}.faq h2{font-size:clamp(3rem,5vw,5rem)}.faq details{border-top:1px solid #b7a47c;padding:1.25rem 0}.faq summary{cursor:pointer;font-family:var(--font-display);font-size:1.45rem;font-weight:600}.faq details p{max-width:45rem;line-height:1.75}
+
+  /* Ajustes editoriales: cita legible, circopunto puro y mayor respiración. */
+  .manifesto blockquote{margin-top:8rem;padding:6.5rem 8rem 4.5rem}
+  .manifesto blockquote>span{top:-2.15rem;font-size:6rem;line-height:1;padding-inline:1.6rem}
+  .manifesto blockquote p{max-width:58rem;margin:0 auto 2rem;font-size:clamp(2.15rem,3.8vw,3.8rem);line-height:1.12}
+  .manifesto cite{display:block;line-height:1.6}
+  .initiation:before{display:none}
+  .initiation:after{content:"";position:absolute;left:50%;top:50%;width:1.4rem;height:1.4rem;border-radius:50%;background:#d3ae68;transform:translate(-50%,-50%)}
+  .initiation i:first-child{inset:.55rem;background:transparent}
+  .reading{padding-block:clamp(8rem,13vw,13rem)}
+  .reading-head{max-width:62rem;margin-bottom:clamp(7rem,11vw,11rem)}
+  .reading-head .overline{margin-bottom:2rem}
+  .reading-head h2{margin:0;line-height:1.02}
+  .reading-head>p:last-child{max-width:50rem;margin:3.5rem auto 0;font-size:clamp(1.35rem,2vw,1.7rem);line-height:1.65}
+  .reading-path article{min-height:31rem;padding:5rem 2.4rem 4rem}
+  .reading-path article:before{left:2.4rem}
+  .reading-path article>span{display:block;margin-bottom:2.5rem}
+  .reading-path small{min-height:2.5rem;margin:0 0 1.6rem;line-height:1.5}
+  .reading-path h3{margin-bottom:1.5rem;line-height:1.22}
+  .reading-path p{line-height:1.75}
+  .reading-warning{margin-top:7rem;padding:2.2rem 2.6rem;line-height:1.8}
   @media(max-width:900px){.hero-content{grid-template-columns:1fr;align-items:end;padding-top:5rem}.hero-copy{padding-top:2rem}.guenon-hero h1{font-size:clamp(5rem,20vw,8rem)}.hero-portrait{position:absolute;right:-5rem;bottom:0;width:65%;opacity:.48}.hero-aside{display:none}.threshold-grid,.manifesto-grid,.coordinates-head,.not-this-grid,.masonry-grid,.bibliography-grid,.faq-grid{grid-template-columns:1fr}.threshold-grid{gap:1rem}.threshold p+ p{padding:1rem 0 0;border-left:0;border-top:1px solid rgba(16,45,38,.35)}.manifesto-body,.masonry-grid>div{padding-top:0}.coordinate-grid,.reading-path{grid-template-columns:1fr 1fr}.coordinate-grid article:nth-child(2){border-right:0}.coordinate-grid article:last-child{border-top:1px solid rgba(205,170,100,.3)}.not-this h2{position:static}.manifesto blockquote{padding:4rem 2rem}.bibliography-grid,.faq-grid{gap:2rem}}
   @media(max-width:600px){.guenon-hero{min-height:46rem}.hero-content{padding-bottom:4rem}.hero-portrait{width:90%;right:-12rem}.hero-lede{max-width:18rem}.coordinate-grid,.reading-path{grid-template-columns:1fr}.coordinate-grid article,.coordinate-grid article:nth-child(2){border-right:0;border-bottom:1px solid rgba(205,170,100,.3)}.reading-path article{border-right:0;border-bottom:1px solid #c2b392}.bibliography li{grid-template-columns:1fr;gap:.4rem}.manifesto blockquote{width:calc(100% - 2rem)}}
 </style>
