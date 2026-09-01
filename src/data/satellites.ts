@@ -29,4 +29,10 @@ export const satellitePages: SatellitePage[] = [
     description:
       "Una guía para abordar su obra sobre tradición, iniciación, simbolismo y Masonería.",
   },
+  {
+    href: "/masoneria-queretaro/",
+    title: "Masonería en Querétaro",
+    description:
+      "Presencia de Heredom en Querétaro, formas de acercamiento y carácter presencial del trabajo.",
+  },
 ];

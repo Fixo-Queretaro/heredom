@@ -1,0 +1,258 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SiteHeader from "@components/SiteHeader.astro";
+import SiteFooter from "@components/SiteFooter.astro";
+import SatelliteNavigation from "@components/SatelliteNavigation.astro";
+import OrderApproachBanner from "@components/OrderApproachBanner.astro";
+import MalteseCross from "@components/MalteseCross.astro";
+import Circumpunct from "@components/Circumpunct.astro";
+import { absoluteSiteUrl, site } from "../../lib/site";
+
+const pagePath = "/masoneria-queretaro/";
+const pageUrl = absoluteSiteUrl(pagePath);
+const pageTitle = "Masonería en Querétaro: tradición y acercamiento | Heredom";
+const pageDescription =
+  "Conoce la presencia de Heredom en Querétaro, su propuesta de Masonería Operativa, los requisitos y las formas de solicitar acercamiento a la Orden.";
+
+const faqItems = [
+  {
+    question: "¿Cómo entrar a la Masonería en Querétaro?",
+    answer:
+      "El primer paso en Heredom es conocer los requisitos públicos y solicitar un acercamiento formal. La solicitud abre una conversación reservada y un proceso de evaluación; no obliga a la persona ni garantiza su ingreso.",
+  },
+  {
+    question: "¿Necesito haber sido masón antes?",
+    answer:
+      "No. Puede solicitar acercamiento una persona sin iniciación previa o un masón procedente de otra obediencia. La experiencia anterior se considera individualmente, pero no sustituye el proceso ni garantiza la admisión.",
+  },
+  {
+    question: "¿Heredom recibe hombres y mujeres?",
+    answer:
+      "Sí. La Orden declara que recibe en sus Logias a hombres y mujeres debidamente cualificados, con igualdad de deberes y derechos dentro de la vía correspondiente.",
+  },
+  {
+    question: "¿El trabajo de Heredom en Querétaro es presencial?",
+    answer:
+      "Sí. El portal y la Biblioteca permiten un primer contacto digital, pero la incorporación y el trabajo iniciático requieren disponibilidad real para participar presencialmente en Querétaro.",
+  },
+  {
+    question: "¿Dónde se reúne Heredom en Querétaro?",
+    answer:
+      "La ubicación, las fechas y los detalles operativos no se publican en el portal. La información pertinente se comunica de forma privada durante el proceso formal de acercamiento.",
+  },
+  {
+    question: "¿Solicitar información garantiza el ingreso?",
+    answer:
+      "No. La solicitud permite conocer a la persona, aclarar dudas y discernir si existen las condiciones para continuar. La admisión depende de la evaluación y de los procedimientos internos de la Orden.",
+  },
+] as const;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: pageTitle,
+      description: pageDescription,
+      isPartOf: { "@id": `${absoluteSiteUrl("/")}#website` },
+      about: [
+        { "@id": `${absoluteSiteUrl("/")}#organization` },
+        { "@type": "Thing", name: "Masonería en Querétaro" },
+      ],
+      spatialCoverage: { "@type": "Place", name: "Querétaro, México" },
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+      inLanguage: site.language,
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: absoluteSiteUrl("/") },
+        { "@type": "ListItem", position: 2, name: "Masonería en Querétaro", item: pageUrl },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#preguntas`,
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={pagePath}
+  pageType="website"
+  exactTitle={true}
+  structuredData={structuredData}
+>
+  <SiteHeader current={pagePath} variant="satellite" />
+
+  <main id="contenido">
+    <header class="local-hero">
+      <div class="hero-stone" aria-hidden="true"></div>
+      <div class="hero-qro" aria-hidden="true">QRO</div>
+      <div class="container hero-inner">
+        <nav class="breadcrumb" aria-label="Migas de pan">
+          <a href="/">Inicio</a><span>/</span><span aria-current="page">Masonería en Querétaro</span>
+        </nav>
+        <p class="overline">Oriente de Querétaro · México</p>
+        <h1>Masonería<br /><em>en Querétaro</em></h1>
+        <p class="hero-lede">
+          Una presencia para quienes buscan una vía iniciática de trabajo,
+          estudio y transformación.
+        </p>
+        <div class="hero-actions">
+          <a href="#presencia">Conocer la presencia de Heredom</a>
+          <a href="/entrar-a-la-masoneria/#requisitos">Revisar los requisitos</a>
+        </div>
+      </div>
+      <div class="arch-row" aria-hidden="true">
+        <span></span><span></span><span></span><span class="arch-central"></span><span></span><span></span><span></span>
+      </div>
+    </header>
+
+    <section class="direct-answer section-space" aria-labelledby="direct-answer-title">
+      <div class="container direct-grid">
+        <p class="answer-mark" aria-hidden="true">Sí.</p>
+        <div>
+          <p class="overline">Una respuesta directa</p>
+          <h2 id="direct-answer-title">¿Hay Masonería en Querétaro?</h2>
+          <p class="lead">
+            En Querétaro existe una actividad masónica diversa. Heredom representa una
+            propuesta específica: la Masonería Operativa entendida como una vía iniciática
+            tradicional, con doctrina, rito y trabajo efectivo.
+          </p>
+          <p>
+            La Orden no habla en nombre de todas las logias ni pretende describir por igual
+            a las distintas obediencias. Este portal explica únicamente la identidad, los
+            principios y el proceso de acercamiento de Heredom.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="presencia" class="presence section-space" aria-labelledby="presence-title">
+      <div class="container">
+        <header class="section-head">
+          <div class="ornament" aria-hidden="true"><MalteseCross size={38} /><span></span><Circumpunct size={30} /></div>
+          <p class="overline">Una propuesta específica</p>
+          <h2 id="presence-title">La presencia de Heredom en Querétaro</h2>
+          <p>
+            El contacto ocurre en una ciudad concreta, pero el trabajo pertenece a una
+            tradición que rebasa la geografía. Querétaro es el punto de encuentro para
+            quienes pueden asumir una participación presencial y sostenida.
+          </p>
+        </header>
+        <div class="presence-grid">
+          <article><span>I</span><h3>Jurisdicción</h3><p>Heredom forma parte del Capítulo Soberano para México y el Caribe.</p></article>
+          <article><span>II</span><h3>Identidad</h3><p>Una vía iniciática tradicional vinculada con la antigua Masonería Operativa.</p></article>
+          <article><span>III</span><h3>Trabajo</h3><p>Estudio, ritual, simbolismo y práctica sostenida dentro de la Orden.</p></article>
+        </div>
+        <p class="presence-links">
+          <a href="/masoneria-operativa/">Comprender la Masonería Operativa</a>
+          <a href="/rene-guenon/">Conocer el marco doctrinal</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="two-doors section-space" aria-labelledby="two-doors-title">
+      <div class="container">
+        <header class="two-doors-head">
+          <p class="overline">Dos caminos de acercamiento</p>
+          <h2 id="two-doors-title">No todos llegan desde el mismo lugar</h2>
+        </header>
+        <div class="door-grid">
+          <article class="approach-door">
+            <div class="door-number">I</div>
+            <div class="door-symbol" aria-hidden="true"><span></span></div>
+            <p class="door-kicker">Sin iniciación previa</p>
+            <h3>Acercarse por primera vez</h3>
+            <p>No se exige haber pertenecido antes a una logia. Sí se requiere mayoría de edad acreditable, libertad personal y disposición para un proceso serio.</p>
+            <a href="/entrar-a-la-masoneria/#requisitos">Conocer los requisitos</a>
+          </article>
+          <article class="approach-door">
+            <div class="door-number">II</div>
+            <div class="door-symbol door-symbol-cross" aria-hidden="true"><span></span></div>
+            <p class="door-kicker">Con experiencia masónica</p>
+            <h3>Profundizar desde otra obediencia</h3>
+            <p>La experiencia previa se respeta, pero no concede ingreso automático. El acercamiento implica revisar el sentido del símbolo, el oficio y el trabajo iniciático.</p>
+            <a href="/masoneria-operativa/#diferencias">Operativo y especulativo</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="expectations section-space" aria-labelledby="expectations-title">
+      <div class="container expectations-grid">
+        <header>
+          <p class="overline">Antes de solicitar acercamiento</p>
+          <h2 id="expectations-title">Qué encontrará<br />—y qué no—</h2>
+        </header>
+        <div class="expectation-columns">
+          <article>
+            <h3>Encontrará</h3>
+            <ul role="list">
+              <li>Un proceso formal y reservado.</li>
+              <li>Trabajo presencial y sostenido.</li>
+              <li>Estudio doctrinal y simbólico.</li>
+              <li>Disciplina ritual y compromiso.</li>
+            </ul>
+          </article>
+          <article class="negative">
+            <h3>No encontrará</h3>
+            <ul role="list">
+              <li>Un club social o de conveniencias.</li>
+              <li>Contactos políticos o profesionales.</li>
+              <li>Acceso inmediato por simple curiosidad.</li>
+              <li>Promesas de prestigio o ascenso profano.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="presence-matters section-space" aria-labelledby="presence-matters-title">
+      <div class="local-coordinate" aria-hidden="true"><span>QRO</span><i></i></div>
+      <div class="container presence-matters-grid">
+        <header><p class="overline">La presencialidad importa</p><h2 id="presence-matters-title">El camino no se recorre únicamente frente a una pantalla</h2></header>
+        <div>
+          <p class="lead">El primer contacto puede comenzar en internet. La incorporación y el trabajo de la Orden requieren presencia real.</p>
+          <p>Quien solicite acercamiento debe contar con posibilidad efectiva de presentarse periódicamente en Querétaro, participar en las tenidas y sostener los trabajos correspondientes a cada nivel.</p>
+          <p>La ubicación y los detalles operativos se comunican privadamente cuando el proceso lo requiere.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="local-faq section-space" aria-labelledby="local-faq-title">
+      <div class="container faq-grid">
+        <header><p class="overline">Preguntas frecuentes</p><h2 id="local-faq-title">Masonería y acercamiento en Querétaro</h2></header>
+        <div>{faqItems.map((item) => <details><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div>
+      </div>
+    </section>
+
+    <OrderApproachBanner />
+    <SatelliteNavigation current={pagePath} />
+  </main>
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .local-hero{position:relative;min-height:clamp(48rem,88vh,63rem);overflow:hidden;isolation:isolate;background:#0b2b24;color:#f4eee0}.hero-stone{position:absolute;inset:0;z-index:-3;background:linear-gradient(115deg,rgba(7,26,22,.98),rgba(17,58,48,.86) 52%,rgba(6,23,19,.98)),repeating-linear-gradient(96deg,transparent 0 43px,rgba(205,170,99,.055) 44px 45px)}.hero-stone:after{content:"";position:absolute;inset:8% 5%;border:1px solid rgba(205,170,99,.22)}.hero-qro{position:absolute;z-index:-2;right:-.05em;top:50%;transform:translateY(-52%);font-family:var(--font-display);font-size:clamp(15rem,34vw,34rem);font-weight:600;line-height:.7;color:rgba(218,185,117,.035)}.hero-inner{display:flex;min-height:inherit;flex-direction:column;justify-content:center;padding-block:7rem 13rem;position:relative;z-index:2}.breadcrumb{display:flex;gap:.4rem;margin-bottom:4rem;font-family:var(--font-ui);font-size:.69rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,238,224,.5)}.breadcrumb a{color:#d7b66f}.local-hero .overline{color:#d7b66f}.local-hero h1{margin:.65rem 0 1.8rem;max-width:11ch;font-size:clamp(5rem,10vw,10rem);line-height:.72;letter-spacing:-.05em;color:#f4eee0}.local-hero h1 em{display:block;margin-left:clamp(2rem,7vw,7rem);font-weight:500;color:#d3ab61}.hero-lede{max-width:38rem;font-family:var(--font-display);font-size:clamp(1.5rem,2.4vw,2.05rem);line-height:1.35;color:rgba(244,238,224,.8)}.hero-actions{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:2.7rem}.hero-actions a{padding:.95rem 1.25rem;border:1px solid rgba(211,171,97,.58);font-family:var(--font-ui);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;color:#f4eee0}.hero-actions a:first-child{background:#d0aa62;color:#102d26}.arch-row{position:absolute;z-index:-1;left:3%;right:3%;bottom:-2px;height:10rem;display:grid;grid-template-columns:repeat(7,1fr);gap:.55rem;border-bottom:1px solid rgba(215,182,111,.55)}.arch-row span{border:1px solid rgba(215,182,111,.34);border-bottom:0;border-radius:50% 50% 0 0}.arch-row .arch-central{height:14rem;align-self:end;border-color:rgba(215,182,111,.68);background:linear-gradient(to top,rgba(216,181,108,.12),transparent)}
+  .direct-answer{background:#f2ede2}.direct-grid{display:grid;grid-template-columns:.65fr 1.35fr;gap:clamp(3rem,9vw,9rem);align-items:start}.answer-mark{margin:0;font-family:var(--font-display);font-size:clamp(8rem,18vw,17rem);line-height:.68;color:#8d252c}.direct-answer h2{font-size:clamp(3.4rem,6vw,5.8rem);line-height:.94}.direct-answer .lead{font-family:var(--font-display);font-size:clamp(1.45rem,2.3vw,2rem);line-height:1.45}.direct-answer p:not(.lead):not(.answer-mark):not(.overline){font-size:1.05rem;line-height:1.8}
+  .presence{background:#d0ae69;color:#102d26}.section-head{max-width:57rem}.section-head .ornament{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem;color:#7e2229}.section-head .ornament span{width:6rem;height:1px;background:rgba(16,45,38,.45)}.section-head h2{font-size:clamp(3.5rem,7vw,6.5rem);line-height:.9}.section-head>p:last-child{max-width:48rem;font-family:var(--font-display);font-size:1.45rem;line-height:1.55}.presence-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:5rem;border-block:1px solid rgba(16,45,38,.35)}.presence-grid article{min-height:19rem;padding:2.3rem;border-right:1px solid rgba(16,45,38,.3)}.presence-grid article:last-child{border-right:0}.presence-grid article>span{font-family:var(--font-display);font-size:1.3rem;color:#7e2229}.presence-grid h3{margin-top:3.5rem;font-size:2.3rem}.presence-grid p{line-height:1.7}.presence-links{display:flex;gap:2rem;flex-wrap:wrap;margin-top:3rem}.presence-links a{color:#102d26;font-family:var(--font-ui);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;text-decoration-color:#7e2229}
+  .two-doors{background:#0e3028;color:#f4eee0}.two-doors .overline{color:#d5ad62}.two-doors-head{display:grid;grid-template-columns:.6fr 1.4fr;gap:4rem;align-items:end;margin-bottom:5rem}.two-doors h2{font-size:clamp(3.5rem,7vw,6.5rem);line-height:.92;color:#f4eee0}.door-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}.approach-door{position:relative;min-height:35rem;padding:3rem;border:1px solid rgba(213,173,98,.38);background:rgba(255,255,255,.025);overflow:hidden}.approach-door:before,.approach-door:after{content:"";position:absolute;top:2rem;bottom:0;width:1px;background:linear-gradient(to bottom,rgba(213,173,98,.65),transparent)}.approach-door:before{left:1.2rem}.approach-door:after{right:1.2rem}.door-number{font-family:var(--font-display);color:#d5ad62}.door-symbol{position:relative;width:5.5rem;height:7rem;margin:2.8rem auto;border:1px solid rgba(213,173,98,.7);border-bottom:0;border-radius:50% 50% 0 0}.door-symbol span{position:absolute;left:50%;top:50%;width:.75rem;height:.75rem;border-radius:50%;background:#d5ad62;transform:translate(-50%,-20%)}.door-symbol-cross span{border-radius:0;background:transparent}.door-symbol-cross span:before,.door-symbol-cross span:after{content:"";position:absolute;left:50%;top:50%;background:#d5ad62;transform:translate(-50%,-50%)}.door-symbol-cross span:before{width:2.8rem;height:1px}.door-symbol-cross span:after{width:1px;height:2.8rem}.door-kicker{font-family:var(--font-ui);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#d5ad62}.approach-door h3{font-size:2.5rem;color:#f4eee0}.approach-door p:not(.door-kicker){max-width:34rem;line-height:1.75;color:rgba(244,238,224,.72)}.approach-door a{display:inline-block;margin-top:1.4rem;color:#f4eee0;font-family:var(--font-ui);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;text-decoration-color:#d5ad62}
+  .expectations{background:#f2ede2}.expectations-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(4rem,9vw,9rem)}.expectations h2{font-size:clamp(3.5rem,6vw,6rem);line-height:.9}.expectation-columns{display:grid;grid-template-columns:1fr 1fr;border-block:1px solid #b6a37d}.expectation-columns article{padding:2.5rem}.expectation-columns article+article{border-left:1px solid #b6a37d}.expectation-columns h3{font-size:2.1rem;color:#17604e}.expectation-columns .negative h3{color:#8d252c}.expectation-columns ul{list-style:none;margin:2rem 0 0;padding:0}.expectation-columns li{position:relative;padding:1rem 0 1rem 1.5rem;border-top:1px solid rgba(139,119,83,.28);line-height:1.5}.expectation-columns li:before{content:"";position:absolute;left:0;top:1.55rem;width:.35rem;height:.35rem;border-radius:50%;background:#17604e}.expectation-columns .negative li:before{width:.55rem;height:1px;border-radius:0;background:#8d252c}
+  .presence-matters{position:relative;overflow:hidden;background:#89262d;color:#f5efe2}.presence-matters-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:clamp(4rem,9vw,9rem)}.presence-matters .overline{color:#e0c98e}.presence-matters h2{font-size:clamp(3.7rem,7vw,6.7rem);line-height:.9;color:#f5efe2}.presence-matters-grid>div{padding-top:4rem}.presence-matters p{font-size:1.05rem;line-height:1.85;color:rgba(245,239,226,.8)}.presence-matters .lead{font-family:var(--font-display);font-size:1.75rem;line-height:1.45;color:#fff}.local-coordinate{position:absolute;right:-2%;bottom:-18%;font-family:var(--font-display);font-size:clamp(17rem,34vw,34rem);line-height:.7;color:rgba(255,255,255,.04)}.local-coordinate i{position:absolute;left:50%;top:45%;width:1.2rem;height:1.2rem;border-radius:50%;background:rgba(224,201,142,.25)}
+  .local-faq{background:#f2ede2}.faq-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(4rem,8vw,8rem)}.local-faq h2{font-size:clamp(3.2rem,5.5vw,5.4rem);line-height:.95}.local-faq details{padding:1.8rem 0;border-top:1px solid #b7a47c}.local-faq summary{cursor:pointer;font-family:var(--font-display);font-size:1.45rem;font-weight:600;line-height:1.35}.local-faq details p{max-width:45rem;margin:1.3rem 0 .3rem;line-height:1.8}
+  @media(max-width:900px){.direct-grid,.two-doors-head,.expectations-grid,.presence-matters-grid,.faq-grid{grid-template-columns:1fr}.answer-mark{font-size:8rem}.presence-grid{grid-template-columns:1fr 1fr}.presence-grid article:nth-child(2){border-right:0}.presence-grid article:last-child{border-top:1px solid rgba(16,45,38,.3)}.door-grid{grid-template-columns:1fr}.expectation-columns{margin-top:2rem}.presence-matters-grid>div{padding-top:0}.two-doors-head{gap:1rem}.local-faq .faq-grid{gap:2.5rem}}
+  @media(max-width:600px){.local-hero{min-height:46rem}.hero-inner{padding-block:5rem 10rem}.local-hero h1{font-size:clamp(4.5rem,19vw,6.2rem)}.local-hero h1 em{margin-left:1rem}.hero-actions{align-items:stretch;flex-direction:column}.hero-actions a{text-align:center}.arch-row{height:7rem;left:1%;right:1%;gap:.2rem}.arch-row .arch-central{height:10rem}.direct-grid{gap:2rem}.presence-grid{grid-template-columns:1fr}.presence-grid article{min-height:0;border-right:0;border-bottom:1px solid rgba(16,45,38,.3)}.presence-grid article:last-child{border-top:0}.expectation-columns{grid-template-columns:1fr}.expectation-columns article+article{border-left:0;border-top:1px solid #b6a37d}.approach-door{padding:2.5rem 2rem}.local-coordinate{right:-30%}}
+</style>
