@@ -12,6 +12,7 @@ import FoundationalTradition from "@components/FoundationalTradition.astro";
 import OldCharges from "@components/OldCharges.astro";
 import OrnamentDivider from "@components/OrnamentDivider.astro";
 import LibraryShowcase from "@components/LibraryShowcase.astro";
+import OrderApproachBanner from "@components/OrderApproachBanner.astro";
 import HistoricalChronicle from "@components/HistoricalChronicle.astro";
 import FourCornerstones from "@components/FourCornerstones.astro";
 import ActivitiesFormation from "@components/ActivitiesFormation.astro";
@@ -230,14 +231,17 @@ const homeStructuredData = createHomeStructuredData();
     <!-- 10. BIBLIOTECA DESTACADA — selección del archivo público -->
     <LibraryShowcase />
 
-    <!-- 11. ACTIVIDADES Y FORMACIÓN — cátedra destacada + archivo vivo -->
+    <!-- 11. ACERCAMIENTO — acceso formal a requisitos y solicitud -->
+    <OrderApproachBanner />
+
+    <!-- 12. ACTIVIDADES Y FORMACIÓN — cátedra destacada + archivo vivo -->
     <ActivitiesFormation />
 
-    <!-- 12. MEMORIA TRADICIONAL — establecimiento en México -->
+    <!-- 13. MEMORIA TRADICIONAL — establecimiento en México -->
     <MexicoInstitutionalHistory />
   </main>
 
-  <!-- 13. FOOTER -->
+  <!-- 14. FOOTER -->
   <SiteFooter />
 </BaseLayout>
 

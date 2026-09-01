@@ -1,0 +1,182 @@
+---
+const approachUrl =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfgiDWhsQwmMrca4y43sPNu45gwji_t-iZyJqYz6jEF2abEfA/viewform?usp=dialog";
+---
+
+<section class="approach-gate" aria-labelledby="approach-gate-title">
+  <div class="gate-architecture" aria-hidden="true">
+    <span class="gate-column gate-column-left"></span>
+    <span class="gate-column gate-column-right"></span>
+    <span class="gate-lintel"></span>
+    <span class="gate-light"></span>
+  </div>
+
+  <div class="container gate-content">
+    <p class="overline">Acercamiento a la Orden</p>
+    <div class="gate-mark" aria-hidden="true"><span></span></div>
+    <h2 id="approach-gate-title">El ingreso comienza antes de cruzar el umbral</h2>
+    <p class="gate-copy">
+      Heredom recibe solicitudes de personas dispuestas a conocer sus requisitos,
+      asumir un proceso formal de acercamiento y discernir responsablemente su
+      posible incorporación a la Orden.
+    </p>
+    <div class="gate-actions">
+      <a class="gate-button gate-button-primary" href="/entrar-a-la-masoneria/#requisitos">
+        Conocer los requisitos
+      </a>
+      <a
+        class="gate-button gate-button-secondary"
+        href={approachUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Solicitar acercamiento
+        <span class="sr-only"> mediante el formulario oficial, en una pestaña nueva</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .approach-gate {
+    background:
+      linear-gradient(90deg, rgba(5, 19, 16, 0.98), rgba(13, 43, 36, 0.9) 50%, rgba(5, 19, 16, 0.98)),
+      repeating-linear-gradient(112deg, transparent 0 31px, rgba(207, 171, 99, 0.035) 32px 33px);
+    border-block: 1px solid rgba(190, 151, 82, 0.56);
+    color: var(--text-on-inverse);
+    isolation: isolate;
+    min-height: clamp(42rem, 74vh, 55rem);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .gate-architecture,
+  .gate-architecture span { position: absolute; }
+  .gate-architecture { inset: 0; z-index: -1; }
+
+  .gate-column {
+    background:
+      linear-gradient(90deg, rgba(213, 177, 105, 0.08), transparent 22% 78%, rgba(213, 177, 105, 0.08)),
+      #0b2c25;
+    border-inline: 1px solid rgba(210, 171, 96, 0.36);
+    bottom: 0;
+    top: 13%;
+    width: clamp(4.5rem, 12vw, 11rem);
+  }
+
+  .gate-column::before,
+  .gate-column::after {
+    border-block: 1px solid rgba(210, 171, 96, 0.42);
+    content: "";
+    height: 1.1rem;
+    left: -10%;
+    position: absolute;
+    width: 120%;
+  }
+
+  .gate-column::before { top: 0; }
+  .gate-column::after { bottom: 0; }
+  .gate-column-left { left: clamp(1rem, 5vw, 5rem); }
+  .gate-column-right { right: clamp(1rem, 5vw, 5rem); }
+
+  .gate-lintel {
+    border: 1px solid rgba(210, 171, 96, 0.42);
+    height: clamp(2.2rem, 5vw, 4rem);
+    left: clamp(0.4rem, 3vw, 3rem);
+    right: clamp(0.4rem, 3vw, 3rem);
+    top: 8%;
+  }
+
+  .gate-light {
+    background: radial-gradient(ellipse at 50% 100%, rgba(220, 187, 118, 0.2), transparent 67%);
+    bottom: 0;
+    height: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(65vw, 52rem);
+  }
+
+  .gate-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: inherit;
+    padding-block: clamp(7rem, 12vw, 11rem);
+    position: relative;
+    text-align: center;
+  }
+
+  .gate-content .overline { color: #d7b66f; }
+  .gate-mark {
+    border: 1px solid rgba(215, 182, 111, 0.78);
+    border-radius: 50%;
+    height: 2.4rem;
+    margin-block: 2.2rem;
+    position: relative;
+    width: 2.4rem;
+  }
+  .gate-mark span {
+    background: #d7b66f;
+    border-radius: 50%;
+    height: 0.42rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.42rem;
+  }
+
+  .gate-content h2 {
+    color: var(--text-on-inverse);
+    font-size: clamp(3.2rem, 7vw, 6.7rem);
+    line-height: 0.94;
+    margin: 0;
+    max-width: 14ch;
+  }
+
+  .gate-copy {
+    color: rgba(244, 239, 226, 0.73);
+    font-size: clamp(1rem, 1.4vw, 1.16rem);
+    line-height: 1.8;
+    margin-block: 2.7rem 0;
+    max-width: 47rem;
+  }
+
+  .gate-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-block-start: 3rem;
+  }
+
+  .gate-button {
+    border: 1px solid rgba(215, 182, 111, 0.72);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    min-width: 13.5rem;
+    padding: 1rem 1.35rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+  }
+
+  .gate-button-primary { background: #d0ad68; color: #102d26; }
+  .gate-button-secondary { background: rgba(8, 30, 25, 0.46); color: #f4efe2; }
+  .gate-button:hover { background: #f0dfb5; border-color: #f0dfb5; color: #102d26; }
+
+  @media (max-width: 639px) {
+    .approach-gate { min-height: 43rem; }
+    .gate-column { width: 3.25rem; }
+    .gate-column-left { left: 0.65rem; }
+    .gate-column-right { right: 0.65rem; }
+    .gate-content { padding-inline: 3.7rem; }
+    .gate-content h2 { font-size: clamp(2.65rem, 13vw, 4.3rem); }
+    .gate-copy { font-size: 0.96rem; line-height: 1.7; }
+    .gate-actions { align-items: stretch; flex-direction: column; width: 100%; }
+    .gate-button { min-width: 0; width: 100%; }
+  }
+</style>
