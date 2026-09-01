@@ -1,0 +1,1143 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SiteHeader from "@components/SiteHeader.astro";
+import SiteFooter from "@components/SiteFooter.astro";
+import SatelliteNavigation from "@components/SatelliteNavigation.astro";
+import MalteseCross from "@components/MalteseCross.astro";
+import Circumpunct from "@components/Circumpunct.astro";
+import { absoluteSiteUrl, site } from "../../lib/site";
+
+const pagePath = "/orden-real-heredom/";
+const pageUrl = absoluteSiteUrl(pagePath);
+const pageTitle = "Orden Real de Heredom de Kilwinning | México y el Caribe";
+const pageDescription =
+  "Qué es la Orden Real de Heredom de Kilwinning, qué significa su nombre, cómo se organiza y cuál es su presencia institucional en México y el Caribe.";
+const approachUrl =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfgiDWhsQwmMrca4y43sPNu45gwji_t-iZyJqYz6jEF2abEfA/viewform?usp=dialog";
+
+const faqItems = [
+  {
+    question: "¿Qué es la Orden Real de Heredom de Kilwinning?",
+    answer:
+      "Heredom se presenta como una Orden iniciática tradicional de Occidente asentada sobre una filiación masónica operativa y una herencia caballeresca. Su identidad comprende transmisión, doctrina, rito y trabajo, y no sólo una colección de grados o símbolos.",
+  },
+  {
+    question: "¿Qué significa la palabra Heredom?",
+    answer:
+      "Los documentos de la Orden relacionan la raíz HRDM con tres sentidos complementarios: Heirdom, herencia; Hieros Domos, casa sagrada o templo; y Harodim, los oficiales o superintendentes de los trabajos del Templo.",
+  },
+  {
+    question: "¿Heredom es solamente un rito masónico?",
+    answer:
+      "No. Sus documentos señalan que la Orden trabaja en Logias y Capítulos conforme al Gran Rito Escocés Primitivo, pero su identidad no se reduce a un ritual: incluye filiación, doctrina tradicional y un método de realización.",
+  },
+  {
+    question: "¿Cuántos grados trabaja la Orden?",
+    answer:
+      "La documentación institucional pública consigna una estructura de siete grados. Los contenidos rituales, ceremonias y modos de reconocimiento pertenecen al ámbito interno de la Orden.",
+  },
+  {
+    question: "¿La Orden Real de Heredom tiene presencia en México?",
+    answer:
+      "Sí. Este portal representa públicamente al Capítulo Soberano para México y el Caribe y comunica su identidad doctrinal, su Biblioteca y sus vías formales de acercamiento.",
+  },
+  {
+    question: "¿Cómo puedo solicitar acercamiento a Heredom?",
+    answer:
+      "El primer paso es revisar los requisitos públicos y enviar una solicitud mediante el canal oficial. La solicitud abre una conversación reservada y un proceso de evaluación; no garantiza el ingreso.",
+  },
+] as const;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: pageTitle,
+      description: pageDescription,
+      isPartOf: { "@id": `${absoluteSiteUrl("/")}#website` },
+      about: { "@id": `${absoluteSiteUrl("/")}#organization` },
+      mainEntity: { "@id": `${absoluteSiteUrl("/")}#organization` },
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+      inLanguage: site.language,
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: absoluteSiteUrl("/") },
+        { "@type": "ListItem", position: 2, name: "La Orden", item: pageUrl },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#preguntas`,
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={pagePath}
+  image="/images/monte-heredom-orden.webp"
+  imageAlt="Representación simbólica del Monte Heredom"
+  imageWidth={1080}
+  imageHeight={1080}
+  pageType="website"
+  exactTitle={true}
+  structuredData={structuredData}
+>
+  <SiteHeader current={pagePath} variant="satellite" />
+
+  <main id="contenido">
+    <header class="order-hero">
+      <div class="hero-copy">
+        <nav class="breadcrumb" aria-label="Migas de pan">
+          <a href="/">Inicio</a><span>/</span><span aria-current="page">La Orden</span>
+        </nav>
+        <p class="overline">Capítulo Soberano para México y el Caribe</p>
+        <h1>Orden Real de Heredom <em>de Kilwinning</em></h1>
+        <p class="hero-lede">
+          Una herencia recibida, una casa sagrada y un cuerpo de oficiales
+          consagrados al trabajo.
+        </p>
+        <div class="hero-key" aria-label="Tres sentidos del nombre Heredom">
+          <span>Herencia</span><i aria-hidden="true"></i>
+          <span>Templo</span><i aria-hidden="true"></i>
+          <span>Oficio</span>
+        </div>
+      </div>
+      <figure class="hero-figure">
+        <img
+          src="/images/monte-heredom-orden.webp"
+          alt="Representación simbólica del Monte Heredom: una montaña insular coronada por siete estrellas, el Sol, la Luna y el emblema de la Orden"
+          width="1080"
+          height="1080"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <figcaption>Monte Heredom · representación simbólica</figcaption>
+      </figure>
+    </header>
+
+    <section class="definition section-space" aria-labelledby="definition-title">
+      <div class="container definition-grid">
+        <p class="definition-mark" aria-hidden="true">H∴R∴D∴M</p>
+        <div class="definition-copy">
+          <p class="overline">Definición institucional</p>
+          <h2 id="definition-title">Una Orden, no un nombre ornamental</h2>
+          <p class="lead">
+            Heredom se reconoce como una Orden iniciática tradicional de Occidente,
+            perteneciente a la iniciación obrera y artesanal, asentada sobre una
+            filiación masónica y una herencia caballeresca.
+          </p>
+          <p>
+            Su razón de ser no consiste en acumular títulos ni en construir una identidad
+            social. La Orden reúne una transmisión, una doctrina expresada mediante
+            símbolos y un método que debe realizarse por el rito y el trabajo sostenido.
+          </p>
+          <p>
+            Para comprender la vía que practica, puede consultarse la página dedicada a
+            la <a href="/masoneria-operativa/">Masonería Operativa</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="name section-space" aria-labelledby="name-title">
+      <div class="container">
+        <header class="name-head">
+          <p class="overline">La raíz HRDM</p>
+          <h2 id="name-title">El nombre contiene una doctrina</h2>
+          <p>
+            <i lang="la">Vetera Instituta</i> presenta tres lecturas que no se excluyen:
+            cada una ilumina una función distinta de la Orden.
+          </p>
+        </header>
+        <div class="name-grid">
+          <article>
+            <p class="name-number">I</p>
+            <p class="name-root">Heirdom</p>
+            <h3>Herencia</h3>
+            <p>Lo recibido y aquello de lo que se es heredero: una continuidad que debe custodiarse y transmitirse.</p>
+          </article>
+          <article>
+            <p class="name-number">II</p>
+            <p class="name-root">Hieros Domos</p>
+            <h3>Casa sagrada</h3>
+            <p>El Templo entendido como centro y como obra: lugar simbólico donde la construcción adquiere sentido espiritual.</p>
+          </article>
+          <article>
+            <p class="name-number">III</p>
+            <p class="name-root">Harodim</p>
+            <h3>Oficiales</h3>
+            <p>Los supervisores de los trabajos del Templo: autoridad vinculada al oficio, la responsabilidad y el conocimiento.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="architecture section-space" aria-labelledby="architecture-title">
+      <div class="container architecture-grid">
+        <header>
+          <p class="overline">La arquitectura de la Orden</p>
+          <h2 id="architecture-title">Dos ámbitos.<br />Siete grados.<br />Una continuidad.</h2>
+        </header>
+        <div class="architecture-body">
+          <div class="seven" aria-hidden="true"><span>VII</span><Circumpunct size={26} /></div>
+          <div class="bodies">
+            <article>
+              <p class="body-label">Primer ámbito</p>
+              <h3>Logia</h3>
+              <p>El punto de reunión de los masones para realizar los trabajos propios del oficio y de los grados correspondientes.</p>
+            </article>
+            <article>
+              <p class="body-label">Segundo ámbito</p>
+              <h3>Capítulo</h3>
+              <p>La continuidad capitular en la que se articulan los altos grados y la dimensión caballeresca de la Orden.</p>
+            </article>
+          </div>
+          <p class="architecture-note">
+            Los documentos institucionales consignan siete grados trabajados en Logias
+            y Capítulos conforme a lo que denominan Gran Rito Escocés Primitivo. El
+            contenido ritual y los modos de reconocimiento permanecen reservados.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="seal section-space" aria-labelledby="seal-title">
+      <div class="seal-watermark" aria-hidden="true"><MalteseCross size={520} /></div>
+      <div class="container seal-grid">
+        <div class="seal-symbol" aria-hidden="true"><MalteseCross size={76} /></div>
+        <div>
+          <p class="overline">Identidad recibida</p>
+          <h2 id="seal-title">El sello crístico y templario</h2>
+          <p class="lead">
+            La Orden conserva un sello crístico como marca de su forma tradicional y de
+            su herencia templaria; no como instrumento de conversión religiosa.
+          </p>
+          <p>
+            Sus documentos distinguen esta identidad iniciática de la actividad
+            confesional y política, que permanece fuera del trabajo institucional. La
+            forma recibida orienta el rito y el simbolismo sin convertir a Heredom en una
+            iglesia ni en un sustituto de la religión.
+          </p>
+          <p>
+            El marco doctrinal desde el cual Heredom formula esta distinción puede
+            ampliarse en <a href="/rene-guenon/">la guía sobre René Guénon</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mount section-space" aria-labelledby="mount-title">
+      <div class="mount-word" aria-hidden="true">MONTE</div>
+      <div class="container mount-grid">
+        <header>
+          <p class="overline">Geografía sagrada</p>
+          <h2 id="mount-title">El Monte Heredom es una clave de lectura</h2>
+        </header>
+        <div class="mount-copy">
+          <p class="lead">
+            La tradición de la Orden sitúa su sede originaria en un castillo levantado
+            sobre la cima del Monte Heredom, en el cuadrante nororiental de Escocia.
+          </p>
+          <p>
+            La importancia de esta narración no depende únicamente de encontrar un nombre
+            en la cartografía moderna. <i lang="la">Vetera Instituta</i> la presenta como
+            un caso de geografía sagrada: un lugar cuya función simbólica puede conservar
+            un nombre distinto del uso profano.
+          </p>
+          <p>
+            En este portal se expone como lo que es: una leyenda tradicional recibida y
+            una imagen de orientación, ascenso y centro; no como una dirección geográfica
+            contemporánea.
+          </p>
+        </div>
+        <div class="mount-axis" aria-hidden="true">
+          <span>Cima</span><i></i><span>Centro</span><i></i><span>Templo</span><i></i><span>Herencia</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="jurisdiction section-space" aria-labelledby="jurisdiction-title">
+      <div class="container jurisdiction-grid">
+        <header>
+          <p class="overline">Presencia institucional</p>
+          <h2 id="jurisdiction-title">México<br /><em>y el Caribe</em></h2>
+        </header>
+        <div>
+          <p class="lead">
+            Este sitio es el portal público del Capítulo Soberano para México y el Caribe
+            de la Orden Real de Heredom de Kilwinning.
+          </p>
+          <div class="jurisdiction-items">
+            <article><span>I</span><h3>Capítulo Soberano</h3><p>Custodia la continuidad capitular y la autoridad consignada para la jurisdicción.</p></article>
+            <article><span>II</span><h3>Logia Madre+Metropolitana</h3><p>Concentra el trabajo institucional desde el que se levantan y ordenan sus columnas.</p></article>
+            <article><span>III</span><h3>Portal público</h3><p>Comunica doctrina, documentos, Biblioteca y vías de acercamiento; no expone la vida ritual interna.</p></article>
+          </div>
+          <p class="jurisdiction-link"><a href="/masoneria-queretaro/">Conocer la presencia y el acercamiento en Querétaro</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="vetera section-space" aria-labelledby="vetera-title">
+      <div class="container vetera-grid">
+        <div class="document-mark" aria-hidden="true">
+          <span>V</span><i></i><span>I</span>
+        </div>
+        <div class="vetera-copy">
+          <p class="overline">Documento institucional</p>
+          <h2 id="vetera-title"><i lang="la">Vetera Instituta et Fundamenta Ordinis</i></h2>
+          <p class="lead">
+            El documento reúne la explicación del nombre, la filiación, los principios,
+            el sello crístico, los límites doctrinales y la leyenda del Monte Heredom.
+          </p>
+          <p>
+            No sustituye la transmisión oral ni revela el contenido ritual. Su función
+            pública es fijar el lenguaje con el que la Orden se presenta y permitir que
+            sus afirmaciones doctrinales puedan leerse en su propia fuente.
+          </p>
+          <div class="vetera-actions">
+            <a class="primary" href="/documentos/vetera-instituta-et-fundamenta-ordinis.pdf">Leer el documento en PDF</a>
+            <a href="/biblioteca/">Explorar la Biblioteca de Heredom</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="order-faq section-space" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <header>
+          <p class="overline">Preguntas esenciales</p>
+          <h2 id="faq-title">Comprender la Orden antes de acercarse</h2>
+        </header>
+        <div>
+          {faqItems.map((item) => (
+            <details>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="threshold section-space" aria-labelledby="threshold-title">
+      <div class="container threshold-inner">
+        <p class="overline">El siguiente paso</p>
+        <h2 id="threshold-title">La identidad se estudia.<br />El acercamiento se discierne.</h2>
+        <p>
+          Conocer públicamente a la Orden permite formular mejores preguntas. Solicitar
+          información abre una conversación reservada, pero no obliga ni garantiza el ingreso.
+        </p>
+        <div class="threshold-actions">
+          <a href="/entrar-a-la-masoneria/#requisitos">Revisar los requisitos</a>
+          <a href={approachUrl} target="_blank" rel="noopener noreferrer">Solicitar acercamiento</a>
+        </div>
+      </div>
+    </section>
+
+    <SatelliteNavigation current={pagePath} />
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .section-space {
+    padding-block: clamp(var(--space-2xl), 8vw, var(--space-3xl));
+  }
+
+  .order-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 54fr) minmax(25rem, 46fr);
+    min-height: clamp(52rem, 92vh, 68rem);
+    background: #091d27;
+    color: #f5efe2;
+    overflow: hidden;
+  }
+
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(5rem, 8vw, 9rem) clamp(var(--gutter), 7vw, 8rem);
+    position: relative;
+    z-index: 1;
+    background:
+      linear-gradient(135deg, rgba(9, 29, 39, 0.98), rgba(13, 51, 54, 0.9)),
+      repeating-linear-gradient(102deg, transparent 0 46px, rgba(205, 169, 94, 0.045) 47px 48px);
+  }
+
+  .hero-copy::after {
+    content: "";
+    position: absolute;
+    inset: 2.5rem;
+    border: 1px solid rgba(211, 174, 99, 0.23);
+    pointer-events: none;
+  }
+
+  .breadcrumb {
+    display: flex;
+    gap: 0.45rem;
+    margin-bottom: clamp(3rem, 6vw, 6rem);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245, 239, 226, 0.55);
+  }
+
+  .breadcrumb a,
+  .order-hero .overline {
+    color: #d9b66b;
+  }
+
+  .order-hero h1 {
+    max-width: 9.5ch;
+    margin: 1rem 0 2rem;
+    font-size: clamp(4.7rem, 8vw, 9rem);
+    line-height: 0.82;
+    letter-spacing: -0.045em;
+    color: #f5efe2;
+  }
+
+  .order-hero h1 em {
+    display: block;
+    margin-top: 0.25em;
+    color: #d9b66b;
+    font-size: 0.62em;
+    font-weight: 500;
+  }
+
+  .hero-lede {
+    max-width: 37rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.45rem, 2.25vw, 2rem);
+    line-height: 1.45;
+    color: rgba(245, 239, 226, 0.82);
+  }
+
+  .hero-key {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 3rem;
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: #d9b66b;
+  }
+
+  .hero-key i {
+    width: 0.28rem;
+    height: 0.28rem;
+    border-radius: 50%;
+    background: #8e2931;
+  }
+
+  .hero-figure {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2rem, 4vw, 4rem);
+    background: #07151d;
+    border-left: 1px solid rgba(211, 174, 99, 0.32);
+  }
+
+  .hero-figure img {
+    width: 100%;
+    max-height: 56rem;
+    object-fit: contain;
+    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.42);
+  }
+
+  .hero-figure figcaption {
+    margin-top: 1.25rem;
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgba(245, 239, 226, 0.48);
+  }
+
+  .definition {
+    background: #f2ede2;
+  }
+
+  .definition-grid {
+    display: grid;
+    grid-template-columns: minmax(15rem, 0.7fr) minmax(0, 1.3fr);
+    gap: clamp(4rem, 9vw, 9rem);
+    align-items: start;
+  }
+
+  .definition-mark {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 8vw, 8.5rem);
+    line-height: 0.9;
+    color: #8d252c;
+    overflow-wrap: anywhere;
+  }
+
+  .definition-copy h2,
+  .name-head h2,
+  .architecture h2,
+  .seal h2,
+  .mount h2,
+  .jurisdiction h2,
+  .vetera h2,
+  .order-faq h2,
+  .threshold h2 {
+    margin-top: 0.75rem;
+  }
+
+  .definition-copy h2 {
+    font-size: clamp(3.5rem, 6.5vw, 6.4rem);
+    line-height: 0.95;
+  }
+
+  .definition-copy .lead,
+  .seal .lead,
+  .mount .lead,
+  .jurisdiction .lead,
+  .vetera .lead {
+    margin-top: 2.5rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.2vw, 1.95rem);
+    line-height: 1.5;
+  }
+
+  .definition-copy p:not(.lead),
+  .seal p:not(.lead):not(.overline),
+  .mount-copy p:not(.lead),
+  .vetera-copy p:not(.lead):not(.overline) {
+    margin-top: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.85;
+  }
+
+  .name {
+    background: #0e3028;
+    color: #f5efe2;
+  }
+
+  .name .overline {
+    color: #d8b46a;
+  }
+
+  .name-head {
+    max-width: 56rem;
+  }
+
+  .name-head h2 {
+    font-size: clamp(3.8rem, 7vw, 7rem);
+    line-height: 0.92;
+    color: #f5efe2;
+  }
+
+  .name-head > p:last-child {
+    max-width: 45rem;
+    margin-top: 2rem;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: rgba(245, 239, 226, 0.72);
+  }
+
+  .name-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: clamp(4rem, 8vw, 7rem);
+    border-block: 1px solid rgba(216, 180, 106, 0.38);
+  }
+
+  .name-grid article {
+    min-height: 26rem;
+    padding: clamp(2rem, 4vw, 3.5rem);
+    border-right: 1px solid rgba(216, 180, 106, 0.28);
+  }
+
+  .name-grid article:last-child {
+    border-right: 0;
+  }
+
+  .name-number,
+  .name-root,
+  .body-label {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .name-number {
+    color: #d8b46a;
+  }
+
+  .name-root {
+    margin-top: 5rem;
+    color: rgba(245, 239, 226, 0.48);
+  }
+
+  .name-grid h3 {
+    margin-top: 0.75rem;
+    font-size: clamp(2.2rem, 3vw, 3.2rem);
+    color: #f5efe2;
+  }
+
+  .name-grid article > p:last-child {
+    margin-top: 1.5rem;
+    line-height: 1.75;
+    color: rgba(245, 239, 226, 0.7);
+  }
+
+  .architecture {
+    background: #d3ae67;
+    color: #102d26;
+  }
+
+  .architecture-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(4rem, 9vw, 9rem);
+  }
+
+  .architecture h2 {
+    font-size: clamp(3.7rem, 6.5vw, 6.6rem);
+    line-height: 0.94;
+  }
+
+  .architecture-body {
+    min-width: 0;
+  }
+
+  .seven {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(16, 45, 38, 0.38);
+    color: #8d252c;
+  }
+
+  .seven > span {
+    font-family: var(--font-display);
+    font-size: clamp(7rem, 14vw, 14rem);
+    line-height: 0.72;
+  }
+
+  .bodies {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bodies article {
+    padding: 3rem 2.5rem 3rem 0;
+  }
+
+  .bodies article + article {
+    padding-left: 2.5rem;
+    border-left: 1px solid rgba(16, 45, 38, 0.28);
+  }
+
+  .body-label {
+    color: #7f242b;
+  }
+
+  .bodies h3 {
+    margin-top: 1.25rem;
+    font-size: 2.8rem;
+  }
+
+  .bodies article > p:last-child,
+  .architecture-note {
+    margin-top: 1.35rem;
+    line-height: 1.75;
+  }
+
+  .architecture-note {
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(16, 45, 38, 0.38);
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+  }
+
+  .seal {
+    position: relative;
+    overflow: hidden;
+    background: #8d252c;
+    color: #f5efe2;
+  }
+
+  .seal-watermark {
+    position: absolute;
+    right: -8rem;
+    bottom: -12rem;
+    color: rgba(255, 255, 255, 0.045);
+    pointer-events: none;
+  }
+
+  .seal-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(10rem, 0.55fr) minmax(0, 1.45fr);
+    gap: clamp(4rem, 9vw, 9rem);
+  }
+
+  .seal-symbol {
+    display: grid;
+    width: clamp(9rem, 17vw, 15rem);
+    aspect-ratio: 1;
+    place-items: center;
+    border: 1px solid rgba(224, 201, 142, 0.62);
+    border-radius: 50%;
+    color: #e0c98e;
+  }
+
+  .seal .overline {
+    color: #e0c98e;
+  }
+
+  .seal h2 {
+    font-size: clamp(3.8rem, 7vw, 7rem);
+    line-height: 0.92;
+    color: #f5efe2;
+  }
+
+  .seal p:not(.overline) {
+    color: rgba(245, 239, 226, 0.8);
+  }
+
+  .seal .lead {
+    color: #fff;
+  }
+
+  .seal a {
+    color: #fff;
+    text-decoration-color: #e0c98e;
+  }
+
+  .mount {
+    position: relative;
+    overflow: hidden;
+    background: #f2ede2;
+  }
+
+  .mount-word {
+    position: absolute;
+    right: -0.04em;
+    bottom: -0.2em;
+    font-family: var(--font-display);
+    font-size: clamp(12rem, 31vw, 31rem);
+    line-height: 0.7;
+    color: rgba(9, 29, 39, 0.032);
+  }
+
+  .mount-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(4rem, 9vw, 9rem);
+  }
+
+  .mount h2 {
+    font-size: clamp(3.8rem, 7vw, 7rem);
+    line-height: 0.92;
+  }
+
+  .mount-axis {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: auto 1fr auto 1fr auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    margin-top: clamp(4rem, 8vw, 7rem);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: #7f242b;
+  }
+
+  .mount-axis i {
+    height: 1px;
+    background: #b39c70;
+  }
+
+  .jurisdiction {
+    background: #123a31;
+    color: #f5efe2;
+  }
+
+  .jurisdiction-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+    gap: clamp(4rem, 9vw, 9rem);
+  }
+
+  .jurisdiction .overline {
+    color: #d7b66f;
+  }
+
+  .jurisdiction h2 {
+    font-size: clamp(4.2rem, 8vw, 8rem);
+    line-height: 0.82;
+    color: #f5efe2;
+  }
+
+  .jurisdiction h2 em {
+    color: #d7b66f;
+    font-weight: 500;
+  }
+
+  .jurisdiction .lead {
+    margin-top: 0;
+    color: #fff;
+  }
+
+  .jurisdiction-items {
+    margin-top: 4rem;
+    border-block: 1px solid rgba(215, 182, 111, 0.36);
+  }
+
+  .jurisdiction-items article {
+    display: grid;
+    grid-template-columns: 3rem minmax(12rem, 0.8fr) minmax(0, 1.2fr);
+    gap: 1.5rem;
+    align-items: baseline;
+    padding-block: 2rem;
+  }
+
+  .jurisdiction-items article + article {
+    border-top: 1px solid rgba(215, 182, 111, 0.24);
+  }
+
+  .jurisdiction-items span {
+    font-family: var(--font-display);
+    color: #d7b66f;
+  }
+
+  .jurisdiction-items h3 {
+    font-size: 1.8rem;
+    color: #f5efe2;
+  }
+
+  .jurisdiction-items p {
+    line-height: 1.65;
+    color: rgba(245, 239, 226, 0.7);
+  }
+
+  .jurisdiction-link {
+    margin-top: 2.5rem;
+  }
+
+  .jurisdiction a {
+    color: #fff;
+    text-decoration-color: #d7b66f;
+  }
+
+  .vetera {
+    background: #d3ae67;
+    color: #102d26;
+  }
+
+  .vetera-grid {
+    display: grid;
+    grid-template-columns: minmax(13rem, 0.6fr) minmax(0, 1.4fr);
+    gap: clamp(4rem, 9vw, 9rem);
+    align-items: center;
+  }
+
+  .document-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    width: min(100%, 23rem);
+    aspect-ratio: 0.78;
+    border: 1px solid rgba(16, 45, 38, 0.5);
+    box-shadow: inset 0 0 0 1.2rem #d3ae67, inset 0 0 0 calc(1.2rem + 1px) rgba(16, 45, 38, 0.25);
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 8vw, 7rem);
+    color: #8d252c;
+  }
+
+  .document-mark i {
+    width: 1px;
+    height: 6rem;
+    background: rgba(16, 45, 38, 0.42);
+  }
+
+  .vetera h2 {
+    max-width: 14ch;
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    line-height: 0.98;
+  }
+
+  .vetera-actions,
+  .threshold-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.75rem;
+  }
+
+  .vetera-actions a,
+  .threshold-actions a {
+    padding: 1rem 1.25rem;
+    border: 1px solid currentColor;
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .vetera-actions .primary {
+    background: #102d26;
+    color: #fff;
+    border-color: #102d26;
+  }
+
+  .order-faq {
+    background: #f2ede2;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+    gap: clamp(4rem, 8vw, 8rem);
+  }
+
+  .order-faq h2 {
+    font-size: clamp(3.3rem, 5.7vw, 5.7rem);
+    line-height: 0.96;
+  }
+
+  .order-faq details {
+    padding: 1.9rem 0;
+    border-top: 1px solid #b7a47c;
+  }
+
+  .order-faq summary {
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .order-faq details p {
+    max-width: 45rem;
+    margin: 1.3rem 0 0.3rem;
+    line-height: 1.8;
+  }
+
+  .threshold {
+    background: #091d27;
+    color: #f5efe2;
+    text-align: center;
+  }
+
+  .threshold-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .threshold .overline {
+    color: #d9b66b;
+  }
+
+  .threshold h2 {
+    max-width: 16ch;
+    font-size: clamp(3.6rem, 7vw, 7rem);
+    line-height: 0.94;
+    color: #f5efe2;
+  }
+
+  .threshold-inner > p:not(.overline) {
+    max-width: 44rem;
+    margin-top: 2rem;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    line-height: 1.65;
+    color: rgba(245, 239, 226, 0.75);
+  }
+
+  .threshold-actions {
+    justify-content: center;
+  }
+
+  .threshold-actions a {
+    color: #fff;
+    border-color: rgba(217, 182, 107, 0.65);
+  }
+
+  .threshold-actions a:last-child {
+    background: #d9b66b;
+    color: #102d26;
+  }
+
+  @media (max-width: 960px) {
+    .order-hero,
+    .definition-grid,
+    .architecture-grid,
+    .seal-grid,
+    .mount-grid,
+    .jurisdiction-grid,
+    .vetera-grid,
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .order-hero {
+      min-height: 0;
+    }
+
+    .hero-copy {
+      min-height: 44rem;
+    }
+
+    .hero-figure {
+      border-top: 1px solid rgba(211, 174, 99, 0.32);
+      border-left: 0;
+    }
+
+    .hero-figure img {
+      max-height: 48rem;
+    }
+
+    .definition-mark {
+      max-width: 7ch;
+    }
+
+    .name-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .name-grid article {
+      min-height: 0;
+      border-right: 0;
+    }
+
+    .name-grid article + article {
+      border-top: 1px solid rgba(216, 180, 106, 0.28);
+    }
+
+    .name-root {
+      margin-top: 3rem;
+    }
+
+    .seal-symbol {
+      width: 10rem;
+    }
+
+    .mount-axis {
+      grid-column: auto;
+    }
+
+    .jurisdiction-items article {
+      grid-template-columns: 2.5rem 1fr;
+    }
+
+    .jurisdiction-items p {
+      grid-column: 2;
+    }
+
+    .document-mark {
+      width: 16rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .section-space {
+      padding-block: 5rem;
+    }
+
+    .hero-copy {
+      min-height: 41rem;
+      padding: 5rem var(--gutter);
+    }
+
+    .hero-copy::after {
+      inset: 1rem;
+    }
+
+    .order-hero h1 {
+      font-size: clamp(4rem, 18vw, 5.8rem);
+    }
+
+    .hero-key {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .hero-key i {
+      display: none;
+    }
+
+    .hero-figure {
+      padding: 1rem;
+    }
+
+    .bodies {
+      grid-template-columns: 1fr;
+    }
+
+    .bodies article {
+      padding: 2.5rem 0;
+    }
+
+    .bodies article + article {
+      padding-left: 0;
+      border-top: 1px solid rgba(16, 45, 38, 0.28);
+      border-left: 0;
+    }
+
+    .mount-axis {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .mount-axis i {
+      width: 3rem;
+    }
+
+    .jurisdiction-items article {
+      grid-template-columns: 2rem 1fr;
+      gap: 1rem;
+    }
+
+    .vetera-actions,
+    .threshold-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .vetera-actions a,
+    .threshold-actions a {
+      text-align: center;
+    }
+  }
+</style>

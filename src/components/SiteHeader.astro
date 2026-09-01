@@ -15,23 +15,29 @@ interface Props {
 const { uid = "main", current, variant = "institutional" } = Astro.props;
 const navId = `nav-${uid}`;
 
-const institutionalLinks = [
+interface NavigationLink {
+  href: string;
+  label: string;
+  external?: boolean;
+}
+
+const institutionalLinks: NavigationLink[] = [
   { href: "/", label: "Inicio" },
-  { href: "/#levantamiento-columnas", label: "La Orden" },
+  { href: "/orden-real-heredom/", label: "La Orden" },
   { href: "/#tradicion-historia", label: "Tradición e Historia" },
   { href: "/biblioteca/", label: "Biblioteca" },
   { href: "/#actividades", label: "Formación" },
   { href: "https://porlatradicion.com/", label: "Legado", external: true },
 ];
 
-const satelliteLinks = [
+const satelliteLinks: NavigationLink[] = [
   { href: "/", label: "Inicio" },
+  { href: "/orden-real-heredom/", label: "La Orden" },
   { href: "/masoneria-operativa/", label: "Operativa" },
   { href: "/masoneria-queretaro/", label: "Querétaro" },
   { href: "/rene-guenon/", label: "Guénon" },
   { href: "/entrar-a-la-masoneria/", label: "Acercamiento" },
   { href: "/biblioteca/", label: "Biblioteca" },
-  { href: "https://porlatradicion.com/", label: "Legado", external: true },
 ];
 
 const links = variant === "satellite" ? satelliteLinks : institutionalLinks;
