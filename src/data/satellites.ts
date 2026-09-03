@@ -15,7 +15,7 @@ export const satellitePages: SatellitePage[] = [
     href: "/orden-real-heredom/",
     title: "Orden Real de Heredom",
     description:
-      "Identidad, significado, estructura y presencia institucional de la Orden Real de Heredom de Kilwinning.",
+      "Identidad, significado, estructura y presencia de la Orden Real de Heredom de Kilwinning.",
   },
   {
     href: "/entrar-a-la-masoneria/",

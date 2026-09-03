@@ -32,7 +32,7 @@ const faqItems = [
   {
     question: "¿Qué relación tiene René Guénon con la Masonería?",
     answer:
-      "Su obra ofrece elementos para comprender la iniciación de oficio, el simbolismo constructivo, la regularidad iniciática y la diferencia entre conocimiento teórico y realización espiritual. El estudio no sustituye el rito, el trabajo ni la transmisión.",
+      "Su obra ofrece elementos para comprender la iniciación de oficio, el simbolismo constructivo, la regularidad iniciática y la diferencia entre conocimiento teórico y realización espiritual. El estudio no sustituye el rito, el trabajo ni la transmisión. Además, Guénon fue un masón operativo en todos sus grados.",
   },
 ] as const;
 
@@ -203,6 +203,7 @@ const structuredData = {
           <h2>Una lectura en espiral</h2>
           <p>No existe una única puerta. Los mismos símbolos reaparecen, se iluminan entre sí y conducen progresivamente hacia el centro.</p>
         </header>
+        <p class="reading-label">Cuatro libros recomendados de su vasta obra</p>
         <div class="reading-path">
           <article><span>01</span><small>La puerta simbólica</small><h3>Símbolos fundamentales de la Ciencia Sagrada</h3><p>Una condensación de temas que atraviesan el conjunto de su obra.</p></article>
           <article><span>02</span><small>La doctrina iniciática</small><h3>Apercepciones sobre la Iniciación</h3><p>Las condiciones, límites y naturaleza de la vía iniciática.</p></article>
@@ -268,6 +269,8 @@ const structuredData = {
   .masonry{position:relative;overflow:hidden;background:#8f262d;color:#f5efe3}.masonry-geometry{position:absolute;inset:0;opacity:.18}.masonry-geometry span{position:absolute;border:1px solid #f5efe3;border-radius:50%}.masonry-geometry span:nth-child(1){width:40rem;height:40rem;left:-15rem;top:-15rem}.masonry-geometry span:nth-child(2){width:26rem;height:26rem;right:5%;bottom:-16rem}.masonry-geometry span:nth-child(3){width:8rem;height:8rem;left:50%;top:50%;transform:translate(-50%,-50%)}.masonry-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,8vw,9rem)}.masonry .overline{color:#e1c98c}.masonry h2{font-size:clamp(3.8rem,7vw,7rem);line-height:.88;color:#f5efe3}.masonry h2 em{color:#e1c98c}.masonry-grid>div{padding-top:4rem}.masonry p{font-size:1.08rem;line-height:1.8;color:rgba(245,239,227,.82)}.masonry .lead{font-family:var(--font-display);font-size:1.8rem;line-height:1.4;color:#fff}.masonry-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem}.masonry-links a{padding:.9rem 1.2rem;border:1px solid rgba(245,239,227,.5);color:#fff;text-decoration:none;font-family:var(--font-ui);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}.masonry-links a:hover{background:#f5efe3;color:#8f262d}
   .bibliography{background:#d0ae69;color:#102d26}.bibliography-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:5rem}.bibliography h2{font-size:clamp(3rem,5vw,5rem);line-height:.95}.bibliography ul{list-style:none;margin:0;padding:0}.bibliography li{display:grid;grid-template-columns:.7fr 1.3fr;gap:2rem;padding:1.3rem 0;border-top:1px solid rgba(16,45,38,.35)}.bibliography li span{font-family:var(--font-ui);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}.bibliography li strong{font-family:var(--font-display);font-size:1.5rem;font-weight:600}
   .faq{background:#f3eee3}.faq-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:5rem}.faq h2{font-size:clamp(3rem,5vw,5rem)}.faq details{border-top:1px solid #b7a47c;padding:1.25rem 0}.faq summary{cursor:pointer;font-family:var(--font-display);font-size:1.45rem;font-weight:600}.faq details p{max-width:45rem;line-height:1.75}
+
+  .reading-label{margin:0 0 2rem;font-family:var(--font-ui);font-size:.76rem;letter-spacing:.14em;text-align:center;text-transform:uppercase;color:#8f262d}
 
   /* Ajustes editoriales: cita legible, circopunto puro y mayor respiración. */
   .manifesto blockquote{margin-top:8rem;padding:6.5rem 8rem 4.5rem}

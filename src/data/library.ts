@@ -85,24 +85,6 @@ export const libraryShelves: LibraryShelf[] = [
 
 export const libraryDocuments: LibraryDocument[] = [
   {
-    slug: "aspectos-historia-sagrada-francmasoneria-operativa",
-    title: "Algunos aspectos de la historia sagrada de la Francmasonería Operativa",
-    shortTitle: "Historia sagrada de la Francmasonería Operativa",
-    pdfPath: "/biblioteca/pdf/aspectos-historia-sagrada-francmasoneria-operativa.pdf",
-    pages: 67,
-    bytes: 522346,
-    responsible: "H∴ M∴ · San Juan Evangelista N.º 1",
-    nature: "Estudio de fondo",
-    shelf: "fundamentos",
-    summary:
-      "Un recorrido amplio por los Antiguos Deberes, la tradición noaquita, los constructores medievales, el legado céltico, el Templarismo y el Jacobitismo.",
-    editorialNote:
-      "Es el estudio más extenso de esta selección. Reúne cronología, mitología e historia sagrada desde la perspectiva doctrinal de la Orden.",
-    topics: ["Antiguos Deberes", "Masonería Operativa", "Kilwinning", "Templarismo"],
-    relatedSlugs: ["operativo-y-especulativo", "capitulo-primordial-arras"],
-    coverTone: "parchment",
-  },
-  {
     slug: "operativo-y-especulativo",
     title: "Operativo y especulativo",
     pdfPath: "/biblioteca/pdf/operativo-y-especulativo.pdf",
@@ -116,7 +98,7 @@ export const libraryDocuments: LibraryDocument[] = [
     editorialNote:
       "Texto breve y frontal. Presenta una posición doctrinal propia de la tradición de Heredom.",
     topics: ["Masonería Operativa", "Masonería Especulativa", "René Guénon"],
-    relatedSlugs: ["aspectos-historia-sagrada-francmasoneria-operativa", "regularidad-masonica"],
+    relatedSlugs: ["los-antiguos-deberes-y-sus-marcas", "regularidad-masonica"],
     coverTone: "ink",
   },
   {
@@ -134,7 +116,7 @@ export const libraryDocuments: LibraryDocument[] = [
     editorialNote:
       "La pieza articula memoria de la Orden, tradición jacobita y documentos conservados por la Orden.",
     topics: ["Arras", "Charles Edward Stuart", "Jacobitismo", "Rosa+Cruz"],
-    relatedSlugs: ["soberano-principe-rosa-cruz-heredom", "aspectos-historia-sagrada-francmasoneria-operativa"],
+    relatedSlugs: ["soberano-principe-rosa-cruz-heredom", "los-antiguos-deberes-y-sus-marcas"],
     coverTone: "bottle",
     featured: true,
   },
@@ -364,7 +346,7 @@ export const libraryDocuments: LibraryDocument[] = [
     editorialNote:
       "El texto reúne memoria mítica, deberes del oficio y marcas como límites vivos del trabajo tradicional.",
     topics: ["Old Charges", "Landmarks", "Artes Liberales", "Ritual"],
-    relatedSlugs: ["aspectos-historia-sagrada-francmasoneria-operativa", "la-iniciacion-femenina"],
+    relatedSlugs: ["operativo-y-especulativo", "la-iniciacion-femenina"],
     coverTone: "bottle",
     featured: true,
   },

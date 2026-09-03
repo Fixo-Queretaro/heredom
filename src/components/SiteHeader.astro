@@ -9,7 +9,7 @@ interface Props {
   uid?: string;
   /** ruta activa; marca el enlace con aria-current="page" */
   current?: string;
-  /** conserva el menú institucional por defecto; los satélites usan su propio mapa */
+  /** conserva el menú principal por defecto; los satélites usan su propio mapa */
   variant?: "institutional" | "satellite";
 }
 const { uid = "main", current, variant = "institutional" } = Astro.props;

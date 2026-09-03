@@ -13,7 +13,7 @@ export const site = {
   logo: "/images/escudo.png",
   socialImage: "/images/heredom-social-el-greco.jpg",
   socialImageAlt:
-    "San Juan Evangelista sosteniendo el cáliz, obra de El Greco, imagen institucional del portal Heredom México.",
+    "San Juan Evangelista sosteniendo el cáliz, obra de El Greco, imagen principal del portal Heredom México.",
   sameAs: [
     "https://www.facebook.com/profile.php?id=100095300929470",
     "https://www.youtube.com/@hrdm-klwnnng.m.x",
