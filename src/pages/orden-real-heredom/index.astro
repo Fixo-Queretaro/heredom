@@ -287,7 +287,7 @@ const structuredData = {
           </p>
           <div class="jurisdiction-items">
             <article><span>I</span><h3>Capítulo Soberano</h3><p>Custodia la continuidad capitular y la autoridad consignada para la jurisdicción.</p></article>
-            <article><span>II</span><h3>Logia Madre+Metropolitana</h3><p>Concentra el trabajo iniciático desde el que se levantan y ordenan sus columnas.</p></article>
+            <article><span>II</span><h3>Logia Madre+<wbr />Metropolitana</h3><p>Concentra el trabajo iniciático desde el que se levantan y ordenan sus columnas.</p></article>
             <article><span>III</span><h3>Portal público</h3><p>Comunica doctrina, documentos, Biblioteca y vías de acercamiento; no expone la vida ritual interna.</p></article>
           </div>
           <p class="jurisdiction-link"><a href="/masoneria-queretaro/">Conocer la presencia y el acercamiento en Querétaro</a></p>
@@ -852,9 +852,9 @@ const structuredData = {
 
   .jurisdiction-items article {
     display: grid;
-    grid-template-columns: 3.5rem minmax(12rem, 0.8fr) minmax(0, 1.2fr);
-    gap: 1.5rem;
-    align-items: baseline;
+    grid-template-columns: 3.5rem minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 2rem;
+    align-items: start;
     padding-block: 2rem;
   }
 
@@ -874,11 +874,16 @@ const structuredData = {
   }
 
   .jurisdiction-items h3 {
+    min-width: 0;
+    margin: 0;
     font-size: 1.8rem;
+    line-height: 1.18;
     color: #f5efe2;
   }
 
   .jurisdiction-items p {
+    min-width: 0;
+    margin: 0;
     line-height: 1.65;
     color: rgba(245, 239, 226, 0.7);
   }
