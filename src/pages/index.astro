@@ -82,15 +82,17 @@ const homeStructuredData = createHomeStructuredData();
                (CMYK→RGB, WebP q90, PSNR 45.6 dB). Original intacto.
                Mirada frontal-descendente → posición derecha por defecto. -->
           <figure class="umbral-figure">
-            <img
-              src="/images/rene-guenon.webp"
-              alt="Retrato de René Guénon"
-              width="440"
-              height="329"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>René Guénon</figcaption>
+            <a class="umbral-figure-link" href="/rene-guenon/" aria-label="Conocer la obra de René Guénon">
+              <img
+                src="/images/rene-guenon.webp"
+                alt="Retrato de René Guénon"
+                width="440"
+                height="329"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>René Guénon</figcaption>
+            </a>
           </figure>
         </div>
 
@@ -286,6 +288,27 @@ const homeStructuredData = createHomeStructuredData();
     margin: 0;
     justify-self: end;
     max-width: 27.5rem;
+  }
+
+  .umbral-figure-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .umbral-figure-link img {
+    transition: filter 220ms ease, opacity 220ms ease;
+  }
+
+  .umbral-figure-link:hover img,
+  .umbral-figure-link:focus-visible img {
+    filter: sepia(0.12) contrast(1.04);
+    opacity: 0.94;
+  }
+
+  .umbral-figure-link:hover figcaption,
+  .umbral-figure-link:focus-visible figcaption {
+    color: var(--text-accent-strong);
   }
 
   .umbral-figure img {

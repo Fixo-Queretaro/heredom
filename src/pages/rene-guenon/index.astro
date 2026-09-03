@@ -47,7 +47,7 @@ const structuredData = {
       mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
       author: { "@id": `${absoluteSiteUrl("/")}#organization` },
       publisher: { "@id": `${absoluteSiteUrl("/")}#organization` },
-      image: absoluteSiteUrl("/images/rene-guenon-hero.webp"),
+      image: absoluteSiteUrl("/images/rene-guenon-social.jpg"),
       inLanguage: site.language,
     },
     {
@@ -86,8 +86,10 @@ const structuredData = {
   title={pageTitle}
   description={pageDescription}
   canonical={pagePath}
-  image="/images/rene-guenon-hero.webp"
-  imageAlt="Retrato de cuerpo entero de René Guénon"
+  image="/images/rene-guenon-social.jpg"
+  imageAlt="René Guénon: tradición, simbolismo e iniciación"
+  imageWidth={1200}
+  imageHeight={630}
   pageType="article"
   exactTitle={true}
   structuredData={structuredData}

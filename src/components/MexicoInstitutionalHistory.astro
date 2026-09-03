@@ -50,9 +50,10 @@ const bodies = [
         </h2>
       </div>
       <p class="history-intro">
-        La presencia de la Orden Real en México se inscribe en una filiación que su
-        tradición vincula con el Templarismo escocés, la Abadía de Kilwinning y la
-        continuidad preservada en Argentina.
+        La presencia de la Orden Real en México, incluida su
+        <a href="/masoneria-queretaro/">presencia en Querétaro</a>, se inscribe en una
+        filiación que su tradición vincula con el Templarismo escocés, la Abadía de
+        Kilwinning y la continuidad preservada en Argentina.
       </p>
     </header>
 
@@ -252,6 +253,17 @@ const bodies = [
   .history-intro {
     color: var(--text-muted);
     font-size: var(--step-1);
+  }
+
+  .history-intro a {
+    color: inherit;
+    text-decoration-color: rgba(134, 31, 44, 0.34);
+  }
+
+  .history-intro a:hover,
+  .history-intro a:focus-visible {
+    color: var(--text-accent-strong);
+    text-decoration-color: currentColor;
   }
 
   .filiation {
