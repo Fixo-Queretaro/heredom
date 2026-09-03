@@ -48,6 +48,12 @@
         <a class="btn btn-secondary" href="/biblioteca/">Explorar la Biblioteca</a>
       </div>
 
+      <p class="hero-approach">
+        <span>Acercamiento a la Orden</span>
+        <span class="hero-approach-separator" aria-hidden="true">·</span>
+        <a href="/entrar-a-la-masoneria/#requisitos">Conocer los requisitos</a>
+      </p>
+
       <!-- Lema de cierre -->
       <p class="hero-motto">Tradición, estudio y memoria viva</p>
     </div>
@@ -238,6 +244,43 @@
     background: rgba(255, 253, 245, 0.08);
   }
 
+  .hero-approach {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem;
+    margin: -0.35rem 0 0;
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 550;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: rgba(244, 239, 226, 0.58);
+  }
+
+  .hero-approach-separator {
+    color: rgba(208, 178, 123, 0.8);
+  }
+
+  .hero-approach a {
+    color: rgba(244, 239, 226, 0.9);
+    text-decoration-line: underline;
+    text-decoration-color: rgba(208, 178, 123, 0.38);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.28em;
+    transition:
+      color 180ms ease,
+      text-decoration-color 180ms ease;
+  }
+
+  .hero-approach a:hover,
+  .hero-approach a:focus-visible {
+    color: #fffdf5;
+    text-decoration-color: rgba(208, 178, 123, 0.95);
+  }
+
   .home-hero :focus-visible {
     outline-color: var(--accent-bronze);
   }
@@ -395,6 +438,12 @@
     .hero-actions .btn {
       width: 100%;
       justify-content: center;
+    }
+
+    .hero-approach {
+      gap: 0.42rem;
+      font-size: 0.68rem;
+      line-height: 1.65;
     }
 
     .hero-art {
